@@ -1,0 +1,52 @@
+        @media (max-width: 768px) {
+            .modal-medium,
+            .modal-lg {
+                max-width: 95%;
+            }
+            .flotante {
+                display: none;
+            }
+            .navbar-collapse {
+                margin-left: 0;
+            }
+            .nav-item {
+                width: 100%;
+            }
+            .nav-item.active {
+                border-bottom: none;
+                background-color: #143f6c;
+            }
+            .submenu.active a {
+                color: white;
+            }
+            .navbar-light .navbar-nav .active>.nav-link {
+                color: white;
+            }
+            .submenu {
+                height: 60px;
+                padding-left: 20px;
+            }
+            .nav-item.submenu.active {
+                border-bottom: none;
+                background: transparent;
+            }
+            .nav-item.submenu.active a {
+                color: #1c64b0;
+            }
+            .comentarios {
+                padding-left: 15px;
+            }
+            ul#TabUsuarios .nav-item {
+                width: 50%;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 425px) {
+            ul#TabUsuarios .nav-item {
+                height: 60px;
+            }
+            ul#TabUsuarios .nav-item a.nav-link {
+                height: 100%;
+            }
+        }

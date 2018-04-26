@@ -1,0 +1,34 @@
+{
+  "name": "app",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "bcrypt": "1.0.3",
+    "bs58": "4.0.1",
+    "chimp": "0.51.0",
+    "lodash": "4.17.4",
+    "meteor-node-stubs": "^0.3.2",
+    "moment": "^2.20.1",
+    "mongodb": "^3.0.1",
+    "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
+    "react-bootstrap-date-picker": "github:maxaggedon/react-bootstrap-date-picker",
+    "react-collapsible": "^2.0.4",
+    "react-dom": "^16.2.0",
+    "react-loading": "^1.0.3",
+    "react-modal": "^3.1.10",
+    "react-mounter": "1.2.0",
+    "reactstrap": "^5.0.0-alpha.4",
+    "react-trello": "^1.29.1",
+    "simpl-schema": "^1.4.0",
+    "validator": "^9.4.1",
+    "xlsx": "^0.11.18"
+  },
+  "devDependencies": {
+    "eslint": "4.15.0",
+    "eslint-plugin-react": "7.5.1"
+  }
+}

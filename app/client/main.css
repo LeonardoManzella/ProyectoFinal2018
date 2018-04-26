@@ -1,0 +1,314 @@
+/* CSS declarations go here */
+body {
+  font-family: sans-serif;
+  background-color: white;
+  background-attachment: fixed;
+ 
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+ 
+  padding: 0;
+  margin: 0;
+ 
+  font-size: 14px;
+}
+ 
+.tasks {
+  margin: 2% auto;
+  min-height: 100%;
+  background: white;
+}
+ 
+.tasks-header {
+  background: #d2edf4;
+  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  padding: 20px 15px 15px 15px;
+  position: relative;
+}
+ 
+.new-task input {
+  box-sizing: border-box;
+  padding: 10px 0;
+  background: transparent;
+  border: none;
+  width: 100%;
+  padding-right: 80px;
+  font-size: 1em;
+}
+ 
+.new-task input:focus{
+  outline: 0;
+}
+ 
+.delete {
+  float: right;
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: relative;
+}
+ 
+.tasks li {
+  position: relative;
+  list-style: none;
+  padding: 15px;
+  border-bottom: #eee solid 1px;
+}
+ 
+.tasks li .text {
+  margin-left: 10px;
+}
+ 
+.tasks li.checked {
+  color: #888;
+}
+ 
+.tasks li.checked .text {
+  text-decoration: line-through;
+}
+ 
+.tasks li.private {
+  background: #eee;
+  border-color: #ddd;
+}
+ 
+.tasks header .hide-completed {
+  float: right;
+}
+ 
+.tasks .toggle-private {
+  margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dropdown-item.search-item {
+  min-height: 60px;
+}
+
+/* Modal */
+
+.modal.show.fade {
+  display: block;
+  padding-left: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 0;
+}
+
+.modal.show.fade.plan {
+  z-index: 0;
+}
+
+.modal.show.fade.user-modal button {
+  margin-bottom: 25px;
+}
+
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Spinner */
+
+.dimmed {
+  content: " ";
+  z-index: 5000;
+  display: block;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.loading {
+  position: relative;
+  margin: 0 auto;
+  top: 50%;
+}
+
+.loading svg{
+  margin: 0 auto;
+}
+
+.loading h4{
+  text-align: center;
+  color: #fff;
+}
+
+.spinner{
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+/* Executive Unit Modal */
+
+.mycontent-left {
+  border-right: 1px solid #ced4da;
+}
+
+.container-fluid.col-md-10.col-xs-12 {
+  margin-left: 0 auto;
+}
+
+/* Upload Button */
+
+.image-upload > input{
+  display: none;
+}
+
+.image-upload > label {
+  cursor: pointer;
+}
+
+p.hash {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pull-left.checkbox {
+  margin-right: 7px;
+}
+
+.plus-checklist.pull-left.checkbox {
+  margin-top: 5px;
+}
+
+.container .table-responsive.plan-details {
+  max-height: 500px;
+}
+
+/* CHECK */
+
+/* datepicker */
+
+.datepickerzindex {
+  z-index: 0 !important;
+}
+
+.fade.in {
+  opacity: 1;
+}
+
+.popover>.arrow, .popover>.arrow:after {
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.popover>.arrow {
+  border-width: 11px;
+}
+
+.popover.bottom>.arrow {
+  top: -11px;
+  left: 20% !important;
+  margin-left: -11px;
+  border-top-width: 0;
+  border-bottom-color: #f7f7f7;
+}
+
+.popover-title {
+  padding: 8px 14px;
+  margin: 0;
+  font-size: 14px;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 5px 5px 0 0;
+}
+
+.popover.bottom {
+  margin-top: 10px;
+}
+
+.popover {
+  position: absolute;
+  /* top: 0;
+  left: 0; */
+  left: -175px !important;
+  z-index: 1060;
+  display: none;
+  max-width: 276px;
+  padding: 5px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: left;
+  text-align: start;
+  text-decoration: none;
+  text-shadow: none;
+  text-transform: none;
+  letter-spacing: normal;
+  word-break: normal;
+  word-spacing: normal;
+  word-wrap: normal;
+  white-space: normal;
+  background-color: #f7f7f7;
+  border: 1px solid #f7f7f7;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border-radius: 6px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.datepicker-previous-wrapper{
+  float: left;
+  display: block;
+}
+
+.datepicker-next-wrapper{
+  float: right;
+  display: block;
+}
+
+.bg-primary{
+  color: #fff;
+}
+
+.badge-danger {
+  color: #fff;
+  background-color: #dc3545;
+  margin-bottom: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Dropdown */
+
+.dropdown-menu-list {
+  overflow-y: scroll;
+  max-height: 300px;
+  width: max-content;
+}
