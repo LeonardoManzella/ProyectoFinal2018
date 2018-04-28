@@ -1,34 +1,48 @@
 import React from 'react'
 import Board from 'react-trello'
+import { Boards } from '../../../../lib/schemas/board';
+import { withTracker } from 'meteor/react-meteor-data';
+import { Meteor } from 'meteor/meteor';
 
-export default class Binnacle extends React.Component {
+class Binnacle extends React.Component {
 	
+	constructor(props) {
+    super(props);
+    Meteor.call('boards.insertFirstTime');
+  }
+
+	onDataChange(boardData) {
+		
+		console.log("this is boardData lanes: " + boardData.lanes);
+
+		console.log();
+		
+		Meteor.call('boards.update', this.props.board._id ,boardData.lanes);
+	}
+
 	render() {
 
-		const data = {
-			lanes: [
-			  {
-				id: 'lane1',
-				title: 'Planned Tasks',
-				label: '2/2',
-				cards: [
-				  {id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins'},
-				  {id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: {sha: 'be312a1'}}
-				]
-			  },
-			  {
-				id: 'lane2',
-				title: 'Completed',
-				label: '0/0',
-				cards: []
-			  }
-			]
+		if (!this.props.board) {
+			return '';
 		}
 
+		let boardData = {};
+		boardData.lanes = this.props.board.lanes
+
 		return  <Board 
-			data={data}
+			onDataChange={this.onDataChange.bind(this)}
+			data={boardData}
 			draggable={true}
 			editable={true} 
 			/>
+			
 	}
 }
+
+export default withTracker(() => {
+  Meteor.subscribe('boards');
+
+  return {
+    board: Boards.find({}).fetch()[0]
+  };
+})(Binnacle);
