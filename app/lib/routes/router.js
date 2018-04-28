@@ -72,6 +72,13 @@ FlowRouter.route('/', {
   }
 });
 
+FlowRouter.route('/usersList', {
+  name: 'usersList',
+  action: function() {
+    mount(MainLayout, {content: <UserPage/>});
+  }
+});
+
 FlowRouter.route('/pending', {
   name: 'pending',
   action: function() {

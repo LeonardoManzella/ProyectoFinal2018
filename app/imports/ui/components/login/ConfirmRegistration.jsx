@@ -12,7 +12,6 @@ class ConfirmRegistration extends React.Component {
     this.state = {
       password: '',
       confirmPassword: '',
-      publicKey: '',
       errors: validationsHelper.initializeConfirmRegistrationErrors()
     };
     this.handleChange = this.handleChange.bind(this);
@@ -36,10 +35,6 @@ class ConfirmRegistration extends React.Component {
       newErrors[targetName].message = '';
     }
 
-    if (targetName === 'publicKey' && targetValue.length !== 42) {
-      newErrors[targetName].message = 'invalidPublicKeyLength';
-    }
-
     this.setState(
       {
         errors: newErrors
@@ -56,12 +51,11 @@ class ConfirmRegistration extends React.Component {
       return;
     }
 
-    const {password, publicKey} = this.state;
+    const {password} = this.state;
     const {refcode} = this.props;
     Meteor.call('signupUser', {
       refcode,
-      password,
-      publicKey
+      password
     }, (err, email) => {
       if (err) {
         console.log('There has been an error', err);
@@ -99,12 +93,6 @@ class ConfirmRegistration extends React.Component {
                 <input type="password" name="confirmPassword" onChange={this.handleChange} className="form-control" placeholder={TAPi18n.__('confirmRegistration.confirmPassword')}/>
                 <p className='small italic-proyectos text-danger'>
                   {validationsHelper.getErrorMessage(this.state.errors.confirmPassword.message)}
-                </p>
-              </div>
-              <div className="form-group">
-                <input type="text" name="publicKey" onChange={this.handleChange} className="form-control" placeholder={TAPi18n.__('confirmRegistration.publicKey')}/>
-                <p className='small italic-proyectos text-danger'>
-                  {validationsHelper.getErrorMessage(this.state.errors.publicKey.message)}
                 </p>
               </div>
               <div className="margin-top-30">

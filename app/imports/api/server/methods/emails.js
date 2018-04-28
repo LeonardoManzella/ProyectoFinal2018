@@ -14,12 +14,12 @@ const getEmailTemplate = function(lang = 'es', templateName, valuesToReplace) {
 export const sendEnrollmentLinkEmail = function(to, userName, refcode) {
   const enrollmentLink = Meteor.absoluteUrl() + 'confirmRegistration/' + refcode;
   const html = getEmailTemplate('es', 'enrollment', {userName, enrollmentLink});
-  sendEmail(to, 'BID - Invitación a Nuestra Aplicación', html);
+  sendEmail(to, 'Emprendimientos creativos!', html);
 };
 
 export const sendWelcomeEmail = function(to, userName) {
   console.log('[sendWelcomeEmail] - Starting with params', to, userName);
   const home = Meteor.absoluteUrl();
   const html = getEmailTemplate('es', 'welcome', {userName, home});
-  sendEmail(to, 'BID - Bienvenido', html);
+  sendEmail(to, 'Bienvenido a emprendimientos creativos!', html);
 };

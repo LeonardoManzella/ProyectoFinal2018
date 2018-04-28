@@ -50,9 +50,9 @@ export default class UserModal extends Component {
 
   saveNewUser(user) {
     const userData = {};
-    if (Meteor.user().roles[0] === 'executiveDirector') {
+    /*if (Meteor.user().roles[0] === 'executiveDirector') {
       userData.executiveUnitId = Meteor.user().executiveUnitId;
-    }
+    }*/
     this.props.saveNewUser(Object.assign(userData, user));
   }
 
@@ -75,8 +75,9 @@ export default class UserModal extends Component {
         <ConfirmModal
           modalLabel={TAPi18n.__('user.user')}
           onAccept={() => {
+            this.saveNewUser(Object.assign({}, this.state.userData));
             this.setState({
-              reconfirmModalOpen: true
+              confirmModalOpen: false
             });
           }}
           onCancel={() => {
@@ -89,24 +90,6 @@ export default class UserModal extends Component {
               description: this.state.userData.name}]}
           confirmModalOpen={this.state.confirmModalOpen}
           showCancelButton={true}
-          prefix={TAPi18n.__('pendingUserModal.one')}
-        />
-        <ConfirmModal
-          modalLabel={TAPi18n.__('user.user')}
-          onAccept={() => {
-            this.setState({reconfirmModalOpen: false, confirmModalOpen: false});
-            this.saveNewUser(Object.assign({}, this.state.userData));
-          }}
-          onCancel={() => {
-            this.setState({
-              confirmModalOpen: false,
-              reconfirmModalOpen: false
-            });
-          }}
-          modalDescription={TAPi18n.__('pendingUserReconfirmationModal.description')}
-          confirmModalOpen={this.state.reconfirmModalOpen}
-          showCancelButton={true}
-          isReconfirm={true}
           prefix={TAPi18n.__('pendingUserModal.one')}
         />
         <Modal

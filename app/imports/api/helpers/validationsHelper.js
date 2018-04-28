@@ -22,8 +22,7 @@ const initializeNewProjectErrors = () => {
 const initializeConfirmRegistrationErrors = () => {
   return {
     password: {rules: ['required'], message: ''},
-    confirmPassword: {rules: ['required'], message: ''},
-    publicKey: {rules: ['required'], message: ''}
+    confirmPassword: {rules: ['required'], message: ''}
   };
 };
 

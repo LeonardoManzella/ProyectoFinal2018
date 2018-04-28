@@ -6,6 +6,11 @@ Meteor.publish('getUsersNames', function() {
     'personalInformation.surname': 1, 'roles': 1}});
 });
 
+Meteor.publish('getUsers', function() {
+  return Meteor.users.find({}, {fields: {'personalInformation.name': 1,
+    'personalInformation.surname': 1, 'roles': 1}});
+});
+
 Meteor.publish('getUserLoggedIn', function() {
   return Meteor.users.find({_id: this.userId}, {fields: {'personalInformation.name': 1,
     'personalInformation.surname': 1, 'roles': 1}});

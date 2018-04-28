@@ -1,6 +1,6 @@
 
 import _ from 'lodash';
-const EMAIL_FROM = 'no-reply@emprendimientos.com';
+const EMAIL_FROM = 'emprendimientoscreativos@gmail.com';
 
 let emailService = Email.send;
 

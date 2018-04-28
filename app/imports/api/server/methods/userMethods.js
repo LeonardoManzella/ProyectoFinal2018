@@ -10,25 +10,7 @@ import { Roles } from 'meteor/alanning:roles';
 
 export const newUser = (user, userId, userIds, roles) => {
   const userName = user.name + ' ' + user.surname;
-  Activities.insert({
-    type: "user",
-    extraTitle: 'activityNames.welcomeMessage',
-    title: '',
-    createdBy: 'activityNames.BID',
-    actionDescription: 'activityNames.addedMessage',
-    userId: userId,
-    userIds: [userId]
-  });
-  Activities.insert({
-    type: "role",
-    extraTitle: 'activityNames.user',
-    title: userName,
-    createdBy: Meteor.userId(),
-    actionDescription: 'activityNames.addedUser',
-    redirect: 'userList',
-    userIds,
-    roles
-  });
+  
   const refcode = generateRegistrationRefcode(userId);
   sendEnrollmentLinkEmail(user.email, userName, refcode);
 };
@@ -92,7 +74,7 @@ if (Meteor.isServer) {
         return exception;
       }
     },
-    'signupUser'({refcode, password, publicKey}) {
+    'signupUser'({refcode, password}) {
       try {
         check(password, String);
         check(refcode, String);
@@ -117,66 +99,20 @@ if (Meteor.isServer) {
           throw new Meteor.Error('unable-to-retire-code');
         }
         Accounts.setPassword(userId, password);
-        Meteor.users.update({_id: userId}, {$set: {'personalInformation.publicKey': publicKey}});
+        Meteor.users.update({_id: userId}, {$set: {'personalInformation.status': 'approved'}});
 
         const isProvider = Roles.userIsInRole(userId, ['provider']);
         const roles = isProvider ? [] : ['projectManager'];
         const provider = isProvider ? Providers.findOne({providerId: userId}) : {};
         const project = isProvider ? Projects.findOne({'providers': provider._id}) : {};
         const userIds = isProvider ? [project.projectManagerId, user.originatorId] : [user.originatorId];
-        Activities.insert({
-          type: "pendingUser",
-          extraTitle: 'activityNames.user',
-          title: user.personalInformation.name + ' ' + user.personalInformation.surname,
-          postTitle: 'activityNames.pending',
-          createdBy: user.originatorId,
-          status: 'pending',
-          actionDescription: 'activityNames.addedUser',
-          redirect: 'userList',
-          pendingUserId: userId,
-          userIds,
-          roles
-        });
+        
         console.log('[updatePassword] - successfully finished', `user[${userId}]`);
         return email;
       } catch (exception) {
         console.log(exception);
         throw new Meteor.Error('error', exception);
       }
-    },
-    'newUserHashData'(userId) {
-      const user = Meteor.users.findOne({_id: userId});
-      const data = {
-        phone: user.personalInformation.phone,
-        name: user.personalInformation.name,
-        surname: user.personalInformation.surname,
-        role: user.roles[0],
-        email: user.emails[0].address,
-        publicKey: user.personalInformation.publicKey,
-      };
-      switch (user.roles[0]) {
-        case 'executiveDirector': {
-          const executiveUnit = ExecutiveUnits.findOne(user.executiveUnitId);
-          data.executiveUnitName = executiveUnit.name;
-          break;
-        }
-        case 'provider': {
-          const provider = Providers.findOne({providerId: user._id});
-          data.providerName = provider.socialReason;
-          break;
-        }
-        default: {
-          break;
-        }
-      }
-      console.log('data', data, 'userRole', user.roles[0]);
-      const hash = crypto.createHash('sha256');
-      hash.update(JSON.stringify(data), 'utf8');
-      return {
-        newUserAddress: user.personalInformation.publicKey,
-        role: user.roles[0],
-        activityHash: hash.digest('base64')
-      };
     }
   });
 }
