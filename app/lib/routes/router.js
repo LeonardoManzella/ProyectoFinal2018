@@ -13,6 +13,7 @@ import NotFound from '../../imports/ui/components/NotFound';
 import Pending from '../../imports/ui/components/login/Pending';
 import Binnacle from '../../imports/ui/components/binnacle/Binnacle'
 import TasksBoard from '../../imports/ui/components/task/TasksBoard'
+import Expert from '../../imports/ui/components/expert/Expert'
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'login', 'profile', 'pending', 'notFound'];
@@ -89,6 +90,13 @@ FlowRouter.route('/binnacle', {
   name: 'binnacle',
   action: function() {
     mount(MainLayout, {content: <Binnacle/>});
+  }
+})
+
+FlowRouter.route('/expert', {
+  name: 'expert',
+  action: function() {
+    mount(MainLayout, {content: <Expert/>});
   }
 })
 
