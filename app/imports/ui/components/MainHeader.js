@@ -35,7 +35,8 @@ class MainHeader extends React.Component {
       || (tab === 'Bitácora' && this.props.currentUrl.indexOf(redirect) !== -1)
       || (tab === 'Experto' && this.props.currentUrl.indexOf(redirect) !== -1)
       || (tab === 'Usuarios' && this.props.currentUrl.indexOf(redirect) !== -1)
-      || (tab === 'Chart' && this.props.currentUrl.indexOf(redirect) !== -1);
+      || (tab === 'Chart' && this.props.currentUrl.indexOf(redirect) !== -1)
+      || (tab === 'ChatBot' && this.props.currentUrl.indexOf(redirect) !== -1);
 
     if (isTabSelected) {
       tabClass = "nav-item active";
@@ -81,6 +82,7 @@ class MainHeader extends React.Component {
               {this.getTabSelected('Experto', '/expert')}
               {this.getTabSelected('Usuarios', '/usersList')}
               {this.getTabSelected('Chart', '/chart')}
+              {this.getTabSelected('ChatBot', '/chatbot')}
             </ul>
           </div>
           

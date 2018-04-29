@@ -1,0 +1,431 @@
+.fullSize {
+    height: 100%;
+    min-height: 100%;
+    width: 100%}
+.I-ChatBot {
+    padding: .5em;
+    position: absolute;
+    left: 15em;
+    right: 15em;
+    bottom: 4em;
+    top: 6em;
+}
+.I-ChatBot ul.ActionBar {
+    list-style-type: none;
+    margin: 0;
+    overflow-y: scroll;
+    padding: .5em;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+}
+.I-ChatBot ul.ActionBar li.Action {
+    display: inline-block;
+    margin: 0 .5em;
+}
+.I-ChatBot ul.ActionBar li.Action button, .I-ChatBot ul.ActionBar li.Action input {
+    border: none;
+    border-radius: 6px;
+    outline: none;
+    padding: .5em 1em;
+}
+.I-ChatBot ul.ActionBar li.Action button {
+    background: -webkit-linear-gradient(-45deg, #3498db, #4f82db);
+    background: -webkit-linear-gradient(315deg, #3498db, #4f82db);
+    background: linear-gradient(135deg, #3498db, #4f82db);
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 0 3px rgba(84, 94, 101, .5);
+    color: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#803498db", endColorstr="#804f82db", GradientType=1);
+    font-size: 1em;
+    min-width: 60px;
+    outline: none;
+    padding: .75em 1em;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+}
+.I-ChatBot ul.ActionBar li.Action button:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+.I-ChatBot ul.ActionBar li.Action button.GetStartedButton {
+    background-color: #faebd7;
+}
+.I-ChatBot ul.ActionBar li.Action button.ReplyButton {
+    background-color: #add8e6;
+}
+.I-ChatBot ul.ActionBar li.Action div.TextInput input.Input {
+    background-color: #fff;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 3px rgba(84, 94, 101, .5);
+    color: #545e65;
+    font-size: 1em;
+    padding: .75em 1em;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+}
+.I-ChatBot ul.ActionBar li.Action div.TextInput input.Input:focus {
+    border: 1px solid #3498db;
+}
+.I-ChatBot ul.ActionBar li.Action div.TextInput button.Submit {
+    background-color: #add8e6;
+    margin: 0 .5em;
+}
+.I-ChatBot ul.Messages {
+    list-style-type: none;
+    margin: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: .5em;
+    position: absolute;
+    top: 0;
+    bottom: 3em;
+    left: 0;
+    right: 0;
+}
+.I-ChatBot ul.Messages li.Message {
+    margin: .25em 0;
+    padding: 3px 0;
+}
+.I-ChatBot ul.Messages li.Message div.Message-Animatable-Container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    width: 100%}
+.I-ChatBot ul.Messages li.Message div.Message-Content {
+    border-radius: 30px;
+    box-shadow: 0 0 3px rgba(84, 94, 101, .25);
+    max-width: 60%;
+    padding: .5em 1em;
+    text-align: center;
+    font-size: 1em;
+}
+.I-ChatBot ul.Messages li.Message div.Message-Content div.Typing {
+    background-color: #ecf0f1;
+    display: table;
+    padding: .5em 0;
+    width: auto;
+}
+.I-ChatBot ul.Messages li.Message div.Message-Content div.Typing span {
+    background-color: #545e65;
+    border-radius: 50%;
+    float: left;
+    height: .5em;
+    margin: 0 .2em;
+    opacity: .4;
+    width: .5em;
+}
+.I-ChatBot ul.Messages li.Message div.Message-Content div.Typing span:first-of-type {
+    -webkit-animation: 1s blink infinite .3333s;
+    animation: 1s blink infinite .3333s;
+}
+.I-ChatBot ul.Messages li.Message div.Message-Content div.Typing span:nth-of-type(2) {
+    -webkit-animation: 1s blink infinite .6666s;
+    animation: 1s blink infinite .6666s;
+}
+.I-ChatBot ul.Messages li.Message div.Message-Content div.Typing span:nth-of-type(3) {
+    -webkit-animation: 1s blink infinite .9999s;
+    animation: 1s blink infinite .9999s;
+}
+@-webkit-keyframes blink {
+    50% {
+    opacity: 1;
+}
+}@keyframes blink {
+    50% {
+    opacity: 1;
+}
+}.I-ChatBot ul.Messages li.Message.Inbound div.Message-Animatable-Container {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+}
+.I-ChatBot ul.Messages li.Message.Inbound div.Message-Animatable-Container div.Message-Content {
+    background-color: #545e65;
+    color: #fff;
+    text-align: right;
+}
+.I-ChatBot ul.Messages li.Message.Outbound div.Message-Animatable-Container {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+.I-ChatBot ul.Messages li.Message.Outbound div.Message-Animatable-Container div.Message-Content {
+    background-color: #ecf0f1 !important;
+    color: #545e65;
+    text-align: left;
+}
+.I-ChatBot .ActionBar-enter {
+    -webkit-transform: translate3d(0, 500%, 0);
+    transform: translate3d(0, 500%, 0);
+}
+.I-ChatBot .ActionBar-enter.ActionBar-enter-active {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+}
+.I-ChatBot .ActionBar-leave {
+    opacity: 1;
+}
+.I-ChatBot .ActionBar-leave.ActionBar-leave-active {
+    opacity: 0;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+.I-ChatBot .Messages-enter.Inbound {
+    -webkit-transform: translate3d(200%, 0, 0);
+    transform: translate3d(200%, 0, 0);
+}
+.I-ChatBot .Messages-enter.Outbound {
+    -webkit-transform: translate3d(-200%, 0, 0);
+    transform: translate3d(-200%, 0, 0);
+}
+.I-ChatBot .Messages-enter.Messages-enter-active {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+}
+.I-ChatBot .Messages-leave {
+    opacity: 1;
+}
+.I-ChatBot .Messages-leave.Messages-leave-active {
+    opacity: 0;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+.I-ChatBot .Message-Content-enter {
+    opacity: 0;
+}
+.I-ChatBot .Message-Content-enter.Message-Content-enter-active {
+    opacity: 1;
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+}
+.I-ChatBot .Message-Content-leave {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 1;
+}
+.I-ChatBot .Message-Content-leave.Message-Content-leave-active {
+    opacity: 0;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+body, html {
+    height: 100%}
+body {
+    color: #4a4a4a;
+    font-family: Quicksand, sans-serif;
+    font-weight: 500;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-text-stroke: 1px transparent;
+}
+h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+}
+.Container .Content {
+    margin: 0 auto;
+    padding: 1em;
+}
+@media (max-width:767px) {
+    .Container .Content {
+    width: 90%}
+}@media (min-width:768px) and (max-width:991px) {
+    .Container .Content {
+    width: 90%}
+}@media (min-width:992px) and (max-width:1199px) {
+    .Container .Content {
+    width: 80%}
+}@media (min-width:1200px) {
+    .Container .Content {
+    width: 80%}
+}.Container .Absolute {
+    position: absolute;
+    left: 1em;
+    right: 1em;
+    bottom: 1em;
+    top: 1em;
+}
+@media (max-width:767px) {
+    .Container .Absolute {
+    position: absolute;
+    left: .5em;
+    right: .5em;
+    bottom: .5em;
+    top: .5em;
+    padding: .5em;
+}
+}.FullSizeTable {
+    display: table;
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    width: 100%}
+.FullSizeTable .AlignMiddle {
+    display: table-cell;
+    margin: 0 auto;
+    padding: 0;
+    vertical-align: middle;
+}
+.Home, .Home .Chat {
+    height: 100%;
+    min-height: 100%;
+    width: 100%}
+.Home .Chat .GetStarted .AlignMiddle {
+    text-align: center;
+    width: 50%}
+.Home .Chat .GetStarted .Justin {
+    margin: 0 auto;
+    max-width: 256px;
+    width: 100%}
+.Home .Chat .GetStarted h1, .Home .Chat .GetStarted p {
+    color: #545e65;
+}
+.Home .Chat .GetStarted p {
+    font-size: 1.5em;
+}
+.Home .Chat .GetStarted button {
+    background: -webkit-linear-gradient(-45deg, #3498db, #4f82db);
+    background: -webkit-linear-gradient(315deg, #3498db, #4f82db);
+    background: linear-gradient(135deg, #3498db, #4f82db);
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0 0 3px rgba(84, 94, 101, .5);
+    color: #fff;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#803498db", endColorstr="#804f82db", GradientType=1);
+    font-family: Quicksand, sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    outline: none;
+    padding: 1em 2em;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+}
+.Home .Chat .GetStarted button:hover {
+    cursor: pointer;
+    opacity: .9;
+}
+.Home .Chat .Background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    background-position: 0 100%;
+    background-repeat: repeat;
+    z-index: -1;
+}
+.Home .Chat .GradientBorder {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    background: -webkit-linear-gradient(-45deg, #3498db, #4f82db);
+    background: -webkit-linear-gradient(315deg, #3498db, #4f82db);
+    background: linear-gradient(135deg, #3498db, #4f82db);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#803498db", endColorstr="#804f82db", GradientType=1);
+    height: 1em;
+}
+@media (max-width:767px) {
+    .Home .Chat .GradientBorder {
+    height: .5em;
+}
+}.Home .Messenger {
+    background-color: #fff;
+    padding: 3em;
+    text-align: center;
+}
+.Home .Messenger img {
+    width: 265px;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+}
+.Home .Messenger img:hover {
+    -webkit-transform: scale(1.01);
+    -ms-transform: scale(1.01);
+    transform: scale(1.01);
+}
+.NotFound {
+    text-align: center;
+}
+.NotFound a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+}
+.NotFound a:hover {
+    color: #4f82db;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+.Footer {
+    background-color: #ecf0f1;
+    color: #4a4a4a;
+    padding: 3em 0;
+    position: relative;
+}
+.Footer .Content .Social {
+    display: inline;
+}
+.Footer .Content .Social img {
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+}
+.Footer .Content .Social img:hover {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+.Footer .Content .Social a:last-child {
+    margin-left: 3em;
+}
+.Footer .Content .Details {
+    float: right;
+    display: inline;
+}
+.Footer .Content .Details p {
+    margin: .1em 0;
+    text-align: right;
+}
+.Footer .Content .Details a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: all .15s ease;
+    transition: all .15s ease;
+}
+.Footer .Content .Details a:hover {
+    color: #4f82db;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+.Footer .Copyright {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1em;
+    top: auto;
+    text-align: center;
+}
