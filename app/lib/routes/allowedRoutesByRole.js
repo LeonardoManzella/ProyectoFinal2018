@@ -1,6 +1,6 @@
 const allowedRoutesByRole = {
-  provider: ['binnacle', 'tasksBoard', 'expert', 'usersList'],
-  projectManager: ['binnacle', 'tasksBoard', 'expert', 'usersList']
+  provider: ['binnacle', 'tasksBoard', 'expert', 'usersList', 'chart'],
+  projectManager: ['binnacle', 'tasksBoard', 'expert', 'usersList', 'chart']
 };
 
 export default allowedRoutesByRole;

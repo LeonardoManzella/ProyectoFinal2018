@@ -14,6 +14,7 @@ import Pending from '../../imports/ui/components/login/Pending';
 import Binnacle from '../../imports/ui/components/binnacle/Binnacle'
 import TasksBoard from '../../imports/ui/components/task/TasksBoard'
 import Expert from '../../imports/ui/components/expert/Expert'
+import Chart from '../../imports/ui/components/chart/Chart'
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'login', 'profile', 'pending', 'notFound'];
@@ -104,6 +105,13 @@ FlowRouter.route('/expert', {
   name: 'expert',
   action: function() {
     mount(MainLayout, {content: <Expert/>});
+  }
+})
+
+FlowRouter.route('/chart', {
+  name: 'chart',
+  action: function() {
+    mount(MainLayout, {content: <Chart/>});
   }
 })
 
