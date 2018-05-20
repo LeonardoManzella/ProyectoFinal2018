@@ -10,7 +10,7 @@ db.getCollection('users').insert([
     "createdAt": ISODate("2018-01-23T19:11:06.578Z"),
     "services": {
       "password": {
-        "bcrypt": "$2a$10$trj9rE4V19K7s1lLi4HO1Or5cIx4mGWF8VuYB1BJSj2u/D08sIdh2"
+        "bcrypt": "$2a$10$rcSqSWZ7hWLniyw2JFAxJurE9nTHntOv/X6GjZVqq5qF4j1nwlNZC"
       },
       "resume": {
         "loginTokens": [ 
@@ -21,7 +21,7 @@ db.getCollection('users').insert([
         ]
       }
     },
-    "roles": ["projectManager"],
+    "roles": ["administrator"],
     "emails": [ 
       {
         "address": "admin@emprendimientos.com",
@@ -33,6 +33,33 @@ db.getCollection('users').insert([
       "surname": "Bresler",
       "phone": "1234",
       "status": "approved"
+    }
+  },
+  {
+    "_id" : "WazBtJffQp3po9z2e",
+    "createdAt" : ISODate("2018-01-23T19:11:06.578Z"),
+    "services" : {
+        "password" : {
+            "bcrypt" : "$2a$10$rcSqSWZ7hWLniyw2JFAxJurE9nTHntOv/X6GjZVqq5qF4j1nwlNZC"
+        },
+        "resume" : {
+            "loginTokens" : []
+        }
+    },
+    "roles" : [ 
+        "entrepreneur"
+    ],
+    "emails" : [ 
+        {
+            "address" : "emprendedor@emprendimientos.com",
+            "verified" : false
+        }
+    ],
+    "personalInformation" : {
+        "name" : "Emprendedor",
+        "surname" : "1",
+        "phone" : "1234",
+        "status" : "approved"
     }
   }
 ]);
@@ -109,7 +136,7 @@ db.getCollection('activities').insert([
   },
   {
     "type" : "role",
-    "roles": ["projectManager"],
+    "roles": ["administrator"],
     "extraTitle": "activityNames.user",
     "title": "Agustin Rosas",
     "createdBy": "WazBtJffQp3po9z2u",
@@ -118,7 +145,7 @@ db.getCollection('activities').insert([
   },
   {
     "type" : "role",
-    "roles": ["projectManager"],
+    "roles": ["administrator"],
     "extraTitle": "activityNames.user",
     "title": "Nicole Kirby",
     "createdBy": "WazBtJffQp3po9z2u",
@@ -127,7 +154,7 @@ db.getCollection('activities').insert([
   },
   {
     "type" : "role",
-    "roles": ["projectManager"],
+    "roles": ["administrator"],
     "extraTitle": "activityNames.user",
     "title": "John Lemon",
     "createdBy": "WazBtJffQp3po9z2u",
@@ -136,7 +163,7 @@ db.getCollection('activities').insert([
   },
   {
     "type" : "role",
-    "roles": ["projectManager"],
+    "roles": ["administrator"],
     "extraTitle": "activityNames.user",
     "title": "Juan Pichu",
     "createdBy": "WazBtJffQp3po9z2u",

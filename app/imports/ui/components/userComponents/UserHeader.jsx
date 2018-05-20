@@ -7,7 +7,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { Meteor } from 'meteor/meteor';
 
 const renderNewUserButton = (changeModalStatus) => {
-  if (Meteor.user() && Roles.userIsInRole(Meteor.userId(), ['projectManager', 'executiveDirector'])) {
+  if (Meteor.user() && Roles.userIsInRole(Meteor.userId(), ['administrator', 'executiveDirector'])) {
     return (
       <button type="button" className="btn btn-primary btn-sm" id="newUser"
         onClick={changeModalStatus}>

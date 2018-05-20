@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 export const rolesByUser = {
-  projectManager: [
+  administrator: [
     "auditor",
     "operationsAnalist",
     "acquisitions",

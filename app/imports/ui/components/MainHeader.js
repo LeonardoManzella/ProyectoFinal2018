@@ -30,13 +30,7 @@ class MainHeader extends React.Component {
   getTabSelected(tab, redirect) {
     let tabClass = "nav-item";
     let tabSpan = "";
-    const isTabSelected = this.props.currentUrl === redirect || 
-      (tab === 'Tareas' && this.props.currentUrl.indexOf(redirect) !== -1)
-      || (tab === 'Bitácora' && this.props.currentUrl.indexOf(redirect) !== -1)
-      || (tab === 'Experto' && this.props.currentUrl.indexOf(redirect) !== -1)
-      || (tab === 'Usuarios' && this.props.currentUrl.indexOf(redirect) !== -1)
-      || (tab === 'Chart' && this.props.currentUrl.indexOf(redirect) !== -1)
-      || (tab === 'ChatBot' && this.props.currentUrl.indexOf(redirect) !== -1);
+    const isTabSelected = this.props.currentUrl === redirect;
 
     if (isTabSelected) {
       tabClass = "nav-item active";
@@ -80,9 +74,12 @@ class MainHeader extends React.Component {
               {this.getTabSelected('Tareas', '/tasksBoard')}
               {this.getTabSelected('Bitácora', '/binnacle')}
               {this.getTabSelected('Experto', '/expert')}
-              {this.getTabSelected('Usuarios', '/usersList')}
+              {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
+                this.getTabSelected('Usuarios', '/usersList') : ''}
               {this.getTabSelected('Chart', '/chart')}
               {this.getTabSelected('ChatBot', '/chatbot')}
+              {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
+                this.getTabSelected('Reminders', '/reminders') : ''}
             </ul>
           </div>
           

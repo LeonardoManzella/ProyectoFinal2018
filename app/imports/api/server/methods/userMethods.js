@@ -102,10 +102,10 @@ if (Meteor.isServer) {
         Meteor.users.update({_id: userId}, {$set: {'personalInformation.status': 'approved'}});
 
         const isProvider = Roles.userIsInRole(userId, ['provider']);
-        const roles = isProvider ? [] : ['projectManager'];
+        const roles = isProvider ? [] : ['administrator'];
         const provider = isProvider ? Providers.findOne({providerId: userId}) : {};
         const project = isProvider ? Projects.findOne({'providers': provider._id}) : {};
-        const userIds = isProvider ? [project.projectManagerId, user.originatorId] : [user.originatorId];
+        const userIds = isProvider ? [project.administrator, user.originatorId] : [user.originatorId];
         
         console.log('[updatePassword] - successfully finished', `user[${userId}]`);
         return email;

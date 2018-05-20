@@ -11,6 +11,10 @@ Meteor.publish('getUsers', function() {
     'personalInformation.surname': 1, 'roles': 1}});
 });
 
+Meteor.publish('getUsersEntrepreneur', function() {
+  return Meteor.users.find({roles: 'entrepreneur'});
+});
+
 Meteor.publish('getUserLoggedIn', function() {
   return Meteor.users.find({_id: this.userId}, {fields: {'personalInformation.name': 1,
     'personalInformation.surname': 1, 'roles': 1}});

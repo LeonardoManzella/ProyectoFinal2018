@@ -83,7 +83,7 @@ export const fileTypesByUser = {
     "finalReport",
     "resume"
   ],
-  projectManager: [
+  administrator: [
   ]
 };
 
