@@ -58,7 +58,7 @@ export default class UserPage extends Component {
 
   render() {
     return (
-      <div className="container content-body">
+      <div className="content-body">
         {this.renderExtraComponent()}
         <UserModal
           userModalOpen={this.state.userModalOpen}

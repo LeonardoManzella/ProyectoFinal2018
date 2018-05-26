@@ -1,6 +1,10 @@
 body, html {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
     height: 100%;
+    letter-spacing: 1px;
+    font-weight: 500;
+    font-size: 13px;
+    background-image: url("/img/welcome.jpg");
 }
 
 p {
@@ -33,11 +37,11 @@ a:hover {
     width: 120px;
     text-align: center;
     border-bottom: 3px solid transparent;
-    height: 60px;
+    height: 35px;
 }
 
 .nav-item.active {
-    border-bottom: 3px solid #143f6c;
+    border: 2px solid #ffb3b5;
 }
 
 .submenu {
@@ -53,26 +57,37 @@ a:hover {
 }
 
 .submenu.active {
-    border-bottom: 3px solid #1c64b0;
+    border: 2px solid #ffb3b5;
 }
 
 .submenu.active a {
-    color: #1c64b0;
+    color: #ff5a5f;
 }
 
 .navbar {
     padding: 5px 5px 0 5px;
+    box-shadow: none;
+    margin: 20px;
+    height: 60px;
+}
+
+.nav-item > a {
+    color: #ff5a5f;
 }
 
 .nav-link {
-    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-weight: 400;
+    font-size: 12px;
+    height: 100%;
 }
 
 .navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .show>.nav-link {
-    color: #143f6c;
+    color: #ff5a5f;
 }
 
 .border-bottom {
@@ -429,6 +444,14 @@ a .date-activity,
 
 .card {
     border: none;
+}
+
+.content-body {
+    margin-top: 20px;
+    background-color: white;
+    padding: 30px;
+    width: auto;
+    margin: 20px;
 }
 
 .container-modal-users {

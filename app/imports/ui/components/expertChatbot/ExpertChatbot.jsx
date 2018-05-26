@@ -22,14 +22,16 @@ export default class ExpertChatbot extends React.Component {
 
 		if (!this.state.hasStartedChat) {
 			return (
-				<div className="GetStarted Content">
+				<div className="GetStarted Content content-body">
 					<div className="FullSizeTable">
 						<div className="AlignMiddle">
 							<img src="/img/emprendimientos-logo.png" className='Justin'/>
 						</div>
-						<div className="AlignMiddle">
-							<h1>Felicidades por iniciar un emprendimiento</h1>
-							<p>Este será el asesor para definir tus objetivos</p>
+					</div>
+					<div className="FullSizeTable">
+						<div className="AlignMiddle welcome-title">
+							<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
+							<p><i>Este será el asesor para definir tus objetivos</i></p>
 							<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
 						</div>
 					</div>

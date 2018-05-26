@@ -109,13 +109,15 @@ export default class Chart extends React.Component {
 		);
 
 		return (
-			<Tooltip
-				data={lineData}
-				render={renderLine}
-				topicLabel={"topics"}
-				title={"Tooltip Title"}
-				shouldShowDateInTitle={true}
-			/>
+			<div className="content-body">
+				<Tooltip
+					data={lineData}
+					render={renderLine}
+					topicLabel={"topics"}
+					title={"Tooltip Title"}
+					shouldShowDateInTitle={true}
+				/>
+			</div>
 		)
 	}
 }

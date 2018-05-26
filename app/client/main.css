@@ -1,6 +1,6 @@
 /* CSS declarations go here */
 body {
-  font-family: sans-serif;
+  font-family: 'Raleway', sans-serif;
   background-color: white;
   background-attachment: fixed;
  
@@ -13,7 +13,7 @@ body {
   padding: 0;
   margin: 0;
  
-  font-size: 14px;
+  font-size: 13px;
 }
  
 .tasks {
@@ -83,24 +83,6 @@ body {
 .tasks .toggle-private {
   margin-left: 5px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .dropdown-item.search-item {
   min-height: 60px;
@@ -334,4 +316,61 @@ p.hash {
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: .25em;
+}
+
+.Home .Chat .GetStarted .AlignMiddle.welcome-title h1 {
+  font-size: 40px;
+  line-height: 60px;
+  letter-spacing: 5px;
+  color: #ff5a5fcc;
+  text-transform: uppercase;
+  font-weight: 200;
+}
+
+.Home .Chat .GetStarted .AlignMiddle.welcome-title p {
+  letter-spacing: 1px;
+  color: #848587;
+  font-family: 'Crete Round', sans-serif;
+}
+
+.Home .Chat .GetStarted img.Justin {
+  height: 100px;
+  max-width: 100px;
+}
+
+.Home .Chat .GetStarted span button {
+  background: transparent;
+  margin: 10px;
+  vertical-align: baseline;
+  outline: 0;
+  padding: 10px;
+  border: 2px solid #b4b4b4;
+  color: #b4b4b4;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.GetStarted.content-body {
+  background-color: #ffffffb3;
+  margin-top: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.Container .Content {
+  width: auto;
+  margin: 20px;
+  margin-top: 30px;
+}
+
+.FullSizeTable {
+  display: table;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  width: 100%;
+  padding-left: 60px;
+  padding-right: 60px;
 }

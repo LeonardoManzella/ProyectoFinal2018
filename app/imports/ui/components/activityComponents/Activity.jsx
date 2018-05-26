@@ -46,7 +46,7 @@ export default class Activity extends Component {
 
   render() {
     return (
-      <div id="home" className="container content-body">
+      <div id="home" className="content-body">
         <ListContainer
           subscription='getActivities'
           collection={Activities}

@@ -8,7 +8,7 @@ export default class Reminders extends Component {
       return <div />;
     }
     return (
-      <div className="container margin-top-30">
+      <div className="content-body margin-top-30">
         <div className="input-group mb-3">
           <input type="text" className="form-control"
             placeholder="Buscar por nombre o emprendimiento"
