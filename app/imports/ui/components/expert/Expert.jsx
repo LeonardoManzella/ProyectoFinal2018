@@ -62,7 +62,7 @@ export default class Expert extends React.Component {
 	render() {
     return (
 
-			<div>
+			<div className="content-body">
 
 				<div className="tasks container">
 					<header className="tasks-header">

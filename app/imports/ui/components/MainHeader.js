@@ -70,14 +70,15 @@ class MainHeader extends React.Component {
 
           <div className="collapse navbar-collapse margin-left-20" id="navbarsExampleDefault">
             <ul className="navbar-nav mr-auto">
-              {this.getTabSelected('Home', '/')}
+              {/* {this.getTabSelected('Home', '/')}
               {this.getTabSelected('Tareas', '/tasksBoard')}
               {this.getTabSelected('Bitácora', '/binnacle')}
-              {this.getTabSelected('Experto', '/expert')}
+              {this.getTabSelected('Experto', '/expert')} */}
               {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
                 this.getTabSelected('Usuarios', '/usersList') : ''}
               {this.getTabSelected('Chart', '/chart')}
               {this.getTabSelected('ChatBot', '/chatbot')}
+              {this.getTabSelected('Canvas', '/canvas')}
               {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
                 this.getTabSelected('Reminders', '/reminders') : ''}
             </ul>

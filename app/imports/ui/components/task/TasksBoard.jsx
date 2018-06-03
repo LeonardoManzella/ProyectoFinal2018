@@ -44,33 +44,35 @@ class TasksBoard extends Component {
 
   render() {
     return (
-      <div className="tasks container">
-        <header className="tasks-header">
-          <h1>Todo List ({this.props.incompleteCount})</h1>
-         
-          <label className="hide-completed">
-            <input
-              type="checkbox"
-              readOnly
-              checked={this.state.hideCompleted}
-              onClick={this.toggleHideCompleted.bind(this)}
-            />
-            Hide Completed Tasks
-          </label>
+      <div className="content-body">
+        <div className="tasks container">
+          <header className="tasks-header">
+            <h1>Todo List ({this.props.incompleteCount})</h1>
+          
+            <label className="hide-completed">
+              <input
+                type="checkbox"
+                readOnly
+                checked={this.state.hideCompleted}
+                onClick={this.toggleHideCompleted.bind(this)}
+              />
+              Hide Completed Tasks
+            </label>
 
-          <form className="new-task" onSubmit={this.handleSubmit.bind(this)} >
-            <input
-              type="text"
-              ref="textInput"
-              placeholder="Type to add new tasks"
-            />
-          </form>
-            
-        </header>
+            <form className="new-task" onSubmit={this.handleSubmit.bind(this)} >
+              <input
+                type="text"
+                ref="textInput"
+                placeholder="Type to add new tasks"
+              />
+            </form>
+              
+          </header>
 
-        <ul>
-          {this.renderTasks()}
-        </ul>
+          <ul>
+            {this.renderTasks()}
+          </ul>
+        </div>
       </div>
     );
   }

@@ -17,6 +17,7 @@ import Expert from '../../imports/ui/components/expert/Expert'
 import Chart from '../../imports/ui/components/chart/Chart'
 import RemindersContainer from '../../imports/ui/containers/remindersContainer/RemindersContainer';
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot';
+import Canvas from '../../imports/ui/components/canvas/Canvas';
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'login', 'profile', 'pending', 'notFound'];
@@ -128,6 +129,13 @@ FlowRouter.route('/reminders', {
   name: 'reminders',
   action: function() {
     mount(MainLayout, {content: <RemindersContainer/>});
+  }
+});
+
+FlowRouter.route('/canvas', {
+  name: 'canvas',
+  action: function() {
+    mount(MainLayout, {content: <Canvas/>});
   }
 });
 

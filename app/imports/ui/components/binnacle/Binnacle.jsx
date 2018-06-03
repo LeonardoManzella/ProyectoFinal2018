@@ -29,12 +29,16 @@ class Binnacle extends React.Component {
 		let boardData = {};
 		boardData.lanes = this.props.board.lanes
 
-		return  <Board 
-			onDataChange={this.onDataChange.bind(this)}
-			data={boardData}
-			draggable={true}
-			editable={true} 
-			/>
+		return (
+			<div className="content-body"> 
+				<Board 
+					onDataChange={this.onDataChange.bind(this)}
+					data={boardData}
+					draggable={true}
+					editable={true} 
+					/>
+			</div>
+		);
 			
 	}
 }
