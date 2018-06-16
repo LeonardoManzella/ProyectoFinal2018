@@ -378,9 +378,10 @@ p.hash {
 /* CANVAS */
 
 .canvas-card {
-  background-color: #9f9f9f33;
+  background-color: #0000003b;
   padding: 20px;
   border-radius: 6px;
+  margin-top: 30px;
 }
 
 .canvas-card textarea {
@@ -403,6 +404,7 @@ p.hash {
 }
 
 .canvas-card .title input {
+  border-radius: 5px;
   text-align: center;
   color: #ff5a5fcc;
   border: none;
@@ -410,6 +412,31 @@ p.hash {
 
 .canvas-card .row {
   margin-bottom: 20px;
+}
+
+.canvas-card .actions {
+  position: absolute;
+  right: 20px
+}
+
+.canvas-card .actions .icon {
+  margin-left: 20px;
+}
+
+.canvas-card .actions .icon img {
+  height: 20px;
+}
+
+.canvas-card .actions .icon img.cross {
+  height: 17px;
+}
+
+.canvas-card table img {
+  height: 15px;
+}
+
+.canvas-card td>input {
+  border: none;
 }
 
 .row.header {
