@@ -1,5 +1,6 @@
 import React from 'react';
 import CanvasCard from './CanvasCard';
+import EmptyMessage from '../sharedComponents/EmptyMessage';
 
 const emptyCompetitor = {
   name: '',
@@ -99,6 +100,7 @@ class Canvas extends React.Component {
             />
           )
         }
+        { this.state.businessAreas.length === 0 ? <EmptyMessage /> : '' }
 			</div>
 		);
 			

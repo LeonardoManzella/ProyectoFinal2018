@@ -2,7 +2,7 @@
 body {
   font-family: 'Raleway', sans-serif;
   background-color: white;
-  background-attachment: fixed;
+  background-attachment: initial;
  
   position: absolute;
   top: 0;
@@ -414,20 +414,24 @@ p.hash {
   margin-bottom: 20px;
 }
 
-.canvas-card .actions {
+.actions {
   position: absolute;
   right: 20px
 }
+.plan .actions {
+  position: absolute;
+  right: 60px
+}
 
-.canvas-card .actions .icon {
+.actions .icon {
   margin-left: 20px;
 }
 
-.canvas-card .actions .icon img {
+.actions .icon img {
   height: 20px;
 }
 
-.canvas-card .actions .icon img.cross {
+.actions .icon img.cross {
   height: 17px;
 }
 
@@ -472,7 +476,7 @@ td>input {
   border-color: #9f9f9f;
 }
 
-/*WIZARD */
+/* WIZARD */
 
 ol.progtrckr {
   list-style-type: none;
@@ -574,4 +578,17 @@ ol.progtrckr li:before {
 
 .plan .footer-buttons {
   text-align: center;
+}
+
+/* Empty Message */
+
+.row.empty-message {
+  margin-bottom: 20px;
+}
+
+.row.empty-message .col-md-12 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: #9f9f9f;
 }

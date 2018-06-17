@@ -1,92 +1,59 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import PlanCard from './PlanCard';
+import EmptyMessage from '../sharedComponents/EmptyMessage';
 
 class PlanList extends React.Component {
 
 	render() {
+    const {
+      title,
+      addPlan,
+      changeEditOptionPlan,
+      deletePlan,
+      handleOnChange,
+      modifyPlanItemsList,
+      planTypeList,
+      handleSelectChange
+    } = this.props;
     const isEditable = true;
     return (
       <div>
         <div className="row header">
           <div className="col-md-6">
-            <h2>PLANES DE COMUNICACIÓN</h2>
+            <h2>{'PLANES ' + title }</h2>
           </div>
           <div className="col-md-6">
-            <button>
+            <button onClick={addPlan}>
               Agregar Plan
             </button>
-            <select>
-              <option>Elegir Área</option>
-              <option>Todas</option>
-              <option>Galería de Arte</option>
+            <select
+              onChange={handleSelectChange}
+              value={this.selectedBusinessArea}
+            >
+              <option value=''>Elegir Área</option>
+              <option value='Todas'>Todas</option>
+              <option value='Galeria de Arte'>Galería de Arte</option>
             </select>
           </div>
         </div>
-        <div className="row header">
-          <h5>Galería de Arte</h5>
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Tarea / Herramienta / Objetivo</th>
-                <th scope="col">Quién Usa / Hace / Responsable</th>
-                <th scope="col">Quién Controla</th>
-                <th scope="col">Frecuencia / Plazo</th>
-                {
-                  isEditable ?
-                    <th scope="col">
-                      <a className="icon">
-                        <img src='/img/add.svg'/>
-                      </a>
-                    </th>
-                    :
-                    <th />
-                }
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <input
-                    placeholder="Ej: Publicación en Facebook"
-                    name='tool'
-                    disabled={!isEditable}
-                  />
-                </td>
-                <td>
-                  <input
-                    placeholder="Ej: Moi"
-                    name='responsible'
-                    disabled={!isEditable}
-                  />
-                </td>
-                <td>
-                  <input
-                    placeholder="Ej: Nicole"
-                    name='supervisor'
-                    disabled={!isEditable}
-                  />
-                </td>
-                <td>
-                  <input
-                    placeholder="Ej: Cada 2 días"
-                    name='frequency'
-                    disabled={!isEditable}
-                  />
-                </td>
-                {
-                  isEditable ?
-                    <td>
-                      <a className="icon">
-                        <img src='/img/rubbish-bin-gray.svg'/>
-                      </a>
-                    </td>
-                    :
-                    <td />
-                }
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {
+          planTypeList.map((planType, index) =>
+            <PlanCard
+              key={index}
+              businessArea={planType.data.planArea}
+              planItems={planType.data.planItems}
+              isEditable={planType.editable}
+              changeEditOptionPlan={() => changeEditOptionPlan(index)}
+              deletePlan={() => deletePlan(index)}
+              handleOnChange={(event, indexPlanItem) =>
+                handleOnChange(event, index, indexPlanItem)}
+              modifyPlanItemsList={(addPlanItem, indexPlanItem) =>
+                modifyPlanItemsList(index, addPlanItem, indexPlanItem)}
+            />
+          )
+        }
+        { planTypeList.length === 0 ? <EmptyMessage /> : '' }
       </div>
     );
 
@@ -94,6 +61,14 @@ class PlanList extends React.Component {
 }
 
 PlanList.propTypes = {
+  title: PropTypes.string,
+  planTypeList: PropTypes.array,
+  addPlan: PropTypes.func,
+  changeEditOptionPlan: PropTypes.func,
+  deletePlan: PropTypes.func,
+  handleOnChange: PropTypes.func,
+  modifyPlanItemsList: PropTypes.func,
+  handleSelectChange: PropTypes.func
 };
 
 export default PlanList;

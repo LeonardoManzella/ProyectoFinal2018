@@ -1,35 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CrudActions from '../sharedComponents/CrudActions';
 
 class CanvasCard extends React.Component {
 
-  renderActionsMenu(isEditable) {
-    if (!isEditable) {
-      return (
-        <div className="actions">
-          <a className="icon" onClick={this.props.changeEditOptionBusinessArea}>
-            <img src='/img/edit.svg'/>
-          </a>
-          <a className="icon" onClick={this.props.deleteBusinessArea}>
-            <img src='/img/rubbish-bin.svg'/>
-          </a>
-        </div>
-      );
-    }
-    return (
-      <div className="actions">
-        <a className="icon" onClick={this.props.changeEditOptionBusinessArea}>
-          <img src='/img/checked-symbol.svg'/>
-        </a>
-        <a className="icon" onClick={this.props.changeEditOptionBusinessArea}>
-          <img src='/img/close-cross.svg' className="cross"/>
-        </a>
-      </div>
-    )
-  }
-
 	render() {
-    const { businessAreaData, isEditable, handleOnChange, modifyCompetitorsList } = this.props;
+    const { businessAreaData, isEditable, handleOnChange, modifyCompetitorsList,
+      changeEditOptionBusinessArea, deleteBusinessArea } = this.props;
     return (
       <div className="canvas-card col-md-12">
         <div className="row">
@@ -42,7 +19,14 @@ class CanvasCard extends React.Component {
               disabled={!isEditable}
             />
           </h2>
-          {this.renderActionsMenu(isEditable)}
+          <CrudActions
+            isEditable={isEditable}
+            iconsColor=''
+            editAction={changeEditOptionBusinessArea}
+            deleteAction={deleteBusinessArea}
+            confirmAction={changeEditOptionBusinessArea}
+            denyAction={changeEditOptionBusinessArea}
+          />
         </div>
         <div className="row">
           <div className="col-md-3">
