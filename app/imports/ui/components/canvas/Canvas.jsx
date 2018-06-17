@@ -75,11 +75,14 @@ class Canvas extends React.Component {
 		return (
 			<div className="content-body">
         <div className="row header">
-          <div className="col-md-12">
-            <button onClick={this.addBusinessArea.bind(this)} className="btn pull-right">
-              Agregar Área 
-            </button>
-          </div>
+            <div className="col-md-6">
+              <h2>ÁREAS DE NEGOCIO</h2>
+            </div>
+            <div className="col-md-6">
+              <button onClick={this.addBusinessArea.bind(this)} className="btn pull-right">
+                Agregar Área 
+              </button>
+            </div>
         </div>
         {
           this.state.businessAreas.map((businessArea, index) =>

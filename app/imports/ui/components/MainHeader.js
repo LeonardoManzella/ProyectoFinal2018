@@ -79,6 +79,7 @@ class MainHeader extends React.Component {
               {this.getTabSelected('Chart', '/chart')}
               {this.getTabSelected('ChatBot', '/chatbot')}
               {this.getTabSelected('Canvas', '/canvas')}
+              {this.getTabSelected('Planes', '/planList')}
               {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
                 this.getTabSelected('Reminders', '/reminders') : ''}
             </ul>

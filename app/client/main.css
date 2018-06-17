@@ -431,16 +431,21 @@ p.hash {
   height: 17px;
 }
 
-.canvas-card table img {
+table img {
   height: 15px;
 }
 
-.canvas-card td>input {
+td>input {
   border: none;
+  width: 90%;
 }
 
 .row.header {
   padding: 20px;
+}
+
+.row.header .col-md-6 {
+  padding: 0px;
 }
 
 .row.header button {
@@ -456,4 +461,117 @@ p.hash {
   border-radius: 0;
   box-shadow: none;
   border-radius: 5px;
+}
+
+.row.header select {
+  float: right;
+  background-color: transparent;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 10px;
+  border-color: #9f9f9f;
+}
+
+/*WIZARD */
+
+ol.progtrckr {
+  list-style-type: none;
+  padding: 0;
+}
+
+.progtrckr {
+  text-align: center;
+  padding-bottom: 16px;
+}
+
+ol, ul {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+ol.progtrckr li.progtrckr-done {
+  color: black;
+  border-bottom: 4px solid #5cb85c;
+}
+
+ol.progtrckr li.progtrckr-doing {
+  color: black;
+  border-bottom: 4px solid #9f9f9f;
+}
+
+ol.progtrckr li.progtrckr-todo {
+  color: #9f9f9f;
+  border-bottom: 4px solid #9f9f9f;
+}
+
+ol.progtrckr li {
+  display: inline-block;
+  text-align: center;
+  line-height: 4.5rem;
+  cursor: pointer;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+ol.progtrckr li.progtrckr-done:before {
+  content: "\2713";
+  color: white;
+  background-color: #5cb85c;
+  width: 1.2em;
+  line-height: 1.2em;
+  border-radius: 1.2em;
+}
+
+ol.progtrckr li.progtrckr-doing:before,
+ol.progtrckr li.progtrckr-todo:before {
+  content: "\2022";
+  color: white;
+  background-color: #CCCCCC;
+  width: 1.2em;
+  line-height: 1.2em;
+  border-radius: 1.2em;
+}
+
+ol.progtrckr li:before {
+  position: relative;
+  bottom: -4.0rem;
+  float: left;
+  left: 50%;
+}
+
+.progtrckr li {
+  margin-bottom: 10px;
+}
+
+.progtrckr em {
+  display: none;
+  font-weight: 700;
+  padding-left: 1rem;
+}
+
+.row.header button.pull-left {
+  float: left;
+}
+
+.backButtonClass,
+.nextButtonClass {
+  background: #ff5a5fcc;
+  vertical-align: baseline;
+  outline: 0;
+  padding: 10px;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0;
+  box-shadow: none;
+  border-radius: 5px;
+  margin-left: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: 20px;
+}
+
+.plan .footer-buttons {
+  text-align: center;
 }

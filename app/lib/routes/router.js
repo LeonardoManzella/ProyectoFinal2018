@@ -18,6 +18,7 @@ import Chart from '../../imports/ui/components/chart/Chart'
 import RemindersContainer from '../../imports/ui/containers/remindersContainer/RemindersContainer';
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot';
 import Canvas from '../../imports/ui/components/canvas/Canvas';
+import PlanPage from '../../imports/ui/components/plans/PlanPage';
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'login', 'profile', 'pending', 'notFound'];
@@ -136,6 +137,13 @@ FlowRouter.route('/canvas', {
   name: 'canvas',
   action: function() {
     mount(MainLayout, {content: <Canvas/>});
+  }
+});
+
+FlowRouter.route('/planList', {
+  name: 'planList',
+  action: function() {
+    mount(MainLayout, {content: <PlanPage/>});
   }
 });
 
