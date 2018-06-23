@@ -1,3 +1,4 @@
+% TODO Translate to english
 sugerir(Contexto_plan_actual, Objetivos, Aportes, Caracteristicas_identidad, Sugerencias_final) :- 	 encontrar_sugerencias_objetivos(Contexto_plan_actual, Objetivos, Sugerencias_final).
 
 %	encontrar_sugerencias_objetivos(Sugerencia, Objetivos, Sugerencias_objetivos) TODO haer lo mismo para aportes y caracteristicas y usar los append para formar una unica lista a devolver.
