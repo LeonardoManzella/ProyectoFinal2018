@@ -21,8 +21,10 @@ encontrar_una_sugerencia_objetivos(Contexto_plan_actual, Objetivos, Sugerencia) 
 % HECHOS
 puede_sugerirse(plan_empresarial, endeudate).
 puede_sugerirse(plan_empresarial, otra_sugerencia).
+puede_sugerirse(plan_empresarial, mostrate).
+regla_valida_objetivos(quiere_reconocimiento, mostrate).
 regla_valida_objetivos(quiere_plata, endeudate).
 regla_valida_objetivos(quiere_plata, otra_sugerencia).
 regla_valida_objetivos(quiere_plata, no_debe_aparecer). % Para pruebas
-% Para Probar sugerir(plan_empresarial, [quiere_plata], [tiene_cuenta_bancaria], [creativo], Sugerencias_final).
+% Para Probar sugerir(plan_empresarial, [quiere_plata, quiere_reconocimiento], [tiene_cuenta_bancaria], [creativo], Sugerencias_final).
 % Ejecutar en https://tio.run/##rVRNT@MwED3TXzEXpFYKHDjubdVdiVsP7A2haGIPXSPHk/VHgV/PjluSOLRREeJQNbHfezNvPtJ5try9Cs/m7S2kLXnjl2t2kV4i151FV6OKCW0Fm@aJotlxqOBnxz6SPKzRy7WQQjQKQ200uWg06grushg5ZeT40Ti0K/hxBRcgRyLv0dehQHAvfj74sfD1YnF5cU53pM2qDeAV/Nn82sBfJA@WoTWhZejEK@DBObyCmlqXkxQww4OAOnL6QHhk38pxcig/AYIVguiAph3bHXlJ/ltLUpiQekuBNFq7hNL@GE/SKmJ@LeSqgpkEJta@JVS2BF0iTfX7sAaaEZgk2FLbkF/2otWgnpP3tLVY79DK4BZ5DeBCSRwtLseivsv2nIo/ITuAw6SCJzu/ytEO07Q8CagmPOzXsjyUKZR/S7NiA2DKK1Y5HG3cvgz7HVkndJohEGh0oLhtBKAMO1kSTXDzcU9GXWC57fcpPw@u9uq3v9e3m7vFx2bve0xt50m2zeRGix9KGiNJd86jWYaxmEPhzPTpXzKCyTMVcRrkU4QvxnFca2pIWomeFHnhjd/lYzf3JftB3qMhR7VKUmOsG3QqA/OF8oQ54MPJD@h/
