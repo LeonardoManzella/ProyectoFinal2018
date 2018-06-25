@@ -465,6 +465,7 @@ td>input {
   border-radius: 0;
   box-shadow: none;
   border-radius: 5px;
+  margin-left: 10px;
 }
 
 .row.header select {
@@ -472,7 +473,6 @@ td>input {
   background-color: transparent;
   border-radius: 5px;
   padding: 10px;
-  margin-right: 10px;
   border-color: #9f9f9f;
 }
 

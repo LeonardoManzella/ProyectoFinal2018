@@ -10,7 +10,7 @@ class PlanCard extends React.Component {
     return (
       <div>
         <div className="row header">
-          <h5>{businessArea}</h5>
+          <h5>{businessArea === 'all' ? 'Todas' : businessArea}</h5>
           <CrudActions
             isEditable={isEditable}
             iconsColor='-gray'

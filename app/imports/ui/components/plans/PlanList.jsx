@@ -14,7 +14,8 @@ class PlanList extends React.Component {
       handleOnChange,
       modifyPlanItemsList,
       planTypeList,
-      handleSelectChange
+      handleSelectChange,
+      savePlans
     } = this.props;
     const isEditable = true;
     return (
@@ -24,15 +25,19 @@ class PlanList extends React.Component {
             <h2>{'PLANES ' + title }</h2>
           </div>
           <div className="col-md-6">
+            <button onClick={savePlans}>
+              Guardar Cambios
+            </button>
             <button onClick={addPlan}>
               Agregar Plan
             </button>
             <select
               onChange={handleSelectChange}
               value={this.selectedBusinessArea}
+              defaultValue=''
             >
-              <option value=''>Elegir Área</option>
-              <option value='Todas'>Todas</option>
+              <option value='' disabled hidden>Elegir Área</option>
+              <option value='all'>Todas</option>
               <option value='Galeria de Arte'>Galería de Arte</option>
             </select>
           </div>
@@ -68,7 +73,8 @@ PlanList.propTypes = {
   deletePlan: PropTypes.func,
   handleOnChange: PropTypes.func,
   modifyPlanItemsList: PropTypes.func,
-  handleSelectChange: PropTypes.func
+  handleSelectChange: PropTypes.func,
+  savePlans: PropTypes.func
 };
 
 export default PlanList;
