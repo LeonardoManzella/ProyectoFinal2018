@@ -19,6 +19,7 @@ import RemindersContainer from '../../imports/ui/containers/remindersContainer/R
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot';
 import Canvas from '../../imports/ui/components/canvas/Canvas';
 import PlanContainer from '../../imports/ui/containers/userTasksContainers/PlanContainer';
+import SwotAndRisks from '../../imports/ui/components/swotAndRisks/SwotAndRisks';
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'login', 'profile', 'pending', 'notFound'];
@@ -144,6 +145,13 @@ FlowRouter.route('/planList', {
   name: 'planList',
   action: function() {
     mount(MainLayout, {content: <PlanContainer/>});
+  }
+});
+
+FlowRouter.route('/swotAndRisks', {
+  name: 'swotAndRisks',
+  action: function() {
+    mount(MainLayout, {content: <SwotAndRisks/>});
   }
 });
 

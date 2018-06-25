@@ -73,13 +73,15 @@ class MainHeader extends React.Component {
               {/* {this.getTabSelected('Home', '/')}
               {this.getTabSelected('Tareas', '/tasksBoard')}
               {this.getTabSelected('Bitácora', '/binnacle')}
-              {this.getTabSelected('Experto', '/expert')} */}
+              {this.getTabSelected('Experto', '/expert')} 
               {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
                 this.getTabSelected('Usuarios', '/usersList') : ''}
+                */}
               {this.getTabSelected('Chart', '/chart')}
               {this.getTabSelected('ChatBot', '/chatbot')}
               {this.getTabSelected('Canvas', '/canvas')}
               {this.getTabSelected('Planes', '/planList')}
+              {this.getTabSelected('FODA', '/swotAndRisks')}
               {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
                 this.getTabSelected('Reminders', '/reminders') : ''}
             </ul>
