@@ -19,7 +19,8 @@ import RemindersContainer from '../../imports/ui/containers/remindersContainer/R
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot';
 import PlanContainer from '../../imports/ui/containers/userTasksContainers/PlanContainer';
 import CanvasContainer from '../../imports/ui/containers/canvasContainers/CanvasContainer';
-import SwotAndRisks from '../../imports/ui/components/swotAndRisks/SwotAndRisks';
+import SwotContainer from '../../imports/ui/containers/swotAndRisksContainers/SwotContainer';
+import Risks from '../../imports/ui/components/swotAndRisks/Risks';
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'login', 'profile', 'pending', 'notFound'];
@@ -148,10 +149,17 @@ FlowRouter.route('/planList', {
   }
 });
 
-FlowRouter.route('/swotAndRisks', {
-  name: 'swotAndRisks',
+FlowRouter.route('/swot', {
+  name: 'swot',
   action: function() {
-    mount(MainLayout, {content: <SwotAndRisks/>});
+    mount(MainLayout, {content: <SwotContainer/>});
+  }
+});
+
+FlowRouter.route('/risks', {
+  name: 'risks',
+  action: function() {
+    mount(MainLayout, {content: <Risks/>});
   }
 });
 

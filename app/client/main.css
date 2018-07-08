@@ -636,6 +636,59 @@ ol.progtrckr li:before {
   right: 60px;
 }
 
+.swot .dropdown-input {
+  margin-left: 20px;
+  width: 80%;
+  margin-bottom: 10px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 2px solid #a6a5a5;
+}
+
+.swot .dropdown-row {
+  padding-left: 10px;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.swot .dropdown-menu {
+  width: 220px;
+}
+
+.swot .dropdown-row button {
+  float: right;
+  background: #ff5a5fcc;
+  vertical-align: baseline;
+  outline: 0;
+  padding: 10px;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0;
+  box-shadow: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.row.swot-element {
+  margin: 0px;
+}
+
+.row.swot-element img {
+  height: 15px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.swot-tasks .row.header select {
+  float: left;
+  width: 100%;
+  height: 20px;
+  padding: 0;
+}
+
 /* CHATBOT MENU */
 
 /* Position and sizing of burger button */

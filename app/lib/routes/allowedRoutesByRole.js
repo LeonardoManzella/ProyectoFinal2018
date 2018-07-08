@@ -1,8 +1,8 @@
 const allowedRoutesByRole = {
   entrepreneur: ['binnacle', 'tasksBoard', 'expert', 'chart', 'chatbot', 'canvas', 'planList',
-    'swotAndRisks'],
+    'swot', 'risks'],
   administrator: ['binnacle', 'tasksBoard', 'expert', 'usersList', 'chart', 'chatbot', 'reminders',
-    'canvas', 'planList', 'swotAndRisks']
+    'canvas', 'planList', 'swot', 'risks']
 };
 
 export default allowedRoutesByRole;

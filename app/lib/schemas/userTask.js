@@ -1,5 +1,6 @@
 import SimpleSchema from  'simpl-schema';
 import { Mongo } from 'meteor/mongo';
+import { Swots } from './swot';
 
 export const UserTasks = new Mongo.Collection('userTasks');
 
@@ -46,7 +47,8 @@ const userTasksSchema = new SimpleSchema({
   businessArea: {
     type: String,
     label: "businessArea",
-    defaultValue: 'all'
+    defaultValue: 'all',
+    optional: true
   },
   type: {
     type: String,
@@ -76,7 +78,7 @@ UserTasks.insertPlanList = (plans) => {
     plan.planTypeList.map(planType => {
       const businessArea = planType.data.planArea ? planType.data.planArea : 'all';
       const userTasks = {};
-      UserTasks.remove({type: 'plan', subtype: plan.name, businessArea})
+      UserTasks.remove({type: 'plan', subtype: plan.name, businessArea, userId: Meteor.userId()})
       userTasks.userId = Meteor.userId();
       userTasks.type = 'plan';
       userTasks.subtype = plan.name;
@@ -95,5 +97,31 @@ UserTasks.insertPlanList = (plans) => {
     });
   });
 };
+
+UserTasks.insertSwotTasks = (swotTasks) => {
+  UserTasks.update({userId: Meteor.userId(), type: 'swot'}, {$unset: {tasks: ""}}, {multi: true});
+  swotTasks.forEach(swotTask => {
+    const newSwotTask = {
+      responsibleID: swotTask.responsible,
+      supervisorID: swotTask.supervisor,
+      taskDescription: swotTask.tool,
+      frequency: {
+        type: 'everyDay',
+        value: swotTask.frequency,
+        time: 'day'
+      }};
+    const swotElement = Swots.findOne({userId: Meteor.userId(), description: swotTask.element});
+    if (!swotElement.userTasksId) {
+      const userTask = {};
+      userTask.userId = Meteor.userId();
+      userTask.type = 'swot';
+      userTask.tasks = [newSwotTask];
+      const newUserTaskId = UserTasks.insert(userTask);
+      Swots.updateUserTaskId(swotElement._id, newUserTaskId);
+    } else {
+      UserTasks.update({_id: swotElement.userTasksId}, {$push: {tasks: newSwotTask}})
+    }
+  });
+}
 
 UserTasks.attachSchema(userTasksSchema);
