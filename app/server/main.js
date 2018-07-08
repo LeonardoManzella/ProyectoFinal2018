@@ -1,8 +1,10 @@
 import { Meteor } from 'meteor/meteor';
 import '../imports/api/server/methods/userMethods';
 import '../imports/api/server/methods/planMethods';
+import '../imports/api/server/methods/businessAreasMethods';
 import '../imports/api/server/activitiesPublications';
 import '../imports/api/server/publications/userTaskPublications';
+import '../imports/api/server/publications/businessAreasPublications';
 import { Accounts } from 'meteor/accounts-base';
 
 Accounts.onCreateUser((options, user) => {

@@ -136,7 +136,7 @@ class PlanPage extends React.Component {
   }
 
   savePlans() {
-    Meteor.call('insertNewPlan', this.state.plans);
+    Meteor.call('insertNewPlanList', this.state.plans);
   }
 
 	render() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import CanvasCard from './CanvasCard';
 import EmptyMessage from '../sharedComponents/EmptyMessage';
+import PropTypes from 'prop-types';
 
 const emptyCompetitor = {
   name: '',
@@ -12,7 +13,7 @@ const emptyBusinessArea = {
   details: '',
   providers: '',
   clients: '',
-  agglutinativeClients: '',
+  agglutinators: '',
   competitors: []
 };
 
@@ -21,8 +22,21 @@ class Canvas extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      businessAreas: []
+      businessAreas: props.businessAreas ?
+        props.businessAreas.map(businessArea => ({
+          data: businessArea,
+          editable: false
+        })) : []
     };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({businessAreas:
+      nextProps.businessAreas.map(businessArea => ({
+        data: businessArea,
+        editable: false
+      }))
+    });
   }
 
   handleOnChange(event, index, indexCompetitor) {
@@ -72,7 +86,15 @@ class Canvas extends React.Component {
     this.setState({businessAreas});
   }
 
+  saveBusinessAreas() {
+    const businessAreas = this.state.businessAreas.map(businessArea => businessArea.data);
+    Meteor.call('insertBusinessAreas', businessAreas);
+  }
+
 	render() {
+    if (this.props.loading) {
+      return <div />;
+    }
 		return (
 			<div className="content-body">
         <div className="row header">
@@ -80,6 +102,9 @@ class Canvas extends React.Component {
               <h2>ÁREAS DE NEGOCIO</h2>
             </div>
             <div className="col-md-6">
+              <button onClick={this.saveBusinessAreas.bind(this)}>
+                Guardar Cambios
+              </button>
               <button onClick={this.addBusinessArea.bind(this)} className="btn pull-right">
                 Agregar Área 
               </button>
@@ -106,5 +131,10 @@ class Canvas extends React.Component {
 			
 	}
 }
+
+Canvas.propTypes = {
+  loading: PropTypes.bool,
+  businessAreas: PropTypes.array
+};
 
 export default Canvas;

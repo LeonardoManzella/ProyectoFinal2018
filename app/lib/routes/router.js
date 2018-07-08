@@ -17,8 +17,8 @@ import Expert from '../../imports/ui/components/expert/Expert'
 import Chart from '../../imports/ui/components/chart/Chart'
 import RemindersContainer from '../../imports/ui/containers/remindersContainer/RemindersContainer';
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot';
-import Canvas from '../../imports/ui/components/canvas/Canvas';
 import PlanContainer from '../../imports/ui/containers/userTasksContainers/PlanContainer';
+import CanvasContainer from '../../imports/ui/containers/canvasContainers/CanvasContainer';
 import SwotAndRisks from '../../imports/ui/components/swotAndRisks/SwotAndRisks';
 
 export const DEFAULT_ROUTE = 'home';
@@ -137,7 +137,7 @@ FlowRouter.route('/reminders', {
 FlowRouter.route('/canvas', {
   name: 'canvas',
   action: function() {
-    mount(MainLayout, {content: <Canvas/>});
+    mount(MainLayout, {content: <CanvasContainer/>});
   }
 });
 

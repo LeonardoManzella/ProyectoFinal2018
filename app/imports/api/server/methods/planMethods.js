@@ -3,7 +3,7 @@ import { UserTasks } from '../../../../lib/schemas/userTask';
 
 if (Meteor.isServer) {
   Meteor.methods({
-    'insertNewPlan'(plans) {
+    'insertNewPlanList'(plans) {
       try {
         const newPlanId = UserTasks.insertPlanList(plans);
         return newPlanId;

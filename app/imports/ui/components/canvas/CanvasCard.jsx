@@ -119,8 +119,8 @@ class CanvasCard extends React.Component {
           <div className="col-md-6">
             <textarea
               placeholder="Clientes Aglutinadores"
-              value={businessAreaData.agglutinativeClients}
-              name='agglutinativeClients'
+              value={businessAreaData.agglutinators}
+              name='agglutinators'
               onChange={handleOnChange}
               disabled={!isEditable}
             />
