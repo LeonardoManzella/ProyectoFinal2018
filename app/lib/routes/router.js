@@ -20,7 +20,7 @@ import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatb
 import PlanContainer from '../../imports/ui/containers/userTasksContainers/PlanContainer';
 import CanvasContainer from '../../imports/ui/containers/canvasContainers/CanvasContainer';
 import SwotContainer from '../../imports/ui/containers/swotAndRisksContainers/SwotContainer';
-import Risks from '../../imports/ui/components/swotAndRisks/Risks';
+import RisksContainer from '../../imports/ui/containers/swotAndRisksContainers/RisksContainer';
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'login', 'profile', 'pending', 'notFound'];
@@ -159,7 +159,7 @@ FlowRouter.route('/swot', {
 FlowRouter.route('/risks', {
   name: 'risks',
   action: function() {
-    mount(MainLayout, {content: <Risks/>});
+    mount(MainLayout, {content: <RisksContainer/>});
   }
 });
 

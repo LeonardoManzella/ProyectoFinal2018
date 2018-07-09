@@ -1,6 +1,7 @@
 import SimpleSchema from  'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 import { Swots } from './swot';
+import { Risks } from './risk';
 
 export const UserTasks = new Mongo.Collection('userTasks');
 
@@ -98,6 +99,7 @@ UserTasks.insertPlanList = (plans) => {
   });
 };
 
+//Fixme: arreglar codigo repetido
 UserTasks.insertSwotTasks = (swotTasks) => {
   UserTasks.remove({userId: Meteor.userId(), type: 'swot'});
   Swots.removeUserTaskIds();
@@ -114,14 +116,43 @@ UserTasks.insertSwotTasks = (swotTasks) => {
     const swotElement = Swots.findOne({userId: Meteor.userId(), description: swotTask.element});
     if (swotElement) {
       if (!swotElement.userTasksId) {
-      const userTask = {};
-      userTask.userId = Meteor.userId();
-      userTask.type = 'swot';
-      userTask.tasks = [newSwotTask];
-      const newUserTaskId = UserTasks.insert(userTask);
-      Swots.updateUserTaskId(swotElement._id, newUserTaskId);
+        const userTask = {};
+        userTask.userId = Meteor.userId();
+        userTask.type = 'swot';
+        userTask.tasks = [newSwotTask];
+        const newUserTaskId = UserTasks.insert(userTask);
+        Swots.updateUserTaskId(swotElement._id, newUserTaskId);
       } else {
         UserTasks.update({_id: swotElement.userTasksId}, {$push: {tasks: newSwotTask}})
+      }
+    }
+  });
+}
+
+UserTasks.insertContingencyPlans = (contingencyPlans) => {
+  UserTasks.remove({userId: Meteor.userId(), type: 'contingencyPlan'});
+  Risks.removeUserTaskIds();
+  contingencyPlans.forEach(contingencyPlan => {
+    const newContingencyPlanTask = {
+      responsibleID: contingencyPlan.responsible,
+      supervisorID: contingencyPlan.supervisor,
+      taskDescription: contingencyPlan.tool,
+      frequency: {
+        type: 'everyDay',
+        value: contingencyPlan.frequency,
+        time: 'day'
+      }};
+    const risk = Risks.findOne({userId: Meteor.userId(), risk: contingencyPlan.element});
+    if (risk) {
+      if (!risk.userTasksId) {
+        const userTask = {};
+        userTask.userId = Meteor.userId();
+        userTask.type = 'contingencyPlan';
+        userTask.tasks = [newContingencyPlanTask];
+        const newUserTaskId = UserTasks.insert(userTask);
+        Risks.updateUserTaskId(risk._id, newUserTaskId);
+      } else {
+        UserTasks.update({_id: risk.userTasksId}, {$push: {tasks: newContingencyPlanTask}})
       }
     }
   });

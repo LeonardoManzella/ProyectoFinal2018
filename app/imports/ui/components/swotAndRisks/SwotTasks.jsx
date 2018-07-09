@@ -11,12 +11,12 @@ class SwotTasks extends React.Component {
       <tr key={swotTaskIndex}>
         <td>
           <select
-            placeholder="Perseverante"
             name='element'
             disabled={!isEditable}
             onChange={(event) => handleOnChange(event, swotTaskIndex)}
             value={swotTask.element}
           >
+            <option>Seleccionar elemento</option>
             {
               Object.values(this.props.swot).map((swotElement) => (
                 swotElement.map((element, index) => (

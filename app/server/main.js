@@ -3,10 +3,12 @@ import '../imports/api/server/methods/userMethods';
 import '../imports/api/server/methods/planMethods';
 import '../imports/api/server/methods/businessAreasMethods';
 import '../imports/api/server/methods/swotMethods';
+import '../imports/api/server/methods/riskMethods';
 import '../imports/api/server/activitiesPublications';
 import '../imports/api/server/publications/userTaskPublications';
 import '../imports/api/server/publications/businessAreasPublications';
 import '../imports/api/server/publications/swotPublications';
+import '../imports/api/server/publications/risksPublications';
 import { Accounts } from 'meteor/accounts-base';
 
 Accounts.onCreateUser((options, user) => {
