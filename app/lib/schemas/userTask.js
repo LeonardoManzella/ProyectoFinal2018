@@ -99,7 +99,8 @@ UserTasks.insertPlanList = (plans) => {
 };
 
 UserTasks.insertSwotTasks = (swotTasks) => {
-  UserTasks.update({userId: Meteor.userId(), type: 'swot'}, {$unset: {tasks: ""}}, {multi: true});
+  UserTasks.remove({userId: Meteor.userId(), type: 'swot'});
+  Swots.removeUserTaskIds();
   swotTasks.forEach(swotTask => {
     const newSwotTask = {
       responsibleID: swotTask.responsible,
@@ -111,15 +112,17 @@ UserTasks.insertSwotTasks = (swotTasks) => {
         time: 'day'
       }};
     const swotElement = Swots.findOne({userId: Meteor.userId(), description: swotTask.element});
-    if (!swotElement.userTasksId) {
+    if (swotElement) {
+      if (!swotElement.userTasksId) {
       const userTask = {};
       userTask.userId = Meteor.userId();
       userTask.type = 'swot';
       userTask.tasks = [newSwotTask];
       const newUserTaskId = UserTasks.insert(userTask);
       Swots.updateUserTaskId(swotElement._id, newUserTaskId);
-    } else {
-      UserTasks.update({_id: swotElement.userTasksId}, {$push: {tasks: newSwotTask}})
+      } else {
+        UserTasks.update({_id: swotElement.userTasksId}, {$push: {tasks: newSwotTask}})
+      }
     }
   });
 }

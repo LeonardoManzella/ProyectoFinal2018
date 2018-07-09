@@ -590,6 +590,7 @@ ol.progtrckr li:before {
 
 .row.empty-message {
   margin-bottom: 20px;
+  width: 100%;
 }
 
 .row.empty-message .col-md-12 {
