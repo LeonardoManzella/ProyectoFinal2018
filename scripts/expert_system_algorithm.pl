@@ -103,6 +103,7 @@ valid_identity_rule(desorganizado, error_no_debe_aparecer). % Para pruebas
 regla_valida_combinacion(tiene_ahorros, desorganizado, funciono_combinada_diferentes_categorias).
 regla_valida_combinacion(quiere_plata, quiere_reconocimiento, funciono_combinada_misma_categoria).
 regla_valida_combinacion(tiene_ahorros, desorganizado, error_no_debe_aparecer). % Para pruebas
+*/
 /* 
 Para Probar suggest(plan_empresarial, [quiere_plata, quiere_reconocimiento], [tiene_ahorros], [desorganizado], Final_suggestions).
 Otra prueba suggest(plan_comercial, [quiere_plata, quiere_reconocimiento], [tiene_ahorros], [desorganizado], Final_suggestions).
