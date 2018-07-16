@@ -40,6 +40,10 @@ can_suggest(communication_plan, digital_communications).
 can_suggest(communication_plan, talks_workshops).
 can_suggest(communication_plan, ecommerce_association).
 can_suggest(communication_plan, investors_deck_ready).
+can_suggest(communication_plan, communication_association).
+can_suggest(communication_plan, outsource_communications).
+can_suggest(communication_plan, communicate_methodology).
+can_suggest(communication_plan, care_about_design).
 
 valid_objetives_rule(quiere_reconocimiento, direct_marketing).
 valid_objetives_rule(quiere_reconocimiento, press_and_magazines).
@@ -57,6 +61,14 @@ valid_objetives_rule(digital, global_social_networks).
 valid_objetives_rule(non_profit, direct_marketing).
 valid_objetives_rule(non_profit, talks_workshops).
 valid_objetives_rule(non_profit, local_social_networks).
+valid_objetives_rule(young_client, local_social_networks).
+valid_objetives_rule(young_client, global_social_networks).
+valid_objetives_rule(adult_client, paid_ads).
+valid_objetives_rule(adult_client, digital_store).
+valid_objetives_rule(adult_client, communicate_methodology).
+valid_objetives_rule(old_client, paid_ads).
+valid_objetives_rule(old_client, digital_store).
+valid_objetives_rule(old_client, communicate_methodology).
 
 valid_contribution_rule(tiene_ahorros, inverti_en_emprendimiento).
 valid_contribution_rule(tiene_ahorros, paid_ads).
@@ -70,6 +82,25 @@ valid_identity_rule(passion, direct_marketing).
 valid_identity_rule(passion, talks_workshops).
 valid_identity_rule(humorous, direct_marketing).
 valid_identity_rule(humorous, talks_workshops).
+valid_identity_rule(introvert, digital_communications).
+valid_identity_rule(introvert, communication_association).
+valid_identity_rule(introvert, outsource_communications).
+valid_identity_rule(non_social, digital_communications).
+valid_identity_rule(non_social, communication_association).
+valid_identity_rule(non_social, outsource_communications).
+valid_identity_rule(creative, digital_communications).
+valid_identity_rule(creative, local_social_networks).
+valid_identity_rule(creative, global_social_networks).
+valid_identity_rule(class_and_style, paid_ads).
+valid_identity_rule(class_and_style, digital_store).
+valid_identity_rule(class_and_style, communicate_methodology).
+valid_identity_rule(class_and_style, care_about_design).
+valid_identity_rule(shy_and_afraid, care_about_design).
+valid_identity_rule(organized, paid_ads).
+valid_identity_rule(organized, digital_store).
+valid_identity_rule(organized, communicate_methodology).
+valid_identity_rule(_, communication_association). %TODO check _ is for anyone
+
 
 regla_valida_combinacion(local, physical, physical_communications).
 regla_valida_combinacion(local, physical, press_and_magazines).
