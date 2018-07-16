@@ -19,24 +19,87 @@ find_one_mixed_suggestion(Actual_plan_context, Mixed_traits_list, Suggestion) :-
 different(First_trait, Second_trait) :- not(First_trait == Second_trait) .
 
 
-% HECHOS
-puede_sugerirse(plan_empresarial, endeudate).
-puede_sugerirse(plan_empresarial, otra_sugerencia).
-puede_sugerirse(plan_comercial, mostrate).
-puede_sugerirse(plan_empresarial, inverti_en_emprendimiento).
-puede_sugerirse(plan_empresarial, guardalos_para_urgencias_asi_estas_tranquilo).
-puede_sugerirse(plan_empresarial, contrata_secretaria).
-puede_sugerirse(plan_empresarial, usar_agenda_personal).
-puede_sugerirse(plan_empresarial, funciono_combinada_diferentes_categorias).
-puede_sugerirse(plan_empresarial, funciono_combinada_misma_categoria).
-regla_valida_objetivos(quiere_reconocimiento, mostrate).
-regla_valida_objetivos(quiere_plata, endeudate).
-regla_valida_objetivos(quiere_plata, error_no_debe_aparecer). % Para pruebas
-regla_valida_aportes(tiene_ahorros, inverti_en_emprendimiento).
-regla_valida_aportes(tiene_ahorros, guardalos_para_urgencias_asi_estas_tranquilo).
-regla_valida_identidad(desorganizado, contrata_secretaria). 
-regla_valida_identidad(desorganizado, usa_agenda_personal).
-regla_valida_identidad(desorganizado, error_no_debe_aparecer). % Para pruebas
+% RULES
+% TODO translate to english
+% TODO Test Added Rules using automated testing (needs cucumber)
+can_suggest(commercial_plan, direct_marketing).
+can_suggest(commercial_plan, logistic_association).
+can_suggest(commercial_plan, international_contacts).
+
+can_suggest(plan_empresarial, guardalos_para_urgencias_asi_estas_tranquilo).
+can_suggest(plan_empresarial, contrata_secretaria).
+can_suggest(plan_empresarial, usar_agenda_personal).
+can_suggest(plan_empresarial, inverti_en_emprendimiento).
+can_suggest(plan_empresarial, aduana_suppliers).
+
+can_suggest(communication_plan, paid_ads).
+can_suggest(communication_plan, local_social_networks).
+can_suggest(communication_plan, digital_store).
+can_suggest(communication_plan, physical_communications).
+can_suggest(communication_plan, digital_communications).
+can_suggest(communication_plan, talks_workshops).
+can_suggest(communication_plan, ecommerce_association).
+can_suggest(communication_plan, investors_deck_ready).
+
+valid_objetives_rule(quiere_reconocimiento, direct_marketing).
+valid_objetives_rule(quiere_reconocimiento, press_and_magazines).
+valid_objetives_rule(quiere_reconocimiento, influencers).
+valid_objetives_rule(quiere_reconocimiento, client_frequent_places).
+valid_objetives_rule(quiere_reconocimiento, talks_workshops).
+valid_objetives_rule(quiere_plata, endeudate).
+valid_objetives_rule(quiere_plata, investors_deck_ready).
+valid_objetives_rule(physical, aduana_suppliers).
+valid_objetives_rule(global, international_contacts).
+valid_objetives_rule(local, local_social_networks).
+valid_objetives_rule(local, digital_store).
+valid_objetives_rule(digital, local_social_networks).
+valid_objetives_rule(digital, global_social_networks).
+valid_objetives_rule(non_profit, direct_marketing).
+valid_objetives_rule(non_profit, talks_workshops).
+valid_objetives_rule(non_profit, local_social_networks).
+
+valid_contribution_rule(tiene_ahorros, inverti_en_emprendimiento).
+valid_contribution_rule(tiene_ahorros, paid_ads).
+valid_contribution_rule(tiene_ahorros, guardalos_para_urgencias_asi_estas_tranquilo).
+
+valid_identity_rule(desorganizado, contrata_secretaria). 
+valid_identity_rule(desorganizado, usa_agenda_personal).
+valid_identity_rule(extrovert, direct_marketing).
+valid_identity_rule(extrovert, talks_workshops).
+valid_identity_rule(passion, direct_marketing).
+valid_identity_rule(passion, talks_workshops).
+valid_identity_rule(humorous, direct_marketing).
+valid_identity_rule(humorous, talks_workshops).
+
+regla_valida_combinacion(local, physical, physical_communications).
+regla_valida_combinacion(local, physical, press_and_magazines).
+regla_valida_combinacion(local, physical, influencers).
+regla_valida_combinacion(local, physical, client_frequent_places).
+regla_valida_combinacion(global, digital, digital_store).
+regla_valida_combinacion(global, digital, talks_workshops).
+regla_valida_combinacion(global, digital, digital_communications).
+regla_valida_combinacion(global, physical, logistic_association).
+regla_valida_combinacion(global, physical, ecommerce_association).
+
+
+/* Replace For Testing Purposes
+can_suggest(plan_empresarial, endeudate).
+can_suggest(plan_empresarial, otra_sugerencia).
+can_suggest(plan_comercial, mostrate).
+can_suggest(plan_empresarial, inverti_en_emprendimiento).
+can_suggest(plan_empresarial, guardalos_para_urgencias_asi_estas_tranquilo).
+can_suggest(plan_empresarial, contrata_secretaria).
+can_suggest(plan_empresarial, usar_agenda_personal).
+can_suggest(plan_empresarial, funciono_combinada_diferentes_categorias).
+can_suggest(plan_empresarial, funciono_combinada_misma_categoria).
+valid_objetives_rule(quiere_reconocimiento, mostrate).
+valid_objetives_rule(quiere_plata, endeudate).
+valid_objetives_rule(quiere_plata, error_no_debe_aparecer). % Para pruebas
+valid_contribution_rule(tiene_ahorros, inverti_en_emprendimiento).
+valid_contribution_rule(tiene_ahorros, guardalos_para_urgencias_asi_estas_tranquilo).
+valid_identity_rule(desorganizado, contrata_secretaria). 
+valid_identity_rule(desorganizado, usa_agenda_personal).
+valid_identity_rule(desorganizado, error_no_debe_aparecer). % Para pruebas
 regla_valida_combinacion(tiene_ahorros, desorganizado, funciono_combinada_diferentes_categorias).
 regla_valida_combinacion(quiere_plata, quiere_reconocimiento, funciono_combinada_misma_categoria).
 regla_valida_combinacion(tiene_ahorros, desorganizado, error_no_debe_aparecer). % Para pruebas
