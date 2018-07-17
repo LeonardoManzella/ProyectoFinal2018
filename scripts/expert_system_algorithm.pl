@@ -44,6 +44,9 @@ can_suggest(communication_plan, communication_association).
 can_suggest(communication_plan, outsource_communications).
 can_suggest(communication_plan, communicate_methodology).
 can_suggest(communication_plan, care_about_design).
+can_suggest(communication_plan, influencers).
+can_suggest(communication_plan, use_achievements_branding).
+can_suggest(communication_plan, guerrilla_marketing).
 
 valid_objetives_rule(quiere_reconocimiento, direct_marketing).
 valid_objetives_rule(quiere_reconocimiento, press_and_magazines).
@@ -73,6 +76,8 @@ valid_objetives_rule(old_client, communicate_methodology).
 valid_contribution_rule(tiene_ahorros, inverti_en_emprendimiento).
 valid_contribution_rule(tiene_ahorros, paid_ads).
 valid_contribution_rule(tiene_ahorros, guardalos_para_urgencias_asi_estas_tranquilo).
+valid_objetives_rule(allow_association, influencers).
+valid_contribution_rule(has_followers, start_selling_followers).
 
 valid_identity_rule(desorganizado, contrata_secretaria). 
 valid_identity_rule(desorganizado, usa_agenda_personal).
@@ -99,6 +104,8 @@ valid_identity_rule(shy_and_afraid, care_about_design).
 valid_identity_rule(organized, paid_ads).
 valid_identity_rule(organized, digital_store).
 valid_identity_rule(organized, communicate_methodology).
+valid_identity_rule(transgressor, digital_communications).
+valid_identity_rule(transgressor, guerrilla_marketing).
 valid_identity_rule(_, communication_association). %TODO check _ is for anyone
 
 
@@ -109,6 +116,7 @@ regla_valida_combinacion(local, physical, client_frequent_places).
 regla_valida_combinacion(global, digital, digital_store).
 regla_valida_combinacion(global, digital, talks_workshops).
 regla_valida_combinacion(global, digital, digital_communications).
+regla_valida_combinacion(global, digital, digital_marketing).
 regla_valida_combinacion(global, physical, logistic_association).
 regla_valida_combinacion(global, physical, ecommerce_association).
 
