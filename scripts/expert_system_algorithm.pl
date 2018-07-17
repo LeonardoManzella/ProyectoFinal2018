@@ -41,6 +41,10 @@ can_suggest(commercial_plan, use_CRM).
 can_suggest(commercial_plan, meetings).
 can_suggest(commercial_plan, samples).
 can_suggest(commercial_plan, target_massive_markets).
+can_suggest(commercial_plan, carefull_deadlines).
+can_suggest(commercial_plan, sell_talks).
+can_suggest(commercial_plan, sell_workshops).
+can_suggest(commercial_plan, logistics).
 
 can_suggest(plan_empresarial, guardalos_para_urgencias_asi_estas_tranquilo).
 can_suggest(plan_empresarial, contrata_secretaria).
@@ -73,9 +77,12 @@ valid_objetives_rule(quiere_plata, endeudate).
 valid_objetives_rule(quiere_plata, investors_deck_ready).
 valid_objetives_rule(quiere_plata, target_massive_markets).
 valid_objetives_rule(travel, trade_show).
+valid_objetives_rule(travel, international_contacts).
 valid_objetives_rule(have_fun, trade_show).
 valid_objetives_rule(physical, aduana_suppliers).
 valid_objetives_rule(physical, samples).
+valid_objetives_rule(physical, logistic_association).
+valid_objetives_rule(physical, logistics).
 valid_objetives_rule(global, international_contacts).
 valid_objetives_rule(local, local_social_networks).
 valid_objetives_rule(local, digital_store).
@@ -101,10 +108,15 @@ valid_objetives_rule(old_client, digital_store).
 valid_objetives_rule(old_client, communicate_methodology).
 valid_objetives_rule(alone, outsource_communications).
 valid_objetives_rule(alone, outsource_sales).
+valid_objetives_rule(alone, hire_business_manager).
 valid_objetives_rule(allow_association, brand_association).
 valid_objetives_rule(allow_association, politic_mayor_association).
 valid_objetives_rule(allow_association, influencers).
 valid_objetives_rule(allow_association, communication_association).
+valid_objetives_rule(allow_sell_talks, talks_workshops).
+valid_objetives_rule(allow_sell_talks, sell_talks).
+valid_objetives_rule(allow_sell_workshops, talks_workshops).
+valid_objetives_rule(allow_sell_workshops, sell_workshops).
 
 valid_contribution_rule(has_savings, inverti_en_emprendimiento).
 valid_contribution_rule(has_savings, paid_ads).
@@ -113,7 +125,8 @@ valid_contribution_rule(has_followers, start_selling_followers).
 valid_contribution_rule(has_achievements, use_achievements_branding).
 
 valid_identity_rule(desorganizado, contrata_secretaria). 
-valid_identity_rule(desorganizado, usa_agenda_personal).
+valid_identity_rule(desorganizado, usa_agenda_personal). 
+valid_identity_rule(desorganizado, carefull_deadlines).
 valid_identity_rule(extrovert, direct_marketing).
 valid_identity_rule(extrovert, contacts).
 valid_identity_rule(extrovert, talks_workshops).
@@ -149,6 +162,7 @@ valid_identity_rule(organized, digital_store).
 valid_identity_rule(organized, communicate_methodology).
 valid_identity_rule(transgressor, digital_communications).
 valid_identity_rule(transgressor, guerrilla_marketing).
+valid_identity_rule(transgressor, carefull_deadlines).
 valid_identity_rule(_, work_near_clients).
 valid_identity_rule(_, use_CRM).
 valid_identity_rule(_, communication_association). %TODO check _ is for anyone
