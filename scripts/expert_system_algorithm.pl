@@ -47,10 +47,15 @@ can_suggest(commercial_plan, sell_workshops).
 can_suggest(commercial_plan, logistics).
 
 can_suggest(plan_empresarial, guardalos_para_urgencias_asi_estas_tranquilo).
-can_suggest(plan_empresarial, contrata_secretaria).
+can_suggest(plan_empresarial, hire_secretary).
 can_suggest(plan_empresarial, usar_agenda_personal).
+can_suggest(plan_empresarial, disconnect).
+can_suggest(plan_empresarial, find_partner_for_support).
+can_suggest(plan_empresarial, plan_breaks).
 can_suggest(plan_empresarial, inverti_en_emprendimiento).
 can_suggest(plan_empresarial, aduana_suppliers).
+can_suggest(plan_empresarial, known_partner_divide_roles).
+can_suggest(plan_empresarial, outsource_control).
 
 can_suggest(communication_plan, paid_ads).
 can_suggest(communication_plan, local_social_networks).
@@ -108,7 +113,10 @@ valid_objetives_rule(old_client, digital_store).
 valid_objetives_rule(old_client, communicate_methodology).
 valid_objetives_rule(alone, outsource_communications).
 valid_objetives_rule(alone, outsource_sales).
+valid_objetives_rule(alone, outsource_control).
 valid_objetives_rule(alone, hire_business_manager).
+valid_objetives_rule(alone, find_partner_for_support).
+valid_objetives_rule(has_partner, known_partner_divide_roles).
 valid_objetives_rule(allow_association, brand_association).
 valid_objetives_rule(allow_association, politic_mayor_association).
 valid_objetives_rule(allow_association, influencers).
@@ -124,8 +132,11 @@ valid_contribution_rule(has_savings, guardalos_para_urgencias_asi_estas_tranquil
 valid_contribution_rule(has_followers, start_selling_followers).
 valid_contribution_rule(has_achievements, use_achievements_branding).
 
-valid_identity_rule(desorganizado, contrata_secretaria). 
-valid_identity_rule(desorganizado, usa_agenda_personal). 
+valid_identity_rule(desorganizado, hire_secretary). 
+valid_identity_rule(desorganizado, personal_agenda). 
+valid_identity_rule(desorganizado, disconnect). 
+valid_identity_rule(desorganizado, find_partner_for_support). 
+valid_identity_rule(desorganizado, plan_breaks). 
 valid_identity_rule(desorganizado, carefull_deadlines).
 valid_identity_rule(extrovert, direct_marketing).
 valid_identity_rule(extrovert, contacts).
@@ -196,7 +207,7 @@ can_suggest(plan_empresarial, otra_sugerencia).
 can_suggest(plan_comercial, mostrate).
 can_suggest(plan_empresarial, inverti_en_emprendimiento).
 can_suggest(plan_empresarial, guardalos_para_urgencias_asi_estas_tranquilo).
-can_suggest(plan_empresarial, contrata_secretaria).
+can_suggest(plan_empresarial, hire_secretary).
 can_suggest(plan_empresarial, usar_agenda_personal).
 can_suggest(plan_empresarial, funciono_combinada_diferentes_categorias).
 can_suggest(plan_empresarial, funciono_combinada_misma_categoria).
@@ -205,8 +216,8 @@ valid_objetives_rule(quiere_plata, endeudate).
 valid_objetives_rule(quiere_plata, error_no_debe_aparecer). % Para pruebas
 valid_contribution_rule(has_savings, inverti_en_emprendimiento).
 valid_contribution_rule(has_savings, guardalos_para_urgencias_asi_estas_tranquilo).
-valid_identity_rule(desorganizado, contrata_secretaria). 
-valid_identity_rule(desorganizado, usa_agenda_personal).
+valid_identity_rule(desorganizado, hire_secretary). 
+valid_identity_rule(desorganizado, personal_agenda).
 valid_identity_rule(desorganizado, error_no_debe_aparecer). % Para pruebas
 regla_valida_combinacion(has_savings, desorganizado, funciono_combinada_diferentes_categorias).
 regla_valida_combinacion(quiere_plata, quiere_reconocimiento, funciono_combinada_misma_categoria).
