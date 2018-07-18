@@ -168,6 +168,8 @@ valid_objetives_rule(allow_sell_workshops, update_netbook).
 valid_objetives_rule(strengthen_your_team, consultant_or_coach).
 valid_objetives_rule(flexibility, update_netbook).
 valid_objetives_rule(flexibility, everything_online).
+valid_objetives_rule(has_experience_leading, ).
+valid_objetives_rule(doesnt_have_experience_leading, ).
 
 valid_contribution_rule(has_savings_or_funding, inverti_en_emprendimiento).
 valid_contribution_rule(has_savings_or_funding, paid_ads).
