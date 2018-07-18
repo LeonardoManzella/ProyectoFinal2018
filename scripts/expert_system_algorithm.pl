@@ -60,6 +60,13 @@ can_suggest(plan_empresarial, systematize).
 can_suggest(plan_empresarial, assign_roles).
 can_suggest(plan_empresarial, weekly_meetings).
 can_suggest(plan_empresarial, define_billing_process).
+can_suggest(plan_empresarial, therapy).
+can_suggest(plan_empresarial, do_sport).
+can_suggest(plan_empresarial, keep_yourself_busy).
+can_suggest(plan_empresarial, talk_partner_objetives).
+can_suggest(plan_empresarial, carefull_deferred_payment).
+can_suggest(plan_empresarial, cross_control).
+can_suggest(plan_empresarial, design_processes).
 
 can_suggest(communication_plan, paid_ads).
 can_suggest(communication_plan, local_social_networks).
@@ -92,6 +99,7 @@ valid_objetives_rule(physical, aduana_suppliers).
 valid_objetives_rule(physical, samples).
 valid_objetives_rule(physical, logistic_association).
 valid_objetives_rule(physical, logistics).
+valid_objetives_rule(physical, carefull_deferred_payment).
 valid_objetives_rule(global, international_contacts).
 valid_objetives_rule(local, local_social_networks).
 valid_objetives_rule(local, digital_store).
@@ -121,6 +129,7 @@ valid_objetives_rule(alone, outsource_control).
 valid_objetives_rule(alone, hire_business_manager).
 valid_objetives_rule(alone, find_partner_for_support).
 valid_objetives_rule(has_partner, known_partner_divide_roles).
+valid_objetives_rule(has_partner, talk_partner_objetives).
 valid_objetives_rule(allow_association, brand_association).
 valid_objetives_rule(allow_association, politic_mayor_association).
 valid_objetives_rule(allow_association, influencers).
@@ -172,12 +181,27 @@ valid_identity_rule(class_and_style, communicate_methodology).
 valid_identity_rule(class_and_style, care_about_design).
 valid_identity_rule(class_and_style, meetings).
 valid_identity_rule(shy_and_afraid, care_about_design).
+valid_identity_rule(shy_and_afraid, therapy).
+valid_identity_rule(shy_and_afraid, keep_yourself_busy).
+valid_identity_rule(shy_and_afraid, outsource_communications).
+valid_identity_rule(shy_and_afraid, outsource_sales).
+valid_identity_rule(shy_and_afraid, find_partner_for_support).
+valid_identity_rule(stressfully, therapy).
+valid_identity_rule(stressfully, do_sport).
+valid_identity_rule(stressfully, outsource_communications).
+valid_identity_rule(stressfully, outsource_sales).
+valid_identity_rule(stressfully, find_partner_for_support).
+valid_identity_rule(anxious, do_sport).
+valid_identity_rule(anxious, therapy).
+valid_identity_rule(anxious, keep_yourself_busy).
 valid_identity_rule(organized, paid_ads).
 valid_identity_rule(organized, digital_store).
 valid_identity_rule(organized, communicate_methodology).
 valid_identity_rule(transgressor, digital_communications).
 valid_identity_rule(transgressor, guerrilla_marketing).
 valid_identity_rule(transgressor, carefull_deadlines).
+valid_identity_rule(_, design_processes).
+valid_identity_rule(_, cross_control).
 valid_identity_rule(_, define_billing_process).
 valid_identity_rule(_, weekly_meetings).
 valid_identity_rule(_, assign_roles).
