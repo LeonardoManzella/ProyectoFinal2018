@@ -72,6 +72,16 @@ can_suggest(plan_empresarial, explain_how_to_delegate).
 can_suggest(plan_empresarial, consultant_or_coach).
 can_suggest(plan_empresarial, hire_experienced_employees).
 can_suggest(plan_empresarial, organize_billing).
+can_suggest(plan_empresarial, arrange_bank_loans).
+can_suggest(plan_empresarial, arrange_passport).
+can_suggest(plan_empresarial, take_time_communicate).
+can_suggest(plan_empresarial, talk_directly_about_problems).
+can_suggest(plan_empresarial, relaxing_decorations).
+can_suggest(plan_empresarial, digital_payments).
+can_suggest(plan_empresarial, local_payments).
+can_suggest(plan_empresarial, update_netbook).
+can_suggest(plan_empresarial, everything_online).
+can_suggest(plan_empresarial, outsource_accounting).
 
 can_suggest(communication_plan, paid_ads).
 can_suggest(communication_plan, local_social_networks).
@@ -99,6 +109,9 @@ valid_objetives_rule(quiere_plata, investors_deck_ready).
 valid_objetives_rule(quiere_plata, target_massive_markets).
 valid_objetives_rule(travel, trade_show).
 valid_objetives_rule(travel, international_contacts).
+valid_objetives_rule(travel, update_netbook).
+valid_objetives_rule(travel, everything_online).
+valid_objetives_rule(travel, digital_payments).
 valid_objetives_rule(have_fun, trade_show).
 valid_objetives_rule(physical, aduana_suppliers).
 valid_objetives_rule(physical, samples).
@@ -106,11 +119,15 @@ valid_objetives_rule(physical, logistic_association).
 valid_objetives_rule(physical, logistics).
 valid_objetives_rule(physical, carefull_deferred_payment).
 valid_objetives_rule(global, international_contacts).
+valid_objetives_rule(global, digital_payments).
+valid_objetives_rule(global, everything_online).
 valid_objetives_rule(local, local_social_networks).
 valid_objetives_rule(local, digital_store).
+valid_objetives_rule(local, local_payments).
 valid_objetives_rule(digital, local_social_networks).
 valid_objetives_rule(digital, global_social_networks).
 valid_objetives_rule(digital, target_massive_markets).
+valid_objetives_rule(digital, digital_payments).
 valid_objetives_rule(product_and_service, local_social_networks).
 valid_objetives_rule(product_and_service, local_social_networks).
 valid_objetives_rule(product_and_service, press).
@@ -120,6 +137,7 @@ valid_objetives_rule(doesnt_know, press).
 valid_objetives_rule(non_profit, direct_marketing).
 valid_objetives_rule(non_profit, talks_workshops).
 valid_objetives_rule(non_profit, local_social_networks).
+valid_objetives_rule(non_profit, everything_online).
 valid_objetives_rule(young_client, local_social_networks).
 valid_objetives_rule(young_client, global_social_networks).
 valid_objetives_rule(adult_client, paid_ads).
@@ -133,24 +151,34 @@ valid_objetives_rule(alone, outsource_sales).
 valid_objetives_rule(alone, outsource_control).
 valid_objetives_rule(alone, hire_business_manager).
 valid_objetives_rule(alone, find_partner_for_support).
+valid_objetives_rule(alone, update_netbook).
 valid_objetives_rule(has_partner, known_partner_divide_roles).
 valid_objetives_rule(has_partner, talk_partner_objetives).
 valid_objetives_rule(allow_association, brand_association).
 valid_objetives_rule(allow_association, politic_mayor_association).
 valid_objetives_rule(allow_association, influencers).
 valid_objetives_rule(allow_association, communication_association).
+valid_objetives_rule(allow_association, everything_online).
 valid_objetives_rule(allow_sell_talks, talks_workshops).
 valid_objetives_rule(allow_sell_talks, sell_talks).
+valid_objetives_rule(allow_sell_talks, update_netbook).
 valid_objetives_rule(allow_sell_workshops, talks_workshops).
 valid_objetives_rule(allow_sell_workshops, sell_workshops).
+valid_objetives_rule(allow_sell_workshops, update_netbook).
 valid_objetives_rule(strengthen_your_team, consultant_or_coach).
-valid_objetives_rule(doesnt_have_account, organize_billing).
+valid_objetives_rule(flexibility, update_netbook).
+valid_objetives_rule(flexibility, everything_online).
 
-valid_contribution_rule(has_savings, inverti_en_emprendimiento).
-valid_contribution_rule(has_savings, paid_ads).
-valid_contribution_rule(has_savings, guardalos_para_urgencias_asi_estas_tranquilo).
+valid_contribution_rule(has_savings_or_funding, inverti_en_emprendimiento).
+valid_contribution_rule(has_savings_or_funding, paid_ads).
+valid_contribution_rule(has_savings_or_funding, guardalos_para_urgencias_asi_estas_tranquilo).
 valid_contribution_rule(has_followers, start_selling_followers).
 valid_contribution_rule(has_achievements, use_achievements_branding).
+valid_contribution_rule(doesnt_have_account, define_billing_process).
+valid_contribution_rule(doesnt_have_account, organize_billing).
+valid_contribution_rule(doesnt_have_account, arrange_bank_loans).
+valid_contribution_rule(doesnt_have_credit_history, arrange_bank_loans).
+valid_contribution_rule(doesnt_have_passport, arrange_passport).
 
 valid_identity_rule(desorganizado, hire_secretary). 
 valid_identity_rule(desorganizado, personal_agenda). 
@@ -179,6 +207,9 @@ valid_identity_rule(non_social, digital_communications).
 valid_identity_rule(non_social, communication_association).
 valid_identity_rule(non_social, outsource_communications).
 valid_identity_rule(non_social, outsource_sales).
+valid_identity_rule(non_social, take_time_communicate).
+valid_identity_rule(non_social, talk_directly_about_problems).
+valid_identity_rule(non_social, relaxing_decorations).
 valid_identity_rule(creative, digital_communications).
 valid_identity_rule(creative, local_social_networks).
 valid_identity_rule(creative, global_social_networks).
@@ -193,20 +224,30 @@ valid_identity_rule(shy_and_afraid, keep_yourself_busy).
 valid_identity_rule(shy_and_afraid, outsource_communications).
 valid_identity_rule(shy_and_afraid, outsource_sales).
 valid_identity_rule(shy_and_afraid, find_partner_for_support).
+valid_identity_rule(shy_and_afraid, relaxing_decorations).
+valid_identity_rule(shy_and_afraid, talk_directly_about_problems).
 valid_identity_rule(stressfully, therapy).
 valid_identity_rule(stressfully, do_sport).
 valid_identity_rule(stressfully, outsource_communications).
 valid_identity_rule(stressfully, outsource_sales).
 valid_identity_rule(stressfully, find_partner_for_support).
+valid_identity_rule(stressfully, relaxing_decorations).
+valid_identity_rule(stressfully, talk_directly_about_problems).
+valid_identity_rule(stressfully, update_netbook).
 valid_identity_rule(anxious, do_sport).
 valid_identity_rule(anxious, therapy).
 valid_identity_rule(anxious, keep_yourself_busy).
+valid_identity_rule(anxious, relaxing_decorations).
+valid_identity_rule(anxious, talk_directly_about_problems).
+valid_identity_rule(anxious, update_netbook).
 valid_identity_rule(organized, paid_ads).
 valid_identity_rule(organized, digital_store).
 valid_identity_rule(organized, communicate_methodology).
 valid_identity_rule(transgressor, digital_communications).
 valid_identity_rule(transgressor, guerrilla_marketing).
 valid_identity_rule(transgressor, carefull_deadlines).
+valid_identity_rule(hate_numbers, hire_secretary).
+valid_identity_rule(hate_numbers, outsource_accounting).
 valid_identity_rule(_, explain_how_to_delegate).
 valid_identity_rule(_, monitor_employees).
 valid_identity_rule(_, design_processes).
@@ -228,6 +269,7 @@ regla_valida_combinacion(global, digital, digital_store).
 regla_valida_combinacion(global, digital, talks_workshops).
 regla_valida_combinacion(global, digital, digital_communications).
 regla_valida_combinacion(global, digital, digital_marketing).
+regla_valida_combinacion(global, digital, digital_payments).
 regla_valida_combinacion(global, physical, logistic_association).
 regla_valida_combinacion(global, physical, ecommerce_association).
 regla_valida_combinacion(global, extrovert, international_contacts).
@@ -239,8 +281,9 @@ regla_valida_combinacion(extrovert, allow_association, politic_mayor_association
 regla_valida_combinacion(social, allow_association, politic_mayor_association).
 regla_valida_combinacion(introvert, allow_association, hire_business_manager).
 regla_valida_combinacion(non_social, allow_association, hire_business_manager).
-regla_valida_combinacion(has_savings, allow_association, hire_business_manager).
-regla_valida_combinacion(has_savings, strengthen_your_team, hire_experienced_employees).
+regla_valida_combinacion(has_savings_or_funding, allow_association, hire_business_manager).
+regla_valida_combinacion(has_savings_or_funding, strengthen_your_team, hire_experienced_employees).
+regla_valida_combinacion(travel, doesnt_have_passport, arrange_passport).
 
 
 /* Replace For Testing Purposes
@@ -256,18 +299,18 @@ can_suggest(plan_empresarial, funciono_combinada_misma_categoria).
 valid_objetives_rule(quiere_reconocimiento, mostrate).
 valid_objetives_rule(quiere_plata, endeudate).
 valid_objetives_rule(quiere_plata, error_no_debe_aparecer). % Para pruebas
-valid_contribution_rule(has_savings, inverti_en_emprendimiento).
-valid_contribution_rule(has_savings, guardalos_para_urgencias_asi_estas_tranquilo).
+valid_contribution_rule(has_savings_or_funding, inverti_en_emprendimiento).
+valid_contribution_rule(has_savings_or_funding, guardalos_para_urgencias_asi_estas_tranquilo).
 valid_identity_rule(desorganizado, hire_secretary). 
 valid_identity_rule(desorganizado, personal_agenda).
 valid_identity_rule(desorganizado, error_no_debe_aparecer). % Para pruebas
-regla_valida_combinacion(has_savings, desorganizado, funciono_combinada_diferentes_categorias).
+regla_valida_combinacion(has_savings_or_funding, desorganizado, funciono_combinada_diferentes_categorias).
 regla_valida_combinacion(quiere_plata, quiere_reconocimiento, funciono_combinada_misma_categoria).
-regla_valida_combinacion(has_savings, desorganizado, error_no_debe_aparecer). % Para pruebas
+regla_valida_combinacion(has_savings_or_funding, desorganizado, error_no_debe_aparecer). % Para pruebas
 */
 /* 
-Para Probar suggest(plan_empresarial, [quiere_plata, quiere_reconocimiento], [has_savings], [desorganizado], Final_suggestions).
-Otra prueba suggest(plan_comercial, [quiere_plata, quiere_reconocimiento], [has_savings], [desorganizado], Final_suggestions).
+Para Probar suggest(plan_empresarial, [quiere_plata, quiere_reconocimiento], [has_savings_or_funding], [desorganizado], Final_suggestions).
+Otra prueba suggest(plan_comercial, [quiere_plata, quiere_reconocimiento], [has_savings_or_funding], [desorganizado], Final_suggestions).
 Ejecutar en https://tio.run/##xVhtb9o6GP18@RWRpknd1C00QGknTeIdSigJhPLSqykyiUkMSRxsh7c/35mWUsIIDW1377fI@Dnn8TnHL61PsIOtb3SOHh4@Cx2lpAgdAjzqAAYFhgXoWQ6idoIGFiSInBWxx@CCYd13gKcDgwXAOReU4RgyNMP0XMj7mDDIP4qA8J95EWXIAFRHJvQYMoF5LmhrMOgZiA@PkAecL8KPb8I/nMzg8AQQne7MwM/gr5Nrh8q@nEcAg6dWI2C3C9H@LImE3C4yAjSmKNvhSCIDu0OunAnox1vygs3pge9Dzzw7qOxBbcKDPoG6Dwj/dmAEXGhKhA57oK8AHgZ7WdahBH5PJP5S/NbZ5hwmcJyznSm7zgYe2OF8GyXXIqKB0NI@hGq9JMEPoAn1zcFAYQRAqEEXukNIzp5Bz5WdPSoQaDlAnwGHG77T13byDlKkWe/Y0qfbdDLZvkXP1McMOp3kneY8QZ7ntydd2JjnfjbT4pjy4Yfi6VZ9SAv79r00dMzAj6F@p6lhkh2OSPY/jN9ZRxRYnDD8RxfXWq/N1XAIsMGRwOPNc@iyO/Tr0SaeCraT19qdls9taYQoewTHUrmzoO/CkVy@h/KdaVQJciHRjZCgh1TczNegFXA1YxQIJhqN1nwsiuQwFi8NhX2DaSDsRQBF9RTeA29tZy2whyOqhJ8/I@s4Z@KzUCsXa4qW2Hfo0Rjo8mBTQNDaHZ52GJj8rc@bfX025jnaiVBUDRcPPr7AuIGY8pqY8MibQcKQDjfjnolcxLXDsaqtABC@4/Dj@w/oAbGeb1nKIXlQqM5b8aYBcuIBPu0bHjAKDQLZejRWXcA/dMDZuT0@JBQ/PS9fLxwF3jpw@CXROs/PY3wg39dcRgvzmfStYC6iLnjB4TARTy6uEWfVCeQSYGNjQsjM44W8GwbC4YpXQAgmOu/ZhEPIXxqAdwAJP8Y@Cyr3VPBJAIeAJg4@SBjvkhfZmIPQ42GKU39inCKuShNSTCzgoRUwcUSkhJjFPFcHYhWv9k3K7h6Ce@rswZ@Q3EiGcBQiInh6quMvIq5G4lch8TigEjwERHj@18ife/DfGGv6xaeF@loPhDr7dfjPVYVtewq3sHP8/tUGymNoBDzDfJ8LNmM@/SGKDOHvJPDET59It93s5G7n5VKq01@V@35lINdK42Bodk3UpWo2L9mgeqP2NbU2Ebs1qyuqYyfQlEa7XYb1VnNYG8FVc6ayeoaR5XWRim5WkyaNvjd2JCZNuml0kbmodC8VudhLVtwcqGPmLKZKwVusLjVVXrWX2V6rNW7JLSmZDHpW8tIiAbWtzD3spJMdlJRFe1FoG1Z72ZglTWi3avnZaJxN01HpYuBVMsZdJuXfStMSzHfFpncl0cKons/1cKdn38NxWc6VCspwWXSdaX@yaM3naSWveI3LVs2epK78hYEsMT@46VoByvt2aljrO3XRYY07H7XgJCg0K9Os3WzkqmVRk916rgG1qeVPynUGcvWuJhUqSdQZ9bM0D0D53ppIlcZwUhElzHqW56sp1ugOstclOV24z5Rgoai156xBIZrRmeTdYPGmE@Tnl1qxvgrEJSsryWzrqggsV1VWfTpe3sn3bVHLNlFeKsnyxSBTq6aMmbXK1roTz6xju1y1k7hhs4Kcv1UuJlqnX1oZd9fVfq@YyY4MX53ngutgmppdw5SbnVUW0nAGkwuWSbrSCraraHEtV1Gzbl5djnsDsHDLqr1SO35/JReXnduu0SaTu3RrtvAqBpD8mx5PbqXm2WNTdAarUao@YoXU9NZuZ7vynavQaqo1zYtK5Qq3MulbtV7K2WLiq/jw8P9swd8
 */
 
