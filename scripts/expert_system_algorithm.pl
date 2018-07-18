@@ -67,6 +67,11 @@ can_suggest(plan_empresarial, talk_partner_objetives).
 can_suggest(plan_empresarial, carefull_deferred_payment).
 can_suggest(plan_empresarial, cross_control).
 can_suggest(plan_empresarial, design_processes).
+can_suggest(plan_empresarial, monitor_employees).
+can_suggest(plan_empresarial, explain_how_to_delegate).
+can_suggest(plan_empresarial, consultant_or_coach).
+can_suggest(plan_empresarial, hire_experienced_employees).
+can_suggest(plan_empresarial, organize_billing).
 
 can_suggest(communication_plan, paid_ads).
 can_suggest(communication_plan, local_social_networks).
@@ -138,6 +143,8 @@ valid_objetives_rule(allow_sell_talks, talks_workshops).
 valid_objetives_rule(allow_sell_talks, sell_talks).
 valid_objetives_rule(allow_sell_workshops, talks_workshops).
 valid_objetives_rule(allow_sell_workshops, sell_workshops).
+valid_objetives_rule(strengthen_your_team, consultant_or_coach).
+valid_objetives_rule(doesnt_have_account, organize_billing).
 
 valid_contribution_rule(has_savings, inverti_en_emprendimiento).
 valid_contribution_rule(has_savings, paid_ads).
@@ -200,6 +207,8 @@ valid_identity_rule(organized, communicate_methodology).
 valid_identity_rule(transgressor, digital_communications).
 valid_identity_rule(transgressor, guerrilla_marketing).
 valid_identity_rule(transgressor, carefull_deadlines).
+valid_identity_rule(_, explain_how_to_delegate).
+valid_identity_rule(_, monitor_employees).
 valid_identity_rule(_, design_processes).
 valid_identity_rule(_, cross_control).
 valid_identity_rule(_, define_billing_process).
@@ -231,6 +240,7 @@ regla_valida_combinacion(social, allow_association, politic_mayor_association).
 regla_valida_combinacion(introvert, allow_association, hire_business_manager).
 regla_valida_combinacion(non_social, allow_association, hire_business_manager).
 regla_valida_combinacion(has_savings, allow_association, hire_business_manager).
+regla_valida_combinacion(has_savings, strengthen_your_team, hire_experienced_employees).
 
 
 /* Replace For Testing Purposes
