@@ -56,6 +56,10 @@ can_suggest(plan_empresarial, inverti_en_emprendimiento).
 can_suggest(plan_empresarial, aduana_suppliers).
 can_suggest(plan_empresarial, known_partner_divide_roles).
 can_suggest(plan_empresarial, outsource_control).
+can_suggest(plan_empresarial, systematize).
+can_suggest(plan_empresarial, assign_roles).
+can_suggest(plan_empresarial, weekly_meetings).
+can_suggest(plan_empresarial, define_billing_process).
 
 can_suggest(communication_plan, paid_ads).
 can_suggest(communication_plan, local_social_networks).
@@ -174,6 +178,10 @@ valid_identity_rule(organized, communicate_methodology).
 valid_identity_rule(transgressor, digital_communications).
 valid_identity_rule(transgressor, guerrilla_marketing).
 valid_identity_rule(transgressor, carefull_deadlines).
+valid_identity_rule(_, define_billing_process).
+valid_identity_rule(_, weekly_meetings).
+valid_identity_rule(_, assign_roles).
+valid_identity_rule(_, systematize).
 valid_identity_rule(_, work_near_clients).
 valid_identity_rule(_, use_CRM).
 valid_identity_rule(_, communication_association). %TODO check _ is for anyone
