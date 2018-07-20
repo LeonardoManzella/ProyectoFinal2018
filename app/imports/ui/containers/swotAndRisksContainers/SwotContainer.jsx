@@ -6,8 +6,7 @@ import { UserTasks } from '../../../../lib/schemas/userTask';
 
 const SwotContainer = withTracker(() => {
   const swotSubs = Meteor.subscribe('getSwot');
-  const swotTasksSubs = Meteor.subscribe('getSwotTasks');
-  const loading = !swotSubs.ready() || !swotTasksSubs.ready();
+  const loading = !swotSubs.ready();
   const userSwot = Swots.find().fetch();
   const swot = {'strengths': [], 'weaknesses': [], 'opportunities': [], 'threats': []};
   userSwot.forEach(element => {
@@ -17,7 +16,7 @@ const SwotContainer = withTracker(() => {
   const tasks = [];
   userSwotTasks.forEach(userSwotTask => {
     const element = userSwot.find(element => element.userTasksId === userSwotTask._id);
-    if (userSwotTask.tasks) {
+    if (element && userSwotTask.tasks) {
       userSwotTask.tasks.forEach(task => 
         tasks.push({
           element: element.description,

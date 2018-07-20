@@ -1,20 +1,20 @@
 import { Meteor } from 'meteor/meteor';
 import { publishComposite } from 'meteor/reywood:publish-composite';
-import { Swots } from '../../../../lib/schemas/swot';
 import { UserTasks } from '../../../../lib/schemas/userTask';
+import { Risks } from '../../../../lib/schemas/risk';
 
-publishComposite('getSwot', function() {
+publishComposite('getRisks', function() {
   return {
     find() {
-      return Swots.find({userId: this.userId});
+      return Risks.find({userId: this.userId});
     },
     children: [
       {
-        find(swot) {
-          if (!swot.userTasksId) {
+        find(risk) {
+          if (!risk.userTasksId) {
             return '';
           }
-          return UserTasks.find({_id: swot.userTasksId});
+          return UserTasks.find({_id: risk.userTasksId});
         }
       }
     ]

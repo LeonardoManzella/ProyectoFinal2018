@@ -37,41 +37,30 @@ class Login extends React.Component {
   }
 
   render() {
-    return <div className="bg-login">
-      <nav className="navbar navbar-expand-lgt">
-        <div className="container">
-
-          <a className="navbar-brand" href="#">
-            <img src="/img/bid-logo-white.png" height="30"/>
-          </a>
-
-        </div>
-      </nav>
-
-      <div className="container content-body">
+    return (
+      <div className="login login-container">
         <div className="row">
           <div className="col-md-6 offset-md-3 content-register">
-            <img src="/img/bid-logo-grande.png" className="centrado" height="85"/>
+            <img src="/img/emprendimientos-logo.png" className="centrado" height="85"/>
             <p className="title-form">{TAPi18n.__('login.signIn')}</p>
             <form>
               <div className="form-group">
-                <input type="text" name="email" onChange={this.handleChange} className="form-control" placeholder={TAPi18n.__('login.email')}/>
+                <input type="text" name="email" onChange={this.handleChange} className="dropdown-input" placeholder={TAPi18n.__('login.email')}/>
               </div>
               <div className="form-group">
-                <input type="password" name="password" onChange={this.handleChange} className="form-control" placeholder={TAPi18n.__('login.password')}/>
+                <input type="password" name="password" onChange={this.handleChange} className="dropdown-input" placeholder={TAPi18n.__('login.password')}/>
               </div>
               <p className='small italic-proyectos text-danger'>
                 {this.state.error}
               </p>
               <div className="margin-top-30">
-                <button type="submit" onClick={this.submit} className="btn btn-primary centrado">{TAPi18n.__('login.enter')}</button>
+                <button type="submit" onClick={this.submit} className="transparent-button centrado">{TAPi18n.__('login.enter')}</button>
               </div>
             </form>
           </div>
         </div>
       </div>
-
-    </div>;
+    );
   }
 }
 
