@@ -14,19 +14,22 @@ if (Meteor.isServer) {
         
         let promise = new Promise((resolve) => {
             (async () => {
-                let results = [];
-                const query = await engine.createQuery('tieneQuePagarIVA(X).');
+                let suggestions = [];
+                const query = await engine.createQuery('suggest(communication_plan, [quiere_plata, quiere_reconocimiento], [has_savings], [desorganizado], Sugerencias_final).');
                 try {
-                    let result;
-                    while (result = await query.next()) {
-                        results.push(result.X);
-                        console.log(`${result.X} tiene que pagar IVA`);
+                    let result = await query.next();
+                    console.log(`Prolog returned: ${JSON.stringify(result.Sugerencias_final)}`);
+                    let recursionArray = result.Sugerencias_final;
+                    while (recursionArray.head ) {
+                        suggestions.push(recursionArray.head);
+                        console.log(`Added ${recursionArray.head} suggestion`);
+                        recursionArray = recursionArray.tail;
                     }
                 } finally {
                     await query.close();
                 }
                 engine.close();
-                resolve(results);
+                resolve(suggestions);
             })().catch((err) => console.log(err));
         });
           
