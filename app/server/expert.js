@@ -9,7 +9,7 @@ if (Meteor.isServer) {
       'expert.consult'() {
         const engine = new Engine();
 
-        const absolutePath = Assets.absoluteFilePath('prologFiles/expertRules.pl');
+        const absolutePath = Assets.absoluteFilePath('prologFiles/expert_system_algorithm.pl');
         engine.call("consult('" + absolutePath + "')");
         
         let promise = new Promise((resolve) => {
