@@ -20,9 +20,8 @@ different(First_trait, Second_trait) :- not(First_trait == Second_trait) .
 
 
 % RULES
-% TODO translate to english
 % TODO Test Added Rules using automated testing (needs cucumber)
-% TODO Revisar que las sugerencias de todas las reglas esten almenos en uno de los planes, asi no olvide agregarlas ahi
+% TODO Revisar que las sugerencias de todas las reglas esten almenos en uno de los planes (excepto la de error), asi no olvide agregarlas ahi
 can_suggest(commercial_plan, direct_marketing).
 can_suggest(commercial_plan, logistic_association).
 can_suggest(commercial_plan, international_contacts).
