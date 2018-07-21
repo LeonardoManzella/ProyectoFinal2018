@@ -15,7 +15,7 @@ if (Meteor.isServer) {
         let promise = new Promise((resolve) => {
             (async () => {
                 let suggestions = [];
-                const query = await engine.createQuery('suggest(communication_plan, [quiere_plata, quiere_reconocimiento], [has_savings], [desorganizado], Sugerencias_final).');
+                const query = await engine.createQuery('suggest(communication_plan, [wants_money, wants_recognition], [has_savings], [disorganized], Sugerencias_final).');
                 try {
                     let result = await query.next();
                     console.log(`Prolog returned: ${JSON.stringify(result.Sugerencias_final)}`);
