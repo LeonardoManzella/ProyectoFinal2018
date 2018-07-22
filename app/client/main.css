@@ -327,15 +327,33 @@ p.hash {
   font-weight: 200;
 }
 
+.chatbot-menu .Home .Chat .GetStarted .AlignMiddle.welcome-title h1 {
+  font-size: 15px;
+  line-height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .Home .Chat .GetStarted .AlignMiddle.welcome-title p {
   letter-spacing: 1px;
   color: #848587;
   font-family: 'Crete Round', sans-serif;
 }
 
+.chatbot-menu .Home .Chat .GetStarted p {
+  font-size: 1.0em;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 .Home .Chat .GetStarted img.Justin {
   height: 100px;
   max-width: 100px;
+}
+
+.chatbot-menu .Home .Chat .GetStarted img.Justin {
+  height: 40px;
+  max-width: 40px;
 }
 
 .Home .Chat .GetStarted span button {
@@ -352,6 +370,26 @@ p.hash {
   box-shadow: none;
 }
 
+.chatbot-menu .I-ChatBot {
+  width: 100%;
+  left: 0px;
+  margin-top: 45px;
+  top: 0;
+  height: 90%;
+}
+
+.chatbot-menu .I-ChatBot ul.ActionBar {
+  overflow-y: hidden;
+}
+
+.chatbot-menu .I-ChatBot ul.Messages {
+  height: 85%;
+}
+
+.chatbot-menu .I-ChatBot ul.ActionBar li.Action div.TextInput input.Input {
+  width: 150px;
+}
+
 .GetStarted.content-body {
   background-color: #ffffffb3;
   margin-top: 30px;
@@ -365,6 +403,12 @@ p.hash {
   margin-top: 30px;
 }
 
+.chatbot-menu .Container .Content {
+  margin: 0px;
+  padding: 0px;
+  padding-top: 40px;
+}
+
 .FullSizeTable {
   display: table;
   height: 100%;
@@ -373,6 +417,10 @@ p.hash {
   width: 100%;
   padding-left: 60px;
   padding-right: 60px;
+}
+
+.chatbot-menu .FullSizeTable {
+  padding: 0px;
 }
 
 /* CANVAS */
@@ -693,7 +741,7 @@ ol.progtrckr li:before {
 /* CHATBOT MENU */
 
 /* Position and sizing of burger button */
-.bm-burger-button {
+.chatbot-menu .bm-burger-button {
   position: fixed;
   height: 50px;
   bottom: 10px;
@@ -737,6 +785,12 @@ ol.progtrckr li:before {
   font-size: 1.15em;
 }
 
+.main-menu .bm-menu {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  overflow-y: hidden !important;
+}
+
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: #373a47;
@@ -748,18 +802,42 @@ ol.progtrckr li:before {
   padding: 0.8em;
 }
 
+.main-menu .bm-item-list {
+  overflow-y: auto;
+}
+
 /* Individual item */
 .bm-item {
   display: inline-block;
 }
 
+.main-menu .bm-item {
+  margin: 0 auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+  top: 0;
+  left: 0;
+}
+
+.main-menu .bm-overlay {
+  z-index: 1100 !important;
 }
 
 .bm-menu-wrap {
   top: 0px;
+}
+
+.main-menu .bm-menu-wrap {
+  width: 200px !important;
+}
+
+.main-menu .bm-menu-wrap {
+  left: 0px;
 }
 
 .page-wrapper {
