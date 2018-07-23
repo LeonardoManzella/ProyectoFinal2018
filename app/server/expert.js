@@ -40,8 +40,19 @@ if (Meteor.isServer) {
 
         let promise = new Promise((resolve) => {
             (async () => {
+                // TODO obtain string and arrays from user 
+                let actual_plan_context = "communication_plan";
+                let replace_with_user_goals = ["wants_money", "wants_recognition"];
+                let goals = JSON.stringify(replace_with_user_goals).replace(/\"/g,'');
+                let replace_with_user_contributions = ["has_savings"];
+                let contributions = JSON.stringify(replace_with_user_contributions).replace(/\"/g,'');
+                let replace_with_user_identity_traits = ["disorganized", "shy_and_afraid", "non_social"];
+                let identity_traits = JSON.stringify(replace_with_user_identity_traits).replace(/\"/g,'');
+
                 let duplicated_partial_suggestions = [];
-                const query = await engine.createQuery('suggest(communication_plan, [wants_money, wants_recognition], [has_savings], [disorganized, shy_and_afraid, non_social], Sugerencias_final).');
+                let query_string = `suggest(${actual_plan_context}, ${goals}, ${contributions}, ${identity_traits}, Sugerencias_final).`;
+                console.log(`Query String: ${query_string}`);
+                const query = await engine.createQuery(query_string);
                 try {
                     let result = await query.next();
                     console.log(`Prolog returned: ${JSON.stringify(result.Sugerencias_final)}`);
