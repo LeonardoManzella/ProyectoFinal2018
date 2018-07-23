@@ -75,7 +75,15 @@ a:hover {
     height: 60px;
 }
 
+.nav-item {
+    margin-top: 10px;
+}
+
 .nav-item > a {
+    color: rgba(0,0,0,.5);
+}
+
+.nav-item.active > a {
     color: #ff5a5f;
 }
 
@@ -876,3 +884,11 @@ h6 {
     font-weight: 300;
     letter-spacing: 0.5px;
 }
+
+/* .I-ChatBot ul.ActionBar {
+    list-style-type: none;
+    margin: 0;
+    overflow-y: scroll;
+    position: fixed;
+    right: 20px;
+} */

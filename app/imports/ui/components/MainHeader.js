@@ -5,6 +5,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 import SharedMethods from '../../api/helpers/sharedMethods';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
+import { slide as Menu } from 'react-burger-menu';
 
 class MainHeader extends React.Component {
   constructor(props) {
@@ -64,19 +65,21 @@ class MainHeader extends React.Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container">
-          <a className="navbar-brand" href="" onClick={() => FlowRouter.go('home')}>
-            <img src="/img/emprendimientos-logo.png" height="30"/>
-          </a>
-
-          <div className="collapse navbar-collapse margin-left-20" id="navbarsExampleDefault">
-            <ul className="navbar-nav mr-auto">
-              {/* {this.getTabSelected('Home', '/')}
+          <div className="main-menu">
+            <Menu
+              customBurgerIcon={
+                <a className="navbar-brand" href="" onClick={() => FlowRouter.go('home')}>
+                  <img src="/img/emprendimientos-logo.png" height="30"/>
+                </a>
+              }
+            >
+              {this.getTabSelected('Chart', '/chart')}
+              {this.getTabSelected('Home', '/')}
               {this.getTabSelected('Tareas', '/tasksBoard')}
               {this.getTabSelected('Bitácora', '/binnacle')}
               {this.getTabSelected('Experto', '/expert')} 
               {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
                 this.getTabSelected('Usuarios', '/usersList') : ''}
-                */}
               {this.getTabSelected('Chart', '/chart')}
               {this.getTabSelected('ChatBot', '/chatbot')}
               {this.getTabSelected('Canvas', '/canvas')}
@@ -84,8 +87,8 @@ class MainHeader extends React.Component {
               {this.getTabSelected('FODA', '/swot')}
               {this.getTabSelected('Riesgos', '/risks')}
               {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
-                this.getTabSelected('Reminders', '/reminders') : ''}
-            </ul>
+                this.getTabSelected('Reminders', '/reminders') : ''}  
+            </Menu>
           </div>
           
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>

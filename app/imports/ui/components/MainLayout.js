@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import MainHeaderContainer from './sharedComponents/MainHeaderContainer';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { push as Menu } from 'react-burger-menu';
+import ExpertChatbot from './expertChatbot/ExpertChatbot';
 
 export default class MainLayout extends Component {
 
@@ -26,13 +27,15 @@ export default class MainLayout extends Component {
     const { content } = this.props;
     return (
       <div>
-        <Menu
-          onStateChange={this.adjustScreen.bind(this)}
-          customBurgerIcon={this.getBurgerIcon()}
-          right noOverlay
-        >
-          <a>Chatbot</a>
-        </Menu>
+        <div className="chatbot-menu">
+          <Menu
+            onStateChange={this.adjustScreen.bind(this)}
+            customBurgerIcon={this.getBurgerIcon()}
+            right noOverlay
+          >
+            <ExpertChatbot />
+          </Menu>
+        </div>
         <main id="page-wrap">
           <MainHeaderContainer
             currentUrl = {FlowRouter.current().path}
