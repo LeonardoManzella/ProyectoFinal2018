@@ -7,7 +7,7 @@ if (Meteor.isServer) {
   
     Meteor.methods({
       'expert.consult'() {
-        function sortByFrequency(array) {
+        const sortByFrequency = (array) => {
             var frequency = {};
 
             array.forEach(function(value) { frequency[value] = 0; });
@@ -19,9 +19,9 @@ if (Meteor.isServer) {
             return uniques.sort(function(anElement, anotherElement) {
                 return frequency[anotherElement] - frequency[anElement];
             });
-        }
+        };
 
-        function fromRecursionToArray(recursion) {
+        const fromRecursionToArray = (recursion) => {
             var array = [];
 
             while (recursion.head ) { //Breaks recursion using head,tail decomposition
@@ -30,7 +30,7 @@ if (Meteor.isServer) {
                 recursion = recursion.tail;
             }
             return array;
-        }
+        };
 
         const engine = new Engine();
 
