@@ -1,6 +1,6 @@
 import { ChatBotUtil } from 'i-chatbot'
-//import ExpertSystem from '../../../../server/expert.js'
 import { Meteor } from 'meteor/meteor';
+import { TAPi18n } from 'meteor/tap:i18n';
 
 class Logic {
   suggestions = [];
@@ -49,11 +49,10 @@ class Logic {
 
   static show_suggestions (value) {
     console.warn(Logic.suggestions);
-    //TODO estaba trabajando aca y tengo que debuggear hasta donde llega que se colgo, ver React developer tools
     return [
       ChatBotUtil.textMessage('Veamos..')
     ].concat(
-      Logic.suggestions.map( suggestion => ChatBotUtil.textMessage(suggestion.toString()))
+      Logic.suggestions.map( suggestion => ChatBotUtil.textMessage(TAPi18n.__(`suggestions.${suggestion.toString()}`)))
     ).concat(
       [
         ChatBotUtil.textMessage('Concentrate en esas por ahora'),

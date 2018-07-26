@@ -390,5 +390,14 @@
     "PAPRO": "Pago a un Proveedor",
     "OPAPR": "Objeción Pago",
     "NOPAP": "No Objeción Pago"
+  },
+  "suggestions": {
+    "communication_association": "communication_association traducido",
+    "outsource_communications": "outsource_communications traducido",
+    "talks_workshops": "talks_workshops traducido",
+    "investors_deck_ready": "investors_deck_ready traducido",
+    "influencers": "influencers traducido",
+    "digital_communications": "digital_communications traducido",
+    "care_about_design": "care_about_design traducido"
   }
 }
