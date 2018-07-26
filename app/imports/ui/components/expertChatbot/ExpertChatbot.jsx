@@ -1,7 +1,7 @@
 import React from 'react'
 import { Meteor } from 'meteor/meteor';
 import ChatBot, { ChatBotUtil } from 'i-chatbot'
-import Logic from './Logic.js'
+import Logic from './PlanScreenLogic.js'
 
 export default class ExpertChatbot extends React.Component {
 	
@@ -42,7 +42,7 @@ export default class ExpertChatbot extends React.Component {
 				<div className="Content">
 					<ChatBot
 						onGetStarted={Logic.getStarted}
-						getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')}
+						getStartedButton={ChatBotUtil.makeGetStartedButton('Hola!')}
 					/>
 				</div>
 			)
