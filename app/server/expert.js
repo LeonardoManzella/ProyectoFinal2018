@@ -6,7 +6,9 @@ import fs from 'fs';
 if (Meteor.isServer) {
   
     Meteor.methods({
-      'expert.consult'() {
+      'expert.consult'(actual_plan_context) {
+        console.log(`actual_plan_context: ${actual_plan_context}`);
+          
         const sortByFrequency = (array) => {
             var frequency = {};
 
@@ -41,7 +43,7 @@ if (Meteor.isServer) {
         let promise = new Promise((resolve) => {
             (async () => {
                 // TODO obtain string and arrays from user 
-                let actual_plan_context = "communication_plan";
+                console.log(`actual_plan_context in Promise: ${actual_plan_context}`);
                 let replace_with_user_goals = ["wants_money", "wants_recognition"];
                 let goals = JSON.stringify(replace_with_user_goals).replace(/\"/g,'');
                 let replace_with_user_contributions = ["has_savings"];

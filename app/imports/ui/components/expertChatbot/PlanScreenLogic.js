@@ -16,19 +16,6 @@ class Logic {
     actual_plan_context = plan_context;
 
     return function(){
-      //TODO pasar a meteor call argumento Logic.getActualPlan()
-      Meteor.call('expert.consult', (error, suggestionsArray) => {
-          if (error) {
-            console.warn("--------------");
-            console.error(error);
-            console.trace();
-            Logic.suggestions = ['Ninguna sugerencia por el momento', 'Vuelve a intentarlo mas tarde'];
-          } else {
-            console.log(`Plan Suggestions: ${suggestionsArray}`);
-          Logic.suggestions = suggestionsArray;
-          }
-      });
-
       return [
         ChatBotUtil.textMessage(['Buenas!', 'Hola!'].any()),
         ChatBotUtil.textMessage(`Bueno, empezemos con tu ${Logic.getPlanTitle()}`,
@@ -50,6 +37,18 @@ class Logic {
   }
 
   static menu () {
+    Meteor.call('expert.consult', Logic.getActualPlan(), (error, suggestionsArray) => {
+          if (error) {
+            console.warn("--------------");
+            console.error(error);
+            console.trace();
+            Logic.suggestions = ['Ninguna sugerencia por el momento', 'Vuelve a intentarlo mas tarde'];
+          } else {
+            console.log(`Plan Suggestions: ${suggestionsArray}`);
+          Logic.suggestions = suggestionsArray;
+          }
+      });
+    
     return [
       ChatBotUtil.textMessage("¿En que puedo ayudarte?",
         ChatBotUtil.makeReplyButton(`Que es un ${Logic.getPlanTitle()}?`,() => Logic.plan()),
@@ -60,6 +59,7 @@ class Logic {
 
   static show_suggestions () {
     console.warn(Logic.suggestions);
+    
     return [
       ChatBotUtil.textMessage('Veamos..')
     ].concat(
