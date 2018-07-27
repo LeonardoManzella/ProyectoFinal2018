@@ -2,6 +2,8 @@ import React from 'react';
 import StepZilla from 'react-stepzilla';
 import PlanList from './PlanList';
 import PropTypes from 'prop-types';
+import { push as Menu } from 'react-burger-menu';
+import ExpertChatbot from '../expertChatbot/ExpertChatbot';
 
 const emptyPlanItem = {
   tool: '',
@@ -139,6 +141,22 @@ class PlanPage extends React.Component {
     Meteor.call('insertNewPlanList', this.state.plans);
   }
 
+  adjustScreen(event) {
+    if (event.isOpen) {
+      document.getElementById("page-wrap").setAttribute("class", "page-wrapper");
+    } else {
+      document.getElementById("page-wrap").removeAttribute("class", "page-wrapper");
+    }
+  }
+
+  getBurgerIcon() {
+    return (
+      <div>
+        <img src="/img/chatbot.png" />
+      </div>
+    );
+  }
+
 	render() {
     let steps = Object.assign([], planTypes);
     steps = steps.map((step, index) => {
@@ -159,29 +177,40 @@ class PlanPage extends React.Component {
       return newStep;
     });
 		return (
-			<div className="content-body plan">
-        <div className='step-progress'>
-          <StepZilla
-            steps={steps}
-            nextButtonText='Siguiente'
-            backButtonText='Anterior'
-            // prevBtnOnLastStep={false}
-            backButtonCls='backButtonClass'
-            nextButtonCls='nextButtonClass'
-            onStepChange={(step) => this.setState({currentStep: step})}
-          />
+      <div>
+        <div className="chatbot-menu">
+          <Menu
+            onStateChange={this.adjustScreen.bind(this)}
+            customBurgerIcon={this.getBurgerIcon()}
+            right noOverlay
+          >
+            <ExpertChatbot current_plan_prop={this.state.currentPlan}/>
+          </Menu>
         </div>
-        { // FIXME: Ver de usar solo al principio, cuando se da el Alta, y no para Baja y Modif
-          /* {
-          this.state.currentStep === steps.length - 1 ?
-            <div className="footer-buttons">
-              <button className="nextButtonClass" id="next-button" onClick={this.savePlans.bind(this)}>
-                Guardar Planes
-              </button>
-            </div>
-            : ''
-        } */}
-			</div>
+        <div className="content-body plan">
+          <div className='step-progress'>
+            <StepZilla
+              steps={steps}
+              nextButtonText='Siguiente'
+              backButtonText='Anterior'
+              // prevBtnOnLastStep={false}
+              backButtonCls='backButtonClass'
+              nextButtonCls='nextButtonClass'
+              onStepChange={(step) => this.setState({currentStep: step, currentPlan: planTypes[step].plan_category})}
+            />
+          </div>
+          { // FIXME: Ver de usar solo al principio, cuando se da el Alta, y no para Baja y Modif
+            /* {
+            this.state.currentStep === steps.length - 1 ?
+              <div className="footer-buttons">
+                <button className="nextButtonClass" id="next-button" onClick={this.savePlans.bind(this)}>
+                  Guardar Planes
+                </button>
+              </div>
+              : ''
+          } */}
+        </div>
+      </div>
 		);
 			
 	}
