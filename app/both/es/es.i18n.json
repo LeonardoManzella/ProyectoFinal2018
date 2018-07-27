@@ -391,6 +391,9 @@
     "OPAPR": "Objeción Pago",
     "NOPAP": "No Objeción Pago"
   },
+
+  //Ours translations
+
   "suggestions": {
     "communication_association": "communication_association traducido",
     "outsource_communications": "outsource_communications traducido",
@@ -399,5 +402,19 @@
     "influencers": "influencers traducido",
     "digital_communications": "digital_communications traducido",
     "care_about_design": "care_about_design traducido"
+  },
+  "plan": {
+    "management_plan": {
+      "title": "Plan de Administracion",
+      "description": "Descripcion de Plan de Administracion"
+    },
+    "commercial_plan": {
+      "title": "Plan de Comercializacion",
+      "description": "Descripcion de Plan de Comercializacion"
+    },
+    "communication_plan": {
+      "title": "Plan de Comunicacion",
+      "description": "Descripcion de Plan de Comunicacion"
+    }
   }
 }
