@@ -41,7 +41,7 @@ export default class ExpertChatbot extends React.Component {
 			return (
 				<div className="Content">
 					<ChatBot
-						onGetStarted={Logic.getStarted}
+						onGetStarted={Logic.getStarted(this.props.current_plan_prop)} //Link to Prop so it updates upon parent update 
 						getStartedButton={ChatBotUtil.makeGetStartedButton('Hola!')}
 					/>
 				</div>

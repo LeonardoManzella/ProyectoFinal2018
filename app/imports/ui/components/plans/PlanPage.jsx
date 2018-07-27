@@ -21,9 +21,25 @@ const planTypes = [
   {
     name: "PLAN DE ADMINISTRACIÓN",
     title: "DE ADMINISTRACIÓN",
-    component: <PlanList/>
+    component: <PlanList/>,
+    plan_category: 'management_plan'
   },
   {
+    name: "PLAN DE COMUNICACIÓN",
+    title: "DE COMUNICACIÓN",
+    component: <PlanList/>,
+    plan_category: 'communication_plan'
+  },
+  {
+    name: "PLAN COMERCIAL",
+    title: "COMERCIALES",
+    component: <PlanList/>,
+    plan_category: 'commercial_plan'
+  }
+  /*
+  ,
+  {
+    //TODO agregar codigo referencia Prolog en cada tipo
     name: "PLAN LEGAL",
     title: "LEGALES",
     component: <PlanList/>
@@ -39,16 +55,6 @@ const planTypes = [
     component: <PlanList/>
   },
   {
-    name: "PLAN COMERCIAL",
-    title: "COMERCIALES",
-    component: <PlanList/>
-  },
-  {
-    name: "PLAN DE COMUNICACIÓN",
-    title: "DE COMUNICACIÓN",
-    component: <PlanList/>
-  },
-  {
     name: "PLAN ECONÓMICO / FINANCIERO",
     title: "ECONÓMICOS / FINANCIEROS",
     component: <PlanList/>
@@ -58,6 +64,7 @@ const planTypes = [
     title: "DE SISTEMAS",
     component: <PlanList/>
   }
+  */
 ];
 
 class PlanPage extends React.Component {
@@ -72,10 +79,12 @@ class PlanPage extends React.Component {
           .map(plan => ({data: plan.data, editable: plan.editable}))
         : []
     }));
+    const INITIAL = 0;
     this.state = {
       plans,
       selectedBusinessArea: '',
-      currentStep: 0
+      currentStep: INITIAL,
+      currentPlan: planTypes[INITIAL].plan_category
     };
   }
 
