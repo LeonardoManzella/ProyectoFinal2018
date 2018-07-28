@@ -103,6 +103,9 @@ can_suggest(communication_plan, use_achievements_branding).
 can_suggest(communication_plan, guerrilla_marketing).
 
 valid_objetives_rule(wants_recognition, direct_marketing).
+valid_objetives_rule(wants_recognition, talks_workshops).
+valid_objetives_rule(wants_recognition, meetings).
+valid_objetives_rule(wants_recognition, trade_show).
 valid_objetives_rule(wants_recognition, press_and_magazines).
 valid_objetives_rule(wants_recognition, influencers).
 valid_objetives_rule(wants_recognition, client_frequent_places).
