@@ -26,9 +26,6 @@ const tgq = function (questionNumber) {
 }
 
 const tgqa = function (questionNumber, answerNumber) {
-
-  console.log('translating answer: ' + answerNumber);
-
   return t('goals.' + questionNumber + '.answers.' + answerNumber);
 }
 
@@ -49,15 +46,9 @@ const tiqa = function (questionNumber, answerNumber) {
 }
 
 const buildCurrentQuestion = function (hasToShowNextQuestionAnswer) {
-  let questionAswersArray = [];
-
-  console.log('building current question');
-
-  
-  questionAswersArray.push(Logic.currentQuestion);
+  let questionAswersArray = [Logic.currentQuestion];
 
   Logic.possibleAnswers = Logic.generatePossibleAnswers();
-
   questionAswersArray = questionAswersArray.concat(Logic.possibleAnswers);
  
   if (hasToShowNextQuestionAnswer) {
@@ -116,9 +107,19 @@ class Logic {
     
     Logic.chosenAnswers[stepIndex]['q' + currentQuestionNumber].push('a' + answerToChoose); 
    
-    //return Logic.goalQuestion();
+    const chosenNumbersAmount = Logic.chosenAnswers[stepIndex]['q' + currentQuestionNumber].length;
 
-    console.log(Logic.chosenAnswers[0]);
+    if (stepIndex == 0 && chosenNumbersAmount == GOALS_QUESTIONS_ANSWERS_AMOUNT[currentQuestionNumber - 1]) {
+      return Logic.goalQuestion();
+    }
+
+    if (stepIndex == 1 && chosenNumbersAmount == CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT[currentQuestionNumber - 1]) {
+      return Logic.contributionQuestion();
+    }
+
+    if (stepIndex == 2 && chosenNumbersAmount == IDENTITY_QUESTIONS_ANSWERS_AMOUNT[currentQuestionNumber - 1]) {
+      return Logic.identityQuestion();
+    }
 
     Logic.currentQuestion = '###EMPTY###';
     const hasToShowNextQuestionAnswer = true;
@@ -202,17 +203,18 @@ class Logic {
 
   static goalQuestion () {
     Logic.currentQuestionNumber++;
+
+    if (Logic.currentQuestionNumber > GOALS_QUESTIONS_ANSWERS_AMOUNT.length){
+      Logic.currentStepIndex = 1;
+      Logic.currentQuestionNumber = 0;
+      return Logic.contributionQuestion();
+    }
+    
     Logic.currentQuestion = tgq(Logic.currentQuestionNumber); 
     
     const _currentQuestionNumber = Logic.currentQuestionNumber;
 
-    if (Logic.currentQuestionNumber == GOALS_QUESTIONS_ANSWERS_AMOUNT.length){
-      Logic.currentStepIndex = 1;
-      Logic.currentQuestionNumber = 0;
-      Logic.nextCallback = Logic.contributionQuestion;
-    } else {
-      Logic.nextCallback = Logic.goalQuestion;
-    }
+    Logic.nextCallback = Logic.goalQuestion;
     
     Logic.generatePossibleAnswers = () => Logic.goalAnswersGenerator(_currentQuestionNumber);
 
@@ -224,16 +226,16 @@ class Logic {
     Logic.currentQuestionNumber++;
     Logic.currentQuestion = tcq(Logic.currentQuestionNumber); 
     
-    const _currentQuestionNumber = Logic.currentQuestionNumber;
-
-    if (Logic.currentQuestionNumber == CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT.length){
+    if (Logic.currentQuestionNumber > CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT.length){
       Logic.currentStepIndex = 2;
       Logic.currentQuestionNumber = 0;
-      Logic.nextCallback = Logic.identityQuestion;
-    } else {
-      Logic.nextCallback = Logic.contributionQuestion;
+      return Logic.identityQuestion();
     }
-    
+
+    Logic.nextCallback = Logic.contributionQuestion;
+
+    const _currentQuestionNumber = Logic.currentQuestionNumber;
+
     Logic.generatePossibleAnswers = () => Logic.contributionAnswersGenerator(_currentQuestionNumber);
 
     const hasToShowNextQuestionAnswer =  Logic.chosenAnswers[2]['q' + _currentQuestionNumber]
@@ -244,14 +246,14 @@ class Logic {
     Logic.currentQuestionNumber++;
     Logic.currentQuestion = tiq(Logic.currentQuestionNumber); 
     
+    if (Logic.currentQuestionNumber > IDENTITY_QUESTIONS_ANSWERS_AMOUNT.length){
+      return Logic.end();
+    }
+
     const _currentQuestionNumber = Logic.currentQuestionNumber;
 
-    if (Logic.currentQuestionNumber == IDENTITY_QUESTIONS_ANSWERS_AMOUNT.length){
-      Logic.nextCallback = Logic.end;
-    } else {
-      Logic.nextCallback = Logic.identityQuestion;
-    }
-    
+    Logic.nextCallback = Logic.identityQuestion;
+
     Logic.generatePossibleAnswers = () => Logic.identityAnswersGenerator(_currentQuestionNumber);
 
     const hasToShowNextQuestionAnswer =  Logic.chosenAnswers[2]['q' + _currentQuestionNumber]
