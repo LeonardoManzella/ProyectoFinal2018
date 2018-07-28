@@ -2,6 +2,7 @@ import React from 'react'
 import { Meteor } from 'meteor/meteor';
 import ChatBot, { ChatBotUtil } from 'i-chatbot'
 import Logic from './Logic.js'
+import { TAPi18n } from 'meteor/tap:i18n';
 
 export default class ExpertChatbot extends React.Component {
 	
@@ -16,6 +17,10 @@ export default class ExpertChatbot extends React.Component {
 		this.setState({
 			hasStartedChat: true
 		});
+	}
+
+	onchange() {
+		$("span:contains('###EMPTY###')").first().parent().parent().parent().hide()
 	}
 
 	getChatContent() {
@@ -42,7 +47,7 @@ export default class ExpertChatbot extends React.Component {
 				<div className="Content">
 					<ChatBot
 						onGetStarted={Logic.getStarted}
-						getStartedButton={ChatBotUtil.makeGetStartedButton('Get Started')}
+						getStartedButton={ChatBotUtil.makeGetStartedButton(TAPi18n.__('interview.getStarted'))}
 					/>
 				</div>
 			)
