@@ -897,3 +897,81 @@ ol.progtrckr li:before {
 .not-found button {
   min-width: 90%;
 }
+
+/* LANDING */
+
+.landing.navbar {
+  margin: 0px;
+}
+
+.landing .content-body {
+  width: auto;
+  margin: 0px;
+  background-color: #ffffffb3;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.landing .content-body.initial-section {
+  background-color: #ffffff5c;
+}
+
+.landing .content-body.white {
+  background-color: white;
+}
+
+.landing .content-body.expert-system .welcome-title,
+.landing .content-body.team .welcome-title {
+  text-align: left;
+}
+
+.landing .content-body.clients .row {
+  text-align: center;
+}
+
+.landing .content-body.gray {
+  background-color: #ececec;
+}
+
+.landing .table {
+  display: table;
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.landing .welcome-title {
+  display: table-cell;
+  margin: 0 auto;
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.landing .welcome-title h1 {
+  font-family: sans-serif;
+  font-weight: 300;
+  font-size: 80px;
+  line-height: 100px;
+  letter-spacing: 2px;
+  color: #fd5156d1;
+}
+
+.landing .welcome-title p {
+  letter-spacing: 2px;
+    color: #4e4e4e;
+    font-family: sans-serif;
+    font-size: 30px;
+}
+
+.landing .transparent-button {
+  font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    border: 2px solid #808080;
+    color: #fd5156d1;
+}

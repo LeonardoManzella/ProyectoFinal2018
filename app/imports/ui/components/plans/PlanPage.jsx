@@ -18,42 +18,42 @@ const emptyPlan = {
 const planTypes = [
   {
     name: "PLAN DE ADMINISTRACIÓN",
-    title: "DE ADMINISTRACIÓN",
+    title: "de Administración",
     component: <PlanList/>
   },
   {
     name: "PLAN LEGAL",
-    title: "LEGALES",
+    title: "Legales",
     component: <PlanList/>
   },
   {
     name: "PLAN CONTABLE",
-    title: "CONTABLES",
+    title: "Contables",
     component: <PlanList/>
   },
   {
     name: "PLAN DE PRODUCCIÓN",
-    title: "DE PRODUCCIÓN",
+    title: "de Producción",
     component: <PlanList/>
   },
   {
     name: "PLAN COMERCIAL",
-    title: "COMERCIALES",
+    title: "Comerciales",
     component: <PlanList/>
   },
   {
     name: "PLAN DE COMUNICACIÓN",
-    title: "DE COMUNICACIÓN",
+    title: "de Comunicación",
     component: <PlanList/>
   },
   {
     name: "PLAN ECONÓMICO / FINANCIERO",
-    title: "ECONÓMICOS / FINANCIEROS",
+    title: "Económicos / Financieros",
     component: <PlanList/>
   },
   {
     name: "PLAN DE SISTEMAS",
-    title: "DE SISTEMAS",
+    title: "de Sistemas",
     component: <PlanList/>
   }
 ];

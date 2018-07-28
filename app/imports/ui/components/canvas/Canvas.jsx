@@ -99,7 +99,7 @@ class Canvas extends React.Component {
 			<div className="content-body">
         <div className="row header">
             <div className="col-md-6">
-              <h2>ÁREAS DE NEGOCIO</h2>
+              <h2>Áreas de Negocio</h2>
             </div>
             <div className="col-md-6">
               <button onClick={this.saveBusinessAreas.bind(this)}>

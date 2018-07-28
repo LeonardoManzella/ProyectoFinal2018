@@ -22,7 +22,7 @@ class PlanList extends React.Component {
       <div>
         <div className="row header">
           <div className="col-md-6">
-            <h2>{'PLANES ' + title }</h2>
+            <h2>{'Planes ' + title }</h2>
           </div>
           <div className="col-md-6">
             <button onClick={savePlans}>
