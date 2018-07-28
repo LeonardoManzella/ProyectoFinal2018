@@ -53,7 +53,7 @@ class RisksPage extends React.Component {
 			<div className="content-body">
         <div className="row header">
             <div className="col-md-6">
-              <h2>RIESGOS</h2>
+              <h2>Riesgos</h2>
             </div>
             <div className="col-md-6">
               <button onClick={this.saveRisks.bind(this)}>

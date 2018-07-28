@@ -73,7 +73,6 @@ class MainHeader extends React.Component {
                 </a>
               }
             >
-              {this.getTabSelected('Chart', '/chart')}
               {this.getTabSelected('Home', '/')}
               {this.getTabSelected('Tareas', '/tasksBoard')}
               {this.getTabSelected('Bitácora', '/binnacle')}

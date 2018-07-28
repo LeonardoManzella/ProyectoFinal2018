@@ -21,6 +21,7 @@ import PlanContainer from '../../imports/ui/containers/userTasksContainers/PlanC
 import CanvasContainer from '../../imports/ui/containers/canvasContainers/CanvasContainer';
 import SwotContainer from '../../imports/ui/containers/swotAndRisksContainers/SwotContainer';
 import RisksContainer from '../../imports/ui/containers/swotAndRisksContainers/RisksContainer';
+import HomePage from '../../imports/ui/components/HomePage';
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'login', 'profile', 'pending', 'notFound'];
@@ -71,6 +72,13 @@ Tracker.autorun(function() {
 FlowRouter.triggers.enter([mustBeAuthenticated], { except: ['login', 'confirmRegistration'] });
 
 FlowRouter.triggers.enter([mustBeAllowedToAccessRoute], {except: publicRoutes});
+
+FlowRouter.route('/landing', {
+  name: 'landing',
+  action: function() {
+    mount(HomePage);
+  },
+});
 
 FlowRouter.route('/', {
   name: 'home',
