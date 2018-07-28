@@ -61,7 +61,7 @@ class Logic {
     console.warn(Logic.suggestions);
     
     return [
-      ChatBotUtil.textMessage('Veamos..')
+      ChatBotUtil.textMessage('Basandome en tus caracteristicas..')
     ].concat(
       Logic.suggestions.map( suggestion => ChatBotUtil.textMessage(Logic.translateSuggestion(suggestion)))
     ).concat(
