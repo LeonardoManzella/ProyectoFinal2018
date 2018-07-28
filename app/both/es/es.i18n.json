@@ -390,5 +390,76 @@
     "PAPRO": "Pago a un Proveedor",
     "OPAPR": "Objeción Pago",
     "NOPAP": "No Objeción Pago"
+  },
+  "interview": {
+    "getStarted" : "Comenzar entrevista",
+    "greetings1" : "Hola",
+    "greetings2" : "Bienvenido",
+    "responseGreetings" : "Gracias! Quiero empezar a modelar mi emprendimiento",
+    "goodbye" : "Felicidades, la entrevista ha terminado",
+    "goodbyeSuggestions" : "Ya puedes acceder Modelo y Áreas de Negocio, FODA, y plan de riesgos",
+    "goodbyeResponse" : "Adiós!",
+    "goals" : {
+      
+      "1" : {
+        "question" : "Qué objetivos planeás lograr con este emprendimiento?",
+        "answers" : {
+          "1" : "Pasarla bien",
+          "2" : "Plata"
+        }
+      },
+      
+      "2" : {
+        "question" : "Querés vender un...?",
+        "answers" : {
+          "1" : "Producto",
+          "2" : "Servicio",
+          "3" : "Ambos",
+          "4" : "No lo sé"
+        }
+      }
+      
+    },
+
+    "contributions" : {
+      
+      "1" : {
+        "question" : "Tenés ahorros?",
+        "answers" : {
+          "1" : "Tengo mucha guita",
+          "2" : "Soy de África"
+        }
+      },
+      
+      "2" : {
+        "question" : "Tenés una cuenta bancaria?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      }
+      
+    },
+
+
+    "identity" : {
+      
+      "1" : {
+        "question" : "Con qué palabras?",
+        "answers" : {
+          "1" : "Empresario",
+          "2" : "Palermo"
+        }
+      },
+      
+      "2" : {
+        "question" : "Con qué estilo?",
+        "answers" : {
+          "1" : "Hipster",
+          "2" : "Skater"
+        }
+      }
+      
+    }
   }
 }
