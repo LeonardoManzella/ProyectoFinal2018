@@ -392,11 +392,16 @@
     "NOPAP": "No Objeción Pago"
   },
 
-  //Ours translations
+  //-----------Ours translations---------------
   // TODO look Rules doc and describe each one atomically with imperative and friendly tone
+  // TODO Pasarle corrector ortografico Acentos
+  // TODO pasarle a Yari o guido para que revise el tono de voz y redaccion.
+  
+  // ATOMICAS: pueden ir en cualquier orden y momento sin necesidad de contexto
+  // TONO: Amigable e Imperativo, mira soy tu amigo, tenes que hacer esto, te lo recomiendo
   "suggestions": {
     "direct_marketing": "Te conviene vender de forma directa, cara a cara en lo posible", 
-    "logistic_association": "Pensa cómo vas a almacenar tu producto y como vas a entregarlo a tu cliente, es Clave la Logística. Lo mejor que podes hacer es aliarte con compañías de Logística y Entrega físicas y digitales", 
+    "logistic_association": "Podes aliarte con empresas de Logística y Servicios de Envio, físicos y digitales. Tambien los sitios de venta online son utiles si para asociarte, si vas con los que son mas chicos vas a tener mayor poder de negociacion. Pensa en sitios de E-Commerce, MercadoLibre, OLX, Alamaula, Avenida, etc..", 
     "international_contacts": "Tenes que ver la manera de conseguir contactos en el exterior que te permitan ayudar en tu negocio. Pregunta a conocidos o trata de integrarte con comunidades online de esos paises", 
     "outsource_sales": "Considera contratar vendedores externos, subcontratar a terceros. Consegui que alguien de afuera venda por vos", 
     "start_selling_followers": "Empeza vendiendo a gente que conoces y tus grupos/followers o consegui clientes a traves de ellos", 
@@ -413,28 +418,28 @@
     "meetings": "Hace encuentros, cocteles, charlas y capacitaciones selectas/premium para atraer a tus clientes aglutinadores, los clientes y contactos que te consiguen mas clientes. Trata de formar una relacion con ellos y aprovecha el momento para mostrarte y venderte", 
     "samples": "Tene preparado stock de tu producto para muestras", 
     "target_massive_markets": "Apunta a Mercados Masivos o Dispuestos a pagar grandes precios", 
-    "carefull_deadlines": "PENDING", 
-    "sell_talks": "PENDING", 
+    "carefull_deadlines": "Ponete fechas limite para cada objetivo, asi podes organizarte en base a ellas: 'Que para X fecha este listo Y'", 
+    "sell_talks": "Da charlas pagas personalizadas a pequeños grupos sobre temas puntuales. O incluso que ellos vengan y hables sobre lo que te pidan dentro del tema principal", 
     "sell_workshops": "Hace Capacitaciones Pagas / Workshops / Módulo de 1 a 3 días. Te recomiendo la Plataforma de Meetups y EventBrite, tenes que hacer que se complemente con tu marca. Trata de dirigirla a públicos chicos y explica que son sesiones personalizadas, remarca que es para un publico selecto. Trabaja con temas y problemas bien puntuales", 
-    "logistics": "PENDING", 
-    "find_funding": "PENDING", 
-    "save_for_urgency": "PENDING", 
-    "hire_secretary": "PENDING", 
-    "use_personal_agenda": "PENDING", 
-    "disconnect": "PENDING", 
-    "find_partner_for_support": "PENDING", 
-    "plan_breaks": "PENDING", 
-    "invest_on_your_business": "PENDING", 
-    "aduana_suppliers": "PENDING", 
-    "known_partner_divide_roles": "PENDING", 
-    "outsource_control": "PENDING", 
-    "systematize": "PENDING", 
-    "assign_roles": "PENDING", 
-    "weekly_meetings": "PENDING", 
-    "define_billing_process": "PENDING", 
-    "therapy": "PENDING", 
-    "do_sport": "PENDING", 
-    "keep_yourself_busy": "PENDING", 
+    "logistics": "Pensa cómo vas a almacenar tu producto y como vas a entregarlo a tu cliente, es Clave la Logística. Planifica todo el proceso de produccion, almacenaje y entrega hasta la puerta del cliente. Incluso hace una prueba comprandote a vos mismo, para ver el proceso desde el lado del cliente", 
+    "find_funding": "Te conviene conseguir financiamiento para empezar fuerte y conseguir muchos ingresos rapido. Tu opción son inversores privados o Programas de Financiamiento por el Estado o Bancos, Familia o Amigos", 
+    "save_for_urgency": "Tenes que guardar un poco de plata para emergencias. Esto tambien te da seguridad para dormir tranquilo por las noches. Te aconsejo comprar Dolares u otra moneda que sea facil de cambiar a Pesos para emergencias", 
+    "hire_secretary": "Contrata una Secretaria para que te ayude a organizarte asi no tenes que hacerlo vos", 
+    "use_personal_agenda": "Lleva una agenda o lista de tareas de cada dia, cada semana", 
+    "disconnect": "Desconectate de aquello que te distrae, desactiva notificaciones de aplicaciones, silencia chats de WhatsApp que no sean absolutamente prioritarios. Vas a ver que te enfocas mejor", 
+    "find_partner_for_support": "Tenes que buscar un socio en el cual puedas apoyarte, que sea alguien en quien confies y en lo posible de otra especialidad o de otro perfil que se complemente", 
+    "plan_breaks": "Planifica momentos de dispersion, donde puedas relajarte y bajar el stress", 
+    "invest_on_your_business": "Trata de comprar cosas que te sirvan a ahora y a largo plazo, pueden ser objetos fisicos o capacitaciones/workshops pagos", 
+    "aduana_suppliers": "Tene cuidado con la Aduana, que pueden retenerte y perderte mercaderia. En lo posible tenes que tener un extra de stock para cubrir estos problemas y que no te pare todo", 
+    "known_partner_divide_roles": "Conoce bien a tu socio y dividanse los roles. Charla seguido con el, compartan opiniones. Planifica alguna actividad recreativa fuera del trabajo para relajarse, conocerse mas y mantener una buena relacion", 
+    "outsource_control": "Para todo lo que vallas a subcontratar tenes que tener en cuenta que necesitas estar constantemene comunicados y participar en sus procesos, sino no van a trabajar bien para vos. Tenes que involucrarte de ves en cuando", 
+    "systematize": "Tenes que definir procedimientos a seguir en cada situacion, Sistematizar. Esto te permite organizarte para crecer y aprovechar las oportunidades", 
+    "assign_roles": "Asigna roles, dividi las tareas, designa quien se encarga de cada cosa, quienes son los responsables de hacer y quienes de controlar", 
+    "weekly_meetings": "Es muy importante planificar reuniones un dia a la semana para sentarse a charlar entre los socios sobre como vienen, como estan trabajando. Reserva tiempo para esto", 
+    "define_billing_process": "Es importante que definas el proceso de pagos y cobranzas, ¿Como te van a pagar? ¿Por que medios? ¿Cuando revisar que entro el pago? ¿Quien controla?", 
+    "therapy": "La terapia puede ayudarte a desestresarte y controlar tus miedos para que no afecten al emprendimiento. Vas a notar que podes enfocarte mejor y conseguir mejores resultados", 
+    "do_sport": "El deporte y la meditacion pueden ayudarte a desestresarte y tener mas energia al alejarte de tu emprendimiento por un rato", 
+    "keep_yourself_busy": "Mantenete ocupado dentro y fuera de lo laboral asi no te genera ansiedad y te agota la energia", 
     "talk_partner_objetives": "PENDING", 
     "carefull_deferred_payment": "PENDING", 
     "cross_control": "PENDING", 
@@ -474,15 +479,15 @@
   "plan": {
     "management_plan": {
       "title": "Plan de Administracion",
-      "description": "Descripcion de Plan de Administracion"
+      "description": "PENDING"
     },
     "commercial_plan": {
       "title": "Plan de Comercializacion",
-      "description": "Descripcion de Plan de Comercializacion"
+      "description": "PENDING"
     },
     "communication_plan": {
       "title": "Plan de Comunicacion",
-      "description": "Descripcion de Plan de Comunicacion"
+      "description": "PENDING"
     }
   }
 }
