@@ -1,20 +1,50 @@
 import { ChatBotUtil } from 'i-chatbot'
 import { TAPi18n } from 'meteor/tap:i18n';
 
-const saveAnswer = function (step, questionNumber, answerNumber) {
-
-}
-
-const GOALS_QUESTIONS_ANSWERS_AMOUNT = [
-  2, 4
+// For each question, an array of boolean indicating if it is a multiple answer selection
+let GOALS_QUESTIONS = [
+  { 
+    'question': 1,
+    'answersAmount': 2,
+    'selectedAnswers': [],
+    'multipleSelection': true
+  },
+  { 
+    'question': 2,
+    'answersAmount': 4,
+    'selectedAnswers': [],
+    'multipleSelection': true
+  }
 ];
 
-const CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT = [
-  2, 2
+let CONTRIBUTIONS_QUESTIONS = [
+  { 
+    'question': 1,
+    'answersAmount': 2,
+    'selectedAnswers': [],
+    'multipleSelection': false
+  },
+  { 
+    'question': 2,
+    'answersAmount': 2,
+    'selectedAnswers': [],
+    'multipleSelection': false
+  }
 ];
 
-const IDENTITY_QUESTIONS_ANSWERS_AMOUNT = [
-  2, 2
+let IDENTITY_QUESTIONS = [
+  { 
+    'question': 1,
+    'answersAmount': 2,
+    'selectedAnswers': [],
+    'multipleSelection': false
+  },
+  { 
+    'question': 2,
+    'answersAmount': 2,
+    'selectedAnswers': [],
+    'multipleSelection': false
+  }
 ];
 
 const t = function (text) {
@@ -54,7 +84,7 @@ const buildCurrentQuestion = function (hasToShowNextQuestionAnswer) {
   if (hasToShowNextQuestionAnswer) {
     questionAswersArray.push(
       ChatBotUtil.makeReplyButton(
-        'Siguiente pregunta',
+        t('nextQuestion'),
         Logic.nextCallback
       )
     );
@@ -77,10 +107,6 @@ class Logic {
   static generatePossibleAnswers;
   static nextCallback;
   static possibleAnswers;
-
-  static chosenAnswers = [
-    {}, {}, {}
-  ];
 
   static getStarted () {
     const userName = Meteor.users.findOne().personalInformation.name;
@@ -105,20 +131,28 @@ class Logic {
 
   static selectAnswerAndRepeatQuestion (stepIndex, currentQuestionNumber, answerToChoose) {
     
-    Logic.chosenAnswers[stepIndex]['q' + currentQuestionNumber].push('a' + answerToChoose); 
-   
-    const chosenNumbersAmount = Logic.chosenAnswers[stepIndex]['q' + currentQuestionNumber].length;
-
-    if (stepIndex == 0 && chosenNumbersAmount == GOALS_QUESTIONS_ANSWERS_AMOUNT[currentQuestionNumber - 1]) {
-      return Logic.goalQuestion();
+    if (stepIndex == 0) {
+      GOALS_QUESTIONS[currentQuestionNumber - 1].selectedAnswers.push(answerToChoose);
+      if(GOALS_QUESTIONS[currentQuestionNumber - 1].answersAmount == GOALS_QUESTIONS[currentQuestionNumber - 1].selectedAnswers.length
+        || !GOALS_QUESTIONS[currentQuestionNumber - 1].multipleSelection) {
+        return Logic.goalQuestion();
+      }
     }
 
-    if (stepIndex == 1 && chosenNumbersAmount == CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT[currentQuestionNumber - 1]) {
-      return Logic.contributionQuestion();
+    if (stepIndex == 1) {
+      CONTRIBUTIONS_QUESTIONS[currentQuestionNumber - 1].selectedAnswers.push(answerToChoose);
+      if(CONTRIBUTIONS_QUESTIONS[currentQuestionNumber - 1].answersAmount == CONTRIBUTIONS_QUESTIONS[currentQuestionNumber - 1].selectedAnswers.length
+        || !CONTRIBUTIONS_QUESTIONS[currentQuestionNumber - 1].multipleSelection) {
+        return Logic.contributionQuestion();
+      }
     }
 
-    if (stepIndex == 2 && chosenNumbersAmount == IDENTITY_QUESTIONS_ANSWERS_AMOUNT[currentQuestionNumber - 1]) {
-      return Logic.identityQuestion();
+    if (stepIndex == 2) {
+      IDENTITY_QUESTIONS[currentQuestionNumber - 1].selectedAnswers.push(answerToChoose);
+      if(IDENTITY_QUESTIONS[currentQuestionNumber - 1].answersAmount == IDENTITY_QUESTIONS[currentQuestionNumber - 1].selectedAnswers.length
+        || !IDENTITY_QUESTIONS[currentQuestionNumber - 1].multipleSelection) {
+        return Logic.identityQuestion();
+      }
     }
 
     Logic.currentQuestion = '###EMPTY###';
@@ -129,12 +163,10 @@ class Logic {
   static goalAnswersGenerator (_currentQuestionNumber) {
     let currentPossibleAnswers = [];
 
-    const possibleAnswersAmount = GOALS_QUESTIONS_ANSWERS_AMOUNT[_currentQuestionNumber - 1];
-
-    Logic.chosenAnswers[0]['q' + _currentQuestionNumber] = Logic.chosenAnswers[0]['q' + _currentQuestionNumber] || [];
+    const possibleAnswersAmount = GOALS_QUESTIONS[_currentQuestionNumber - 1].answersAmount;
 
     for(var answerNumber = 1; answerNumber <= possibleAnswersAmount; answerNumber++){
-      const hasBeenChosen = Logic.chosenAnswers[0]['q' + _currentQuestionNumber].includes('a' + answerNumber); 
+      const hasBeenChosen =  GOALS_QUESTIONS[_currentQuestionNumber - 1].selectedAnswers.includes(answerNumber); 
       if (hasBeenChosen) {
         continue;
       }
@@ -154,12 +186,10 @@ class Logic {
   static contributionAnswersGenerator (_currentQuestionNumber) {
     let currentPossibleAnswers = [];
 
-    const possibleAnswersAmount = CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT[_currentQuestionNumber - 1];
-
-    Logic.chosenAnswers[1]['q' + _currentQuestionNumber] = Logic.chosenAnswers[1]['q' + _currentQuestionNumber] || [];
+    const possibleAnswersAmount = CONTRIBUTIONS_QUESTIONS[_currentQuestionNumber - 1].answersAmount;
 
     for(var answerNumber = 1; answerNumber <= possibleAnswersAmount; answerNumber++){
-      const hasBeenChosen = Logic.chosenAnswers[1]['q' + _currentQuestionNumber].includes('a' + answerNumber); 
+      const hasBeenChosen = CONTRIBUTIONS_QUESTIONS[_currentQuestionNumber - 1].selectedAnswers.includes(answerNumber); 
       if (hasBeenChosen) {
         continue;
       }
@@ -179,12 +209,10 @@ class Logic {
   static identityAnswersGenerator (_currentQuestionNumber) {
     let currentPossibleAnswers = [];
 
-    const possibleAnswersAmount = IDENTITY_QUESTIONS_ANSWERS_AMOUNT[_currentQuestionNumber - 1];
-
-    Logic.chosenAnswers[2]['q' + _currentQuestionNumber] = Logic.chosenAnswers[2]['q' + _currentQuestionNumber] || [];
+    const possibleAnswersAmount = IDENTITY_QUESTIONS[_currentQuestionNumber - 1].answersAmount;
 
     for(var answerNumber = 1; answerNumber <= possibleAnswersAmount; answerNumber++){
-      const hasBeenChosen = Logic.chosenAnswers[2]['q' + _currentQuestionNumber].includes('a' + answerNumber); 
+      const hasBeenChosen = IDENTITY_QUESTIONS[_currentQuestionNumber - 1].selectedAnswers.includes(answerNumber); 
       if (hasBeenChosen) {
         continue;
       }
@@ -204,7 +232,7 @@ class Logic {
   static goalQuestion () {
     Logic.currentQuestionNumber++;
 
-    if (Logic.currentQuestionNumber > GOALS_QUESTIONS_ANSWERS_AMOUNT.length){
+    if (Logic.currentQuestionNumber > GOALS_QUESTIONS.length){
       Logic.currentStepIndex = 1;
       Logic.currentQuestionNumber = 0;
       return Logic.contributionQuestion();
@@ -218,7 +246,7 @@ class Logic {
     
     Logic.generatePossibleAnswers = () => Logic.goalAnswersGenerator(_currentQuestionNumber);
 
-    const hasToShowNextQuestionAnswer =  Logic.chosenAnswers[0]['q' + _currentQuestionNumber]
+    const hasToShowNextQuestionAnswer =  GOALS_QUESTIONS[_currentQuestionNumber - 1].selectedAnswers.length > 0;
     return buildCurrentQuestion(hasToShowNextQuestionAnswer);
   }
 
@@ -226,7 +254,7 @@ class Logic {
     Logic.currentQuestionNumber++;
     Logic.currentQuestion = tcq(Logic.currentQuestionNumber); 
     
-    if (Logic.currentQuestionNumber > CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT.length){
+    if (Logic.currentQuestionNumber > CONTRIBUTIONS_QUESTIONS.length){
       Logic.currentStepIndex = 2;
       Logic.currentQuestionNumber = 0;
       return Logic.identityQuestion();
@@ -238,7 +266,7 @@ class Logic {
 
     Logic.generatePossibleAnswers = () => Logic.contributionAnswersGenerator(_currentQuestionNumber);
 
-    const hasToShowNextQuestionAnswer =  Logic.chosenAnswers[2]['q' + _currentQuestionNumber]
+    const hasToShowNextQuestionAnswer =  CONTRIBUTIONS_QUESTIONS[_currentQuestionNumber - 1].selectedAnswers.length > 0;
     return buildCurrentQuestion(hasToShowNextQuestionAnswer);
   }
 
@@ -246,7 +274,7 @@ class Logic {
     Logic.currentQuestionNumber++;
     Logic.currentQuestion = tiq(Logic.currentQuestionNumber); 
     
-    if (Logic.currentQuestionNumber > IDENTITY_QUESTIONS_ANSWERS_AMOUNT.length){
+    if (Logic.currentQuestionNumber > IDENTITY_QUESTIONS.length){
       return Logic.end();
     }
 
@@ -256,7 +284,7 @@ class Logic {
 
     Logic.generatePossibleAnswers = () => Logic.identityAnswersGenerator(_currentQuestionNumber);
 
-    const hasToShowNextQuestionAnswer =  Logic.chosenAnswers[2]['q' + _currentQuestionNumber]
+    const hasToShowNextQuestionAnswer =  IDENTITY_QUESTIONS[_currentQuestionNumber - 1].selectedAnswers.length > 0;
     return buildCurrentQuestion(hasToShowNextQuestionAnswer);
   }
 
