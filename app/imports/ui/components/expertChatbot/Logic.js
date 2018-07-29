@@ -101,6 +101,13 @@ const buildCurrentQuestion = function (hasToShowNextQuestionAnswer) {
 
 class Logic {
   
+  static goalsQuestionsAmount; 
+  static hasChosenGoalAnswer;
+  static selectGoalAnswer;
+  static hasChosenAtLeastOneGoalAnswer;
+  static goalsQuestionAnswersAmount;
+  static hasToJumpToNextGoalQuestion;
+
   static currentStepIndex;
   static currentQuestionNumber = 0;
   static currentQuestion;
@@ -132,9 +139,9 @@ class Logic {
   static selectAnswerAndRepeatQuestion (stepIndex, currentQuestionNumber, answerToChoose) {
     
     if (stepIndex == 0) {
-      GOALS_QUESTIONS[currentQuestionNumber - 1].selectedAnswers.push(answerToChoose);
-      if(GOALS_QUESTIONS[currentQuestionNumber - 1].answersAmount == GOALS_QUESTIONS[currentQuestionNumber - 1].selectedAnswers.length
-        || !GOALS_QUESTIONS[currentQuestionNumber - 1].multipleSelection) {
+      Logic.selectGoalAnswer(currentQuestionNumber, answerToChoose);
+    
+      if(Logic.hasToJumpToNextGoalQuestion(currentQuestionNumber)) {
         return Logic.goalQuestion();
       }
     }
@@ -155,7 +162,7 @@ class Logic {
       }
     }
 
-    Logic.currentQuestion = '###EMPTY###';
+    Logic.currentQuestion = t('youCanSelectMoreOptions');
     const hasToShowNextQuestionAnswer = true;
     return buildCurrentQuestion(hasToShowNextQuestionAnswer);
   }
@@ -163,10 +170,10 @@ class Logic {
   static goalAnswersGenerator (_currentQuestionNumber) {
     let currentPossibleAnswers = [];
 
-    const possibleAnswersAmount = GOALS_QUESTIONS[_currentQuestionNumber - 1].answersAmount;
+    const possibleAnswersAmount = Logic.goalsQuestionAnswersAmount(_currentQuestionNumber);
 
     for(var answerNumber = 1; answerNumber <= possibleAnswersAmount; answerNumber++){
-      const hasBeenChosen =  GOALS_QUESTIONS[_currentQuestionNumber - 1].selectedAnswers.includes(answerNumber); 
+      const hasBeenChosen =  Logic.hasChosenGoalAnswer(_currentQuestionNumber, answerNumber); 
       if (hasBeenChosen) {
         continue;
       }
@@ -232,7 +239,7 @@ class Logic {
   static goalQuestion () {
     Logic.currentQuestionNumber++;
 
-    if (Logic.currentQuestionNumber > GOALS_QUESTIONS.length){
+    if (Logic.currentQuestionNumber > Logic.goalsQuestionsAmount){
       Logic.currentStepIndex = 1;
       Logic.currentQuestionNumber = 0;
       return Logic.contributionQuestion();
@@ -246,7 +253,7 @@ class Logic {
     
     Logic.generatePossibleAnswers = () => Logic.goalAnswersGenerator(_currentQuestionNumber);
 
-    const hasToShowNextQuestionAnswer =  GOALS_QUESTIONS[_currentQuestionNumber - 1].selectedAnswers.length > 0;
+    const hasToShowNextQuestionAnswer =  Logic.hasChosenAtLeastOneGoalAnswer(_currentQuestionNumber);
     return buildCurrentQuestion(hasToShowNextQuestionAnswer);
   }
 

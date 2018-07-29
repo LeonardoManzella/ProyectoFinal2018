@@ -2,25 +2,76 @@ import React from 'react'
 import { Meteor } from 'meteor/meteor';
 import ChatBot, { ChatBotUtil } from 'i-chatbot'
 import Logic from './Logic.js'
+import InterviewQuestions from './InterviewQuestions.js'
 import { TAPi18n } from 'meteor/tap:i18n';
 
 export default class ExpertChatbot extends React.Component {
 	
 	constructor(props) {
 		super(props);
+
+		Logic.goalsQuestionsAmount = InterviewQuestions.goalQuestions.length;
+		Logic.goalsQuestionAnswersAmount = this.goalsQuestionAnswersAmount.bind(this);
+		Logic.hasChosenGoalAnswer = this.hasChosenGoalAnswer.bind(this);
+		Logic.selectGoalAnswer = this.selectGoalAnswer.bind(this);
+		Logic.hasChosenAtLeastOneGoalAnswer = this.hasChosenAtLeastOneGoalAnswer.bind(this);
+		Logic.hasToJumpToNextGoalQuestion = this.hasToJumpToNextGoalQuestion.bind(this);
+
 		this.state = {
-			hasStartedChat: false
+			hasStartedChat: false,
+			goalQuestions: InterviewQuestions.goalQuestions,
+			contributionsQuestions: InterviewQuestions.contributionsQuestions,
+			identityQuestions: InterviewQuestions.identityQuestions
 		};
-	  }
-	  
+	}
+
+	goalsQuestionAnswersAmount(questionNumber) {
+		return this.state
+			.goalQuestions[questionNumber - 1]
+			.answersAmount;
+	}
+
+	hasChosenAtLeastOneGoalAnswer(questionNumber) {
+		return this.state
+			.goalQuestions[questionNumber - 1]
+			.selectedAnswers
+			.legnth > 0;
+	}
+
+	hasChosenGoalAnswer(questionNumber, answerNumber) {
+		return this.state
+			.goalQuestions[questionNumber - 1]
+			.selectedAnswers
+			.includes(answerNumber);
+	}
+
+	hasToJumpToNextGoalQuestion(questionNumber) {
+		const goalQuestion = this.state.goalQuestions[questionNumber - 1]; 
+		return (goalQuestion.answersAmount == goalQuestion.selectedAnswers.length
+			|| !goalQuestion.multipleSelection);
+	}
+
+	selectGoalAnswer(questionNumber, answerNumber) {
+		let _goalQuestions = this.state.goalQuestions;
+		_goalQuestions[questionNumber - 1].selectedAnswers.push(answerNumber);
+		this.setState({
+			goalQuestions: _goalQuestions
+		});
+		this.cleanEmptyMessages();
+	}
+
 	showChatBot() {
 		this.setState({
 			hasStartedChat: true
 		});
 	}
 
-	onchange() {
-		$("span:contains('###EMPTY###')").first().parent().parent().parent().hide()
+	cleanEmptyMessages() {
+		
+		const youCanSelectMoreOptionsMessage = TAPi18n.__('interview.youCanSelectMoreOptions');
+		const spanSelector = "span:contains('" + youCanSelectMoreOptionsMessage + "')";
+		console.log('Span selector is: ' + spanSelector);
+		$(spanSelector).parent().parent().parent().hide();
 	}
 
 	getChatContent() {
