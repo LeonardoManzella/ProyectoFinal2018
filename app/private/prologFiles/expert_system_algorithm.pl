@@ -101,6 +101,8 @@ can_suggest(communication_plan, care_about_design).
 can_suggest(communication_plan, influencers).
 can_suggest(communication_plan, use_achievements_branding).
 can_suggest(communication_plan, guerrilla_marketing).
+can_suggest(communication_plan, press_and_magazines).
+can_suggest(communication_plan, client_frequent_places).
 
 valid_objetives_rule(wants_recognition, direct_marketing).
 valid_objetives_rule(wants_recognition, talks_workshops).
