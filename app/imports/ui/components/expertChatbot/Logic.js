@@ -1,22 +1,6 @@
 import { ChatBotUtil } from 'i-chatbot'
 import { TAPi18n } from 'meteor/tap:i18n';
 
-const saveAnswer = function (step, questionNumber, answerNumber) {
-
-}
-
-const GOALS_QUESTIONS_ANSWERS_AMOUNT = [
-  2, 4
-];
-
-const CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT = [
-  2, 2
-];
-
-const IDENTITY_QUESTIONS_ANSWERS_AMOUNT = [
-  2, 2
-];
-
 const t = function (text) {
   return TAPi18n.__('interview.' + text);
 }
@@ -26,9 +10,6 @@ const tgq = function (questionNumber) {
 }
 
 const tgqa = function (questionNumber, answerNumber) {
-
-  console.log('translating answer: ' + answerNumber);
-
   return t('goals.' + questionNumber + '.answers.' + answerNumber);
 }
 
@@ -49,21 +30,15 @@ const tiqa = function (questionNumber, answerNumber) {
 }
 
 const buildCurrentQuestion = function (hasToShowNextQuestionAnswer) {
-  let questionAswersArray = [];
-
-  console.log('building current question');
-
-  
-  questionAswersArray.push(Logic.currentQuestion);
+  let questionAswersArray = [Logic.currentQuestion];
 
   Logic.possibleAnswers = Logic.generatePossibleAnswers();
-
   questionAswersArray = questionAswersArray.concat(Logic.possibleAnswers);
  
   if (hasToShowNextQuestionAnswer) {
     questionAswersArray.push(
       ChatBotUtil.makeReplyButton(
-        'Siguiente pregunta',
+        t('nextQuestion'),
         Logic.nextCallback
       )
     );
@@ -80,16 +55,33 @@ const buildCurrentQuestion = function (hasToShowNextQuestionAnswer) {
 
 class Logic {
   
+  static goalsQuestionsAmount; 
+  static hasChosenGoalAnswer;
+  static selectGoalAnswer;
+  static hasChosenAtLeastOneGoalAnswer;
+  static goalsQuestionAnswersAmount;
+  static hasToJumpToNextGoalQuestion;
+
+  static contributionsQuestionsAmount; 
+  static hasChosenContributionAnswer;
+  static selectContributionAnswer;
+  static hasChosenAtLeastOneContributionAnswer;
+  static contributionsQuestionAnswersAmount;
+  static hasToJumpToNextContributionQuestion;
+
+  static identityQuestionsAmount; 
+  static hasChosenIdentityAnswer;
+  static selectIdentityAnswer;
+  static hasChosenAtLeastOneIdentityAnswer;
+  static identityQuestionAnswersAmount;
+  static hasToJumpToNextIdentityQuestion;
+
   static currentStepIndex;
   static currentQuestionNumber = 0;
   static currentQuestion;
   static generatePossibleAnswers;
   static nextCallback;
   static possibleAnswers;
-
-  static chosenAnswers = [
-    {}, {}, {}
-  ];
 
   static getStarted () {
     const userName = Meteor.users.findOne().personalInformation.name;
@@ -114,13 +106,31 @@ class Logic {
 
   static selectAnswerAndRepeatQuestion (stepIndex, currentQuestionNumber, answerToChoose) {
     
-    Logic.chosenAnswers[stepIndex]['q' + currentQuestionNumber].push('a' + answerToChoose); 
-   
-    //return Logic.goalQuestion();
+    if (stepIndex == 0) {
+      Logic.selectGoalAnswer(currentQuestionNumber, answerToChoose);
+    
+      if(Logic.hasToJumpToNextGoalQuestion(currentQuestionNumber)) {
+        return Logic.goalQuestion();
+      }
+    }
 
-    console.log(Logic.chosenAnswers[0]);
+    if (stepIndex == 1) {
+      Logic.selectContributionAnswer(currentQuestionNumber, answerToChoose);
+    
+      if(Logic.hasToJumpToNextContributionQuestion(currentQuestionNumber)) {
+        return Logic.contributionQuestion();
+      }
+    }
 
-    Logic.currentQuestion = '###EMPTY###';
+    if (stepIndex == 2) {
+      Logic.selectIdentityAnswer(currentQuestionNumber, answerToChoose);
+    
+      if(Logic.hasToJumpToNextIdentityQuestion(currentQuestionNumber)) {
+        return Logic.identityQuestion();
+      }
+    }
+
+    Logic.currentQuestion = t('youCanSelectMoreOptions');
     const hasToShowNextQuestionAnswer = true;
     return buildCurrentQuestion(hasToShowNextQuestionAnswer);
   }
@@ -128,12 +138,10 @@ class Logic {
   static goalAnswersGenerator (_currentQuestionNumber) {
     let currentPossibleAnswers = [];
 
-    const possibleAnswersAmount = GOALS_QUESTIONS_ANSWERS_AMOUNT[_currentQuestionNumber - 1];
-
-    Logic.chosenAnswers[0]['q' + _currentQuestionNumber] = Logic.chosenAnswers[0]['q' + _currentQuestionNumber] || [];
+    const possibleAnswersAmount = Logic.goalsQuestionAnswersAmount(_currentQuestionNumber);
 
     for(var answerNumber = 1; answerNumber <= possibleAnswersAmount; answerNumber++){
-      const hasBeenChosen = Logic.chosenAnswers[0]['q' + _currentQuestionNumber].includes('a' + answerNumber); 
+      const hasBeenChosen =  Logic.hasChosenGoalAnswer(_currentQuestionNumber, answerNumber); 
       if (hasBeenChosen) {
         continue;
       }
@@ -153,12 +161,10 @@ class Logic {
   static contributionAnswersGenerator (_currentQuestionNumber) {
     let currentPossibleAnswers = [];
 
-    const possibleAnswersAmount = CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT[_currentQuestionNumber - 1];
-
-    Logic.chosenAnswers[1]['q' + _currentQuestionNumber] = Logic.chosenAnswers[1]['q' + _currentQuestionNumber] || [];
+    const possibleAnswersAmount = Logic.contributionsQuestionAnswersAmount(_currentQuestionNumber);
 
     for(var answerNumber = 1; answerNumber <= possibleAnswersAmount; answerNumber++){
-      const hasBeenChosen = Logic.chosenAnswers[1]['q' + _currentQuestionNumber].includes('a' + answerNumber); 
+      const hasBeenChosen =  Logic.hasChosenContributionAnswer(_currentQuestionNumber, answerNumber);
       if (hasBeenChosen) {
         continue;
       }
@@ -178,12 +184,10 @@ class Logic {
   static identityAnswersGenerator (_currentQuestionNumber) {
     let currentPossibleAnswers = [];
 
-    const possibleAnswersAmount = IDENTITY_QUESTIONS_ANSWERS_AMOUNT[_currentQuestionNumber - 1];
-
-    Logic.chosenAnswers[2]['q' + _currentQuestionNumber] = Logic.chosenAnswers[2]['q' + _currentQuestionNumber] || [];
+    const possibleAnswersAmount = Logic.identityQuestionAnswersAmount(_currentQuestionNumber);
 
     for(var answerNumber = 1; answerNumber <= possibleAnswersAmount; answerNumber++){
-      const hasBeenChosen = Logic.chosenAnswers[2]['q' + _currentQuestionNumber].includes('a' + answerNumber); 
+      const hasBeenChosen =  Logic.hasChosenIdentityAnswer(_currentQuestionNumber, answerNumber); 
       if (hasBeenChosen) {
         continue;
       }
@@ -202,21 +206,22 @@ class Logic {
 
   static goalQuestion () {
     Logic.currentQuestionNumber++;
+
+    if (Logic.currentQuestionNumber > Logic.goalsQuestionsAmount){
+      Logic.currentStepIndex = 1;
+      Logic.currentQuestionNumber = 0;
+      return Logic.contributionQuestion();
+    }
+    
     Logic.currentQuestion = tgq(Logic.currentQuestionNumber); 
     
     const _currentQuestionNumber = Logic.currentQuestionNumber;
 
-    if (Logic.currentQuestionNumber == GOALS_QUESTIONS_ANSWERS_AMOUNT.length){
-      Logic.currentStepIndex = 1;
-      Logic.currentQuestionNumber = 0;
-      Logic.nextCallback = Logic.contributionQuestion;
-    } else {
-      Logic.nextCallback = Logic.goalQuestion;
-    }
+    Logic.nextCallback = Logic.goalQuestion;
     
     Logic.generatePossibleAnswers = () => Logic.goalAnswersGenerator(_currentQuestionNumber);
 
-    const hasToShowNextQuestionAnswer =  Logic.chosenAnswers[0]['q' + _currentQuestionNumber]
+    const hasToShowNextQuestionAnswer =  Logic.hasChosenAtLeastOneGoalAnswer(_currentQuestionNumber);
     return buildCurrentQuestion(hasToShowNextQuestionAnswer);
   }
 
@@ -224,19 +229,19 @@ class Logic {
     Logic.currentQuestionNumber++;
     Logic.currentQuestion = tcq(Logic.currentQuestionNumber); 
     
-    const _currentQuestionNumber = Logic.currentQuestionNumber;
-
-    if (Logic.currentQuestionNumber == CONTRIBUTIONS_QUESTIONS_ANSWERS_AMOUNT.length){
+    if (Logic.currentQuestionNumber > Logic.contributionsQuestionsAmount){
       Logic.currentStepIndex = 2;
       Logic.currentQuestionNumber = 0;
-      Logic.nextCallback = Logic.identityQuestion;
-    } else {
-      Logic.nextCallback = Logic.contributionQuestion;
+      return Logic.identityQuestion();
     }
-    
+
+    Logic.nextCallback = Logic.contributionQuestion;
+
+    const _currentQuestionNumber = Logic.currentQuestionNumber;
+
     Logic.generatePossibleAnswers = () => Logic.contributionAnswersGenerator(_currentQuestionNumber);
 
-    const hasToShowNextQuestionAnswer =  Logic.chosenAnswers[2]['q' + _currentQuestionNumber]
+    const hasToShowNextQuestionAnswer =  Logic.hasChosenAtLeastOneContributionAnswer(_currentQuestionNumber);
     return buildCurrentQuestion(hasToShowNextQuestionAnswer);
   }
 
@@ -244,17 +249,17 @@ class Logic {
     Logic.currentQuestionNumber++;
     Logic.currentQuestion = tiq(Logic.currentQuestionNumber); 
     
+    if (Logic.currentQuestionNumber > Logic.identityQuestionsAmount){
+      return Logic.end();
+    }
+
     const _currentQuestionNumber = Logic.currentQuestionNumber;
 
-    if (Logic.currentQuestionNumber == IDENTITY_QUESTIONS_ANSWERS_AMOUNT.length){
-      Logic.nextCallback = Logic.end;
-    } else {
-      Logic.nextCallback = Logic.identityQuestion;
-    }
-    
+    Logic.nextCallback = Logic.identityQuestion;
+
     Logic.generatePossibleAnswers = () => Logic.identityAnswersGenerator(_currentQuestionNumber);
 
-    const hasToShowNextQuestionAnswer =  Logic.chosenAnswers[2]['q' + _currentQuestionNumber]
+    const hasToShowNextQuestionAnswer =  Logic.hasChosenAtLeastOneIdentityAnswer(_currentQuestionNumber);
     return buildCurrentQuestion(hasToShowNextQuestionAnswer);
   }
 

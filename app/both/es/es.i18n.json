@@ -396,6 +396,8 @@
     "greetings1" : "Hola",
     "greetings2" : "Bienvenido",
     "responseGreetings" : "Gracias! Quiero empezar a modelar mi emprendimiento",
+    "youCanSelectMoreOptions" : "Puedes seleccionar más opciones, o continuar a la siguiente pregunta",
+    "nextQuestion" : "Siguiente pregunta",
     "goodbye" : "Felicidades, la entrevista ha terminado",
     "goodbyeSuggestions" : "Ya puedes acceder Modelo y Áreas de Negocio, FODA, y plan de riesgos",
     "goodbyeResponse" : "Adiós!",
