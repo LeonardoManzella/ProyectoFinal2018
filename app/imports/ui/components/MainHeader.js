@@ -52,7 +52,7 @@ class MainHeader extends React.Component {
     this.toggle();
     Meteor.logout((error) => {
       if (!error) {
-        FlowRouter.go('login');
+        FlowRouter.go('landing');
       }
     });
   }

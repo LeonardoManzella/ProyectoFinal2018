@@ -9,7 +9,7 @@ class Pending extends React.Component {
   logout() {
     Meteor.logout((err) => {
       if (!err) {
-        FlowRouter.go('login');
+        FlowRouter.go('landing');
       }
     });
   }
