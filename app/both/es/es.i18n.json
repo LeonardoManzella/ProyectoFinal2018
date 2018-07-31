@@ -483,22 +483,22 @@
       "title": "Plan de Administracion",
       "description_part_1": "aprovechar los recursos que tenes y trabajar para conseguir los que no tenes.",
       "description_part_2": "Te permite organizarte como administrar tu emprendimiento y trabajar sobre vos como emprendedor y persona.",
-      "guide_part_1": "PENDING 1",
-      "guide_part_2": "PENDING 2"
+      "guide_part_1": "Lo primero que tenes que hacer es pensar todo lo que necesitas para poder trabajar de forma ordenada, ser productivo y estar bien mentalmente",
+      "guide_part_2": "Lo segundo, consiste en analizar que recursos tenes para aprovechar tus fortalezas y que recursos necesitas pero aun no los tenes, estos ultimos debes conseguirlos"
     },
     "commercial_plan": {
       "title": "Plan Comercial",
       "description_part_1": "enfocarte en vender y como debes hacer crecer tu negocio desarrollando tus fuentes de ingreso.",
       "description_part_2": "Se trata de como interactuar con el mundo exterior.",
-      "guide_part_1": "PENDING 1",
-      "guide_part_2": "PENDING 2"
+      "guide_part_1": "Primero, enfocate de que manera vas a llegar a tus clientes para venderles: ¿Donde me encuentran? ¿Como llego a mis clientes? ¿Como los convenzo de comprar?",
+      "guide_part_2": "Despues, tenes que trabajar las relaciones en tu segmento del mercado para llegar a mas clientes "
     },
     "communication_plan": {
       "title": "Plan de Comunicacion",
       "description_part_1": "definir que hacer para darte a conocer y dar confianza a los clientes.",
       "description_part_2": "Se trata de armar un mensaje claro basado en tu identidad usando las herramientas que mejor se adecuen a vos.",
-      "guide_part_1": "PENDING 1",
-      "guide_part_2": "PENDING 2"
+      "guide_part_1": "Primero, basandote en tu identidad y quien sos arma el mensaje de marca que queres mostrarles a tu cliente. Debe ser autentico, corto y estar relacionado con los intereses de tus clientes. Para crearlo defini los adjetivos, las emociones y los beneficios clave que mejor se asocian con tu marca",
+      "guide_part_2": "Luego, consiste en elegir las herramientas de comunicacion adecuadas para darte a conocer ante tus cleitnes"
     }
   }
 }
