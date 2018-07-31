@@ -9,7 +9,18 @@ class Logic {
 
   static translate = (string) => TAPi18n.__(string);
   static getPlanTitle = () => Logic.translate(`plan.${Logic.getActualPlan()}.title`);
-  static getPlanDescription = () => Logic.translate(`plan.${Logic.getActualPlan()}.description`);
+  static getPlanDescriptions = () => 
+    [].concat(
+      Logic.translate(`plan.${Logic.getActualPlan()}.description_part_1`)
+      ).concat(
+      Logic.translate(`plan.${Logic.getActualPlan()}.description_part_2`) 
+      );
+  static getPlanGuide = () => 
+    [].concat(
+      Logic.translate(`plan.${Logic.getActualPlan()}.guide_part_1`)
+      ).concat(
+      Logic.translate(`plan.${Logic.getActualPlan()}.guide_part_2`) 
+      );
   static translateSuggestion = (suggestion) => Logic.translate(`suggestions.${suggestion.toString()}`);
 
   static getStarted = (plan_context) => { //Using a Closure and a Static variable to storage state client-side
@@ -30,7 +41,8 @@ class Logic {
     console.log(actual_plan_context + ' was selected');
     return [
       ChatBotUtil.textMessage(`Un ${Logic.getPlanTitle()} te permite...`),
-      ChatBotUtil.textMessage(Logic.getPlanDescription(),
+      ...Logic.getPlanDescriptions().map(description => ChatBotUtil.textMessage(description)),
+      ChatBotUtil.textMessage(`Por eso se llama ${Logic.getPlanTitle()}.`,
         ChatBotUtil.makeReplyButton('Ok! Lo tengo', Logic.menu)
       )
     ]
@@ -52,14 +64,13 @@ class Logic {
     return [
       ChatBotUtil.textMessage("¿En que puedo ayudarte?",
         ChatBotUtil.makeReplyButton(`Que es un ${Logic.getPlanTitle()}?`,() => Logic.plan()),
+        ChatBotUtil.makeReplyButton('Guiame',() =>  Logic.guide()),
         ChatBotUtil.makeReplyButton('Sugerime Cosas',() =>  Logic.show_suggestions())
       )
     ]
   }
 
   static show_suggestions () {
-    console.warn(Logic.suggestions);
-    
     return [
       ChatBotUtil.textMessage('Basandome en tus caracteristicas..')
     ].concat(
@@ -67,8 +78,22 @@ class Logic {
     ).concat(
       [
         ChatBotUtil.textMessage('Concentrate en esas por ahora'),
-      ChatBotUtil.textMessage('Mas adelante habran mas sugerencias',
+        ChatBotUtil.textMessage('Mas adelante habran mas sugerencias',
         ChatBotUtil.makeReplyButton('Entendido', Logic.menu)
+      )
+      ]
+    );
+  }
+
+  static guide () {
+    return [
+      ChatBotUtil.textMessage('Dale! Te guio...')
+    ].concat(
+      Logic.getPlanGuide().map( guide_part => ChatBotUtil.textMessage(guide_part))
+    ).concat(
+      [
+        ChatBotUtil.textMessage('Siguiendo esto vas a estar bien',
+        ChatBotUtil.makeReplyButton('Gracias!', Logic.menu)
       )
       ]
     );
