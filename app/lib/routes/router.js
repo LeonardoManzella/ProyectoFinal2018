@@ -21,6 +21,7 @@ import CanvasContainer from '../../imports/ui/containers/canvasContainers/Canvas
 import SwotContainer from '../../imports/ui/containers/swotAndRisksContainers/SwotContainer';
 import RisksContainer from '../../imports/ui/containers/swotAndRisksContainers/RisksContainer';
 import HomePage from '../../imports/ui/components/HomePage';
+import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot.jsx'
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'notFound'];
@@ -124,7 +125,7 @@ FlowRouter.route('/expert', {
 FlowRouter.route('/chatbot', {
   name: 'chatbot',
   action: function() {
-    mount(MainLayout, {content: <SuggestionsChatbot/>});  //TODO restablecer referencia al ExpertChatbot de Martin
+    mount(MainLayout, {content: <ExpertChatbot/>});
   }
 })
 
