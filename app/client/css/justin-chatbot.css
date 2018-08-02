@@ -17,7 +17,7 @@
     padding: .5em;
     text-align: center;
     vertical-align: middle;
-    white-space: nowrap;
+    white-space: pre-line;
     position: absolute;
     left: 0;
     right: 0;
@@ -26,7 +26,7 @@
 }
 .I-ChatBot ul.ActionBar li.Action {
     display: inline-block;
-    margin: 0 .5em;
+    margin: .4em;
 }
 .I-ChatBot ul.ActionBar li.Action button, .I-ChatBot ul.ActionBar li.Action input {
     border: none;

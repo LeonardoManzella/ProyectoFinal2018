@@ -379,7 +379,8 @@ p.hash {
 }
 
 .chatbot-menu .I-ChatBot ul.ActionBar {
-  overflow-y: hidden;
+  overflow-y: scroll;
+  overflow-x: visible;
 }
 
 .chatbot-menu .I-ChatBot ul.Messages {
@@ -783,7 +784,7 @@ ol.progtrckr li:before {
 .bm-menu {
   background: #ffffff;
   padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+  font-size: 1em;
 }
 
 .main-menu .bm-menu {

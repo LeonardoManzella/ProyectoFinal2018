@@ -36,6 +36,31 @@ db.getCollection('users').insert([
     }
   },
   {
+    "_id": "VazBtJffQD3po9z2u",
+    "createdAt": ISODate("2018-01-23T19:11:06.578Z"),
+    "services": {
+      "password": {
+        "bcrypt": "$2a$10$rcSqSWZ7hWLniyw2JFAxJurE9nTHntOv/X6GjZVqq5qF4j1nwlNZC"
+      },
+      "resume": {
+        "loginTokens": []
+      }
+    },
+    "roles": ["adminAdmin"],
+    "emails": [ 
+      {
+        "address": "admin@admin.com",
+        "verified": false
+      }
+    ],
+    "personalInformation": {
+      "name": "Maintanance",
+      "surname": "Admin",
+      "phone": "1234",
+      "status": "approved"
+    }
+  },
+  {
     "_id" : "WazBtJffQp3po9z2e",
     "createdAt" : ISODate("2018-01-23T19:11:06.578Z"),
     "services" : {

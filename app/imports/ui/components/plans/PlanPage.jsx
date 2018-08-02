@@ -2,6 +2,8 @@ import React from 'react';
 import StepZilla from 'react-stepzilla';
 import PlanList from './PlanList';
 import PropTypes from 'prop-types';
+import { push as Menu } from 'react-burger-menu';
+import SuggestionsChatbot from '../suggestionsChatbot/SuggestionsChatbot';
 
 const emptyPlanItem = {
   tool: '',
@@ -18,10 +20,26 @@ const emptyPlan = {
 const planTypes = [
   {
     name: "PLAN DE ADMINISTRACIÓN",
-    title: "de Administración",
-    component: <PlanList/>
+    title: "DE ADMINISTRACIÓN",
+    component: <PlanList/>,
+    plan_category: 'management_plan'
   },
   {
+    name: "PLAN DE COMUNICACIÓN",
+    title: "DE COMUNICACIÓN",
+    component: <PlanList/>,
+    plan_category: 'communication_plan'
+  },
+  {
+    name: "PLAN COMERCIAL",
+    title: "COMERCIALES",
+    component: <PlanList/>,
+    plan_category: 'commercial_plan'
+  }
+  /*
+  ,
+  {
+    //TODO agregar codigo referencia Prolog en cada tipo
     name: "PLAN LEGAL",
     title: "Legales",
     component: <PlanList/>
@@ -37,16 +55,6 @@ const planTypes = [
     component: <PlanList/>
   },
   {
-    name: "PLAN COMERCIAL",
-    title: "Comerciales",
-    component: <PlanList/>
-  },
-  {
-    name: "PLAN DE COMUNICACIÓN",
-    title: "de Comunicación",
-    component: <PlanList/>
-  },
-  {
     name: "PLAN ECONÓMICO / FINANCIERO",
     title: "Económicos / Financieros",
     component: <PlanList/>
@@ -56,6 +64,7 @@ const planTypes = [
     title: "de Sistemas",
     component: <PlanList/>
   }
+  */
 ];
 
 class PlanPage extends React.Component {
@@ -70,10 +79,12 @@ class PlanPage extends React.Component {
           .map(plan => ({data: plan.data, editable: plan.editable}))
         : []
     }));
+    const INITIAL = 0;
     this.state = {
       plans,
       selectedBusinessArea: '',
-      currentStep: 0
+      currentStep: INITIAL,
+      currentPlan: planTypes[INITIAL].plan_category
     };
   }
 
@@ -139,6 +150,22 @@ class PlanPage extends React.Component {
     Meteor.call('insertNewPlanList', this.state.plans);
   }
 
+  adjustScreen(event) {
+    if (event.isOpen) {
+      document.getElementById("page-wrap").setAttribute("class", "page-wrapper");
+    } else {
+      document.getElementById("page-wrap").removeAttribute("class", "page-wrapper");
+    }
+  }
+
+  getBurgerIcon() {
+    return (
+      <div>
+        <img src="/img/chatbot.png" />
+      </div>
+    );
+  }
+
 	render() {
     let steps = Object.assign([], planTypes);
     steps = steps.map((step, index) => {
@@ -159,29 +186,40 @@ class PlanPage extends React.Component {
       return newStep;
     });
 		return (
-			<div className="content-body plan">
-        <div className='step-progress'>
-          <StepZilla
-            steps={steps}
-            nextButtonText='Siguiente'
-            backButtonText='Anterior'
-            // prevBtnOnLastStep={false}
-            backButtonCls='backButtonClass'
-            nextButtonCls='nextButtonClass'
-            onStepChange={(step) => this.setState({currentStep: step})}
-          />
+      <div>
+        <div className="chatbot-menu">
+          <Menu
+            onStateChange={this.adjustScreen.bind(this)}
+            customBurgerIcon={this.getBurgerIcon()}
+            right noOverlay
+          >
+            <SuggestionsChatbot current_plan_prop={this.state.currentPlan}/>
+          </Menu>
         </div>
-        { // FIXME: Ver de usar solo al principio, cuando se da el Alta, y no para Baja y Modif
-          /* {
-          this.state.currentStep === steps.length - 1 ?
-            <div className="footer-buttons">
-              <button className="nextButtonClass" id="next-button" onClick={this.savePlans.bind(this)}>
-                Guardar Planes
-              </button>
-            </div>
-            : ''
-        } */}
-			</div>
+        <div className="content-body plan">
+          <div className='step-progress'>
+            <StepZilla
+              steps={steps}
+              nextButtonText='Siguiente'
+              backButtonText='Anterior'
+              // prevBtnOnLastStep={false}
+              backButtonCls='backButtonClass'
+              nextButtonCls='nextButtonClass'
+              onStepChange={(step) => this.setState({currentStep: step, currentPlan: planTypes[step].plan_category})}
+            />
+          </div>
+          { // FIXME: Ver de usar solo al principio, cuando se da el Alta, y no para Baja y Modif
+            /* {
+            this.state.currentStep === steps.length - 1 ?
+              <div className="footer-buttons">
+                <button className="nextButtonClass" id="next-button" onClick={this.savePlans.bind(this)}>
+                  Guardar Planes
+                </button>
+              </div>
+              : ''
+          } */}
+        </div>
+      </div>
 		);
 			
 	}
