@@ -404,29 +404,136 @@
     "goals" : {
       
       "1" : {
-        "question" : "Qué objetivos planeás lograr con este emprendimiento?",
+        "question" : "¿Qué objetivos planeás lograr con este emprendimiento?",
         "answers" : {
-          "1" : "Pasarla bien",
-          "2" : "Plata"
+          "1" : "answer1",
+          "2" : "answer2"
         }
       },
       
       "2" : {
-        "question" : "Querés vender un...?",
+        "question" : "¿Querés vender un...?",
         "answers" : {
-          "1" : "Producto",
-          "2" : "Servicio",
-          "3" : "Ambos",
-          "4" : "No lo sé"
+          "1" : "answer1",
+          "2" : "answer2"
+        }
+      },
+
+      "3" : {
+        "question" : "¿Te interesa vender alguno de estos tipos de productos?",
+        "answers" : {
+          "1" : "answer1",
+          "2" : "answer2"
+        }
+      },
+
+      "4" : {
+        "question" : "¿Te interesa vender alguno de estos servicios?",
+        "answers" : {
+          "1" : "answer1",
+          "2" : "answer2"
+        }
+      },
+
+      "5" : {
+        "question" : "¿Tu objetivo comercial inmediato es...?",
+        "answers" : {
+          "1" : "answer1",
+          "2" : "answer2"
+        }
+      },
+
+      "6" : {
+        "question" : "¿Tu Producto/Servicio es...?",
+        "answers" : {
+          "1" : "answer1",
+          "2" : "answer2"
+        }
+      },
+
+      "7" : {
+        "question" : "¿Querés vender en...?",
+        "answers" : {
+          "1" : "answer1",
+          "2" : "answer2"
+        }
+      },
+
+      "8" : {
+        "question" : "¿Te gusta la idea de formar alianzas con otros para que vendan tus productos?",
+        "answers" : {
+          "1" : "answer1",
+          "2" : "answer2"
         }
       }
-      
+
     },
 
     "contributions" : {
       
       "1" : {
-        "question" : "Tenés ahorros?",
+        "question" : "¿Tenés ahorros/financiación o podés conseguir plata para el emprendimiento?",
+        "answers" : {
+          "1" : "answer1",
+          "2" : "answer2"
+        }
+      },
+      
+      "2" : {
+        "question" : "¿Tenés una cuenta bancaria para usar con el emprendimiento?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "3" : {
+        "question" : "¿Tenés una cuenta donde apalancarte financieramente? ¿Podés sacar préstamos en caso de emergencia?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "4" : {
+        "question" : "¿Qué nivel educativo tenés?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "5" : {
+        "question" : "¿Tenés un socio para el emprendimiento?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "6" : {
+        "question" : "¿En tu vida personal, tendés a llevar la cuenta de los gastos e ingresos, un balance?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "7" : {
+        "question" : "¿Tuviste alguna experiencia liderando o manejando personal?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      }
+
+    },
+
+
+    "identity" : {
+      
+      "1" : {
+        "question" : "¿Con qué conjunto de palabras te identificás más?",
         "answers" : {
           "1" : "Tengo mucha guita",
           "2" : "Soy de África"
@@ -434,34 +541,53 @@
       },
       
       "2" : {
-        "question" : "Tenés una cuenta bancaria?",
+        "question" : "¿Con qué estilo te identificás más?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "3" : {
+        "question" : "¿Te llevás mejor con gente Joven o Vieja?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "4" : {
+        "question" : "¿Tenés contactos o te relacionás con gente que podría ayudarte a emprender?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "5" : {
+        "question" : "¿Te es fácil socializar con las personas?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "6" : {
+        "question" : "¿Te gusta aprender por tu cuenta/leer?",
+        "answers" : {
+          "1" : "Sí",
+          "2" : "No"
+        }
+      },
+
+      "7" : {
+        "question" : "¿Tuviste alguna experiencia liderando o manejando personal?",
         "answers" : {
           "1" : "Sí",
           "2" : "No"
         }
       }
-      
-    },
 
-
-    "identity" : {
-      
-      "1" : {
-        "question" : "Con qué palabras?",
-        "answers" : {
-          "1" : "Empresario",
-          "2" : "Palermo"
-        }
-      },
-      
-      "2" : {
-        "question" : "Con qué estilo?",
-        "answers" : {
-          "1" : "Hipster",
-          "2" : "Skater"
-        }
-      }
-      
     }
   }
 }
