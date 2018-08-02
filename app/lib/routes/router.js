@@ -16,7 +16,7 @@ import TasksBoard from '../../imports/ui/components/task/TasksBoard'
 import Expert from '../../imports/ui/components/expert/Expert'
 import Chart from '../../imports/ui/components/chart/Chart'
 import RemindersContainer from '../../imports/ui/containers/remindersContainer/RemindersContainer';
-import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot';
+import SuggestionsChatbot from '../../imports/ui/components/suggestionsChatbot/SuggestionsChatbot';
 import PlanContainer from '../../imports/ui/containers/userTasksContainers/PlanContainer';
 import CanvasContainer from '../../imports/ui/containers/canvasContainers/CanvasContainer';
 import SwotContainer from '../../imports/ui/containers/swotAndRisksContainers/SwotContainer';
@@ -117,7 +117,7 @@ FlowRouter.route('/expert', {
 FlowRouter.route('/chatbot', {
   name: 'chatbot',
   action: function() {
-    mount(MainLayout, {content: <ExpertChatbot/>});
+    mount(MainLayout, {content: <SuggestionsChatbot/>});  //TODO restablecer referencia al ExpertChatbot de Martin
   }
 })
 

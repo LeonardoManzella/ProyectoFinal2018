@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import MainHeaderContainer from './sharedComponents/MainHeaderContainer';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { push as Menu } from 'react-burger-menu';
-import ExpertChatbot from './expertChatbot/ExpertChatbot';
+import SuggestionsChatbot from './suggestionsChatbot/SuggestionsChatbot';
 
 export default class MainLayout extends Component {
 

@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import ChatBot, { ChatBotUtil } from 'i-chatbot'
 import Logic from './PlanScreenLogic.js'
 
-export default class ExpertChatbot extends React.Component {
+export default class SuggestionsChatbot extends React.Component {
 	
 	constructor(props) {
 		super(props);

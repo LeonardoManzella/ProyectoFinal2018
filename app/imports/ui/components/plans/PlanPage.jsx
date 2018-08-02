@@ -3,7 +3,7 @@ import StepZilla from 'react-stepzilla';
 import PlanList from './PlanList';
 import PropTypes from 'prop-types';
 import { push as Menu } from 'react-burger-menu';
-import ExpertChatbot from '../expertChatbot/ExpertChatbot';
+import SuggestionsChatbot from '../suggestionsChatbot/SuggestionsChatbot';
 
 const emptyPlanItem = {
   tool: '',
@@ -193,7 +193,7 @@ class PlanPage extends React.Component {
             customBurgerIcon={this.getBurgerIcon()}
             right noOverlay
           >
-            <ExpertChatbot current_plan_prop={this.state.currentPlan}/>
+            <SuggestionsChatbot current_plan_prop={this.state.currentPlan}/>
           </Menu>
         </div>
         <div className="content-body plan">
