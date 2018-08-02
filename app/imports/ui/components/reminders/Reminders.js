@@ -2,12 +2,33 @@ import React, { Component } from 'react';
 
 export default class Reminders extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      reminders: []
+    };
+  }
+
+  saveReminders() {
+
+  }
+
   render() {
     if (this.props.loading) {
       return <div />;
     }
     return (
       <div className="content-body margin-top-30">
+        <div className="row header">
+          <div className="col-md-6">
+            <h2>Recordatorios</h2>
+          </div>
+          <div className="col-md-6">
+            <button onClick={this.saveReminders.bind(this)}>
+              Guardar Cambios
+            </button>
+          </div>
+        </div>
         <div className="input-group mb-3">
           <input type="text" className="form-control"
             placeholder="Buscar por nombre o emprendimiento"

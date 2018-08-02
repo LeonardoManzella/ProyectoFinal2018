@@ -41,27 +41,27 @@ const planTypes = [
   {
     //TODO agregar codigo referencia Prolog en cada tipo
     name: "PLAN LEGAL",
-    title: "LEGALES",
+    title: "Legales",
     component: <PlanList/>
   },
   {
     name: "PLAN CONTABLE",
-    title: "CONTABLES",
+    title: "Contables",
     component: <PlanList/>
   },
   {
     name: "PLAN DE PRODUCCIÓN",
-    title: "DE PRODUCCIÓN",
+    title: "de Producción",
     component: <PlanList/>
   },
   {
     name: "PLAN ECONÓMICO / FINANCIERO",
-    title: "ECONÓMICOS / FINANCIEROS",
+    title: "Económicos / Financieros",
     component: <PlanList/>
   },
   {
     name: "PLAN DE SISTEMAS",
-    title: "DE SISTEMAS",
+    title: "de Sistemas",
     component: <PlanList/>
   }
   */

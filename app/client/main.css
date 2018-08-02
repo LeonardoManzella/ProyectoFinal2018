@@ -506,7 +506,8 @@ td>input {
   padding: 0px;
 }
 
-.row.header button {
+.row.header button,
+.pink-button {
   float: right;
   background: #ff5a5fcc;
   vertical-align: baseline;
@@ -897,4 +898,123 @@ ol.progtrckr li:before {
 
 .not-found button {
   min-width: 90%;
+}
+
+/* LANDING */
+
+.landing.navbar {
+  margin: 0px;
+}
+
+.landing.navbar a {
+  margin: 0 10px 0 10px;
+  color: #4e4e4e;
+}
+
+.landing.navbar a:hover {
+  color: #fd5156d1;
+}
+
+.landing.navbar .dropdown {
+  float: right;
+}
+
+.landing .content-body {
+  width: auto;
+  margin: 0px;
+  background-color: #ffffffb3;
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.landing .content-body.initial-section {
+  background-color: #ffffff5c;
+  padding: 0px;
+  height: 530px;
+}
+
+.landing .content-body .slider img {
+  height: 530px;
+}
+
+.landing .content-body.white {
+  background-color: white;
+}
+
+.landing .content-body.expert-system .welcome-title,
+.landing .content-body.team .welcome-title {
+  text-align: left;
+}
+
+.landing .content-body.initial-section .welcome-title {
+  padding-top: 100px;
+}
+
+.landing .content-body.clients .row {
+  text-align: center;
+}
+
+.landing .content-body.gray {
+  background-color: #ececec;
+}
+
+.landing .table {
+  display: table;
+    height: 100%;
+    min-height: 100%;
+    position: relative;
+    width: 100%;
+    padding-left: 0px;
+}
+
+.landing .welcome-title {
+  display: table-cell;
+  margin: 0 auto;
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.landing .welcome-title h1 {
+  font-family: sans-serif;
+  font-weight: 300;
+  font-size: 80px;
+  line-height: 100px;
+  letter-spacing: 2px;
+  color: #fd5156d1;
+}
+
+.landing .welcome-title p {
+  letter-spacing: 2px;
+    color: #4e4e4e;
+    font-family: sans-serif;
+    font-size: 30px;
+}
+
+.landing .transparent-button {
+  font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20px;
+    border: 2px solid #808080;
+    color: #fd5156d1;
+}
+
+.landing-clients {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing .pink-button {
+  float: none;
+  margin-left: 20px;
+}
+
+.landing .dropdown-menu {
+  min-width: 20rem;
+}
+
+.landing .dropdown-menu p {
+  margin-left: 20px;
 }

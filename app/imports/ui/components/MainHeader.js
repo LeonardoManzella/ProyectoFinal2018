@@ -52,7 +52,7 @@ class MainHeader extends React.Component {
     this.toggle();
     Meteor.logout((error) => {
       if (!error) {
-        FlowRouter.go('login');
+        FlowRouter.go('landing');
       }
     });
   }
@@ -73,7 +73,6 @@ class MainHeader extends React.Component {
                 </a>
               }
             >
-              {this.getTabSelected('Chart', '/chart')}
               {this.getTabSelected('Home', '/')}
               {this.getTabSelected('Tareas', '/tasksBoard')}
               {this.getTabSelected('Bitácora', '/binnacle')}

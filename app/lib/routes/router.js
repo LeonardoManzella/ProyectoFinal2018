@@ -4,7 +4,6 @@ import { mount } from 'react-mounter';
 import { Meteor } from 'meteor/meteor';
 import MainLayout from '../../imports/ui/components/MainLayout';
 import Activity from '../../imports/ui/components/activityComponents/Activity';
-import Login from '../../imports/ui/components/login/Login';
 import UserPage from '../../imports/ui/components/userComponents/UserPage';
 import UserProfile from '../../imports/ui/components/userComponents/UserProfile';
 import ConfirmRegistration from '../../imports/ui/components/login/ConfirmRegistration';
@@ -21,15 +20,16 @@ import PlanContainer from '../../imports/ui/containers/userTasksContainers/PlanC
 import CanvasContainer from '../../imports/ui/containers/canvasContainers/CanvasContainer';
 import SwotContainer from '../../imports/ui/containers/swotAndRisksContainers/SwotContainer';
 import RisksContainer from '../../imports/ui/containers/swotAndRisksContainers/RisksContainer';
+import HomePage from '../../imports/ui/components/HomePage';
 
 export const DEFAULT_ROUTE = 'home';
-const publicRoutes = [DEFAULT_ROUTE, 'login', 'profile', 'pending', 'notFound'];
+const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'notFound'];
 
 const mustBeAuthenticated = function mustBeAuthenticated() {
   const userId = Meteor.userId();
   const user = Meteor.user();
   if (!userId) {
-    FlowRouter.go('login');
+    FlowRouter.go('landing');
     return;
   }
   if (user.personalInformation.status !== 'approved') {
@@ -68,9 +68,16 @@ Tracker.autorun(function() {
   return true;
 });
 
-FlowRouter.triggers.enter([mustBeAuthenticated], { except: ['login', 'confirmRegistration'] });
+FlowRouter.triggers.enter([mustBeAuthenticated], { except: ['landing', 'confirmRegistration'] });
 
 FlowRouter.triggers.enter([mustBeAllowedToAccessRoute], {except: publicRoutes});
+
+FlowRouter.route('/landing', {
+  name: 'landing',
+  action: function() {
+    mount(HomePage);
+  },
+});
 
 FlowRouter.route('/', {
   name: 'home',
@@ -161,20 +168,6 @@ FlowRouter.route('/risks', {
   action: function() {
     mount(MainLayout, {content: <RisksContainer/>});
   }
-});
-
-FlowRouter.route('/login', {
-  name: 'login',
-  action: function() {
-    mount(Login);
-  },
-  triggersEnter: [function(context, redirect) {
-    const userId = Meteor.userId();
-    if (userId) {
-      FlowRouter.go(DEFAULT_ROUTE);
-      return;
-    }
-  }]
 });
 
 FlowRouter.route('/profile', {

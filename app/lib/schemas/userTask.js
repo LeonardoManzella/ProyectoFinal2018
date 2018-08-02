@@ -37,6 +37,11 @@ const taskSchema = new SimpleSchema({
   frequency: {
     type: frequencySchema,
     label: "frequency"
+  },
+  status: {
+    type: String,
+    label: "status",
+    optional:true
   }
 });
 
@@ -154,6 +159,32 @@ UserTasks.insertContingencyPlans = (contingencyPlans) => {
       } else {
         UserTasks.update({_id: risk.userTasksId}, {$push: {tasks: newContingencyPlanTask}})
       }
+    }
+  });
+}
+
+UserTasks.updateReminders = (reminders) => {
+  reminders.forEach(reminder => {
+    const existingReminder = UserTasks.findOne({userId: reminder.entrepreneur, type: 'reminder'});
+    const newReminderTask = {
+      responsibleID: reminder.entrepreneur,
+      taskDescription: reminder.businessName,
+      frequency: {
+        type: 'everyDay',
+        value: reminder.frequency,
+        time: 'day'
+      },
+      status: reminder.status
+    };
+    if (!existingReminder) {
+      const userTask = {};
+      userTask.userId = reminder.entrepreneur;
+      userTask.type = 'reminder';
+      userTask.tasks = [newReminderTask];
+      UserTasks.insert(userTask);
+    } else {
+      UserTasks.update({userId: reminder.entrepreneur, type: 'reminder'},
+        {$set: {tasks: [newReminderTask]}});
     }
   });
 }

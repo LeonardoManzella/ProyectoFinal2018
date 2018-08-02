@@ -3,12 +3,14 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
 import { TAPi18n } from 'meteor/tap:i18n';
 import { Meteor } from 'meteor/meteor';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class Login extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      loginDropdownOpen: false,
       email: '',
       password: '',
       error: ''
@@ -38,28 +40,49 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="login login-container">
-        <div className="row">
-          <div className="col-md-6 offset-md-3 content-register">
-            <img src="/img/emprendimientos-logo.png" className="centrado" height="85"/>
-            <p className="title-form">{TAPi18n.__('login.signIn')}</p>
-            <form>
-              <div className="form-group">
-                <input type="text" name="email" onChange={this.handleChange} className="dropdown-input" placeholder={TAPi18n.__('login.email')}/>
-              </div>
-              <div className="form-group">
-                <input type="password" name="password" onChange={this.handleChange} className="dropdown-input" placeholder={TAPi18n.__('login.password')}/>
-              </div>
-              <p className='small italic-proyectos text-danger'>
-                {this.state.error}
-              </p>
-              <div className="margin-top-30">
-                <button type="submit" onClick={this.submit} className="transparent-button centrado">{TAPi18n.__('login.enter')}</button>
-              </div>
-            </form>
+      <Dropdown
+        isOpen={this.state.loginDropdownOpen}
+        toggle={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
+      >
+        <DropdownToggle
+          tag="span"
+          data-toggle="dropdown"
+          aria-expanded={this.state.loginDropdownOpen}
+        >
+          <a>LOGIN</a>
+        </DropdownToggle>
+        <DropdownMenu
+          right
+        >
+          <div>
+            <input
+              type="text"
+              name="email"
+              onChange={this.handleChange} 
+              className='dropdown-input'
+              placeholder={TAPi18n.__('login.email')}
+            />
+            <input
+              type="password"
+              name="password"
+              onChange={this.handleChange} 
+              className='dropdown-input'
+              placeholder={TAPi18n.__('login.password')}
+            />
           </div>
-        </div>
-      </div>
+          <p className='small italic-proyectos text-danger'>
+            {this.state.error}
+          </p>
+          <div className="dropdown-row">
+            <button 
+              type="submit"
+              onClick={this.submit}
+              className="pink-button"
+            >{TAPi18n.__('login.enter')}</button>
+            <button className="pink-button">Registrar</button>
+          </div>
+        </DropdownMenu>
+      </Dropdown>
     );
   }
 }
