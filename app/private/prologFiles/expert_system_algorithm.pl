@@ -150,26 +150,6 @@ valid_objetives_rule(product_and_service, press).
 valid_objetives_rule(doesnt_know, local_social_networks).
 valid_objetives_rule(doesnt_know, local_social_networks).
 valid_objetives_rule(doesnt_know, press).
-valid_objetives_rule(non_profit, direct_marketing).
-valid_objetives_rule(non_profit, talks_workshops).
-valid_objetives_rule(non_profit, local_social_networks).
-valid_objetives_rule(non_profit, everything_online).
-valid_objetives_rule(young_client, local_social_networks).
-valid_objetives_rule(young_client, global_social_networks).
-valid_objetives_rule(adult_client, paid_ads).
-valid_objetives_rule(adult_client, digital_store).
-valid_objetives_rule(adult_client, communicate_methodology).
-valid_objetives_rule(old_client, paid_ads).
-valid_objetives_rule(old_client, digital_store).
-valid_objetives_rule(old_client, communicate_methodology).
-valid_objetives_rule(alone, outsource_communications).
-valid_objetives_rule(alone, outsource_sales).
-valid_objetives_rule(alone, outsource_control).
-valid_objetives_rule(alone, hire_business_manager).
-valid_objetives_rule(alone, find_partner_for_support).
-valid_objetives_rule(alone, update_netbook).
-valid_objetives_rule(has_partner, known_partner_divide_roles).
-valid_objetives_rule(has_partner, talk_partner_objetives).
 valid_objetives_rule(allow_association, brand_association).
 valid_objetives_rule(allow_association, politic_mayor_association).
 valid_objetives_rule(allow_association, influencers).
@@ -184,11 +164,34 @@ valid_objetives_rule(allow_sell_workshops, update_netbook).
 valid_objetives_rule(strengthen_your_team, consultant_or_coach).
 valid_objetives_rule(flexibility, update_netbook).
 valid_objetives_rule(flexibility, everything_online).
+// FIXME cambiar  los que estan debajo a Contribuciones
+valid_objetives_rule(alone, outsource_communications).
+valid_objetives_rule(alone, outsource_sales).
+valid_objetives_rule(alone, outsource_control).
+valid_objetives_rule(alone, hire_business_manager).
+valid_objetives_rule(alone, find_partner_for_support).
+valid_objetives_rule(alone, update_netbook).
+valid_objetives_rule(has_partner, known_partner_divide_roles).
+valid_objetives_rule(has_partner, talk_partner_objetives).
 valid_objetives_rule(has_experience_leading, strengthen_leading_experience).
 valid_objetives_rule(doesnt_have_experience_leading, learn_leadership).
 valid_objetives_rule(doesnt_have_experience_leading, monitor_employees).
 valid_objetives_rule(doesnt_have_experience_leading, self_managed_team).
 valid_objetives_rule(doesnt_have_experience_leading, hire_experienced_employees).
+// FIXME cambiar a indentidad
+valid_objetives_rule(non_profit, direct_marketing).
+valid_objetives_rule(non_profit, talks_workshops).
+valid_objetives_rule(non_profit, local_social_networks).
+valid_objetives_rule(non_profit, everything_online).
+valid_objetives_rule(young_client, local_social_networks).
+valid_objetives_rule(young_client, global_social_networks).
+valid_objetives_rule(adult_client, paid_ads).
+valid_objetives_rule(adult_client, digital_store).
+valid_objetives_rule(adult_client, communicate_methodology).
+valid_objetives_rule(old_client, paid_ads).
+valid_objetives_rule(old_client, digital_store).
+valid_objetives_rule(old_client, communicate_methodology).
+
 
 valid_contribution_rule(has_savings_or_funding, invest_on_your_business).
 valid_contribution_rule(has_savings_or_funding, paid_ads).
@@ -220,10 +223,6 @@ valid_identity_rule(passion, talks_workshops).
 valid_identity_rule(passion, trade_show).
 valid_identity_rule(humorous, direct_marketing).
 valid_identity_rule(humorous, talks_workshops).
-valid_identity_rule(introvert, digital_communications).
-valid_identity_rule(introvert, communication_association).
-valid_identity_rule(introvert, outsource_communications).
-valid_identity_rule(introvert, outsource_sales).
 valid_identity_rule(non_social, digital_communications).
 valid_identity_rule(non_social, communication_association).
 valid_identity_rule(non_social, outsource_communications).
@@ -300,7 +299,6 @@ regla_valida_combinacion(extrovert, allow_association, brand_association).
 regla_valida_combinacion(social, allow_association, brand_association).
 regla_valida_combinacion(extrovert, allow_association, politic_mayor_association).
 regla_valida_combinacion(social, allow_association, politic_mayor_association).
-regla_valida_combinacion(introvert, allow_association, hire_business_manager).
 regla_valida_combinacion(non_social, allow_association, hire_business_manager).
 regla_valida_combinacion(has_savings_or_funding, allow_association, hire_business_manager).
 regla_valida_combinacion(has_savings_or_funding, strengthen_your_team, hire_experienced_employees).
