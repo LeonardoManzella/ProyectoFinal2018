@@ -112,6 +112,14 @@ valid_objetives_rule(wants_recognition, press_and_magazines).
 valid_objetives_rule(wants_recognition, influencers).
 valid_objetives_rule(wants_recognition, client_frequent_places).
 valid_objetives_rule(wants_recognition, talks_workshops).
+valid_objetives_rule(wants_brag, direct_marketing).
+valid_objetives_rule(wants_brag, talks_workshops).
+valid_objetives_rule(wants_brag, meetings).
+valid_objetives_rule(wants_brag, trade_show).
+valid_objetives_rule(wants_brag, press_and_magazines).
+valid_objetives_rule(wants_brag, influencers).
+valid_objetives_rule(wants_brag, client_frequent_places).
+valid_objetives_rule(wants_brag, talks_workshops).
 valid_objetives_rule(wants_money, find_funding).
 valid_objetives_rule(wants_money, investors_deck_ready).
 valid_objetives_rule(wants_money, target_massive_markets).

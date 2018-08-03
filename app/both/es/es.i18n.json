@@ -516,37 +516,54 @@
       "1" : {
         "question" : "¿Qué objetivos planeás lograr con este emprendimiento?",
         "answers" : {
-          "1" : "answer1",
-          "2" : "answer2"
+          "1" : "have_fun",
+          "2" : "wants_money",
+          "3" : "travel",
+          "4" : "strengthen_your_team",
+          "5" : "wants_recognition", 
+          "6" : "wants_brag",
+          "7" : "startup_with_friends",
+          "8" : "wants_authority",
+          "9" : "wants_order",
+          "10" : "flexibility"
         }
       },
       
       "2" : {
-        "question" : "¿Querés vender un...?",
+        "question" : "¿Querés vender un...?", //Pregunta de unica seleccion
         "answers" : {
-          "1" : "answer1",
-          "2" : "answer2"
+          "1" : "product",
+          "2" : "service",
+          "3" : "product_and_service",
+          "4" : "doesnt_know"
         }
       },
 
       "3" : {
-        "question" : "¿Te interesa vender alguno de estos tipos de productos?",
+        // FIXME por ahora lo dejamos en texto y en el futuro incorporamos lo de rubro ligero/facil o cmplejo/dificil
+        "question" : "¿Te interesa vender alguno de estos tipos de productos?", //Seleccion multiple
         "answers" : {
-          "1" : "answer1",
-          "2" : "answer2"
+          "1" : "Música",
+          "2" : "Objetos de Cultura",
+          "3" : "Muebles",
+          "4" : "Indumentaria",
+          "5" : "Diseño",
+          "6" : "Productos Audiovisuales",
+          "7" : "Otro"
         }
       },
 
       "4" : {
-        "question" : "¿Te interesa vender alguno de estos servicios?",
+        "question" : "¿Te interesa vender alguno de estos servicios?", //Seleccion multiple
         "answers" : {
-          "1" : "answer1",
-          "2" : "answer2"
+          "1" : "allow_sell_talks",
+          "2" : "allow_sell_workshops",
+          "3" : "dont_allow_talks_workshops"
         }
       },
 
       "5" : {
-        "question" : "¿Tu objetivo comercial inmediato es...?",
+        "question" : "¿Tu objetivo comercial inmediato es...?",  //FIXME Hay que quitar esta pregunta, no es necesaria
         "answers" : {
           "1" : "answer1",
           "2" : "answer2"
@@ -554,10 +571,10 @@
       },
 
       "6" : {
-        "question" : "¿Tu Producto/Servicio es...?",
+        "question" : "¿Tu Producto/Servicio es...?", //Sleccion Unica
         "answers" : {
-          "1" : "answer1",
-          "2" : "answer2"
+          "1" : "physical",
+          "2" : "digital"
         }
       },
 
@@ -659,10 +676,11 @@
       },
 
       "3" : {
-        "question" : "¿Te llevás mejor con gente Joven o Vieja?",
+        "question" : "¿A quien queres venderle?",   // Pregunta multiple
         "answers" : {
-          "1" : "Sí",
-          "2" : "No"
+          "1" : "young_client",
+          "2" : "adult_client",
+          "3" : "old_client"
         }
       },
 
