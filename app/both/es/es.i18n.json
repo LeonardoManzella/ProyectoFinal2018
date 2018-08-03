@@ -579,18 +579,18 @@
       },
 
       "7" : {
-        "question" : "¿Querés vender en...?",
+        "question" : "¿Querés vender en...?", //Sleccion Unica
         "answers" : {
-          "1" : "answer1",
-          "2" : "answer2"
+          "1" : "local",
+          "2" : "global"
         }
       },
 
       "8" : {
-        "question" : "¿Te gusta la idea de formar alianzas con otros para que vendan tus productos?",
+        "question" : "¿Te gusta la idea de formar alianzas con otros para que vendan tus productos?",  //Sleccion Unica
         "answers" : {
-          "1" : "answer1",
-          "2" : "answer2"
+          "1" : "allow_association",
+          "2" : "dont_allow_association"
         }
       }
 
@@ -599,58 +599,85 @@
     "contributions" : {
       
       "1" : {
-        "question" : "¿Tenés ahorros/financiación o podés conseguir plata para el emprendimiento?",
+        "question" : "¿Tenés ahorros/financiación o podés conseguir plata para el emprendimiento?", //Sleccion Unica
         "answers" : {
-          "1" : "answer1",
-          "2" : "answer2"
+          "1" : "has_savings_or_funding",
+          "2" : "cash_deprived"
         }
       },
       
       "2" : {
-        "question" : "¿Tenés una cuenta bancaria para usar con el emprendimiento?",
+        "question" : "¿Tenés una cuenta bancaria para usar con el emprendimiento?", //Sleccion Unica
         "answers" : {
-          "1" : "Sí",
-          "2" : "No"
+          "1" : "has_account",
+          "2" : "doesnt_have_account"
         }
       },
 
       "3" : {
-        "question" : "¿Tenés una cuenta donde apalancarte financieramente? ¿Podés sacar préstamos en caso de emergencia?",
+        "question" : "¿Tenés una cuenta donde apalancarte financieramente? ¿Podés sacar préstamos en caso de emergencia?", //Sleccion Unica
         "answers" : {
-          "1" : "Sí",
-          "2" : "No"
+          "1" : "has_credit_history",
+          "2" : "doesnt_have_credit_history"
+        }
+      },
+
+      "3" : {
+        //FIXME Arreglar numeracion JSON
+        "question" : "¿Tenés tu documentacion al dia actualizada, por ejemplo tu pasaporte?", //Sleccion Unica
+        "answers" : {
+          "1" : "has_passport",
+          "2" : "doesnt_have_passport"
         }
       },
 
       "4" : {
-        "question" : "¿Qué nivel educativo tenés?",
+        "question" : "¿Qué nivel educativo tenés?", //Sleccion Unica
         "answers" : {
-          "1" : "Sí",
-          "2" : "No"
+          "1" : "high_school",
+          "2" : "tertiary",
+          "3" : "university",
+          "4" : "post_graduate"
         }
       },
 
       "5" : {
-        "question" : "¿Tenés un socio para el emprendimiento?",
+        "question" : "¿Tenés un socio para el emprendimiento?", //Sleccion Unica
         "answers" : {
-          "1" : "Sí",
-          "2" : "No"
+          "1" : "has_partner",
+          "2" : "alone"
         }
       },
 
       "6" : {
-        "question" : "¿En tu vida personal, tendés a llevar la cuenta de los gastos e ingresos, un balance?",
+        "question" : "¿En tu vida personal, tendés a llevar la cuenta de los gastos e ingresos, un balance?", //Sleccion Unica
         "answers" : {
-          "1" : "Sí",
-          "2" : "No"
+          "1" : "has_balance",
+          "2" : "doesnt_have_balance"
         }
       },
 
       "7" : {
-        "question" : "¿Tuviste alguna experiencia liderando o manejando personal?",
+        "question" : "¿Tuviste alguna experiencia liderando o manejando personal?", //Sleccion Unica
         "answers" : {
-          "1" : "Sí",
-          "2" : "No"
+          "1" : "has_experience_leading",
+          "2" : "doesnt_have_experience_leading"
+        }
+      },
+
+      "8" : {
+        "question" : "¿Tenes una Audiencia a quien vender? ¿Grupos/Seguidores en Redes Sociales/Blog/Etc?", //Sleccion Unica
+        "answers" : {
+          "1" : "has_followers",
+          "2" : "doesnt_have_followers"
+        }
+      },
+
+      "9" : {
+        "question" : "¿Tenes Titulos, Cursos, Premios, Reconocimientos, Etc?", //Sleccion Unica
+        "answers" : {
+          "1" : "has_achievements",
+          "2" : "doesnt_have_achievements"
         }
       }
 
@@ -660,14 +687,37 @@
     "identity" : {
       
       "1" : {
-        "question" : "¿Con qué conjunto de palabras te identificás más?",
+        "question" : "¿Con qué conjunto de palabras te identificás (slecciona mas de un grupo)?",
         "answers" : {
-          "1" : "Tengo mucha guita",
-          "2" : "Soy de África"
+          "1" : "hate_numbers",
+          "2" : "extrovert",
+          "3" : "likes_travel",
+          "4" : "techie",
+          "5" : "ambitious",
+          "6" : "organized",
+          "7" : "trustfull",
+          "8" : "social",
+          "9" : "non_social",
+          "10": "creative",
+          "11": "mentally_strong",
+          "12": "class_and_style",
+          "13": "shy_and_afraid",
+          "14": "persistent",
+          "15": "humorous",
+          "16": "passion",
+          "17": "curious",
+          "18": "independent",
+          "19": "stressfully",
+          "20": "distrustful",
+          "21": "easy_learner",
+          "22": "transgressor",
+          "23": "disorganized",
+          "24": "anxious"
         }
       },
       
       "2" : {
+        // FIXME Volaria la pregunta, nos manejamos con los grupso de palabras
         "question" : "¿Con qué estilo te identificás más?",
         "answers" : {
           "1" : "Sí",
@@ -676,39 +726,44 @@
       },
 
       "3" : {
-        "question" : "¿A quien queres venderle?",   // Pregunta multiple
+        "question" : "¿A quien te gustaria venderle?",   // Pregunta multiple
         "answers" : {
           "1" : "young_client",
           "2" : "adult_client",
-          "3" : "old_client"
+          "3" : "old_client",
+          "4" : "non_profit"
         }
       },
 
       "4" : {
+        // FIXME mover esta pregunta a contribuciones
         "question" : "¿Tenés contactos o te relacionás con gente que podría ayudarte a emprender?",
         "answers" : {
-          "1" : "Sí",
-          "2" : "No"
+          "1" : "has_contacts",
+          "2" : "doesnt_have_contacts"
         }
       },
 
       "5" : {
+        // FIXME Volaria la pregunta, ya esta contemplado en grupos de palabras
         "question" : "¿Te es fácil socializar con las personas?",
         "answers" : {
-          "1" : "Sí",
-          "2" : "No"
+          "1" : "social",
+          "2" : "non_social"
         }
       },
 
       "6" : {
+         // FIXME Volaria la pregunta, ya esta contemplado en grupos de palabras
         "question" : "¿Te gusta aprender por tu cuenta/leer?",
         "answers" : {
-          "1" : "Sí",
+          "1" : "easy_learner",
           "2" : "No"
         }
       },
 
       "7" : {
+        //FIXME volar la pregunta
         "question" : "¿Tuviste alguna experiencia liderando o manejando personal?",
         "answers" : {
           "1" : "Sí",
