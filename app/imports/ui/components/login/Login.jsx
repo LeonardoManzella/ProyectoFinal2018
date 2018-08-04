@@ -7,13 +7,65 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap
 
 class Login extends React.Component {
 
+  cleanData(loginDropdownOpen, register) {
+    this.setState({
+      loginDropdownOpen,
+      email: '',
+      password: '',
+      repeatPassword: '',
+      error: '',
+      register
+    });
+  }
+
+  renderActionButtons() {
+    if (this.state.register) {
+      return (
+        <div className="dropdown-row">
+          <button 
+            type="submit"
+            onClick={this.register.bind(this)}
+            className="pink-button"
+          >
+            {TAPi18n.__('login.enter')}
+          </button>
+          <button
+            className="pink-button secondary"
+            onClick={() => this.cleanData(true, false)}
+          >
+            Volver Atrás
+          </button>
+        </div>
+      );
+    }
+    return (
+      <div className="dropdown-row">
+        <button 
+          type="submit"
+          onClick={this.submit}
+          className="pink-button"
+        >
+          {TAPi18n.__('login.enter')}
+        </button>
+        <button
+          className="pink-button secondary"
+          onClick={() => this.cleanData(true, true)}
+        >
+          Registrar
+        </button>
+      </div>
+    );
+  }
+
   constructor(props) {
     super(props);
     this.state = {
       loginDropdownOpen: false,
       email: '',
       password: '',
-      error: ''
+      repeatPassword: '',
+      error: '',
+      register: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
@@ -38,11 +90,45 @@ class Login extends React.Component {
     });
   }
 
+  register(event) {
+    event.preventDefault();
+    const {email, password, repeatPassword} = this.state;
+    if (!email || email === '' || !password || password === '' ||
+      !repeatPassword || repeatPassword === ''
+    ) {
+      this.setState( {error: TAPi18n.__('error.login')} );
+      return;
+    }
+    if (password !== repeatPassword) {
+      this.setState( {error: 'Las contraseñas deben coincidir'} );
+      return;
+    }
+    Meteor.call('insertNewUser', { email, password, repeatPassword }, (err) => {
+      if (err) {
+        console.log(err)
+        this.setState(
+          {error: 'error'}
+        );
+      } else {
+        Meteor.loginWithPassword(email, password, (err) => {
+          if (err) {
+            validationsHelper.displayServerError(err);
+            this.setState(
+              {error: TAPi18n.__('error.login')}
+            );
+          } else {
+            FlowRouter.go('home');
+          }
+        });
+      }
+    });
+  }
+
   render() {
     return (
       <Dropdown
         isOpen={this.state.loginDropdownOpen}
-        toggle={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
+        toggle={() => this.cleanData(!this.state.loginDropdownOpen, false)}
       >
         <DropdownToggle
           tag="span"
@@ -54,10 +140,14 @@ class Login extends React.Component {
         <DropdownMenu
           right
         >
-          <div>
+          <div className="dropdown-title">
+            { this.state.register ? 'REGISTRAR' : 'LOGIN' }
+          </div>
+          <div className="dropdown-body">
             <input
               type="text"
               name="email"
+              value={this.state.email}
               onChange={this.handleChange} 
               className='dropdown-input'
               placeholder={TAPi18n.__('login.email')}
@@ -65,27 +155,32 @@ class Login extends React.Component {
             <input
               type="password"
               name="password"
+              value={this.state.password}
               onChange={this.handleChange} 
               className='dropdown-input'
               placeholder={TAPi18n.__('login.password')}
             />
+            {
+              this.state.register ?
+                <input
+                  type="password"
+                  name="repeatPassword"
+                  value={this.state.repeatPassword}
+                  onChange={this.handleChange} 
+                  className='dropdown-input'
+                  placeholder='Repetir Contraseña'
+                />
+                : ''
+            }
           </div>
           <p className='small italic-proyectos text-danger'>
             {this.state.error}
           </p>
-          <div className="dropdown-row">
-            <button 
-              type="submit"
-              onClick={this.submit}
-              className="pink-button"
-            >{TAPi18n.__('login.enter')}</button>
-            <button className="pink-button">Registrar</button>
-          </div>
+          {this.renderActionButtons()}
         </DropdownMenu>
       </Dropdown>
     );
   }
 }
-
 
 export default Login;

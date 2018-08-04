@@ -1011,10 +1011,25 @@ ol.progtrckr li:before {
   margin-left: 20px;
 }
 
+.landing .pink-button.secondary {
+  background: #ff5a5f70;
+}
+
 .landing .dropdown-menu {
   min-width: 20rem;
 }
 
 .landing .dropdown-menu p {
   margin-left: 20px;
+}
+
+.landing .dropdown-title {
+  margin: 10px 20px 10px;
+  font-size: 20px;
+  color: #4e4e4e;
+  border-bottom: 2px solid #8080803d;
+}
+
+.landing .dropdown-body {
+  margin: 20px 0 15px;
 }

@@ -8,22 +8,38 @@ import crypto from 'crypto';
 import SharedMethods from '../../../api/helpers/sharedMethods';
 import { Roles } from 'meteor/alanning:roles';
 
-export const newUser = (user, userId, userIds, roles) => {
-  const userName = user.name + ' ' + user.surname;
+// export const newUser = (user, userId, userIds, roles) => {
+//   const userName = user.name + ' ' + user.surname;
   
-  const refcode = generateRegistrationRefcode(userId);
-  sendEnrollmentLinkEmail(user.email, userName, refcode);
-};
+//   const refcode = generateRegistrationRefcode(userId);
+//   sendEnrollmentLinkEmail(user.email, userName, refcode);
+// };
 
 if (Meteor.isServer) {
   Meteor.methods({
     'insertNewUser'(user) {
       try {
-        if (!Meteor.user().canCreateNewUsers()) {
-          throw new Meteor.Error('User not authorized');
+        // if (!Meteor.user().canCreateNewUsers()) {
+        //   throw new Meteor.Error('User not authorized');
+        // }
+        if (!user.email || user.email === '' ||
+          !user.password || user.password === '' ||
+          !user.repeatPassword || user.repeatPassword === ''
+        ) {
+          throw new Meteor.Error('Incomplete fields');
         }
-        const newUserId = Accounts.createUser(user);
-        newUser(user, newUserId, [], ['projectManager']);
+        if (user.password !== user.repeatPassword) {
+          throw new Meteor.Error('Passwords doesn\'t match');
+        }
+        const existingUser = Meteor.users.findOne({'emails.address': user.email});
+        if (existingUser) {
+          throw new Meteor.Error('User already exists');
+        }
+        const newUserId = Accounts.createUser({
+          email: user.email,
+          password: user.password
+        });
+        // newUser(user, newUserId, [], ['projectManager']);
         return newUserId;
       } catch (exception) {
         validationsHelper.parseMongoError(exception);

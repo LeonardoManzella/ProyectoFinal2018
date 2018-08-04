@@ -4,16 +4,20 @@ import SimpleSchema from  'simpl-schema';
 const UserPersonalInformation = new SimpleSchema({
   name: {
     type: String,
+    optional: true
   },
   surname: {
     type: String,
+    optional: true
   },
   phone: {
     type: Number,
+    optional: true
   },
   status: {
     type: String,
     allowedValues: ['pending', 'approved'],
+    optional: true
   }
 });
 

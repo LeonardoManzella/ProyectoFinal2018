@@ -12,17 +12,22 @@ import '../imports/api/server/publications/risksPublications';
 import { Accounts } from 'meteor/accounts-base';
 
 Accounts.onCreateUser((options, user) => {
-  const personalInformation = Object.assign({}, options);
-  delete personalInformation.email;
-  delete personalInformation.role;
-  if (options.executiveUnitId) {
-    delete personalInformation.executiveUnitId;
-    user.executiveUnitId = options.executiveUnitId;
-  }
-  user.originatorId = Meteor.userId();
-  user.personalInformation = personalInformation;
+  // const personalInformation = Object.assign({}, options);
+  // delete personalInformation.email;
+  // delete personalInformation.role;
+  // if (options.executiveUnitId) {
+  //   delete personalInformation.executiveUnitId;
+  //   user.executiveUnitId = options.executiveUnitId;
+  // }
+  // user.originatorId = Meteor.userId();
+  user.personalInformation = {
+    status: 'approved'
+  };
   user.roles = [];
-  user.roles.push(options.role);
+  user.roles.push('entrepreneur');
+  user.goals = [];
+  user.contributions = [];
+  user.identity_traits = [];
   return user;
 });
 
