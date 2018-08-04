@@ -21,8 +21,6 @@ var MessageProcessor = function () {
   MessageProcessor.prototype.process = function process(object) {
     if (!object || !(object instanceof Object) || !(object.content instanceof Object) || !(object.content.text instanceof String || typeof object.content.text === 'string')) return false;
 
-    console.log('processing ' + object.content.text);
-
     this._queue.push(object);
     this._processNext();
 

@@ -18,7 +18,8 @@ class InterviewQuestions {
               "flexibility"
             ],
             multipleSelection: true,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'goal'
           },
           
           {
@@ -30,10 +31,11 @@ class InterviewQuestions {
               "doesnt_know"
             ],
             multipleSelection: false,
-            selectedAnswers: []
-          },
-    
-          {
+            selectedAnswers: [],
+            type: 'goal'
+        },
+
+        {
             // FIXME por ahora lo dejamos en texto y en el futuro incorporamos lo de rubro ligero/facil o cmplejo/dificil
             "question" : "product_types_interested_on_selling",
             "possibleAnswers" : [
@@ -46,7 +48,8 @@ class InterviewQuestions {
               "Otro"
             ],
             multipleSelection: true,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'goal'
           },
     
           {
@@ -57,7 +60,8 @@ class InterviewQuestions {
               "dont_allow_talks_workshops"
             ],
             multipleSelection: true,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'goal'
           },
     
           {
@@ -67,7 +71,8 @@ class InterviewQuestions {
               "digital"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'goal'
           },
     
           {
@@ -77,7 +82,8 @@ class InterviewQuestions {
               "global"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'goal'
           },
     
           {
@@ -87,7 +93,8 @@ class InterviewQuestions {
               "dont_allow_association"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'goal'
           },
 
           // ----------------------------- .GOALS QUESTIONS
@@ -100,7 +107,8 @@ class InterviewQuestions {
               "cash_deprived"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
           
           {
@@ -110,7 +118,8 @@ class InterviewQuestions {
               "doesnt_have_account"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
     
           {
@@ -120,7 +129,8 @@ class InterviewQuestions {
               "doesnt_have_credit_history de Cultura"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
     
           {
@@ -130,7 +140,8 @@ class InterviewQuestions {
               "doesnt_have_passport"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
     
           {
@@ -142,7 +153,8 @@ class InterviewQuestions {
               "post_graduate"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
     
           {
@@ -152,7 +164,8 @@ class InterviewQuestions {
               "alone"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
     
           {
@@ -162,7 +175,8 @@ class InterviewQuestions {
               "doesnt_have_balance"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
 
           {
@@ -172,7 +186,8 @@ class InterviewQuestions {
               "doesnt_have_followers"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
 
           {
@@ -182,7 +197,8 @@ class InterviewQuestions {
               "doesnt_have_achievements"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
 
           {
@@ -192,7 +208,8 @@ class InterviewQuestions {
               "doesnt_have_contacts"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'contribution'
           },
 
           // ----------------------------- CONTRIBUTIONS QUESTIONS
@@ -227,7 +244,8 @@ class InterviewQuestions {
               "anxious"
             ],
             multipleSelection: true,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'identity'
           },
 
           {
@@ -239,10 +257,11 @@ class InterviewQuestions {
               "non_profit"
             ],
             multipleSelection: false,
-            selectedAnswers: []
+            selectedAnswers: [],
+            type: 'identity'
           }
           // ----------------------------- IDENTITY QUESTIONS
-
+         
     ]
 
     static getQuestion(questionNumber) {
@@ -270,6 +289,30 @@ class InterviewQuestions {
         return InterviewQuestions.getQuestion(questionNumber)
             .selectedAnswers
             .length > 0;
+    }
+
+    static getAllSelectedAnswers() {
+      let goals = [];
+      let contributions = [];
+      let identity_traits = [];
+
+      InterviewQuestions.allQuestions.forEach(function (question) {
+        if (question.type == 'goal') {
+          goals = goals.concat(question.selectedAnswers);
+        }
+        if (question.type == 'contribution') {
+          contributions = contributions.concat(question.selectedAnswers);
+        }
+        if (question.type == 'identity') {
+          identity_traits = identity_traits.concat(question.selectedAnswers);
+        }
+      });
+      
+      return {
+        goals,
+        contributions,
+        identity_traits
+      };
     }
 
 }

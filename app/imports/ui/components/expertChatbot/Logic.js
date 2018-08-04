@@ -127,6 +127,10 @@ class Logic {
   }
 
   static end () {
+
+    const selectedAnswers = InterviewQuestions.getAllSelectedAnswers();
+    Meteor.call('saveTraits', Meteor.users.findOne(), selectedAnswers);
+
     return [
       ChatBotUtil.textMessage(t('goodbye') + ' 😉'),
       ChatBotUtil.textMessage(t('goodbyeSuggestions') ,

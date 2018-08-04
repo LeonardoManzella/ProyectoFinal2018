@@ -60,6 +60,24 @@ const userSchema = new SimpleSchema({
   'roles.$': {
     type: String
   },
+  goals: {
+    type: Array,
+  },
+  'goals.$': {
+    type: String
+  },
+  contributions: {
+    type: Array,
+  },
+  'contributions.$': {
+    type: String
+  },
+  identity_traits: {
+    type: Array,
+  },
+  'identity_traits.$': {
+    type: String
+  },
   emails: {
     type: Array
   },

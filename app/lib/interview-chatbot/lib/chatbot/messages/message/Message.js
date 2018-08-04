@@ -44,7 +44,6 @@ var Message = function (_Component) {
   Message.prototype.render = function render() {
     
     if (this.props.content && this.props.content.text) {
-      console.log('rendering ' + this.props.content.text);  
       if(this.props.content.text == '###REMOVE_ME###'){
         return '';
       }
