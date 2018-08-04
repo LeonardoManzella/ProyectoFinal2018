@@ -1,6 +1,6 @@
 import React from 'react'
 import { Meteor } from 'meteor/meteor';
-import ChatBot, { ChatBotUtil } from 'i-chatbot'
+import ChatBot, { ChatBotUtil } from './../../../../lib/interview-chatbot/lib/index'
 import Logic from './Logic.js'
 import { TAPi18n } from 'meteor/tap:i18n';
 

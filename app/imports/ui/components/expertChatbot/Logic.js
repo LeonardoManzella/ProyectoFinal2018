@@ -1,4 +1,4 @@
-import { ChatBotUtil } from 'i-chatbot'
+import { ChatBotUtil } from './../../../../lib/interview-chatbot/lib/index'
 import { TAPi18n } from 'meteor/tap:i18n';
 import InterviewQuestions from './InterviewQuestions.js'
 
@@ -42,7 +42,7 @@ class Logic {
       return Logic.nextQuestion();
     }
         
-    return Logic.buildQuestion(questionNumber, possibleAnswers);
+    return Logic.buildQuestion(questionNumber, possibleAnswers, false);
   }
 
   static repeatQuestion () {
@@ -58,11 +58,11 @@ class Logic {
       return Logic.nextQuestion();
     }
         
-    return Logic.buildQuestion(questionNumber, possibleAnswers);
+    return Logic.buildQuestion(questionNumber, possibleAnswers, true);
   }
 
-  static buildQuestion (questionNumber, possibleAnswers) {
-    const botBuilderArray = [
+  static buildQuestion (questionNumber, possibleAnswers, isRepeating) {
+    const botBuilderArray = isRepeating ? ['###REMOVE_ME###'] : [
       t(InterviewQuestions.getQuestion(questionNumber).question)
     ];
 

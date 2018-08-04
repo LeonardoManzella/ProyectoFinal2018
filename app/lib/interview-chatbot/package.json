@@ -1,0 +1,95 @@
+{
+  "_args": [
+    [
+      "i-chatbot@0.2.11",
+      "/home/martin/repos/ProyectoFinal2018/app"
+    ]
+  ],
+  "_from": "i-chatbot",
+  "_id": "i-chatbot@0.2.11",
+  "_inBundle": false,
+  "_integrity": "sha1-wk3kgtJteQDhXHuMu8oPr1WMlxo=",
+  "_location": "/i-chatbot",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "i-chatbot@0.2.11",
+    "name": "i-chatbot",
+    "escapedName": "i-chatbot",
+    "rawSpec": "0.2.11",
+    "saveSpec": null,
+    "fetchSpec": "0.2.11"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/i-chatbot/-/i-chatbot-0.2.11.tgz",
+  "_shasum": "c24de482d26d7900e15c7b8cbbca0faf558c971a",
+  "_spec": "0.2.11",
+  "_where": "/home/martin/repos/ProyectoFinal2018/app",
+  "author": {
+    "name": "Oleh Stasula",
+    "email": "endore8@gmail.com",
+    "url": "http://github.com/endore8"
+  },
+  "bugs": {
+    "url": "https://github.com/Endore8/i-chatbot/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "prop-types": "^15.5.10",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scroll": "^1.7.5",
+    "react-transition-group": "^2.2.1"
+  },
+  "deprecated": false,
+  "description": "Chatbot component for React.",
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "less": "^2.7.2",
+    "nwb": "0.21.x",
+    "pre-commit": "^1.2.2"
+  },
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "homepage": "https://github.com/Endore8/i-chatbot#readme",
+  "keywords": [
+    "react-component"
+  ],
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "module": "./es/index.js",
+  "name": "i-chatbot",
+  "peerDependencies": {
+    "react": "15.x"
+  },
+  "pre-commit": [
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Endore8/i-chatbot.git"
+  },
+  "scripts": {
+    "build": "npm run less && nwb build-react-component",
+    "clean": "nwb clean-module && nwb clean-demo && rm demo/src/index.css && rm demo/src/i-chatbot.css",
+    "less": "lessc demo/src/index.less demo/src/index.css",
+    "prepublish": "npm run build -- --copy-files",
+    "start": "npm run less && nwb serve-react-demo",
+    "test": "npm run less && nwb test-react",
+    "test:coverage": "nwb test-react --coverage",
+    "test:watch": "nwb test-react --server"
+  },
+  "version": "0.2.11"
+}
