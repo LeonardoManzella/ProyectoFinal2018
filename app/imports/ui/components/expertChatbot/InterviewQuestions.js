@@ -216,7 +216,7 @@ class InterviewQuestions {
 
           // ----------------------------- IDENTITY QUESTIONS -----------------------------
           {
-            "question" : "what_words",
+            "question" : "what_words_1",
             "possibleAnswers" : [
               "hate_numbers",
               "extrovert",
@@ -229,7 +229,16 @@ class InterviewQuestions {
               "non_social",
               "creative",
               "mentally_strong",
-              "class_and_style",
+              "class_and_style"
+            ],
+            multipleSelection: true,
+            selectedAnswers: [],
+            type: 'identity'
+          },
+
+          {
+            "question" : "what_words_2",
+            "possibleAnswers" : [
               "shy_and_afraid",
               "persistent",
               "humorous",

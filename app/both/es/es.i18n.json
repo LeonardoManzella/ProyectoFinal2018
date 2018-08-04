@@ -514,140 +514,143 @@
     
     // ----------------------------- GOALS QUESTIONS -----------------------------
     "what_goals" : "¿Qué objetivos planeás lograr con este emprendimiento?",
-    "have_fun" : "TRADUCIME1",
-    "wants_money" : "TRADUCIME2",
-    "travel" : "TRADUCIME3",
-    "strengthen_your_team" : "TRADUCIME4",
-    "wants_recognition" : "TRADUCIME5", 
-    "wants_brag" : "TRADUCIME6",
-    "startup_with_friends" : "TRADUCIME6",
-    "wants_authority" : "TRADUCIME7",
-    "wants_order" : "TRADUCIME8",
-    "flexibility" : "TRADUCIME9",
+    "have_fun" : "Pasarla bien",
+    "wants_money" : "Plata",
+    "travel" : "Viajar/vender en todo el mundo",
+    "strengthen_your_team" : "Fortalecer mi equipo",
+    "wants_recognition" : "Reconocimiento", 
+    "wants_brag" : "Quiero ostentar/alardear",
+    "startup_with_friends" : "Emprender con amigos",
+    "wants_authority" : "Quiero poder, ser dueño de algo",
+    "wants_order" : "Quiero ordenarme, tengo mucho caos",
+    "flexibility" : "Flexibilidad / Gestionar mis tiempos",
     
     "what_to_sell" : "¿Querés vender un...?",
-    "product" : "TRADUCIME10",
-    "service" : "TRADUCIME11",
-    "product_and_service" : "TRADUCIME11",
-    "doesnt_know" : "TRADUCIME12",
+    "product" : "Producto",
+    "service" : "Servicio",
+    "product_and_service" : "Ambos",
+    "doesnt_know" : "No lo sé",
     
     // FIXME por ahora lo dejamos en texto y en el futuro incorporamos lo de rubro ligero/facil o cmplejo/dificil
     "product_types_interested_on_selling" : "¿Te interesa vender alguno de estos tipos de productos?",
-    "Música" : "TRADUCIME1",
-    "Objetos de Cultura" : "TRADUCIME2",
-    "Muebles" : "TRADUCIME3",
-    "Indumentaria" : "TRADUCIME4",
-    "Diseño" : "TRADUCIME5",
-    "Productos Audiovisuales" : "TRADUCIME6",
-    "Otro" : "TRADUCIME7",
+    "Música" : "Música",
+    "Objetos de Cultura" : "Objetos de Cultura",
+    "Muebles" : "Muebles",
+    "Indumentaria" : "Indumentaria",
+    "Diseño" : "Diseño",
+    "Productos Audiovisuales" : "Productos Audiovisuales",
+    "Otro" : "Otro",
     
     "services_types_interested_on_selling" : "¿Te interesa vender alguno de estos servicios?",
-    "allow_sell_talks" : "TRADUCIME1",
-    "allow_sell_workshops" : "TRADUCIME2",
-    "dont_allow_talks_workshops" : "TRADUCIME3",
+    "allow_sell_talks" : "Cursos, talleres, reuniones/ Consultas privadas o grupales",
+    "allow_sell_workshops" : "Charlas, conciertos, exposiciones, ferias",
+    "dont_allow_talks_workshops" : "No. Quiero centrarme en mi producto/servicio principal",
     
     "digital_or_physical" : "¿Tu Producto/Servicio es...?",
-    "physical" : "TRADUCIME1",
-    "digital" : "TRADUCIME2",
+    "physical" : "Físico",
+    "digital" : "Digital",
     
 
     "local_or_global" : "¿Querés vender en...?",
-    "local" : "TRADUCIME1",
-    "global" : "TRADUCIME2",
+    "local" : "Mis alrededores/ Mi localidad/ Mi país",
+    "global" : "De forma Internacional/ Global",
     
 
     "allow_association_or_not" : "¿Te gusta la idea de formar alianzas con otros para que vendan tus productos?",
-    "allow_association" : "TRADUCIME1",
-    "dont_allow_association" : "TRADUCIME2",
+    "allow_association" : "Sí",
+    "dont_allow_association" : "No",
     // ----------------------------- .GOALS QUESTIONS
 
 
     // ----------------------------- CONTRIBUTIONS QUESTIONS -----------------------------
     "have_funding_question" : "¿Tenés ahorros/financiación o podés conseguir plata para el emprendimiento?", //Sleccion Unica
-    "has_savings_or_funding" : "traducime",
-    "cash_deprived" : "traducime",
+    "has_savings_or_funding" : "Tengo ahorros/ Tengo financiación/ Sé cómo conseguirlo para el emprendimiento",
+    "cash_deprived" : "No tengo/No sé cómo conseguirlo",
       
   
     "has_or_account_question" : "¿Tenés una cuenta bancaria para usar con el emprendimiento?", //Sleccion Unica
-    "has_account" : "traducime",
-    "doesnt_have_account" : "traducime",
+    "has_account" : "Sí",
+    "doesnt_have_account" : "No",
     
   
     "have_credit_question" : "¿Tenés una cuenta donde apalancarte financieramente? ¿Podés sacar préstamos en caso de emergencia?", //Sleccion Unica
-    "has_credit_history" : "traducime",
-    "doesnt_have_credit_history" : "traducime",
+    "has_credit_history" : "TRADUCIME LEO",
+    "doesnt_have_credit_history" : "TRADUCIME LEO",
 
 
-    "has_passport_question" : "¿Tenés tu documentacion al dia actualizada, por ejemplo tu pasaporte?", //Sleccion Unica
-    "has_passport" : "traducime",
-    "doesnt_have_passport" : "traducime",
+    "has_passport_question" : "¿Tenés tu documentacion actualizada, por ejemplo tu pasaporte?", //Sleccion Unica
+    "has_passport" : "Sí",
+    "doesnt_have_passport" : "No",
       
     
     "what_education_level" : "¿Qué nivel educativo tenés?", //Sleccion Unica
-    "high_school" : "traducime",
-    "tertiary" : "traducime",
-    "university" : "traducime",
-    "post_graduate" : "traducime",
+    "high_school" : "Secundario",
+    "tertiary" : "Terciario",
+    "university" : "Universitario",
+    "post_graduate" : "Postgrado",
       
 
     "has_partner_question" : "¿Tenés un socio para el emprendimiento?", //Sleccion Unica
-    "has_partner" : "traducime",
-    "alone" : "traducime",
+    "has_partner" : "Sí",
+    "alone" : "Quiero dirigirlo solo",
     
     "has_balance_question" : "¿En tu vida personal, tendés a llevar la cuenta de los gastos e ingresos, un balance?", //Sleccion Unica
-    "has_balance" : "traducime",
-    "doesnt_have_balance" : "traducime",
+    "has_balance" : "Sí, lo hago",
+    "doesnt_have_balance" : "No",
 
     "has_experience_leading_question" : "¿Tuviste alguna experiencia liderando o manejando personal?", //Sleccion Unica
-    "has_experience_leading" : "traducime",
-    "doesnt_have_experience_leading" : "traducime",
+    "has_experience_leading" : "Sí, tengo experiencia manejando personal",
+    "doesnt_have_experience_leading" : "No",
 
     "has_followers_question" : "¿Tenes una Audiencia a quien vender? ¿Grupos/Seguidores en Redes Sociales/Blog/Etc?", //Sleccion Unica
-    "has_followers" : "traducime",
-    "doesnt_have_followers" : "traducime",
+    "has_followers" : "Sí, tengo",
+    "doesnt_have_followers" : "No",
   
     "has_achievements_question" : "¿Tenes Titulos, Cursos, Premios, Reconocimientos, Etc?", //Sleccion Unica
-    "has_achievements" : "traducime",
-    "doesnt_have_achievements" : "traducime",
+    "has_achievements" : "Sí, tengo reconocimientos",
+    "doesnt_have_achievements" : "No",
       
     "has_contacts_question" : "¿Tenés contactos o te relacionás con gente que podría ayudarte a emprender?",
-    "has_contacts" : "traducime",
-    "doesnt_have_contacts" : "traducime",
+    "has_contacts" : "Sí, tengo contactos que podrían ayudarme",
+    "doesnt_have_contacts" : "No",
 
      // ----------------------------- CONTRIBUTIONS QUESTIONS
 
      // ----------------------------- IDENTITY QUESTIONS -----------------------------
-    "what_words" : "¿Con qué conjunto de palabras te identificás (slecciona mas de un grupo)?",
-    "hate_numbers" : "traducime",
-    "extrovert" : "traducime",
-    "likes_travel" : "traducime",
-    "techie" : "traducime",
-    "ambitious" : "traducime",
-    "organized" : "traducime",
-    "trustfull" : "traducime",
-    "social" : "traducime",
-    "non_social" : "traducime",
-    "creative" : "traducime",
-    "mentally_strong" : "traducime",
-    "class_and_style" : "traducime",
-    "shy_and_afraid" : "traducime",
-    "persistent" : "traducime",
-    "humorous" : "traducime",
-    "passion" : "traducime",
-    "curious" : "traducime",
-    "independent" : "traducime",
-    "stressfully" : "traducime",
-    "distrustful" : "traducime",
-    "easy_learner" : "traducime",
-    "transgressor" : "traducime",
-    "disorganized" : "traducime",
-    "anxious" : "traducime",
+    "what_words_1" : "¿Con qué conjunto de palabras te identificás (slecciona más de un grupo)?",
+    "hate_numbers" : "Odio los Números/Se me dificulta la parte numérica",
+    "extrovert" : "Extrovertido/Tengo energía ",
+    "likes_travel" : "Viajar por el mundo",
+    "techie" : "Techie/Tecnológico",
+    "ambitious" : "Ambicioso/Gritón/Exacerbado/Autoritario/Con Poder",
+    "organized" : "Seriedad/Responsable/Estructurado/Ordenado/Metódico/Tengo método",
+    "trustfull" : "Confío en los demás /Sé delegar en los demás",
+    "social" : "Soy sociable/Me gusta hablar con los demás/Tengo empatía",
+    "non_social" : "No soy sociable/ No me gusta hablar con los demás/ Soy calentón",  // Tiene aptitudes para ser programador...
+    "creative" : "Intuitivo/ Creativo/ Locura/ Lúdico/ Chiflado",
+    "mentally_strong" : "Tengo fuerza mental/Resisto la presión",
+    "class_and_style" : "Con clase y estilo/Soy Fin@",
+
+    // Separo en dos la pregunta, porque 24 botones juntos no quedan bien
+    "what_words_2" : "Continuemos con tu identidad. ¿Qué palabras creés que te identifican?",
+    "shy_and_afraid" : "Tengo Miedo/ Soy Pesimista/ Timidez/Miedo al ridículo",
+    "persistent" : "Perseverancia / Concentración",
+    "humorous" : "Buena persona/ Sensible/ Buen Humor / Siempre positivo/ Simpático/ Alegre",
+    "passion" : "Calidez/ Pasión",
+    "curious" : "Curios@ / Inquiet@ /Dinámic@",
+    "independent" : "Autónomo/ Independiente/ Singular/ Original",
+    "stressfully" : "Me estreso fácil/ Me comparo con los demás",
+    "distrustful" : "Desconfianza/ Control",
+    "easy_learner" : "Ganas/ Me gusta/ Facilidad para aprender",
+    "transgressor" : "Aguerrido/ Luchador/ Trasgresor/ Aventurero/ Arriesgado",
+    "disorganized" : "Desorganizado/ Colgado/ Vago/ Disperso",
+    "anxious" : "Impaciente/ ansioso",
   
     "who_wants_to_sell_so" : "¿A quien te gustaria venderle?",   // Pregunta multiple
-    "young_client" : "traducime",
-    "adult_client" : "traducime",
-    "old_client" : "traducime",
-    "non_profit" : "traducime"
+    "young_client" : "Gente joven",
+    "adult_client" : "Adultos",
+    "old_client" : "Mayores",
+    "non_profit" : "TRADUCIME LEO"
      // ----------------------------- IDENTITY QUESTIONS
   }
 }
