@@ -5,6 +5,11 @@ import EmptyMessage from '../sharedComponents/EmptyMessage';
 
 class PlanList extends React.Component {
 
+  checkEntrepreneurStatus() {
+    return (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+      Meteor.user() && Meteor.user().personalInformation.status === 'pendingPlans');
+  }
+
 	render() {
     const {
       title,
@@ -26,7 +31,7 @@ class PlanList extends React.Component {
           </div>
           <div className="col-md-6">
             <button onClick={savePlans}>
-              Guardar Cambios
+              {this.checkEntrepreneurStatus() ? 'Guardar Cambios y Avanzar' : 'Guardar Cambios'}
             </button>
             <button onClick={addPlan}>
               Agregar Plan

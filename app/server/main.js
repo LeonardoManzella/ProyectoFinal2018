@@ -21,7 +21,7 @@ Accounts.onCreateUser((options, user) => {
   // }
   // user.originatorId = Meteor.userId();
   user.personalInformation = {
-    status: 'approved'
+    status: 'pendingChatbot'
   };
   user.roles = [];
   user.roles.push('entrepreneur');

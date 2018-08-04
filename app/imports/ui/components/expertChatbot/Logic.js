@@ -134,7 +134,12 @@ class Logic {
     return [
       ChatBotUtil.textMessage(t('goodbye') + ' 😉'),
       ChatBotUtil.textMessage(t('goodbyeSuggestions') ,
-        ChatBotUtil.makeReplyButton(t('goodbyeResponse')))
+        ChatBotUtil.makeReplyButton(t('goodbyeResponse'), () => {
+          if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+            Meteor.user() && Meteor.user().personalInformation.status === 'pendingAreas') {
+            FlowRouter.go('canvas');
+          }
+        }))
     ]
   }
 

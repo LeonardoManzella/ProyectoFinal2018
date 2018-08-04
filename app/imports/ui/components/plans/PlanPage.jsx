@@ -147,7 +147,13 @@ class PlanPage extends React.Component {
   }
 
   savePlans() {
-    Meteor.call('insertNewPlanList', this.state.plans);
+    const previousStatus = Meteor.user().personalInformation.status;
+    Meteor.call('insertNewPlanList', this.state.plans, () => {
+      if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+        previousStatus === 'pendingPlans') {
+        FlowRouter.go('home');
+      }
+    });
   }
 
   adjustScreen(event) {

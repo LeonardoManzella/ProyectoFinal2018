@@ -16,8 +16,7 @@ const UserPersonalInformation = new SimpleSchema({
   },
   status: {
     type: String,
-    allowedValues: ['pending', 'approved'],
-    optional: true
+    allowedValues: ['pending', 'pendingChatbot', 'pendingAreas', 'pendingPlans', 'approved']
   }
 });
 

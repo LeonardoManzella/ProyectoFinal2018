@@ -19,7 +19,7 @@ export default class HomePage extends Component {
         <nav className="landing navbar navbar-expand-lg navbar-light">
           <div className="container">
             <img src="/img/emprendimientos-logo.png" height="30"/>
-            <div>
+            <div className="page-sections">
               <a href="#expert-system-section">SISTEMA EXPERTO</a>
               <a href="#team-section">NUESTRO EQUIPO</a>
               <a href="#clients-section">CLIENTES</a>

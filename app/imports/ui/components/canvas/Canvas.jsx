@@ -88,7 +88,17 @@ class Canvas extends React.Component {
 
   saveBusinessAreas() {
     const businessAreas = this.state.businessAreas.map(businessArea => businessArea.data);
-    Meteor.call('insertBusinessAreas', businessAreas);
+    Meteor.call('insertBusinessAreas', businessAreas, () => {
+      if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+        Meteor.user() && Meteor.user().personalInformation.status === 'pendingPlans') {
+        FlowRouter.go('planList');
+      }
+    });
+  }
+
+  checkEntrepreneurStatus() {
+    return (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+      Meteor.user() && Meteor.user().personalInformation.status === 'pendingAreas');
   }
 
 	render() {
@@ -103,7 +113,7 @@ class Canvas extends React.Component {
             </div>
             <div className="col-md-6">
               <button onClick={this.saveBusinessAreas.bind(this)}>
-                Guardar Cambios
+                {this.checkEntrepreneurStatus() ? 'Guardar Cambios y Avanzar' : 'Guardar Cambios'}
               </button>
               <button onClick={this.addBusinessArea.bind(this)} className="btn pull-right">
                 Agregar Área 

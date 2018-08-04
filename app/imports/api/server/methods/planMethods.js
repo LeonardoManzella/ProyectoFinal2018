@@ -6,6 +6,10 @@ if (Meteor.isServer) {
     'insertNewPlanList'(plans) {
       try {
         const newPlanId = UserTasks.insertPlanList(plans);
+        if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+          Meteor.user() && Meteor.user().personalInformation.status === 'pendingPlans') {
+          Meteor.users.update({_id: Meteor.userId()}, {$set: {'personalInformation.status': 'approved'}});
+        }
         return newPlanId;
       } catch (exception) {
         console.log(exception);

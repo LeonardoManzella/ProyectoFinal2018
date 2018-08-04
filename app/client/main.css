@@ -909,6 +909,7 @@ ol.progtrckr li:before {
 .landing.navbar a {
   margin: 0 10px 0 10px;
   color: #4e4e4e;
+  /* float: right; */
 }
 
 .landing.navbar a:hover {
@@ -959,16 +960,14 @@ ol.progtrckr li:before {
 }
 
 .landing .table {
-  display: table;
-    height: 100%;
-    min-height: 100%;
-    position: relative;
-    width: 100%;
-    padding-left: 0px;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+  width: 100%;
+  padding-left: 0px;
 }
 
 .landing .welcome-title {
-  display: table-cell;
   margin: 0 auto;
   padding: 0;
   vertical-align: middle;
@@ -1032,4 +1031,8 @@ ol.progtrckr li:before {
 
 .landing .dropdown-body {
   margin: 20px 0 15px;
+}
+
+.landing .page-sections {
+  margin: 10px 0 10px;
 }

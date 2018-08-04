@@ -25,6 +25,24 @@ import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatb
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'notFound'];
+const allowedRoutesByEntrepreneurStatus = {
+  pendingChatbot: 'chatbot',
+  pendingAreas: 'canvas',
+  pendingPlans: 'planList'
+};
+
+const isEntrepreneurAndIsntApproved = (status) => {
+  return Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+    Object.keys(allowedRoutesByEntrepreneurStatus).includes(status);
+}
+
+const verifyNotAllowedRouteByEntrepreneurStatus = (routeName) => {
+  const user = Meteor.user();
+  if (!user) return true;
+  const status = user.personalInformation.status;
+  return isEntrepreneurAndIsntApproved(status) &&
+    allowedRoutesByEntrepreneurStatus[status] !== routeName;
+}
 
 const mustBeAuthenticated = function mustBeAuthenticated() {
   const userId = Meteor.userId();
@@ -33,7 +51,7 @@ const mustBeAuthenticated = function mustBeAuthenticated() {
     FlowRouter.go('landing');
     return;
   }
-  if (user.personalInformation.status !== 'approved') {
+  if (user.personalInformation.status === 'pending') {
     FlowRouter.go('pending');
   }
 };
@@ -44,7 +62,8 @@ const mustBeAllowedToAccessRoute = function(route) {
     return;
   }
   const userRole = user.roles[0];
-  if (allowedRoutesByRole[userRole].indexOf(route.route.name) < 0 ) {
+  if (allowedRoutesByRole[userRole].indexOf(route.route.name) < 0 
+    || verifyNotAllowedRouteByEntrepreneurStatus(route.route.name)) {
     FlowRouter.go('notFound');
     return;
   }
@@ -73,18 +92,27 @@ FlowRouter.triggers.enter([mustBeAuthenticated], { except: ['landing', 'confirmR
 
 FlowRouter.triggers.enter([mustBeAllowedToAccessRoute], {except: publicRoutes});
 
-FlowRouter.route('/landing', {
-  name: 'landing',
-  action: function() {
-    mount(HomePage);
-  },
-});
-
 FlowRouter.route('/', {
   name: 'home',
   action: function() {
-    mount(MainLayout, {content: <Activity/>});
+    const status =  Meteor.user() ?  Meteor.user().personalInformation.status :  Meteor.user();
+    if (isEntrepreneurAndIsntApproved(status)) {
+      FlowRouter.go(allowedRoutesByEntrepreneurStatus[status]);
+    } else { 
+      mount(MainLayout, {content: <Activity/>});
+    }
   }
+});
+
+FlowRouter.route('/landing', {
+  name: 'landing',
+  action: function() {
+    if (Meteor.user()) {
+      FlowRouter.go('home');
+    } else {
+      mount(HomePage);
+    }
+  },
 });
 
 FlowRouter.route('/usersList', {

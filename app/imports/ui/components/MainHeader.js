@@ -48,6 +48,46 @@ class MainHeader extends React.Component {
     );
   }
 
+  renderMenuButton() {
+    // TODO: convertir este chequeo en una funcion generica
+    if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+      Meteor.user() && Meteor.user().personalInformation.status !== 'approved') {
+      return (
+        <div className="main-menu">
+          <a className="navbar-brand" href="">
+            <img src="/img/emprendimientos-logo.png" height="30"/>
+          </a>
+        </div>
+      );
+    }
+    return (
+      <div className="main-menu">
+        <Menu
+          customBurgerIcon={
+            <a className="navbar-brand" href="">
+              <img src="/img/emprendimientos-logo.png" height="30"/>
+            </a>
+          }
+        >
+          {this.getTabSelected('Home', '/')}
+          {this.getTabSelected('Tareas', '/tasksBoard')}
+          {this.getTabSelected('Bitácora', '/binnacle')}
+          {this.getTabSelected('Experto', '/expert')} 
+          {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
+            this.getTabSelected('Usuarios', '/usersList') : ''}
+          {this.getTabSelected('Chart', '/chart')}
+          {this.getTabSelected('ChatBot', '/chatbot')}
+          {this.getTabSelected('Canvas', '/canvas')}
+          {this.getTabSelected('Planes', '/planList')}
+          {this.getTabSelected('FODA', '/swot')}
+          {this.getTabSelected('Riesgos', '/risks')}
+          {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
+            this.getTabSelected('Reminders', '/reminders') : ''}  
+        </Menu>
+      </div>
+    );
+  }
+
   logout() {
     this.toggle();
     Meteor.logout((error) => {
@@ -65,30 +105,8 @@ class MainHeader extends React.Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
         <div className="container">
-          <div className="main-menu">
-            <Menu
-              customBurgerIcon={
-                <a className="navbar-brand" href="" onClick={() => FlowRouter.go('home')}>
-                  <img src="/img/emprendimientos-logo.png" height="30"/>
-                </a>
-              }
-            >
-              {this.getTabSelected('Home', '/')}
-              {this.getTabSelected('Tareas', '/tasksBoard')}
-              {this.getTabSelected('Bitácora', '/binnacle')}
-              {this.getTabSelected('Experto', '/expert')} 
-              {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
-                this.getTabSelected('Usuarios', '/usersList') : ''}
-              {this.getTabSelected('Chart', '/chart')}
-              {this.getTabSelected('ChatBot', '/chatbot')}
-              {this.getTabSelected('Canvas', '/canvas')}
-              {this.getTabSelected('Planes', '/planList')}
-              {this.getTabSelected('FODA', '/swot')}
-              {this.getTabSelected('Riesgos', '/risks')}
-              {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
-                this.getTabSelected('Reminders', '/reminders') : ''}  
-            </Menu>
-          </div>
+          
+          {this.renderMenuButton()}
           
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle
@@ -104,7 +122,7 @@ class MainHeader extends React.Component {
               </a>
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem onClick={() => {this.toggle(); FlowRouter.go('profile');}}>{TAPi18n.__('userProfile.myProfile')}</DropdownItem>
+              {/* <DropdownItem onClick={() => {this.toggle(); FlowRouter.go('profile');}}>{TAPi18n.__('userProfile.myProfile')}</DropdownItem> */}
               <DropdownItem onClick={this.logout.bind(this)}>{TAPi18n.__('layoutMenu.logout')}</DropdownItem>
             </DropdownMenu>
           </Dropdown>
