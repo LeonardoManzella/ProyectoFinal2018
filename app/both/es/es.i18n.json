@@ -512,6 +512,7 @@
     "goodbyeSuggestions" : "Serás redirigido a la pantalla de Planes.",
     "goodbyeResponse" : "Adiós!",
     
+    // ----------------------------- GOALS QUESTIONS -----------------------------
     "what_goals" : "¿Qué objetivos planeás lograr con este emprendimiento?",
     "have_fun" : "TRADUCIME1",
     "wants_money" : "TRADUCIME2",
@@ -540,13 +541,11 @@
     "Productos Audiovisuales" : "TRADUCIME6",
     "Otro" : "TRADUCIME7",
     
-
     "services_types_interested_on_selling" : "¿Te interesa vender alguno de estos servicios?",
     "allow_sell_talks" : "TRADUCIME1",
     "allow_sell_workshops" : "TRADUCIME2",
     "dont_allow_talks_workshops" : "TRADUCIME3",
     
-
     "digital_or_physical" : "¿Tu Producto/Servicio es...?",
     "physical" : "TRADUCIME1",
     "digital" : "TRADUCIME2",
@@ -559,8 +558,96 @@
 
     "allow_association_or_not" : "¿Te gusta la idea de formar alianzas con otros para que vendan tus productos?",
     "allow_association" : "TRADUCIME1",
-    "dont_allow_association" : "TRADUCIME2"
-    
+    "dont_allow_association" : "TRADUCIME2",
+    // ----------------------------- .GOALS QUESTIONS
 
+
+    // ----------------------------- CONTRIBUTIONS QUESTIONS -----------------------------
+    "have_funding_question" : "¿Tenés ahorros/financiación o podés conseguir plata para el emprendimiento?", //Sleccion Unica
+    "has_savings_or_funding" : "traducime",
+    "cash_deprived" : "traducime",
+      
+  
+    "has_or_account_question" : "¿Tenés una cuenta bancaria para usar con el emprendimiento?", //Sleccion Unica
+    "has_account" : "traducime",
+    "doesnt_have_account" : "traducime",
+    
+  
+    "have_credit_question" : "¿Tenés una cuenta donde apalancarte financieramente? ¿Podés sacar préstamos en caso de emergencia?", //Sleccion Unica
+    "has_credit_history" : "traducime",
+    "doesnt_have_credit_history" : "traducime",
+
+
+    "has_passport_question" : "¿Tenés tu documentacion al dia actualizada, por ejemplo tu pasaporte?", //Sleccion Unica
+    "has_passport" : "traducime",
+    "doesnt_have_passport" : "traducime",
+      
+    
+    "what_education_level" : "¿Qué nivel educativo tenés?", //Sleccion Unica
+    "high_school" : "traducime",
+    "tertiary" : "traducime",
+    "university" : "traducime",
+    "post_graduate" : "traducime",
+      
+
+    "has_partner_question" : "¿Tenés un socio para el emprendimiento?", //Sleccion Unica
+    "has_partner" : "traducime",
+    "alone" : "traducime",
+    
+    "has_balance_question" : "¿En tu vida personal, tendés a llevar la cuenta de los gastos e ingresos, un balance?", //Sleccion Unica
+    "has_balance" : "traducime",
+    "doesnt_have_balance" : "traducime",
+
+    "has_experience_leading_question" : "¿Tuviste alguna experiencia liderando o manejando personal?", //Sleccion Unica
+    "has_experience_leading" : "traducime",
+    "doesnt_have_experience_leading" : "traducime",
+
+    "has_followers_question" : "¿Tenes una Audiencia a quien vender? ¿Grupos/Seguidores en Redes Sociales/Blog/Etc?", //Sleccion Unica
+    "has_followers" : "traducime",
+    "doesnt_have_followers" : "traducime",
+  
+    "has_achievements_question" : "¿Tenes Titulos, Cursos, Premios, Reconocimientos, Etc?", //Sleccion Unica
+    "has_achievements" : "traducime",
+    "doesnt_have_achievements" : "traducime",
+      
+    "has_contacts_question" : "¿Tenés contactos o te relacionás con gente que podría ayudarte a emprender?",
+    "has_contacts" : "traducime",
+    "doesnt_have_contacts" : "traducime",
+
+     // ----------------------------- CONTRIBUTIONS QUESTIONS
+
+     // ----------------------------- IDENTITY QUESTIONS -----------------------------
+    "what_words" : "¿Con qué conjunto de palabras te identificás (slecciona mas de un grupo)?",
+    "hate_numbers" : "traducime",
+    "extrovert" : "traducime",
+    "likes_travel" : "traducime",
+    "techie" : "traducime",
+    "ambitious" : "traducime",
+    "organized" : "traducime",
+    "trustfull" : "traducime",
+    "social" : "traducime",
+    "non_social" : "traducime",
+    "creative" : "traducime",
+    "mentally_strong" : "traducime",
+    "class_and_style" : "traducime",
+    "shy_and_afraid" : "traducime",
+    "persistent" : "traducime",
+    "humorous" : "traducime",
+    "passion" : "traducime",
+    "curious" : "traducime",
+    "independent" : "traducime",
+    "stressfully" : "traducime",
+    "distrustful" : "traducime",
+    "easy_learner" : "traducime",
+    "transgressor" : "traducime",
+    "disorganized" : "traducime",
+    "anxious" : "traducime",
+  
+    "who_wants_to_sell_so" : "¿A quien te gustaria venderle?",   // Pregunta multiple
+    "young_client" : "traducime",
+    "adult_client" : "traducime",
+    "old_client" : "traducime",
+    "non_profit" : "traducime"
+     // ----------------------------- IDENTITY QUESTIONS
   }
 }

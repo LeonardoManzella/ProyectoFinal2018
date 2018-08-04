@@ -2,6 +2,7 @@ class InterviewQuestions {
 
     static allQuestions = [
 
+      // ----------------------------- GOALS QUESTIONS -----------------------------
         {
             question : "what_goals",
             possibleAnswers : [
@@ -87,7 +88,160 @@ class InterviewQuestions {
             ],
             multipleSelection: false,
             selectedAnswers: []
+          },
+
+          // ----------------------------- .GOALS QUESTIONS
+
+          // ----------------------------- CONTRIBUTIONS QUESTIONS -----------------------------
+          {
+            question : "have_funding_question",
+            possibleAnswers : [
+              "has_savings_or_funding",
+              "cash_deprived"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+          
+          {
+            question : "has_or_account_question",
+            possibleAnswers : [
+              "has_account",
+              "doesnt_have_account"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+    
+          {
+            "question" : "have_credit_question",
+            "possibleAnswers" : [
+              "has_credit_history",
+              "doesnt_have_credit_history de Cultura"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+    
+          {
+            "question" : "has_passport_question",
+            "possibleAnswers" : [
+              "has_passport",
+              "doesnt_have_passport"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+    
+          {
+            "question" : "what_education_level",
+            "possibleAnswers" : [
+              "high_school",
+              "tertiary",
+              "university",
+              "post_graduate"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+    
+          {
+            "question" : "has_partner_question",
+            "possibleAnswers" : [
+              "has_partner",
+              "alone"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+    
+          {
+            "question" : "has_balance_question",
+            "possibleAnswers" : [
+              "has_balance",
+              "doesnt_have_balance"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+
+          {
+            "question" : "has_experience_leading_question",
+            "possibleAnswers" : [
+              "has_followers",
+              "doesnt_have_followers"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+
+          {
+            "question" : "has_achievements_question",
+            "possibleAnswers" : [
+              "has_achievements",
+              "doesnt_have_achievements"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+
+          {
+            "question" : "has_contacts_question",
+            "possibleAnswers" : [
+              "has_contacts",
+              "doesnt_have_contacts"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
+          },
+
+          // ----------------------------- CONTRIBUTIONS QUESTIONS
+
+          // ----------------------------- IDENTITY QUESTIONS -----------------------------
+          {
+            "question" : "what_words",
+            "possibleAnswers" : [
+              "hate_numbers",
+              "extrovert",
+              "likes_travel",
+              "techie",
+              "ambitious",
+              "organized",
+              "trustfull",
+              "social",
+              "non_social",
+              "creative",
+              "mentally_strong",
+              "class_and_style",
+              "shy_and_afraid",
+              "persistent",
+              "humorous",
+              "passion",
+              "curious",
+              "independent",
+              "stressfully",
+              "distrustful",
+              "easy_learner",
+              "transgressor",
+              "disorganized",
+              "anxious"
+            ],
+            multipleSelection: true,
+            selectedAnswers: []
+          },
+
+          {
+            "question" : "who_wants_to_sell_so",
+            "possibleAnswers" : [
+              "young_client",
+              "adult_client",
+              "old_client",
+              "non_profit"
+            ],
+            multipleSelection: false,
+            selectedAnswers: []
           }
+          // ----------------------------- IDENTITY QUESTIONS
 
     ]
 
