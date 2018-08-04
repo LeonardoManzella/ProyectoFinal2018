@@ -509,268 +509,58 @@
     "youCanSelectMoreOptions" : "Puedes seleccionar más opciones, o continuar a la siguiente pregunta",
     "nextQuestion" : "Siguiente pregunta",
     "goodbye" : "Felicidades, la entrevista ha terminado",
-    "goodbyeSuggestions" : "Ya puedes acceder Modelo y Áreas de Negocio, FODA, y plan de riesgos",
+    "goodbyeSuggestions" : "Serás redirigido a la pantalla de Planes.",
     "goodbyeResponse" : "Adiós!",
-    "goals" : {
-      
-      "1" : {
-        "question" : "¿Qué objetivos planeás lograr con este emprendimiento?",
-        "answers" : {
-          "1" : "have_fun",
-          "2" : "wants_money",
-          "3" : "travel",
-          "4" : "strengthen_your_team",
-          "5" : "wants_recognition", 
-          "6" : "wants_brag",
-          "7" : "startup_with_friends",
-          "8" : "wants_authority",
-          "9" : "wants_order",
-          "10" : "flexibility"
-        }
-      },
-      
-      "2" : {
-        "question" : "¿Querés vender un...?", //Pregunta de unica seleccion
-        "answers" : {
-          "1" : "product",
-          "2" : "service",
-          "3" : "product_and_service",
-          "4" : "doesnt_know"
-        }
-      },
+    
+    "what_goals" : "¿Qué objetivos planeás lograr con este emprendimiento?",
+    "have_fun" : "TRADUCIME1",
+    "wants_money" : "TRADUCIME2",
+    "travel" : "TRADUCIME3",
+    "strengthen_your_team" : "TRADUCIME4",
+    "wants_recognition" : "TRADUCIME5", 
+    "wants_brag" : "TRADUCIME6",
+    "startup_with_friends" : "TRADUCIME6",
+    "wants_authority" : "TRADUCIME7",
+    "wants_order" : "TRADUCIME8",
+    "flexibility" : "TRADUCIME9",
+    
+    "what_to_sell" : "¿Querés vender un...?",
+    "product" : "TRADUCIME10",
+    "service" : "TRADUCIME11",
+    "product_and_service" : "TRADUCIME11",
+    "doesnt_know" : "TRADUCIME12",
+    
+    // FIXME por ahora lo dejamos en texto y en el futuro incorporamos lo de rubro ligero/facil o cmplejo/dificil
+    "product_types_interested_on_selling" : "¿Te interesa vender alguno de estos tipos de productos?",
+    "Música" : "TRADUCIME1",
+    "Objetos de Cultura" : "TRADUCIME2",
+    "Muebles" : "TRADUCIME3",
+    "Indumentaria" : "TRADUCIME4",
+    "Diseño" : "TRADUCIME5",
+    "Productos Audiovisuales" : "TRADUCIME6",
+    "Otro" : "TRADUCIME7",
+    
 
-      "3" : {
-        // FIXME por ahora lo dejamos en texto y en el futuro incorporamos lo de rubro ligero/facil o cmplejo/dificil
-        "question" : "¿Te interesa vender alguno de estos tipos de productos?", //Seleccion multiple
-        "answers" : {
-          "1" : "Música",
-          "2" : "Objetos de Cultura",
-          "3" : "Muebles",
-          "4" : "Indumentaria",
-          "5" : "Diseño",
-          "6" : "Productos Audiovisuales",
-          "7" : "Otro"
-        }
-      },
+    "services_types_interested_on_selling" : "¿Te interesa vender alguno de estos servicios?",
+    "allow_sell_talks" : "TRADUCIME1",
+    "allow_sell_workshops" : "TRADUCIME2",
+    "dont_allow_talks_workshops" : "TRADUCIME3",
+    
 
-      "4" : {
-        "question" : "¿Te interesa vender alguno de estos servicios?", //Seleccion multiple
-        "answers" : {
-          "1" : "allow_sell_talks",
-          "2" : "allow_sell_workshops",
-          "3" : "dont_allow_talks_workshops"
-        }
-      },
+    "digital_or_physical" : "¿Tu Producto/Servicio es...?",
+    "physical" : "TRADUCIME1",
+    "digital" : "TRADUCIME2",
+    
 
-      "5" : {
-        "question" : "¿Tu objetivo comercial inmediato es...?",  //FIXME Hay que quitar esta pregunta, no es necesaria
-        "answers" : {
-          "1" : "answer1",
-          "2" : "answer2"
-        }
-      },
+    "local_or_global" : "¿Querés vender en...?",
+    "local" : "TRADUCIME1",
+    "global" : "TRADUCIME2",
+    
 
-      "6" : {
-        "question" : "¿Tu Producto/Servicio es...?", //Sleccion Unica
-        "answers" : {
-          "1" : "physical",
-          "2" : "digital"
-        }
-      },
+    "allow_association_or_not" : "¿Te gusta la idea de formar alianzas con otros para que vendan tus productos?",
+    "allow_association" : "TRADUCIME1",
+    "dont_allow_association" : "TRADUCIME2"
+    
 
-      "7" : {
-        "question" : "¿Querés vender en...?", //Sleccion Unica
-        "answers" : {
-          "1" : "local",
-          "2" : "global"
-        }
-      },
-
-      "8" : {
-        "question" : "¿Te gusta la idea de formar alianzas con otros para que vendan tus productos?",  //Sleccion Unica
-        "answers" : {
-          "1" : "allow_association",
-          "2" : "dont_allow_association"
-        }
-      }
-
-    },
-
-    "contributions" : {
-      
-      "1" : {
-        "question" : "¿Tenés ahorros/financiación o podés conseguir plata para el emprendimiento?", //Sleccion Unica
-        "answers" : {
-          "1" : "has_savings_or_funding",
-          "2" : "cash_deprived"
-        }
-      },
-      
-      "2" : {
-        "question" : "¿Tenés una cuenta bancaria para usar con el emprendimiento?", //Sleccion Unica
-        "answers" : {
-          "1" : "has_account",
-          "2" : "doesnt_have_account"
-        }
-      },
-
-      "3" : {
-        "question" : "¿Tenés una cuenta donde apalancarte financieramente? ¿Podés sacar préstamos en caso de emergencia?", //Sleccion Unica
-        "answers" : {
-          "1" : "has_credit_history",
-          "2" : "doesnt_have_credit_history"
-        }
-      },
-
-      "3" : {
-        //FIXME Arreglar numeracion JSON
-        "question" : "¿Tenés tu documentacion al dia actualizada, por ejemplo tu pasaporte?", //Sleccion Unica
-        "answers" : {
-          "1" : "has_passport",
-          "2" : "doesnt_have_passport"
-        }
-      },
-
-      "4" : {
-        "question" : "¿Qué nivel educativo tenés?", //Sleccion Unica
-        "answers" : {
-          "1" : "high_school",
-          "2" : "tertiary",
-          "3" : "university",
-          "4" : "post_graduate"
-        }
-      },
-
-      "5" : {
-        "question" : "¿Tenés un socio para el emprendimiento?", //Sleccion Unica
-        "answers" : {
-          "1" : "has_partner",
-          "2" : "alone"
-        }
-      },
-
-      "6" : {
-        "question" : "¿En tu vida personal, tendés a llevar la cuenta de los gastos e ingresos, un balance?", //Sleccion Unica
-        "answers" : {
-          "1" : "has_balance",
-          "2" : "doesnt_have_balance"
-        }
-      },
-
-      "7" : {
-        "question" : "¿Tuviste alguna experiencia liderando o manejando personal?", //Sleccion Unica
-        "answers" : {
-          "1" : "has_experience_leading",
-          "2" : "doesnt_have_experience_leading"
-        }
-      },
-
-      "8" : {
-        "question" : "¿Tenes una Audiencia a quien vender? ¿Grupos/Seguidores en Redes Sociales/Blog/Etc?", //Sleccion Unica
-        "answers" : {
-          "1" : "has_followers",
-          "2" : "doesnt_have_followers"
-        }
-      },
-
-      "9" : {
-        "question" : "¿Tenes Titulos, Cursos, Premios, Reconocimientos, Etc?", //Sleccion Unica
-        "answers" : {
-          "1" : "has_achievements",
-          "2" : "doesnt_have_achievements"
-        }
-      }
-
-    },
-
-
-    "identity" : {
-      
-      "1" : {
-        "question" : "¿Con qué conjunto de palabras te identificás (slecciona mas de un grupo)?",
-        "answers" : {
-          "1" : "hate_numbers",
-          "2" : "extrovert",
-          "3" : "likes_travel",
-          "4" : "techie",
-          "5" : "ambitious",
-          "6" : "organized",
-          "7" : "trustfull",
-          "8" : "social",
-          "9" : "non_social",
-          "10": "creative",
-          "11": "mentally_strong",
-          "12": "class_and_style",
-          "13": "shy_and_afraid",
-          "14": "persistent",
-          "15": "humorous",
-          "16": "passion",
-          "17": "curious",
-          "18": "independent",
-          "19": "stressfully",
-          "20": "distrustful",
-          "21": "easy_learner",
-          "22": "transgressor",
-          "23": "disorganized",
-          "24": "anxious"
-        }
-      },
-      
-      "2" : {
-        // FIXME Volaria la pregunta, nos manejamos con los grupso de palabras
-        "question" : "¿Con qué estilo te identificás más?",
-        "answers" : {
-          "1" : "Sí",
-          "2" : "No"
-        }
-      },
-
-      "3" : {
-        "question" : "¿A quien te gustaria venderle?",   // Pregunta multiple
-        "answers" : {
-          "1" : "young_client",
-          "2" : "adult_client",
-          "3" : "old_client",
-          "4" : "non_profit"
-        }
-      },
-
-      "4" : {
-        // FIXME mover esta pregunta a contribuciones
-        "question" : "¿Tenés contactos o te relacionás con gente que podría ayudarte a emprender?",
-        "answers" : {
-          "1" : "has_contacts",
-          "2" : "doesnt_have_contacts"
-        }
-      },
-
-      "5" : {
-        // FIXME Volaria la pregunta, ya esta contemplado en grupos de palabras
-        "question" : "¿Te es fácil socializar con las personas?",
-        "answers" : {
-          "1" : "social",
-          "2" : "non_social"
-        }
-      },
-
-      "6" : {
-         // FIXME Volaria la pregunta, ya esta contemplado en grupos de palabras
-        "question" : "¿Te gusta aprender por tu cuenta/leer?",
-        "answers" : {
-          "1" : "easy_learner",
-          "2" : "No"
-        }
-      },
-
-      "7" : {
-        //FIXME volar la pregunta
-        "question" : "¿Tuviste alguna experiencia liderando o manejando personal?",
-        "answers" : {
-          "1" : "Sí",
-          "2" : "No"
-        }
-      }
-
-    }
   }
 }
