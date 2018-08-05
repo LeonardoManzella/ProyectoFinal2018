@@ -268,6 +268,8 @@ valid_identity_rule(transgressor, guerrilla_marketing).
 valid_identity_rule(transgressor, carefull_deadlines).
 valid_identity_rule(hate_numbers, hire_secretary).
 valid_identity_rule(hate_numbers, outsource_accounting).
+% TODO en vez de ponerlas aca, hacer que se adhieran a las Listas para Cada Plan con un Predicado Hecho /1 al final, asi solo aparecen una unica vez en vez de por cada elemento
+/*
 valid_identity_rule(_, explain_how_to_delegate).
 valid_identity_rule(_, monitor_employees).
 valid_identity_rule(_, design_processes).
@@ -279,7 +281,7 @@ valid_identity_rule(_, systematize).
 valid_identity_rule(_, work_near_clients).
 valid_identity_rule(_, use_CRM).
 valid_identity_rule(_, communication_association).
-
+*/
 
 regla_valida_combinacion(local, physical, physical_communications).
 regla_valida_combinacion(local, physical, press_and_magazines).
