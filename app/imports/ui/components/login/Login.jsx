@@ -135,7 +135,7 @@ class Login extends React.Component {
           data-toggle="dropdown"
           aria-expanded={this.state.loginDropdownOpen}
         >
-          <a>LOGIN</a>
+          <a>COMENZAR</a>
         </DropdownToggle>
         <DropdownMenu
           right

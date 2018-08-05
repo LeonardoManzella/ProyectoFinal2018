@@ -39,13 +39,13 @@ class InterviewQuestions {
             // FIXME por ahora lo dejamos en texto y en el futuro incorporamos lo de rubro ligero/facil o cmplejo/dificil
             "question" : "product_types_interested_on_selling",
             "possibleAnswers" : [
-              "Música",
-              "Objetos de Cultura",
-              "Muebles",
-              "Indumentaria",
-              "Diseño",
-              "Productos Audiovisuales",
-              "Otro"
+              "musica",
+              "objetos_de_cultura",
+              "muebles",
+              "indumentaria",
+              "disenio",
+              "productos_audiovisuales",
+              "otro"
             ],
             multipleSelection: true,
             selectedAnswers: [],
@@ -126,7 +126,7 @@ class InterviewQuestions {
             "question" : "have_credit_question",
             "possibleAnswers" : [
               "has_credit_history",
-              "doesnt_have_credit_history de Cultura"
+              "doesnt_have_credit_history"
             ],
             multipleSelection: false,
             selectedAnswers: [],
@@ -216,7 +216,7 @@ class InterviewQuestions {
 
           // ----------------------------- IDENTITY QUESTIONS -----------------------------
           {
-            "question" : "what_words",
+            "question" : "what_words_1",
             "possibleAnswers" : [
               "hate_numbers",
               "extrovert",
@@ -229,7 +229,16 @@ class InterviewQuestions {
               "non_social",
               "creative",
               "mentally_strong",
-              "class_and_style",
+              "class_and_style"
+            ],
+            multipleSelection: true,
+            selectedAnswers: [],
+            type: 'identity'
+          },
+
+          {
+            "question" : "what_words_2",
+            "possibleAnswers" : [
               "shy_and_afraid",
               "persistent",
               "humorous",
