@@ -28,13 +28,11 @@ export default class ExpertChatbot extends React.Component {
 					<div className="FullSizeTable">
 						<div className="AlignMiddle">
 							<img src="/img/emprendimientos-logo.png" className='Justin'/>
-						</div>
-					</div>
-					<div className="FullSizeTable">
-						<div className="AlignMiddle welcome-title">
-							<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
-							<p><i>Este será el asesor para definir tus objetivos</i></p>
-							<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
+							<div className="welcome-title">
+								<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
+								<p><i>Este será el asesor para definir tus objetivos</i></p>
+								<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -47,12 +47,13 @@ export default class Activity extends Component {
   render() {
     return (
       <div id="home" className="content-body">
-        <ListContainer
+        {/* <ListContainer
           subscription='getActivities'
           collection={Activities}
           renderCard={this.renderCard.bind(this)}
           getSections={this.getSections.bind(this)}
-        />
+        /> */}
+        <h2 style={{textAlign: "center"}}>HOME</h2>
       </div>
     );
   }

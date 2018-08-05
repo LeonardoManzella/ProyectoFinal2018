@@ -318,7 +318,16 @@ p.hash {
   border-radius: .25em;
 }
 
-.Home .Chat .GetStarted .AlignMiddle.welcome-title h1 {
+
+.I-ChatBot {
+  left: 1.5em;
+  right: 1.5em;
+  bottom: 2em;
+  top: 7em;
+  background-color: #ffffff;
+}
+
+.Home .Chat .GetStarted .AlignMiddle .welcome-title h1 {
   font-size: 40px;
   line-height: 60px;
   letter-spacing: 5px;
@@ -327,14 +336,14 @@ p.hash {
   font-weight: 200;
 }
 
-.chatbot-menu .Home .Chat .GetStarted .AlignMiddle.welcome-title h1 {
+.chatbot-menu .Home .Chat .GetStarted .AlignMiddle .welcome-title h1 {
   font-size: 15px;
   line-height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.Home .Chat .GetStarted .AlignMiddle.welcome-title p {
+.Home .Chat .GetStarted .AlignMiddle .welcome-title p {
   letter-spacing: 1px;
   color: #848587;
   font-family: 'Crete Round', sans-serif;
@@ -378,9 +387,22 @@ p.hash {
   height: 90%;
 }
 
+.I-ChatBot ul.ActionBar {
+  height: 10vh;
+}
+
 .chatbot-menu .I-ChatBot ul.ActionBar {
   overflow-y: scroll;
   overflow-x: visible;
+}
+
+.I-ChatBot ul.Messages {
+  bottom: 6em;
+}
+
+.I-ChatBot ul.Messages li.Message,
+.I-ChatBot ul.ActionBar li.Action {
+  margin: 1em;
 }
 
 .chatbot-menu .I-ChatBot ul.Messages {
@@ -402,6 +424,7 @@ p.hash {
   width: auto;
   margin: 20px;
   margin-top: 30px;
+  height: 80vh;
 }
 
 .chatbot-menu .Container .Content {
@@ -416,8 +439,6 @@ p.hash {
   min-height: 100%;
   position: relative;
   width: 100%;
-  padding-left: 60px;
-  padding-right: 60px;
 }
 
 .chatbot-menu .FullSizeTable {
@@ -791,6 +812,7 @@ ol.progtrckr li:before {
   padding-left: 0px !important;
   padding-right: 0px !important;
   overflow-y: hidden !important;
+  z-index: 1200 !important;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -827,7 +849,7 @@ ol.progtrckr li:before {
 }
 
 .main-menu .bm-overlay {
-  z-index: 1100 !important;
+  z-index: 1200 !important;
 }
 
 .bm-menu-wrap {
@@ -836,6 +858,7 @@ ol.progtrckr li:before {
 
 .main-menu .bm-menu-wrap {
   width: 200px !important;
+  z-index: 1200 !important;
 }
 
 .main-menu .bm-menu-wrap {
@@ -931,11 +954,21 @@ ol.progtrckr li:before {
 .landing .content-body.initial-section {
   background-color: #ffffff5c;
   padding: 0px;
-  height: 530px;
+  height: 80vh;
+  max-height: 80vh;
+  min-height: 80vh;
+}
+
+.slider,
+.slider-frame,
+.slider-list,
+.slider-slide {
+  max-height: inherit;
+  min-height: inherit;
 }
 
 .landing .content-body .slider img {
-  height: 530px;
+  height: 80vh;
 }
 
 .landing .content-body.white {
@@ -947,10 +980,6 @@ ol.progtrckr li:before {
   text-align: left;
 }
 
-.landing .content-body.initial-section .welcome-title {
-  padding-top: 100px;
-}
-
 .landing .content-body.clients .row {
   text-align: center;
 }
@@ -960,7 +989,8 @@ ol.progtrckr li:before {
 }
 
 .landing .table {
-  height: 100%;
+  display: table;
+  height: 80vh;
   min-height: 100%;
   position: relative;
   width: 100%;
@@ -968,6 +998,7 @@ ol.progtrckr li:before {
 }
 
 .landing .welcome-title {
+  display: table-cell;
   margin: 0 auto;
   padding: 0;
   vertical-align: middle;

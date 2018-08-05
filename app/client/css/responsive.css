@@ -1,52 +1,108 @@
-        @media (max-width: 768px) {
-            .modal-medium,
-            .modal-lg {
-                max-width: 95%;
-            }
-            .flotante {
-                display: none;
-            }
-            .navbar-collapse {
-                margin-left: 0;
-            }
-            .nav-item {
-                width: 100%;
-            }
-            .nav-item.active {
-                border-bottom: none;
-                background-color: #143f6c;
-            }
-            .submenu.active a {
-                color: white;
-            }
-            .navbar-light .navbar-nav .active>.nav-link {
-                color: white;
-            }
-            .submenu {
-                height: 60px;
-                padding-left: 20px;
-            }
-            .nav-item.submenu.active {
-                border-bottom: none;
-                background: transparent;
-            }
-            .nav-item.submenu.active a {
-                color: #1c64b0;
-            }
-            .comentarios {
-                padding-left: 15px;
-            }
-            ul#TabUsuarios .nav-item {
-                width: 50%;
-                font-size: 14px;
-            }
-        }
+@media (max-width: 768px) {
+    .modal-medium,
+    .modal-lg {
+        max-width: 95%;
+    }
+    .flotante {
+        display: none;
+    }
+    .navbar-collapse {
+        margin-left: 0;
+    }
+    .nav-item {
+        width: 100%;
+    }
+    .submenu.active a {
+        color: white;
+    }
+    .navbar-light .navbar-nav .active>.nav-link {
+        color: white;
+    }
+    .submenu {
+        height: 60px;
+        padding-left: 20px;
+    }
+    .nav-item.submenu.active {
+        border-bottom: none;
+        background: transparent;
+    }
+    .nav-item.submenu.active a {
+        color: #1c64b0;
+    }
+    .comentarios {
+        padding-left: 15px;
+    }
+    ul#TabUsuarios .nav-item {
+        width: 50%;
+        font-size: 14px;
+    }
+}
 
-        @media (max-width: 425px) {
-            ul#TabUsuarios .nav-item {
-                height: 60px;
-            }
-            ul#TabUsuarios .nav-item a.nav-link {
-                height: 100%;
-            }
-        }
+@media (max-width: 425px) {
+    ul#TabUsuarios .nav-item {
+        height: 60px;
+    }
+    ul#TabUsuarios .nav-item a.nav-link {
+        height: 100%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    body .landing .welcome-title h1 {
+        font-size: 60px;
+    }
+    body .landing .welcome-title p {
+        font-size: 20px;
+    }
+
+    body .Home .Chat .GetStarted img.Justin {
+        height: 70px;
+        max-width: 70px;
+    }
+    body .Home .Chat .GetStarted .AlignMiddle .welcome-title h1 {
+        font-size: 20px;
+        line-height: 40px;
+    }
+    body .Home .Chat .GetStarted p {
+        font-size: 1.0em;
+    }
+
+    body .row.header {
+        padding-bottom: 0;
+    }
+    body .plan .row.header {
+        overflow-x: scroll;
+        margin-bottom: 20px;
+    }
+    body .row.header button, .pink-button {
+        margin-bottom: 10px;
+    }
+    body .canvas-card {
+        margin-top: 0;
+    }
+    body .actions {
+        position: relative;
+        right: 0;
+    }
+    body .row .col-md-3,
+    body .row .col-md-6 {
+        padding-right: 0;
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    body .backButtonClass {
+        margin-bottom: 10px;
+    }
+
+    body .page-wrapper {
+        width: 100%;
+        height: 50%;
+    }
+    body .chatbot-menu .I-ChatBot ul.Messages {
+        height: 80%;
+    }
+    body .chatbot-menu .Container .Content {
+        height: 100%;
+    }
+}

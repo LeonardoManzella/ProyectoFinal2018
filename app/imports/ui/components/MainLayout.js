@@ -10,7 +10,7 @@ export default class MainLayout extends Component {
   render() {
     const { content } = this.props;
     return (
-      <div>
+      <div className="main-layout">
         <main id="page-wrap">
           <MainHeaderContainer
             currentUrl = {FlowRouter.current().path}
