@@ -533,13 +533,13 @@
     
     // FIXME por ahora lo dejamos en texto y en el futuro incorporamos lo de rubro ligero/facil o cmplejo/dificil
     "product_types_interested_on_selling" : "¿Te interesa vender alguno de estos tipos de productos?",
-    "Música" : "Música",
-    "Objetos de Cultura" : "Objetos de Cultura",
-    "Muebles" : "Muebles",
-    "Indumentaria" : "Indumentaria",
-    "Diseño" : "Diseño",
-    "Productos Audiovisuales" : "Productos Audiovisuales",
-    "Otro" : "Otro",
+    "musica" : "Música",
+    "objetos_de_cultura" : "Objetos de Cultura",
+    "muebles" : "Muebles",
+    "indumentaria" : "Indumentaria",
+    "disenio" : "Diseño",
+    "productos_audiovisuales" : "Productos Audiovisuales",
+    "otro" : "Otro",
     
     "services_types_interested_on_selling" : "¿Te interesa vender alguno de estos servicios?",
     "allow_sell_talks" : "Cursos, talleres, reuniones/ Consultas privadas o grupales",
@@ -574,8 +574,8 @@
     
   
     "have_credit_question" : "¿Tenés una cuenta donde apalancarte financieramente? ¿Podés sacar préstamos en caso de emergencia?", //Sleccion Unica
-    "has_credit_history" : "TRADUCIME LEO",
-    "doesnt_have_credit_history" : "TRADUCIME LEO",
+    "has_credit_history" : "Si",
+    "doesnt_have_credit_history" : "No",
 
 
     "has_passport_question" : "¿Tenés tu documentacion actualizada, por ejemplo tu pasaporte?", //Sleccion Unica
@@ -592,7 +592,7 @@
 
     "has_partner_question" : "¿Tenés un socio para el emprendimiento?", //Sleccion Unica
     "has_partner" : "Sí",
-    "alone" : "Quiero dirigirlo solo",
+    "alone" : "Quiero dirigirlo solo / Aun no",
     
     "has_balance_question" : "¿En tu vida personal, tendés a llevar la cuenta de los gastos e ingresos, un balance?", //Sleccion Unica
     "has_balance" : "Sí, lo hago",
@@ -650,7 +650,7 @@
     "young_client" : "Gente joven",
     "adult_client" : "Adultos",
     "old_client" : "Mayores",
-    "non_profit" : "TRADUCIME LEO"
+    "non_profit" : "No tengo fines de lucro / Quiero ayudar a los demas"
      // ----------------------------- IDENTITY QUESTIONS
   }
 }
