@@ -164,7 +164,7 @@ valid_objetives_rule(allow_sell_workshops, update_netbook).
 valid_objetives_rule(strengthen_your_team, consultant_or_coach).
 valid_objetives_rule(flexibility, update_netbook).
 valid_objetives_rule(flexibility, everything_online).
-// FIXME cambiar  los que estan debajo a Contribuciones
+% FIXME cambiar  los que estan debajo a Contribuciones
 valid_objetives_rule(alone, outsource_communications).
 valid_objetives_rule(alone, outsource_sales).
 valid_objetives_rule(alone, outsource_control).
@@ -178,7 +178,7 @@ valid_objetives_rule(doesnt_have_experience_leading, learn_leadership).
 valid_objetives_rule(doesnt_have_experience_leading, monitor_employees).
 valid_objetives_rule(doesnt_have_experience_leading, self_managed_team).
 valid_objetives_rule(doesnt_have_experience_leading, hire_experienced_employees).
-// FIXME cambiar a indentidad
+% FIXME cambiar a indentidad
 valid_objetives_rule(non_profit, direct_marketing).
 valid_objetives_rule(non_profit, talks_workshops).
 valid_objetives_rule(non_profit, local_social_networks).
