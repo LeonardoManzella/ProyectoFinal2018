@@ -22,6 +22,7 @@ import SwotContainer from '../../imports/ui/containers/swotAndRisksContainers/Sw
 import RisksContainer from '../../imports/ui/containers/swotAndRisksContainers/RisksContainer';
 import HomePage from '../../imports/ui/components/HomePage';
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot.jsx'
+import Calendar from '../../imports/ui/components/calendar/Calendar.jsx'
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'notFound'];
@@ -119,6 +120,13 @@ FlowRouter.route('/expert', {
   name: 'expert',
   action: function() {
     mount(MainLayout, {content: <Expert/>});
+  }
+})
+
+FlowRouter.route('/calendar', {
+  name: 'calendar',
+  action: function() {
+    mount(MainLayout, {content: <Calendar/>});
   }
 })
 
