@@ -18,7 +18,8 @@ export default class Calendar extends React.Component {
                     description: undefined,
                     startDate: undefined
                 },
-                rrule: undefined
+                rrule: undefined,
+                nextEvents: []
             };
 
             this.handleSingleEventInputChange = this.handleSingleEventInputChange.bind(this);
@@ -85,10 +86,14 @@ export default class Calendar extends React.Component {
         }
 
         handleCheckEvents(){
+            const self = this;
             if (this.apiCalendar.sign)
             this.apiCalendar.listUpcomingEvents(10)
               .then(({result}) => {
                 console.log(result.items);
+                self.setState({
+                    nextEvents: result.items
+                });
               });
         }
 
@@ -118,6 +123,18 @@ export default class Calendar extends React.Component {
             );
         }
 
+        renderEvents(events) {
+            return (
+                events.map((event) => (
+                <div className="form-group">
+                    <p><strong>{event.summary}</strong></p>
+                    <p><i>{event.description}</i></p>
+                    <p>{event.start.date}</p>
+                </div>
+            ))
+            ); 
+        }
+
 		render() {
 			return (
 				<div>
@@ -137,6 +154,17 @@ export default class Calendar extends React.Component {
                     >
                         check-events
                     </button>
+
+                     <div className="container content-body">
+                        <div className="row">
+                            <div className="col-md-6">
+                                <p className="title-form">Tus eventos más cercanos son</p>
+                                {
+                                    this.renderEvents(this.state.nextEvents)
+                                }
+                            </div>
+                        </div>
+                    </div>
 
                     <div className="container content-body">
                         <div className="row">
