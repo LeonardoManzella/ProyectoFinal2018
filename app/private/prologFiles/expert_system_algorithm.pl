@@ -164,7 +164,7 @@ valid_objetives_rule(allow_sell_workshops, update_netbook).
 valid_objetives_rule(strengthen_your_team, consultant_or_coach).
 valid_objetives_rule(flexibility, update_netbook).
 valid_objetives_rule(flexibility, everything_online).
-// FIXME cambiar  los que estan debajo a Contribuciones
+% FIXME cambiar  los que estan debajo a Contribuciones
 valid_objetives_rule(alone, outsource_communications).
 valid_objetives_rule(alone, outsource_sales).
 valid_objetives_rule(alone, outsource_control).
@@ -178,7 +178,7 @@ valid_objetives_rule(doesnt_have_experience_leading, learn_leadership).
 valid_objetives_rule(doesnt_have_experience_leading, monitor_employees).
 valid_objetives_rule(doesnt_have_experience_leading, self_managed_team).
 valid_objetives_rule(doesnt_have_experience_leading, hire_experienced_employees).
-// FIXME cambiar a indentidad
+% FIXME cambiar a indentidad
 valid_objetives_rule(non_profit, direct_marketing).
 valid_objetives_rule(non_profit, talks_workshops).
 valid_objetives_rule(non_profit, local_social_networks).
@@ -268,6 +268,8 @@ valid_identity_rule(transgressor, guerrilla_marketing).
 valid_identity_rule(transgressor, carefull_deadlines).
 valid_identity_rule(hate_numbers, hire_secretary).
 valid_identity_rule(hate_numbers, outsource_accounting).
+% TODO en vez de ponerlas aca, hacer que se adhieran a las Listas para Cada Plan con un Predicado Hecho /1 al final, asi solo aparecen una unica vez en vez de por cada elemento
+/*
 valid_identity_rule(_, explain_how_to_delegate).
 valid_identity_rule(_, monitor_employees).
 valid_identity_rule(_, design_processes).
@@ -279,7 +281,7 @@ valid_identity_rule(_, systematize).
 valid_identity_rule(_, work_near_clients).
 valid_identity_rule(_, use_CRM).
 valid_identity_rule(_, communication_association).
-
+*/
 
 regla_valida_combinacion(local, physical, physical_communications).
 regla_valida_combinacion(local, physical, press_and_magazines).
