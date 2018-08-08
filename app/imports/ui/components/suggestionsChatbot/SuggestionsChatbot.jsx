@@ -1,6 +1,6 @@
 import React from 'react'
 import { Meteor } from 'meteor/meteor';
-import ChatBot, { ChatBotUtil } from 'i-chatbot'
+import ChatBot, { ChatBotUtil } from './../../../../lib/interview-chatbot/lib/index' 
 import Logic from './PlanScreenLogic.js'
 
 export default class SuggestionsChatbot extends React.Component {

@@ -3143,7 +3143,8 @@ var MessageProcessor = function () {
   MessageProcessor.typingSpeed = function typingSpeed(text) {
     if (!text || Object.prototype.toString.call(text) !== "[object String]") return 0;
 
-    return Math.min(Math.max(text.length * MessageProcessor.minTypingSpeed / 10, MessageProcessor.minTypingSpeed), MessageProcessor.maxTypingSpeed);
+    return 900;
+    //return Math.min(Math.max(text.length * MessageProcessor.minTypingSpeed / 10, MessageProcessor.minTypingSpeed), MessageProcessor.maxTypingSpeed);
   };
 
   _createClass(MessageProcessor, [{
