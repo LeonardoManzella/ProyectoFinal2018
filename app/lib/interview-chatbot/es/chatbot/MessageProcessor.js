@@ -49,7 +49,7 @@ var MessageProcessor = function () {
 
     console.log('Inside es folder');
 
-    return 5;
+    return 900;
     return Math.min(Math.max(text.length * MessageProcessor.minTypingSpeed / 10, MessageProcessor.minTypingSpeed), MessageProcessor.maxTypingSpeed);
   };
 
