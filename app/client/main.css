@@ -911,6 +911,7 @@ ol.progtrckr li:before {
   font-weight: 600;
   border-radius: 0;
   box-shadow: none;
+  cursor: pointer;
 }
 
 .login.not-found .message {
@@ -941,6 +942,13 @@ ol.progtrckr li:before {
 
 .landing.navbar .dropdown {
   float: right;
+  background-color: #fc6a68;
+  border-radius: 5px;
+}
+
+.landing.navbar .dropdown a,
+.landing.navbar .dropdown a:hover {
+  color: white;
 }
 
 .landing .content-body {

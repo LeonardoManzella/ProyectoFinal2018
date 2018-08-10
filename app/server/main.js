@@ -12,16 +12,10 @@ import '../imports/api/server/publications/risksPublications';
 import { Accounts } from 'meteor/accounts-base';
 
 Accounts.onCreateUser((options, user) => {
-  // const personalInformation = Object.assign({}, options);
-  // delete personalInformation.email;
-  // delete personalInformation.role;
-  // if (options.executiveUnitId) {
-  //   delete personalInformation.executiveUnitId;
-  //   user.executiveUnitId = options.executiveUnitId;
-  // }
-  // user.originatorId = Meteor.userId();
   user.personalInformation = {
-    status: 'pendingChatbot'
+    status: 'pendingChatbot',
+    name: options.name,
+    surname: options.surname
   };
   user.roles = [];
   user.roles.push('entrepreneur');

@@ -22,7 +22,9 @@ if (Meteor.isServer) {
         // if (!Meteor.user().canCreateNewUsers()) {
         //   throw new Meteor.Error('User not authorized');
         // }
-        if (!user.email || user.email === '' ||
+        if (!user.name || user.name === '' ||
+          !user.surname || user.surname === '' ||
+          !user.email || user.email === '' ||
           !user.password || user.password === '' ||
           !user.repeatPassword || user.repeatPassword === ''
         ) {
@@ -37,7 +39,9 @@ if (Meteor.isServer) {
         }
         const newUserId = Accounts.createUser({
           email: user.email,
-          password: user.password
+          password: user.password,
+          name: user.name,
+          surname: user.surname
         });
         // newUser(user, newUserId, [], ['projectManager']);
         return newUserId;

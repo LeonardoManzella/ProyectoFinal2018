@@ -25,7 +25,7 @@ export default class HomePage extends Component {
               <a href="#clients-section">CLIENTES</a>
               <a href="#news-section">NOTICIAS</a>
               <a href="#contact-section">CONTACTO</a>
-              <Login />
+              <Login loginDropdownOpen={this.state.loginDropdownOpen}/>
             </div>
           </div>
         </nav>
@@ -36,11 +36,18 @@ export default class HomePage extends Component {
                   <div className="welcome-title">
                     <h1><strong>Consultoría</strong></h1>
                     <p>Comenzá tu nuevo emprendimiento creativo</p>
-                    <span><button className="transparent-button">Comenzar</button></span>
+                    <span>
+                      <button
+                        onClick={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
+                        className="transparent-button"
+                      >
+                        Comenzar
+                      </button>
+                    </span>
                   </div>
                 </div>
-                <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide2" />
-                <img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide3" />
+                <img src="/img/team.jpeg" />
+                <img src="/img/creative_ideas.jpg" />
               </Carousel>
             </div>
             <div id="expert-system-section" className="content-body white expert-system">

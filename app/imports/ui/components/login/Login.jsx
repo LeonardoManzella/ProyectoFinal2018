@@ -60,15 +60,23 @@ class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      loginDropdownOpen: false,
+      loginDropdownOpen: props.loginDropdownOpen ? props.loginDropdownOpen : false,
       email: '',
       password: '',
       repeatPassword: '',
+      name: '',
+      surname: '',
       error: '',
       register: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.submit = this.submit.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      loginDropdownOpen: nextProps.loginDropdownOpen ? nextProps.loginDropdownOpen : false
+    });
   }
 
   handleChange(event) {
@@ -92,8 +100,11 @@ class Login extends React.Component {
 
   register(event) {
     event.preventDefault();
-    const {email, password, repeatPassword} = this.state;
-    if (!email || email === '' || !password || password === '' ||
+    const {name, surname, email, password, repeatPassword} = this.state;
+    if (!name || name === '' ||
+      !surname || surname === '' || 
+      !email || email === '' ||
+      !password || password === '' ||
       !repeatPassword || repeatPassword === ''
     ) {
       this.setState( {error: TAPi18n.__('error.login')} );
@@ -103,7 +114,7 @@ class Login extends React.Component {
       this.setState( {error: 'Las contraseñas deben coincidir'} );
       return;
     }
-    Meteor.call('insertNewUser', { email, password, repeatPassword }, (err) => {
+    Meteor.call('insertNewUser', { name, surname, email, password, repeatPassword }, (err) => {
       if (err) {
         console.log(err)
         this.setState(
@@ -144,6 +155,30 @@ class Login extends React.Component {
             { this.state.register ? 'REGISTRAR' : 'LOGIN' }
           </div>
           <div className="dropdown-body">
+            {
+              this.state.register ?
+              <input
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleChange} 
+                className='dropdown-input'
+                placeholder='Nombre'
+              />
+              : ''
+            }
+            {
+              this.state.register ?
+              <input
+                type="text"
+                name="surname"
+                value={this.state.surname}
+                onChange={this.handleChange} 
+                className='dropdown-input'
+                placeholder='Apellido'
+              />
+              : ''
+            }
             <input
               type="text"
               name="email"

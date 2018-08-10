@@ -26,9 +26,9 @@ import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatb
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'notFound'];
 const allowedRoutesByEntrepreneurStatus = {
-  pendingChatbot: 'chatbot',
-  pendingAreas: 'canvas',
-  pendingPlans: 'planList'
+  pendingChatbot: ['chatbot'],
+  pendingAreas: ['canvas', 'chatbot'],
+  pendingPlans: ['planList', 'canvas', 'chatbot']
 };
 
 const isEntrepreneurAndIsntApproved = (status) => {
@@ -41,7 +41,7 @@ const verifyNotAllowedRouteByEntrepreneurStatus = (routeName) => {
   if (!user) return true;
   const status = user.personalInformation.status;
   return isEntrepreneurAndIsntApproved(status) &&
-    allowedRoutesByEntrepreneurStatus[status] !== routeName;
+    !allowedRoutesByEntrepreneurStatus[status].includes(routeName);
 }
 
 const mustBeAuthenticated = function mustBeAuthenticated() {
@@ -97,7 +97,7 @@ FlowRouter.route('/', {
   action: function() {
     const status =  Meteor.user() ?  Meteor.user().personalInformation.status :  Meteor.user();
     if (isEntrepreneurAndIsntApproved(status)) {
-      FlowRouter.go(allowedRoutesByEntrepreneurStatus[status]);
+      FlowRouter.go(allowedRoutesByEntrepreneurStatus[status][0]);
     } else { 
       mount(MainLayout, {content: <Activity/>});
     }
