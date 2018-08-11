@@ -1000,11 +1000,14 @@ ol.progtrckr li:before {
 
 .landing .table {
   display: table;
-  height: 80vh;
-  min-height: 100%;
   position: relative;
   width: 100%;
   padding-left: 0px;
+}
+
+.landing .content-body.initial-section .table {
+  height: 80vh;
+  min-height: 100%;
 }
 
 .landing .welcome-title {
