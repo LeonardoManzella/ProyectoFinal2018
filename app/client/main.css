@@ -494,8 +494,8 @@ p.hash {
 }
 
 .plan .actions {
-  position: absolute;
-  right: 60px
+  position: relative;
+  float: right;
 }
 
 .actions .icon {
@@ -976,7 +976,9 @@ ol.progtrckr li:before {
 }
 
 .landing .content-body .slider img {
-  height: 80vh;
+  height: 700px;
+  top: -60px;
+  position: relative;
 }
 
 .landing .content-body.white {

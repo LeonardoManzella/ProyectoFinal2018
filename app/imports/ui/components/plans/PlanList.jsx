@@ -20,7 +20,8 @@ class PlanList extends React.Component {
       modifyPlanItemsList,
       planTypeList,
       handleSelectChange,
-      savePlans
+      savePlans,
+      businessAreas
     } = this.props;
     const isEditable = true;
     return (
@@ -43,7 +44,11 @@ class PlanList extends React.Component {
             >
               <option value='' disabled hidden>Elegir Área</option>
               <option value='all'>Todas</option>
-              <option value='Galeria de Arte'>Galería de Arte</option>
+              {
+                businessAreas.map((area, index) =>
+                  <option key={index} value={area._id}>{area.name}</option>
+                )
+              }
             </select>
           </div>
         </div>
@@ -79,7 +84,8 @@ PlanList.propTypes = {
   handleOnChange: PropTypes.func,
   modifyPlanItemsList: PropTypes.func,
   handleSelectChange: PropTypes.func,
-  savePlans: PropTypes.func
+  savePlans: PropTypes.func,
+  businessAreas: PropTypes.array
 };
 
 export default PlanList;

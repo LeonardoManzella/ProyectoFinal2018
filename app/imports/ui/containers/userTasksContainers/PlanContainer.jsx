@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import { UserTasks } from '../../../../lib/schemas/userTask';
+import { BusinessAreas } from '../../../../lib/schemas/businessArea';
 import PlanPage from '../../components/plans/PlanPage';
 
 const getPlansFromUserTasks = (userTasks) => {
@@ -25,12 +26,15 @@ const getPlansFromUserTasks = (userTasks) => {
 
 const PlanContainer = withTracker(() => {
   const planSubs = Meteor.subscribe('getPlanUserTasks');
-  const loading = !planSubs.ready();
+  const areasSubs = Meteor.subscribe('getBusinessAreasNames');
+  const loading = !planSubs.ready() || !areasSubs.ready();
   const userTasks = UserTasks.find().fetch();
   const planTypeList = getPlansFromUserTasks(userTasks);
+  const businessAreas = BusinessAreas.find().fetch();
   return {
     loading,
-    planTypeList
+    planTypeList,
+    businessAreas
   };
 })(PlanPage);
 

@@ -1,8 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CrudActions from '../sharedComponents/CrudActions';
+import { BusinessAreas } from '../../../../lib/schemas/businessArea';
 
 class PlanCard extends React.Component {
+
+  getBusinessAreaName(businessAreaId) {
+    if (businessAreaId === 'all') {
+      return 'Todas';
+    }
+    const businessArea = BusinessAreas.findOne({_id: businessAreaId});
+    return businessArea ? businessArea.name : '';
+  }
 
 	render() {
     const { businessArea, planItems, isEditable, changeEditOptionPlan,
@@ -10,15 +19,19 @@ class PlanCard extends React.Component {
     return (
       <div>
         <div className="row header">
-          <h5>{businessArea === 'all' ? 'Todas' : businessArea}</h5>
-          <CrudActions
-            isEditable={isEditable}
-            iconsColor='-gray'
-            editAction={changeEditOptionPlan}
-            deleteAction={deletePlan}
-            confirmAction={changeEditOptionPlan}
-            denyAction={changeEditOptionPlan}
-          />
+          <div className="col-md-4">
+            <h5>{this.getBusinessAreaName(businessArea)}</h5>
+          </div>
+          <div className="col-md-8">
+            <CrudActions
+              isEditable={isEditable}
+              iconsColor='-gray'
+              editAction={changeEditOptionPlan}
+              deleteAction={deletePlan}
+              confirmAction={changeEditOptionPlan}
+              denyAction={changeEditOptionPlan}
+            />
+          </div>
         </div>
         <div className="row header">
           <table className="table table-striped">

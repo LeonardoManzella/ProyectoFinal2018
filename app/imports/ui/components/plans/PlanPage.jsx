@@ -187,6 +187,7 @@ class PlanPage extends React.Component {
           modifyPlanItemsList={this.modifyPlanItemsList.bind(this)}
           handleSelectChange={(e) => this.setState({'selectedBusinessArea': e.target.value})}
           savePlans={this.savePlans.bind(this)}
+          businessAreas={this.props.businessAreas}
         />
       );
       return newStep;
@@ -211,19 +212,16 @@ class PlanPage extends React.Component {
               // prevBtnOnLastStep={false}
               backButtonCls='backButtonClass'
               nextButtonCls='nextButtonClass'
-              onStepChange={(step) => this.setState({currentStep: step, currentPlan: planTypes[step].plan_category})}
+              // onStepChange={(step) => {
+              //   console.log(step);
+              //   this.setState({
+              //     currentStep: step ? step : this.state.currentStep,
+              //     currentPlan: step ? planTypes[step].plan_category : this.state.currentPlan
+              //   });
+              // }}
+              stepsNavigation={false}
             />
           </div>
-          { // FIXME: Ver de usar solo al principio, cuando se da el Alta, y no para Baja y Modif
-            /* {
-            this.state.currentStep === steps.length - 1 ?
-              <div className="footer-buttons">
-                <button className="nextButtonClass" id="next-button" onClick={this.savePlans.bind(this)}>
-                  Guardar Planes
-                </button>
-              </div>
-              : ''
-          } */}
         </div>
       </div>
 		);
@@ -233,7 +231,8 @@ class PlanPage extends React.Component {
 
 PlanPage.propTypes = {
   loading: PropTypes.bool,
-  planTypeList: PropTypes.array
+  planTypeList: PropTypes.array,
+  businessAreas: PropTypes.array
 };
 
 PlanPage.defaultProps = {

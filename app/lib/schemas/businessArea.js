@@ -53,14 +53,11 @@ const businessAreasSchema = new SimpleSchema({
 });
 
 BusinessAreas.insertBusinessAreas = (businessAreas) => {
+  BusinessAreas.remove({userId: Meteor.userId()});
   businessAreas.forEach(businessArea => {
-    if (!businessArea._id) {
-      const newBusinessArea = Object.assign({}, businessArea);
-      newBusinessArea.userId = Meteor.userId();
-      BusinessAreas.insert(newBusinessArea);
-    } else {
-      BusinessAreas.update({_id: businessArea._id}, {$set: businessArea});
-    }
+    const newBusinessArea = Object.assign({}, businessArea);
+    newBusinessArea.userId = Meteor.userId();
+    BusinessAreas.insert(newBusinessArea);
   });
 };
 
