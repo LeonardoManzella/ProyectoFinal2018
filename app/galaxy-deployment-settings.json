@@ -1,0 +1,11 @@
+{
+    "galaxy.meteor.com": {
+       "env": {
+         "MONGO_URL": "mongodb://root:proyectofinal2018@ds139949.mlab.com:39949/breslerdb"
+       },
+       "baseImage": {
+        "repository": "martinmorsevergara/meteor-galaxy-app-swipl",
+        "tag": "latest"
+      }
+    }
+}
