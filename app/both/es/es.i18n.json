@@ -646,6 +646,8 @@
     "disorganized" : "Desorganizado/ Colgado/ Vago/ Disperso",
     "anxious" : "Impaciente/ ansioso",
   
+    "perpetual_identity" : "De las palabras que elegiste, cuáles pensás que son rasgos definitivos tuyos?",
+
     "who_wants_to_sell_so" : "¿A quien te gustaria venderle?",   // Pregunta multiple
     "young_client" : "Gente joven",
     "adult_client" : "Adultos",

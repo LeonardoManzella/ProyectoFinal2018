@@ -145,6 +145,7 @@ if (Meteor.isServer) {
         Meteor.users.update({_id: user._id}, {$set: {'goals': selectedAnswers.goals}});
         Meteor.users.update({_id: user._id}, {$set: {'contributions': selectedAnswers.contributions}});
         Meteor.users.update({_id: user._id}, {$set: {'identity_traits': selectedAnswers.identity_traits}});
+        Meteor.users.update({_id: user._id}, {$set: {'perpetual_identity': selectedAnswers.perpetual_identity}});
         if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
           Meteor.user() && Meteor.user().personalInformation.status === 'pendingChatbot') {
           Meteor.users.update({_id: user._id}, {$set: {'personalInformation.status': 'pendingAreas'}});

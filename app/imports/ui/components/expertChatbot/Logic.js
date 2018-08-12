@@ -17,6 +17,8 @@ class Logic {
       t('greetings2') + ' ' + userName + '!'
     ].any(); 
 
+    Logic.currentQuestionNumber = 0;
+
     return [
       ChatBotUtil.textMessage(
         getStartedQuestion,

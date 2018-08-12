@@ -258,6 +258,16 @@ class InterviewQuestions {
           },
 
           {
+            "question" : "perpetual_identity",
+            "possibleAnswers" : [
+              
+            ],
+            multipleSelection: true,
+            selectedAnswers: [],
+            type: 'perpetual_identity'
+          },
+
+          {
             "question" : "who_wants_to_sell_so",
             "possibleAnswers" : [
               "young_client",
@@ -284,9 +294,26 @@ class InterviewQuestions {
     static getPossibleAnswers(questionNumber) {
         const question = InterviewQuestions.getQuestion(questionNumber);
 
+        if(question.question == 'perpetual_identity' && question.possibleAnswers.length == 0) {
+          InterviewQuestions.buildPerpertualIdentityPossibleAnswers();
+        }
+
         return question.possibleAnswers
             .filter(answer => !question.selectedAnswers.includes(answer));
     }
+
+    static buildPerpertualIdentityPossibleAnswers() {
+      const words1 = InterviewQuestions.getQuestionByName('what_words_1').selectedAnswers;
+      const words2 = InterviewQuestions.getQuestionByName('what_words_2').selectedAnswers;
+      
+      const selectedWords = words1.concat(words2);
+
+      InterviewQuestions.getQuestionByName('perpetual_identity').possibleAnswers = selectedWords;
+    }
+
+    static getQuestionByName(questionName) {
+      return InterviewQuestions.allQuestions.filter(q => q.question == questionName)[0];
+    } 
 
     static selectAnswer(questionNumber, answer) {
         InterviewQuestions
@@ -304,6 +331,7 @@ class InterviewQuestions {
       let goals = [];
       let contributions = [];
       let identity_traits = [];
+      let perpetual_identity = [];
 
       InterviewQuestions.allQuestions.forEach(function (question) {
         if (question.type == 'goal') {
@@ -315,12 +343,16 @@ class InterviewQuestions {
         if (question.type == 'identity') {
           identity_traits = identity_traits.concat(question.selectedAnswers);
         }
+        if (question.type == 'perpetual_identity') {
+          perpetual_identity = perpetual_identity.concat(question.selectedAnswers);
+        }
       });
       
       return {
         goals,
         contributions,
-        identity_traits
+        identity_traits,
+        perpetual_identity
       };
     }
 
