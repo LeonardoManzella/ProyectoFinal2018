@@ -81,6 +81,12 @@ const userSchema = new SimpleSchema({
   'identity_traits.$': {
     type: String
   },
+  perpetual_identity: {
+    type: Array,
+  },
+  'perpetual_identity.$': {
+    type: String
+  },
   emails: {
     type: Array
   },
