@@ -552,6 +552,20 @@ td>input {
   border-color: #9f9f9f;
 }
 
+.plan .row.header tbody select {
+  padding: 0;
+  width: 40%;
+  margin-bottom: 1rem;
+}
+
+.plan .row.header tbody p {
+  margin-right: 1rem;
+}
+
+.table td .row {
+  margin: 0;
+}
+
 /* WIZARD */
 
 ol.progtrckr {

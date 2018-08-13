@@ -33,7 +33,7 @@ class PlanCard extends React.Component {
             />
           </div>
         </div>
-        <div className="row header">
+        <div className="row header table-container">
           <table className="table table-striped">
             <thead>
               <tr>
@@ -84,13 +84,46 @@ class PlanCard extends React.Component {
                     />
                   </td>
                   <td>
-                    <input
+                    {/* <input
                       placeholder="Ej: Cada 2 días"
                       value={planItem.frequency}
                       name='frequency'
                       onChange={(event) => handleOnChange(event, index)}
                       disabled={!isEditable}
-                    />
+                    /> */}
+                    <div className="row">
+                      <p> Repetir </p>
+                      <select
+                        placeholder="Ej: Cada 2 días"
+                        name='frequency'
+                        onChange={(event) => handleOnChange(event, index)}
+                        disabled={!isEditable}
+                      >
+                        <option value="daily">diariamente</option>
+                        <option value="weekly">semanalmente</option>
+                        <option value="monthly">mensualmente</option>
+                        <option value="year">anualmente</option>
+                      </select>
+                    </div>
+                    <div className="row">
+                      <p> Cada: </p>
+                      <select
+                        placeholder="Ej: Cada 2 días"
+                        name='frequency'
+                        // onChange={(event) => handleOnChange(event, index)}
+                        disabled={!isEditable}
+                      >
+                        <option>-</option>
+                        {
+                          planItem.frequency === "weekly" ?
+                            ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado',
+                            'Domingo', 1, 2, 3, 4, 5, 6].map((opt, index) =>
+                              <option key={index}>{opt}</option>) :
+                            [1, 2, 3, 4, 5, 6].map((opt, index) =>
+                              <option key={index}>{opt}</option>)
+                        }
+                      </select>
+                    </div>
                   </td>
                   {
                     isEditable ?

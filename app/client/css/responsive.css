@@ -71,14 +71,22 @@
         padding-bottom: 0;
     }
     body .plan .row.header {
-        overflow-x: scroll;
         margin-bottom: 20px;
+    }
+    body .plan .row.header.table-container {
+        overflow-x: scroll;
     }
     body .row.header button, .pink-button {
         margin-bottom: 10px;
     }
     body .canvas-card {
         margin-top: 0;
+    }
+    body .canvas-card .title input {
+        width: 100%;
+    }
+    body .canvas-card .table-container {
+        overflow-x: scroll;
     }
     body .actions {
         position: relative;
