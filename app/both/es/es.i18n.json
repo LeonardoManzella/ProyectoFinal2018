@@ -502,9 +502,9 @@
     }
   },
   "interview": {
-    "getStarted" : "Comenzar entrevista",
-    "greetings1" : "Hola",
-    "greetings2" : "Bienvenido",
+    "getStarted" : "Comenzar",
+    "greetings1" : "Bienvenido",
+    "greetings2" : "Ahora vamos a tener una entrevista para conocerte. Tene en cuenta que va a llevar un rato largo. Ponete comodo",
     "responseGreetings" : "Gracias! Quiero empezar a modelar mi emprendimiento",
     "youCanSelectMoreOptions" : "Puedes seleccionar más opciones, o continuar a la siguiente pregunta",
     "nextQuestion" : "Siguiente pregunta",
