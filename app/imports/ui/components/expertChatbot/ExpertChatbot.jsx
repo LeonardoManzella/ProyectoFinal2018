@@ -35,6 +35,13 @@ export default class ExpertChatbot extends React.Component {
 							</div>
 						</div>
 					</div>
+					<div className="FullSizeTable">
+						<div className="AlignMiddle welcome-title">
+							<h1><strong>Entrevista</strong></h1>
+							<p><i>Vamos a tener una entrevista para conocer tus objetivos, los recursos que tenes disponibles y tu identidad, como sos vos</i></p>
+							<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
+						</div>
+					</div>
 				</div>
 			)
 		} else {

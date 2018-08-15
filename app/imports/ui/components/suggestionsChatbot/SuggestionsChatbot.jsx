@@ -31,6 +31,13 @@ export default class SuggestionsChatbot extends React.Component {
 							</div>
 						</div>
 					</div>
+					<div className="FullSizeTable">
+						<div className="AlignMiddle welcome-title">
+							<h1><strong>Botigo</strong></h1>
+							<p><i>Botigo puede gruiarte y darte Sugerencias para acompañarte al proceso de emprender</i></p>
+							<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
+						</div>
+					</div>
 				</div>
 			)
 		} else {
