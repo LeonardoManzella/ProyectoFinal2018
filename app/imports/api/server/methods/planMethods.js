@@ -13,7 +13,7 @@ if (Meteor.isServer) {
         return newPlanId;
       } catch (exception) {
         console.log(exception);
-        return exception;
+        throw exception;
       }
     }
   });

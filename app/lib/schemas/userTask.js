@@ -90,12 +90,12 @@ UserTasks.insertPlanList = (plans) => {
       userTasks.subtype = plan.name;
       userTasks.businessArea = businessArea;
       userTasks.tasks = planType.data.planItems.map(planItem => ({
-        responsibleID: planItem.responsible,
-        supervisorID: planItem.supervisor,
-        taskDescription: planItem.tool,
+        responsibleID: planItem.data.responsible,
+        supervisorID: planItem.data.supervisor,
+        taskDescription: planItem.data.tool,
         frequency: {
           type: 'everyDay',
-          value: planItem.frequency,
+          value: planItem.data.frequency,
           time: 'day'
         }
       }));

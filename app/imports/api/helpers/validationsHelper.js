@@ -94,6 +94,15 @@ const initializeUserProfileErrors = () => {
   };
 };
 
+const initializePlanListErrors = () => {
+  return {
+    tool: {rules: ['required'], message: ''},
+    responsible: {rules: ['required'], message: ''},
+    supervisor: {rules: ['required'], message: ''},
+    frequency: {rules: ['required'], message: ''}
+  };
+};
+
 const validateEmptyField = (value) => {
   return !value || value === "" || value === null;
 };
@@ -323,5 +332,6 @@ export const validationsHelper = {
   displayFileError,
   initializeProjectFileErrors,
   initializeProvidersErrors,
-  initializeBiddingErrors
+  initializeBiddingErrors,
+  initializePlanListErrors
 };
