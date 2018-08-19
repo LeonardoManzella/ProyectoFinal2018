@@ -480,6 +480,10 @@ p.hash {
   border: none;
 }
 
+.canvas-card .title p {
+  font-size: 40%;
+}
+
 .canvas-card .row {
   margin-bottom: 20px;
 }
@@ -632,6 +636,11 @@ ol.progtrckr li:before {
   bottom: -2.0rem;
   float: left;
   left: 50%;
+}
+
+li span{
+  pointer-events: none;
+  display: inline-block;
 }
 
 .progtrckr li {

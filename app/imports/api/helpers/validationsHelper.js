@@ -94,6 +94,25 @@ const initializeUserProfileErrors = () => {
   };
 };
 
+const initializePlanListErrors = () => {
+  return {
+    tool: {rules: ['required'], message: ''},
+    responsible: {rules: ['required'], message: ''},
+    supervisor: {rules: ['required'], message: ''},
+    frequency: {rules: ['required'], message: ''}
+  };
+};
+
+const initializeBusinessAreasErrors = () => {
+  return {
+    name: {rules: ['required'], message: ''},
+    details: {rules: ['required'], message: ''},
+    providers: {rules: ['required'], message: ''},
+    clients: {rules: ['required'], message: ''},
+    agglutinators: {rules: ['required'], message: ''}
+  };
+};
+
 const validateEmptyField = (value) => {
   return !value || value === "" || value === null;
 };
@@ -323,5 +342,7 @@ export const validationsHelper = {
   displayFileError,
   initializeProjectFileErrors,
   initializeProvidersErrors,
-  initializeBiddingErrors
+  initializeBiddingErrors,
+  initializePlanListErrors,
+  initializeBusinessAreasErrors
 };

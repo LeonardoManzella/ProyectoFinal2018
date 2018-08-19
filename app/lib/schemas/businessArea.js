@@ -6,11 +6,13 @@ export const BusinessAreas = new Mongo.Collection('businessAreas');
 const competitorsSchema = new SimpleSchema({
   name: {
     type: String,
-    label: "name"
+    label: "name",
+    optional: true
   },
   differentiator: {
     type: String,
-    label: "differentiator"
+    label: "differentiator",
+    optional: true
   }
 });
 

@@ -22,6 +22,7 @@ Accounts.onCreateUser((options, user) => {
   user.goals = [];
   user.contributions = [];
   user.identity_traits = [];
+  user.perpetual_identity = [];
   return user;
 });
 

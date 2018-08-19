@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CrudActions from '../sharedComponents/CrudActions';
 import { BusinessAreas } from '../../../../lib/schemas/businessArea';
+import { validationsHelper } from '../../../api/helpers/validationsHelper';
 
 class PlanCard extends React.Component {
 
@@ -59,29 +60,38 @@ class PlanCard extends React.Component {
                   <td>
                     <input
                       placeholder="Ej: Publicación en Facebook"
-                      value={planItem.tool}
+                      value={planItem.data.tool}
                       name='tool'
                       onChange={(event) => handleOnChange(event, index)}
                       disabled={!isEditable}
                     />
+                    <p className='small italic-proyectos text-danger'>
+                      {validationsHelper.getErrorMessage(planItem.errors.tool.message)}
+                    </p>
                   </td>
                   <td>
                     <input
                       placeholder="Ej: Moi"
-                      value={planItem.responsible}
+                      value={planItem.data.responsible}
                       name='responsible'
                       onChange={(event) => handleOnChange(event, index)}
                       disabled={!isEditable}
                     />
+                    <p className='small italic-proyectos text-danger'>
+                      {validationsHelper.getErrorMessage(planItem.errors.responsible.message)}
+                    </p>
                   </td>
                   <td>
                     <input
                       placeholder="Ej: Nicole"
-                      value={planItem.supervisor}
+                      value={planItem.data.supervisor}
                       name='supervisor'
                       onChange={(event) => handleOnChange(event, index)}
                       disabled={!isEditable}
                     />
+                    <p className='small italic-proyectos text-danger'>
+                      {validationsHelper.getErrorMessage(planItem.errors.supervisor.message)}
+                    </p>
                   </td>
                   <td>
                     {/* <input
@@ -115,7 +125,7 @@ class PlanCard extends React.Component {
                       >
                         <option>-</option>
                         {
-                          planItem.frequency === "weekly" ?
+                          planItem.data.frequency === "weekly" ?
                             ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado',
                             'Domingo', 1, 2, 3, 4, 5, 6].map((opt, index) =>
                               <option key={index}>{opt}</option>) :
@@ -124,6 +134,9 @@ class PlanCard extends React.Component {
                         }
                       </select>
                     </div>
+                    <p className='small italic-proyectos text-danger'>
+                      {validationsHelper.getErrorMessage(planItem.errors.frequency.message)}
+                    </p>
                   </td>
                   {
                     isEditable ?

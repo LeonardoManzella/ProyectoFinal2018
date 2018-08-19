@@ -4,6 +4,7 @@ import PlanList from './PlanList';
 import PropTypes from 'prop-types';
 import { push as Menu } from 'react-burger-menu';
 import SuggestionsChatbot from '../suggestionsChatbot/SuggestionsChatbot';
+import { validationsHelper } from '../../../api/helpers/validationsHelper';
 
 const emptyPlanItem = {
   tool: '',
@@ -69,86 +70,143 @@ const planTypes = [
 
 class PlanPage extends React.Component {
 
+  initializePlanTypeList(props, planType) {
+    if (props.planTypeList) {
+      const newPlanTypeList = props.planTypeList
+        .filter(plan => plan.name === planType.name)
+        .map(plan => {
+          const planItems = plan.data.planItems.map(planItem => ({
+            data: planItem,
+            errors: validationsHelper.initializePlanListErrors()
+          }));
+          const newPlan = {
+            data: {
+              planArea: plan.data.planArea,
+              planItems
+            },
+            editable: plan.editable,
+          };
+          return newPlan;
+        });
+      return newPlanTypeList;
+    }
+    return [];
+  }
+
   constructor(props) {
     super(props);
     const plans = planTypes.map(planType => ({
       name: planType.name,
-      planTypeList: props.planTypeList ?
-        props.planTypeList
-          .filter(plan => plan.name === planType.name)
-          .map(plan => ({data: plan.data, editable: plan.editable}))
-        : []
+      planTypeList: this.initializePlanTypeList(props, planType)
     }));
     const INITIAL = 0;
     this.state = {
       plans,
       selectedBusinessArea: '',
       currentStep: INITIAL,
-      currentPlan: planTypes[INITIAL].plan_category
+      currentPlan: planTypes[INITIAL].plan_category,
+      generalError: ''
     };
   }
 
   componentWillReceiveProps(nextProps) {
     const plans = planTypes.map(planType => ({
       name: planType.name,
-      planTypeList: nextProps.planTypeList ?
-        nextProps.planTypeList
-          .filter(plan => plan.name === planType.name)
-          .map(plan => ({data: plan.data, editable: plan.editable}))
-        : []
+      planTypeList: this.initializePlanTypeList(nextProps, planType),
+      generalError: ''
     }));
-    this.setState({plans});
+    this.setState({plans, generalError: ''});
   }
 
   addPlan() {
     const { plans } = this.state;
+    const plansAreas = plans[this.state.currentStep].planTypeList.map(planType => planType.data.planArea);
+    if (plansAreas.includes(this.state.selectedBusinessArea)) {
+      this.setState({generalError: 'Ya existe un plan para esa área.'});
+      return;
+    }
     const data = Object.assign({}, emptyPlan);
     data.planArea = this.state.selectedBusinessArea;
     data.planItems = [];
-    data.planItems.push(Object.assign({}, emptyPlanItem));
+    const planItem = {
+      data: Object.assign({}, emptyPlanItem),
+      errors: validationsHelper.initializePlanListErrors()
+    }
+    data.planItems.push(planItem);
     const newPlan = {
       data,
       editable: true
     };
     plans[this.state.currentStep].planTypeList.push(newPlan);
-    this.setState({plans});
+    this.setState({plans, generalError: ''});
   }
 
   changeEditOptionPlan(index) {
     const { plans } = this.state;
     plans[this.state.currentStep].planTypeList[index].editable =
       !this.state.plans[this.state.currentStep].planTypeList[index].editable;
-    this.setState({plans});
+    this.setState({plans, generalError: ''});
   }
 
   deletePlan(index) {
     const { plans } = this.state;
     plans[this.state.currentStep].planTypeList.splice(index, 1);
-    this.setState({plans});
+    this.setState({plans, generalError: ''});
   }
 
   handleOnChange(event, index, indexPlanItem) {
     const { plans } = this.state;
     plans[this.state.currentStep].planTypeList[index].data
-      .planItems[indexPlanItem][event.target.name] = event.target.value;
-    this.setState({plans});
+      .planItems[indexPlanItem].data[event.target.name] = event.target.value;
+    plans[this.state.currentStep].planTypeList[index].data
+      .planItems[indexPlanItem].errors[event.target.name].message = '';
+    this.setState({plans, generalError: ''});
   }
 
   modifyPlanItemsList(index, addPlanItem, indexPlanItem) {
     const { plans } = this.state;
     if (addPlanItem) {
+      const planItem = {
+        data: Object.assign({}, emptyPlanItem),
+        errors: validationsHelper.initializePlanListErrors()
+      }
       plans[this.state.currentStep].planTypeList[index].data
-        .planItems.push(Object.assign({}, emptyPlanItem));
+        .planItems.push(planItem);
     } else {
       plans[this.state.currentStep].planTypeList[index].data
         .planItems.splice(indexPlanItem, 1);
     }
-    this.setState({plans});
+    this.setState({plans, generalError: ''});
   }
 
   savePlans() {
+    const { plans } = this.state;
+    let plansHaveErrors = false;
+    plans.forEach(plan => {
+      plan.planTypeList.forEach(planType => {
+        planType.data.planItems.forEach(planItem => {
+          const { hasErrors, newErrors } = validationsHelper.getProjectErrors(planItem.data, planItem.errors);
+          plansHaveErrors = hasErrors ? hasErrors : plansHaveErrors;
+          planItem.errors = newErrors;
+        });
+      });
+    });
+    if (plansHaveErrors) {
+      this.setState({
+        plans,
+        generalError: 'Error al guardar cambios. Verifique los datos ingresados.'
+      });
+      return;
+    }
     const previousStatus = Meteor.user().personalInformation.status;
-    Meteor.call('insertNewPlanList', this.state.plans, () => {
+    Meteor.call('insertNewPlanList', this.state.plans, (error) => {
+      if (error) {
+        console.log(error);
+        this.setState({
+          generalError: 'Error del servidor.'
+        });
+        return;
+      }
       if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
         previousStatus === 'pendingPlans') {
         FlowRouter.go('home');
@@ -204,6 +262,7 @@ class PlanPage extends React.Component {
           </Menu>
         </div>
         <div className="content-body plan">
+          <p className='italic-proyectos text-danger'> {this.state.generalError} </p>
           <div className='step-progress'>
             <StepZilla
               steps={steps}
@@ -212,14 +271,15 @@ class PlanPage extends React.Component {
               // prevBtnOnLastStep={false}
               backButtonCls='backButtonClass'
               nextButtonCls='nextButtonClass'
-              // onStepChange={(step) => {
-              //   console.log(step);
-              //   this.setState({
-              //     currentStep: step ? step : this.state.currentStep,
-              //     currentPlan: step ? planTypes[step].plan_category : this.state.currentPlan
-              //   });
-              // }}
-              stepsNavigation={false}
+              onStepChange={(step) => {
+                if (!step) {
+                  return;
+                }
+                this.setState({
+                  currentStep: step ? step : this.state.currentStep,
+                  currentPlan: step ? planTypes[step].plan_category : this.state.currentPlan
+                });
+              }}
             />
           </div>
         </div>
