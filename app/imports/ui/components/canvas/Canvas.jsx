@@ -2,6 +2,7 @@ import React from 'react';
 import CanvasCard from './CanvasCard';
 import EmptyMessage from '../sharedComponents/EmptyMessage';
 import PropTypes from 'prop-types';
+import { validationsHelper } from '../../../api/helpers/validationsHelper';
 
 const emptyCompetitor = {
   name: '',
@@ -25,8 +26,10 @@ class Canvas extends React.Component {
       businessAreas: props.businessAreas ?
         props.businessAreas.map(businessArea => ({
           data: businessArea,
-          editable: false
-        })) : []
+          editable: false,
+          errors: validationsHelper.initializeBusinessAreasErrors()
+        })) : [],
+      generalError: ''
     };
   }
 
@@ -34,21 +37,24 @@ class Canvas extends React.Component {
     this.setState({businessAreas:
       nextProps.businessAreas.map(businessArea => ({
         data: businessArea,
-        editable: false
-      }))
+        editable: false,
+        errors: validationsHelper.initializeBusinessAreasErrors(),
+      })),
+      generalError: ''
     });
   }
 
   handleOnChange(event, index, indexCompetitor) {
     const { businessAreas } = this.state;
-    const businessArea = businessAreas[index].data;
+    const businessArea = businessAreas[index];
     if (indexCompetitor || indexCompetitor === 0) {
-      businessArea.competitors[indexCompetitor][event.target.name] = event.target.value;
+      businessArea.data.competitors[indexCompetitor][event.target.name] = event.target.value;
     } else {
-      businessArea[event.target.name] = event.target.value;
+      businessArea.data[event.target.name] = event.target.value;
+      businessArea.errors[event.target.name].message = '';
     }
-    businessAreas[index].data = businessArea;
-    this.setState({businessAreas});
+    businessAreas[index] = businessArea;
+    this.setState({businessAreas, generalError: ''});
   }
 
   addBusinessArea() {
@@ -58,10 +64,11 @@ class Canvas extends React.Component {
     data.competitors.push(Object.assign({}, emptyCompetitor));
     const newBusinessArea = {
       data,
-      editable: true
+      editable: true,
+      errors: validationsHelper.initializeBusinessAreasErrors()
     };
     businessAreas.push(newBusinessArea);
-    this.setState({businessAreas});
+    this.setState({businessAreas, generalError: ''});
   }
 
   modifyCompetitorsList(index, addCompetitor, indexCompetitor) {
@@ -71,24 +78,43 @@ class Canvas extends React.Component {
     } else {
       businessAreas[index].data.competitors.splice(indexCompetitor, 1);
     }
-    this.setState({businessAreas});
+    this.setState({businessAreas, generalError: ''});
   }
 
   changeEditOptionBusinessArea(index) {
     const { businessAreas } = this.state;
     businessAreas[index].editable = !this.state.businessAreas[index].editable;
-    this.setState({businessAreas});
+    this.setState({businessAreas, generalError: ''});
   }
 
   deleteBusinessArea(index) {
     const { businessAreas } = this.state;
     businessAreas.splice(index, 1);
-    this.setState({businessAreas});
+    this.setState({businessAreas, generalError: ''});
   }
 
   saveBusinessAreas() {
-    const businessAreas = this.state.businessAreas.map(businessArea => businessArea.data);
-    Meteor.call('insertBusinessAreas', businessAreas, () => {
+    const { businessAreas } = this.state;
+    let areasHaveErrors = false;
+    businessAreas.forEach(area => {
+      const { hasErrors, newErrors } = validationsHelper.getProjectErrors(area.data, area.errors);
+      areasHaveErrors = hasErrors ? hasErrors : areasHaveErrors;
+      area.errors = newErrors;
+    });
+    if (areasHaveErrors) {
+      this.setState({
+        businessAreas,
+        generalError: 'Error al guardar cambios. Verifique los datos ingresados.'
+      });
+      return;
+    }
+    const businessAreasData = businessAreas.map(businessArea => businessArea.data);
+    Meteor.call('insertBusinessAreas', businessAreasData, (error) => {
+      if (error) {
+        console.log(error);
+        this.setState({generalError: 'Error del servidor.'});
+        return;
+      }
       if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
         Meteor.user() && Meteor.user().personalInformation.status === 'pendingPlans') {
         FlowRouter.go('planList');
@@ -107,6 +133,7 @@ class Canvas extends React.Component {
     }
 		return (
 			<div className="content-body">
+        <p className='italic-proyectos text-danger'> {this.state.generalError} </p>
         <div className="row header">
             <div className="col-md-6">
               <h2>Áreas de Negocio</h2>
@@ -125,6 +152,7 @@ class Canvas extends React.Component {
             <CanvasCard
               key={index}
               businessAreaData = {businessArea.data}
+              businessAreaErrors = {businessArea.errors}
               isEditable = {businessArea.editable}
               changeEditOptionBusinessArea = {() => this.changeEditOptionBusinessArea(index)}
               deleteBusinessArea = {() => this.deleteBusinessArea(index)}

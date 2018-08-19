@@ -103,6 +103,16 @@ const initializePlanListErrors = () => {
   };
 };
 
+const initializeBusinessAreasErrors = () => {
+  return {
+    name: {rules: ['required'], message: ''},
+    details: {rules: ['required'], message: ''},
+    providers: {rules: ['required'], message: ''},
+    clients: {rules: ['required'], message: ''},
+    agglutinators: {rules: ['required'], message: ''}
+  };
+};
+
 const validateEmptyField = (value) => {
   return !value || value === "" || value === null;
 };
@@ -333,5 +343,6 @@ export const validationsHelper = {
   initializeProjectFileErrors,
   initializeProvidersErrors,
   initializeBiddingErrors,
-  initializePlanListErrors
+  initializePlanListErrors,
+  initializeBusinessAreasErrors
 };

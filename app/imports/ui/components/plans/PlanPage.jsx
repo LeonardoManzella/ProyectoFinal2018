@@ -112,13 +112,19 @@ class PlanPage extends React.Component {
   componentWillReceiveProps(nextProps) {
     const plans = planTypes.map(planType => ({
       name: planType.name,
-      planTypeList: this.initializePlanTypeList(nextProps, planType)
+      planTypeList: this.initializePlanTypeList(nextProps, planType),
+      generalError: ''
     }));
     this.setState({plans, generalError: ''});
   }
 
   addPlan() {
     const { plans } = this.state;
+    const plansAreas = plans[this.state.currentStep].planTypeList.map(planType => planType.data.planArea);
+    if (plansAreas.includes(this.state.selectedBusinessArea)) {
+      this.setState({generalError: 'Ya existe un plan para esa área.'});
+      return;
+    }
     const data = Object.assign({}, emptyPlan);
     data.planArea = this.state.selectedBusinessArea;
     data.planItems = [];

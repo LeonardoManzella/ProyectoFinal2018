@@ -480,6 +480,10 @@ p.hash {
   border: none;
 }
 
+.canvas-card .title p {
+  font-size: 40%;
+}
+
 .canvas-card .row {
   margin-bottom: 20px;
 }

@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CrudActions from '../sharedComponents/CrudActions';
+import { validationsHelper } from '../../../api/helpers/validationsHelper';
 
 class CanvasCard extends React.Component {
 
 	render() {
-    const { businessAreaData, isEditable, handleOnChange, modifyCompetitorsList,
+    const { businessAreaData, businessAreaErrors, isEditable, handleOnChange, modifyCompetitorsList,
       changeEditOptionBusinessArea, deleteBusinessArea } = this.props;
     return (
       <div className="canvas-card col-md-12">
@@ -18,6 +19,9 @@ class CanvasCard extends React.Component {
               onChange={handleOnChange}
               disabled={!isEditable}
             />
+            <p className='small italic-proyectos text-danger'>
+              {validationsHelper.getErrorMessage(businessAreaErrors.name.message)}
+            </p>
           </h2>
           <CrudActions
             isEditable={isEditable}
@@ -37,6 +41,9 @@ class CanvasCard extends React.Component {
               onChange={handleOnChange}
               disabled={!isEditable}
             />
+            <p className='small italic-proyectos text-danger'>
+              {validationsHelper.getErrorMessage(businessAreaErrors.details.message)}
+            </p>
           </div>
           <div className="col-md-3">
             <textarea
@@ -46,6 +53,9 @@ class CanvasCard extends React.Component {
               onChange={handleOnChange}
               disabled={!isEditable}
             />
+            <p className='small italic-proyectos text-danger'>
+              {validationsHelper.getErrorMessage(businessAreaErrors.providers.message)}
+            </p>
           </div>
           <div className="col-md-6">
             <div className="table-container">
@@ -115,6 +125,9 @@ class CanvasCard extends React.Component {
               onChange={handleOnChange}
               disabled={!isEditable}
             />
+            <p className='small italic-proyectos text-danger'>
+              {validationsHelper.getErrorMessage(businessAreaErrors.clients.message)}
+            </p>
           </div>
           <div className="col-md-6">
             <textarea
@@ -124,6 +137,9 @@ class CanvasCard extends React.Component {
               onChange={handleOnChange}
               disabled={!isEditable}
             />
+            <p className='small italic-proyectos text-danger'>
+              {validationsHelper.getErrorMessage(businessAreaErrors.agglutinators.message)}
+            </p>
           </div>
         </div>
       </div>
@@ -134,6 +150,7 @@ class CanvasCard extends React.Component {
 
 CanvasCard.propTypes = {
   businessAreaData: PropTypes.object,
+  businessAreaErrors: PropTypes.object,
   isEditable: PropTypes.bool,
   changeEditOptionBusinessArea: PropTypes.func,
   deleteBusinessArea: PropTypes.func,
