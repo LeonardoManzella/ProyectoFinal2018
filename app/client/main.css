@@ -634,6 +634,11 @@ ol.progtrckr li:before {
   left: 50%;
 }
 
+li span{
+  pointer-events: none;
+  display: inline-block;
+}
+
 .progtrckr li {
   margin-bottom: 10px;
 }

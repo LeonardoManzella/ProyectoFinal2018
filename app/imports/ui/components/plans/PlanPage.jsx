@@ -212,14 +212,15 @@ class PlanPage extends React.Component {
               // prevBtnOnLastStep={false}
               backButtonCls='backButtonClass'
               nextButtonCls='nextButtonClass'
-              // onStepChange={(step) => {
-              //   console.log(step);
-              //   this.setState({
-              //     currentStep: step ? step : this.state.currentStep,
-              //     currentPlan: step ? planTypes[step].plan_category : this.state.currentPlan
-              //   });
-              // }}
-              stepsNavigation={false}
+              onStepChange={(step) => {
+                if (!step) {
+                  return;
+                }
+                this.setState({
+                  currentStep: step ? step : this.state.currentStep,
+                  currentPlan: step ? planTypes[step].plan_category : this.state.currentPlan
+                });
+              }}
             />
           </div>
         </div>
