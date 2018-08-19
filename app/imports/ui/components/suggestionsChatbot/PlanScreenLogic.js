@@ -29,6 +29,8 @@ class Logic {
     return function(){
       return [
         ChatBotUtil.textMessage(['Buenas!', 'Hola!'].any()),
+        ChatBotUtil.textMessage('Voy a darte sugerencias para ayudarte a emprender'),
+        ChatBotUtil.textMessage('Tene en cuenta que puede llevar un rato, ponete comodo antes de comenzar'),
         ChatBotUtil.textMessage(`Bueno, empezemos con tu ${Logic.getPlanTitle()}`,
           ChatBotUtil.makeReplyButton('Dale', Logic.menu)
         )
