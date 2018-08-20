@@ -518,9 +518,15 @@ table img {
   height: 15px;
 }
 
-td>input {
+td>input,
+td input {
   border: none;
   width: 90%;
+}
+
+td input.frequency {
+  width: 30%;
+  margin-right: 20px;
 }
 
 .row.header {
@@ -558,8 +564,10 @@ td>input {
 
 .plan .row.header tbody select {
   padding: 0;
-  width: 40%;
+  width: 30%;
   margin-bottom: 1rem;
+  margin-right: 20px;
+  float: none;
 }
 
 .plan .row.header tbody p {

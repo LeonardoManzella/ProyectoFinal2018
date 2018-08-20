@@ -10,7 +10,10 @@ const emptyPlanItem = {
   tool: '',
   responsible: '',
   supervisor: '',
-  frequency: ''
+  frequency: '',
+  frequencyType: '',
+  frequencyValue: '',
+  frequencySecondValue: ''
 };
 
 const emptyPlan = {
@@ -154,12 +157,36 @@ class PlanPage extends React.Component {
     this.setState({plans, generalError: ''});
   }
 
+  // FIXME
   handleOnChange(event, index, indexPlanItem) {
     const { plans } = this.state;
-    plans[this.state.currentStep].planTypeList[index].data
-      .planItems[indexPlanItem].data[event.target.name] = event.target.value;
-    plans[this.state.currentStep].planTypeList[index].data
-      .planItems[indexPlanItem].errors[event.target.name].message = '';
+    if (event.target.name === 'frequency') {
+      plans[this.state.currentStep].planTypeList[index].data
+        .planItems[indexPlanItem].data.frequency = event.target.value;
+      plans[this.state.currentStep].planTypeList[index].data
+        .planItems[indexPlanItem].data.frequencyType = '';
+      plans[this.state.currentStep].planTypeList[index].data
+        .planItems[indexPlanItem].data.frequencyValue = '';
+      plans[this.state.currentStep].planTypeList[index].data
+        .planItems[indexPlanItem].data.frequencySecondValue = '';
+    } 
+    else if (event.target.name === 'frequencyType') {
+      plans[this.state.currentStep].planTypeList[index].data
+        .planItems[indexPlanItem].data.frequencyType = event.target.value;
+      plans[this.state.currentStep].planTypeList[index].data
+        .planItems[indexPlanItem].data.frequencyValue = '';
+      plans[this.state.currentStep].planTypeList[index].data
+        .planItems[indexPlanItem].data.frequencySecondValue = '';
+    }
+    else {
+      plans[this.state.currentStep].planTypeList[index].data
+        .planItems[indexPlanItem].data[event.target.name] = event.target.value;
+    }
+    if (plans[this.state.currentStep].planTypeList[index].data
+      .planItems[indexPlanItem].errors[event.target.name]) {
+        plans[this.state.currentStep].planTypeList[index].data
+          .planItems[indexPlanItem].errors[event.target.name].message = '';
+    }
     this.setState({plans, generalError: ''});
   }
 

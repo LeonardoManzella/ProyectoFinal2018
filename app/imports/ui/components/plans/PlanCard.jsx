@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import CrudActions from '../sharedComponents/CrudActions';
 import { BusinessAreas } from '../../../../lib/schemas/businessArea';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
+import { frequencyTime } from '../../../api/helpers/frequency';
 
 class PlanCard extends React.Component {
 
@@ -12,6 +13,71 @@ class PlanCard extends React.Component {
     }
     const businessArea = BusinessAreas.findOne({_id: businessAreaId});
     return businessArea ? businessArea.name : '';
+  }
+
+  getOption(frequencyType, frequencyTypeOptions, fieldName, index) {
+    if (frequencyType === 'input') {
+      return  (
+        <input
+          className="frequency"
+          name={fieldName}
+          value={this.props.planItems[index].data[fieldName]}
+          onChange={(event) => this.props.handleOnChange(event, index)}
+          disabled={!this.props.isEditable}
+        />
+      );
+    } else if (frequencyType === 'select') {
+      return (
+        <select
+          name={fieldName}
+          value={this.props.planItems[index].data[fieldName]}
+          onChange={(event) => this.props.handleOnChange(event, index)}
+          disabled={!this.props.isEditable}
+        >
+          <option value="">-</option>
+          {frequencyTypeOptions.map((frequencyOption, index) => (
+            <option key={index} value={frequencyOption.value}>{frequencyOption.name}</option>
+          ))}
+        </select>
+      );
+    }
+    return '';
+  }
+
+  getFrequencyThirdOption(planItem, index) {
+    if (planItem.data.frequency !== '' && planItem.data.frequencyType !== '') {
+      const time = frequencyTime.find(time => time.value === planItem.data.frequency);
+      const frequencyType = time ?
+        time.types.find(type => type.value === planItem.data.frequencyType) : time;
+      if (frequencyType) {
+        return (
+          <div>
+            <div>
+              {this.getOption(frequencyType.type, frequencyType.options, 'frequencyValue', index)}
+              <p className='small italic-proyectos text-danger'>
+                {
+                  planItem.errors.frequencyValue ?
+                    validationsHelper.getErrorMessage(planItem.errors.frequencyValue.message)
+                  : ''
+                }
+              </p>
+            </div>
+            <div>
+              {this.getOption(frequencyType.secondType, frequencyType.secondOptions, 'frequencySecondValue', index)}
+              <p className='small italic-proyectos text-danger'>
+                {
+                  planItem.errors.frequencySecondValue ?
+                    validationsHelper.getErrorMessage(planItem.errors.frequencySecondValue.message)
+                    : ''
+                }
+              </p>
+            </div>
+          </div>
+        )
+      }
+      return '';
+    }
+    return '';
   }
 
 	render() {
@@ -94,49 +160,56 @@ class PlanCard extends React.Component {
                     </p>
                   </td>
                   <td>
-                    {/* <input
-                      placeholder="Ej: Cada 2 días"
-                      value={planItem.frequency}
-                      name='frequency'
-                      onChange={(event) => handleOnChange(event, index)}
-                      disabled={!isEditable}
-                    /> */}
                     <div className="row">
-                      <p> Repetir </p>
-                      <select
-                        placeholder="Ej: Cada 2 días"
-                        name='frequency'
-                        onChange={(event) => handleOnChange(event, index)}
-                        disabled={!isEditable}
-                      >
-                        <option value="daily">diariamente</option>
-                        <option value="weekly">semanalmente</option>
-                        <option value="monthly">mensualmente</option>
-                        <option value="year">anualmente</option>
-                      </select>
+                      <div>
+                        <div className="row">
+                          <p> Repetir </p>
+                          <select
+                            placeholder="Ej: Cada 2 días"
+                            name='frequency'
+                            onChange={(event) => handleOnChange(event, index)}
+                            disabled={!isEditable}
+                            value={planItem.data.frequency}
+                          >
+                            <option value="">-</option>
+                            {
+                              frequencyTime.map((time, index) => (
+                                <option key={index} value={time.value}>{time.name}</option>
+                              ))
+                            }
+                          </select>
+                        </div>
+                        <p className='small italic-proyectos text-danger'>
+                          {validationsHelper.getErrorMessage(planItem.errors.frequency.message)}
+                        </p>
+                      </div>
+                      <div>
+                        <div className="row">
+                          <p> Según: </p>
+                          <select
+                            placeholder="Ej: Cada 2 días"
+                            name='frequencyType'
+                            onChange={(event) => handleOnChange(event, index)}
+                            disabled={!isEditable}
+                            value={planItem.data.frequencyType}
+                          >
+                            <option value="">-</option>
+                            {
+                              planItem.data.frequency && planItem.data.frequency !== "" &&
+                                frequencyTime.find(time => time.value === planItem.data.frequency)?
+                                frequencyTime.find(time => time.value === planItem.data.frequency)
+                                  .types.map((type, index) =>
+                                  <option value={type.value} key={index}>{type.name}</option>)
+                                : ''
+                            }
+                          </select>
+                        </div>
+                        <p className='small italic-proyectos text-danger'>
+                          {validationsHelper.getErrorMessage(planItem.errors.frequencyType.message)}
+                        </p>
+                      </div>
                     </div>
-                    <div className="row">
-                      <p> Cada: </p>
-                      <select
-                        placeholder="Ej: Cada 2 días"
-                        name='frequency'
-                        // onChange={(event) => handleOnChange(event, index)}
-                        disabled={!isEditable}
-                      >
-                        <option>-</option>
-                        {
-                          planItem.data.frequency === "weekly" ?
-                            ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado',
-                            'Domingo', 1, 2, 3, 4, 5, 6].map((opt, index) =>
-                              <option key={index}>{opt}</option>) :
-                            [1, 2, 3, 4, 5, 6].map((opt, index) =>
-                              <option key={index}>{opt}</option>)
-                        }
-                      </select>
-                    </div>
-                    <p className='small italic-proyectos text-danger'>
-                      {validationsHelper.getErrorMessage(planItem.errors.frequency.message)}
-                    </p>
+                    {this.getFrequencyThirdOption(planItem, index)}
                   </td>
                   {
                     isEditable ?

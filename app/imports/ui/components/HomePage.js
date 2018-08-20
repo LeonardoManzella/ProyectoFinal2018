@@ -36,14 +36,12 @@ export default class HomePage extends Component {
                   <div className="welcome-title">
                     <h1><strong>Consultoría</strong></h1>
                     <p>Comenzá tu nuevo emprendimiento creativo</p>
-                    <span>
-                      <button
-                        onClick={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
-                        className="transparent-button"
-                      >
-                        Comenzar
-                      </button>
-                    </span>
+                    <button
+                      onClick={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
+                      className="transparent-button"
+                    >
+                      Comenzar
+                    </button>
                   </div>
                 </div>
                 <img src="/img/team.jpeg" />

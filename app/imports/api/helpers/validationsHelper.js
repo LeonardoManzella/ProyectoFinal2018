@@ -99,7 +99,9 @@ const initializePlanListErrors = () => {
     tool: {rules: ['required'], message: ''},
     responsible: {rules: ['required'], message: ''},
     supervisor: {rules: ['required'], message: ''},
-    frequency: {rules: ['required'], message: ''}
+    frequency: {rules: ['required'], message: ''},
+    frequencyType: {rules: ['required'], message: ''},
+    frequencyValue: {rules: ['required'], message: ''}
   };
 };
 

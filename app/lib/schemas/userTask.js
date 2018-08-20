@@ -14,6 +14,11 @@ const frequencySchema = new SimpleSchema({
     type: String,
     label: "value"
   },
+  secondaryValue: {
+    type: String,
+    label: "value",
+    optional: true
+  },
   time: {
     type: String,
     label: "time"
@@ -94,9 +99,10 @@ UserTasks.insertPlanList = (plans) => {
         supervisorID: planItem.data.supervisor,
         taskDescription: planItem.data.tool,
         frequency: {
-          type: 'everyDay',
-          value: planItem.data.frequency,
-          time: 'day'
+          type: planItem.data.frequencyType,
+          value: planItem.data.frequencyValue,
+          secondaryValue: planItem.data.frequencySecondValue,
+          time: planItem.data.frequency
         }
       }));
       UserTasks.insert(userTasks);
