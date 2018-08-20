@@ -17,4 +17,6 @@ echo "### PORT: $PORT"
 echo "### EXECUTING: sudo mongod --port $PORT --fork --logpath $LOG_PATH$LOG_FILE --dbpath $DB_PATH"
 echo ""
 echo ""
+sudo mkdir -p $LOG_PATH && \
+sudo mkdir -p $DB_PATH && \
 sudo mongod --port $PORT --fork --logpath $LOG_PATH$LOG_FILE --dbpath $DB_PATH && echo "### MongoDB Started" && echo "########################################"
