@@ -4,8 +4,8 @@
 #echo 
 
 LOG_PATH="/data/logs/"
-LOG_FILE="mongod-enfocarte.log"
-PORT="27058"
+LOG_FILE="mongod-botigo.log"
+PORT="27059"
 
 echo ""
 echo "########################################"
@@ -15,4 +15,4 @@ echo "### LOG_FILE: $LOG_FILE"
 echo "### PORT: $PORT"
 echo ""
 echo ""
-sudo mongod --port 27058 --fork --logpath /data/logs/mongod-enfocarte.log && echo "### MongoDB Started" && echo "########################################"
+sudo mongod --port $PORT --fork --logpath $LOG_PATH$LOG_FILE && echo "### MongoDB Started" && echo "########################################"
