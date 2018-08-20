@@ -5,6 +5,7 @@
 
 LOG_PATH="/data/logs/"
 LOG_FILE="mongod-enfocarte.log"
+DB_PATH="/data/db-enfocarte/"
 PORT="27058"
 
 echo ""
@@ -13,6 +14,9 @@ echo "### Starting MongoDB"
 echo "### LOG_PATH: $LOG_PATH"
 echo "### LOG_FILE: $LOG_FILE"
 echo "### PORT: $PORT"
+echo "### EXECUTING: sudo mongod --port $PORT --fork --logpath $LOG_PATH$LOG_FILE --dbpath $DB_PATH"
 echo ""
 echo ""
-sudo mongod --port 27058 --fork --logpath /data/logs/mongod-enfocarte.log && echo "### MongoDB Started" && echo "########################################"
+sudo mkdir -p $LOG_PATH && \
+sudo mkdir -p $DB_PATH && \
+sudo mongod --port $PORT --fork --logpath $LOG_PATH$LOG_FILE --dbpath $DB_PATH && echo "### MongoDB Started" && echo "########################################"
