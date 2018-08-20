@@ -15,5 +15,4 @@ echo "### LOG_FILE: $LOG_FILE"
 echo "### PORT: $PORT"
 echo ""
 echo ""
-cd $MYPATH/app && meteor $1 --settings $SETTINGS
 sudo mongod --port 27058 --fork --logpath /data/logs/mongod-enfocarte.log && echo "### MongoDB Started" && echo "########################################"
