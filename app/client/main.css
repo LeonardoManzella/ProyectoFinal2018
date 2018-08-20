@@ -387,10 +387,6 @@ p.hash {
   height: 90%;
 }
 
-.I-ChatBot ul.ActionBar {
-  height: 10vh;
-}
-
 .chatbot-menu .I-ChatBot ul.ActionBar {
   overflow-y: scroll;
   overflow-x: visible;
@@ -847,6 +843,14 @@ li span{
 .bm-item-list {
   color: #b8b7ad;
   padding: 0.8em;
+}
+
+.bm-item-list .ActionBar {
+  height: 20vh;
+}
+
+.bm-item-list .Messages {
+  height: 69vh!important;
 }
 
 .main-menu .bm-item-list {

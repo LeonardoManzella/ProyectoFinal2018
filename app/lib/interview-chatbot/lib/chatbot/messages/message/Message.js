@@ -41,13 +41,32 @@ var Message = function (_Component) {
     return _possibleConstructorReturn(this, _Component.apply(this, arguments));
   }
 
+  var messagesHeight = 0;
+
   Message.prototype.render = function render() {
     
-    if (this.props.content && this.props.content.text) {
+    var hasText = this.props.content && this.props.content.text;
+
+    if (hasText) {
+
       if(this.props.content.text == '###REMOVE_ME###'){
         return '';
       }
       
+    }
+
+    if (hasText && messagesHeight == 0) {
+
+      var total = $(".I-ChatBot").height();
+
+      var actionBarThreeLines = $(".ActionBar").height() * 3;
+
+      $(".ActionBar").css("max-height", actionBarThreeLines);
+
+      messagesHeight = total - actionBarThreeLines;
+      $(".Messages").height(messagesHeight);
+    
+      $("body").css("overflow-y", "hidden");
     }
 
     var _this2 = this;
