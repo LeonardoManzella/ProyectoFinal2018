@@ -51,7 +51,7 @@ class PlanCard extends React.Component {
         time.types.find(type => type.value === planItem.data.frequencyType) : time;
       if (frequencyType) {
         return (
-          <div>
+          <div className="row">
             <div>
               {this.getOption(frequencyType.type, frequencyType.options, 'frequencyValue', index)}
               <p className='small italic-proyectos text-danger'>

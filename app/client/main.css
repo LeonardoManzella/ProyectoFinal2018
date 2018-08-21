@@ -521,7 +521,7 @@ td input {
 }
 
 td input.frequency {
-  width: 30%;
+  width: 200px;
   margin-right: 20px;
 }
 
@@ -560,7 +560,7 @@ td input.frequency {
 
 .plan .row.header tbody select {
   padding: 0;
-  width: 30%;
+  width: 200px;
   margin-bottom: 1rem;
   margin-right: 20px;
   float: none;
