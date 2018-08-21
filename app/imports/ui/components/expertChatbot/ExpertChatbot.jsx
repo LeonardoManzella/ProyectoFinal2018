@@ -1,5 +1,4 @@
 import React from 'react'
-import { Meteor } from 'meteor/meteor';
 import ChatBot, { ChatBotUtil } from './../../../../lib/interview-chatbot/lib/index'
 import Logic from './Logic.js'
 import { TAPi18n } from 'meteor/tap:i18n';
@@ -9,8 +8,16 @@ export default class ExpertChatbot extends React.Component {
 	constructor(props) {
 		super(props);
 
+		const isPendingChatbot = Meteor.users.findOne().personalInformation.status == 'pendingChatbot';
+		const questionNumber = Meteor.users.findOne().personalInformation.currentQuestionNumber;
+
+		console.log('question number ' + questionNumber);
+
 		this.state = {
-			hasStartedChat: false
+			hasStartedChat: false,
+			hasBeganInterview: questionNumber > 0,
+			questionNumber,
+			isPendingChatbot
 		};
 	}
 
@@ -22,17 +29,43 @@ export default class ExpertChatbot extends React.Component {
 
 	getChatContent() {
 
+		if (!this.state.isPendingChatbot) {
+			return (
+				<div className="GetStarted Content content-body">
+					<div className="FullSizeTable">
+						<div className="AlignMiddle">
+							<img src="/img/emprendimientos-logo.png" className='Justin'/>
+								<div className="welcome-title">
+									<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
+									<h3><strong>Haz terminado tu entrevista inicial</strong></h3>
+								</div>	
+						</div>
+					</div>
+				</div>
+			)
+		}
+
 		if (!this.state.hasStartedChat) {
 			return (
 				<div className="GetStarted Content content-body">
 					<div className="FullSizeTable">
 						<div className="AlignMiddle">
 							<img src="/img/emprendimientos-logo.png" className='Justin'/>
-							<div className="welcome-title">
-								<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
-								<p><i>Este será el asesor para definir tus objetivos</i></p>
-								<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
-							</div>
+							
+								
+								{this.state.hasBeganInterview ? (
+									<div className="welcome-title">
+									<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
+									<span><button onClick={() => this.showChatBot()}>Quiero continuar mi entrevista inicial</button></span>
+									</div>
+								) : (
+									<div className="welcome-title">
+									<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
+									<p><i>Este será el asesor para definir tus objetivos</i></p>
+									<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
+									</div>
+								)}
+								
 						</div>
 					</div>
 				</div>
@@ -40,10 +73,19 @@ export default class ExpertChatbot extends React.Component {
 		} else {
 			return (
 				<div className="Content">
-					<ChatBot
-						onGetStarted={Logic.getStarted}
-						getStartedButton={ChatBotUtil.makeGetStartedButton(TAPi18n.__('interview.getStarted'))}
-					/>
+					
+					{this.state.hasBeganInterview ? (
+						<ChatBot
+							onGetStarted={() => Logic.continueInterview(this.state.questionNumber)}
+							getStartedButton={ChatBotUtil.makeGetStartedButton(TAPi18n.__('interview.continueInterview'))}
+						/>
+					) : (
+						<ChatBot
+							onGetStarted={Logic.getStarted}
+							getStartedButton={ChatBotUtil.makeGetStartedButton(TAPi18n.__('interview.getStarted'))}
+						/>
+					)}
+					
 				</div>
 			)
 		}
