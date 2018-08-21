@@ -17,6 +17,10 @@ const UserPersonalInformation = new SimpleSchema({
   status: {
     type: String,
     allowedValues: ['pending', 'pendingChatbot', 'pendingAreas', 'pendingPlans', 'approved']
+  },
+  currentQuestionNumber: {
+    type: Number,
+    defaultValue: 0
   }
 });
 
@@ -50,7 +54,7 @@ const filesSchema = new SimpleSchema({
 
 const userSchema = new SimpleSchema({
   personalInformation: {
-    type: UserPersonalInformation,
+    type: UserPersonalInformation
   },
   services: {
     type: Object,

@@ -134,19 +134,24 @@ if (Meteor.isServer) {
         throw new Meteor.Error('error', exception);
       }
     },
-    'saveTraits'(user, selectedAnswers) {
+    'saveTraits'(user, selectedAnswers, questionNumber, hasEndedInterview) {
       try {
         const userToUpdate = Meteor.users.findOne({ _id: user._id });
 
         if (!userToUpdate) {
           throw new Meteor.Error('user-not-found');
         }
+
+        console.log("inside saveTraits");
+
+        Meteor.users.update({_id: user._id}, {$set: {'personalInformation.currentQuestionNumber': questionNumber}});
+
+        Meteor.users.update({_id: user._id}, {$addToSet: { goals: { $each: selectedAnswers.goals }}});
+        Meteor.users.update({_id: user._id}, {$addToSet: { contributions: { $each: selectedAnswers.contributions }}});
+        Meteor.users.update({_id: user._id}, {$addToSet: { identity_traits: { $each: selectedAnswers.identity_traits }}});
+        Meteor.users.update({_id: user._id}, {$addToSet: { perpetual_identity: { $each: selectedAnswers.perpetual_identity }}});
         
-        Meteor.users.update({_id: user._id}, {$set: {'goals': selectedAnswers.goals}});
-        Meteor.users.update({_id: user._id}, {$set: {'contributions': selectedAnswers.contributions}});
-        Meteor.users.update({_id: user._id}, {$set: {'identity_traits': selectedAnswers.identity_traits}});
-        Meteor.users.update({_id: user._id}, {$set: {'perpetual_identity': selectedAnswers.perpetual_identity}});
-        if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+        if (hasEndedInterview && Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
           Meteor.user() && Meteor.user().personalInformation.status === 'pendingChatbot') {
           Meteor.users.update({_id: user._id}, {$set: {'personalInformation.status': 'pendingAreas'}});
         }

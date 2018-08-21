@@ -30,8 +30,16 @@ class Logic {
     ]
   }
 
+  static continueInterview (questionNumber) {
+    console.log('loaded questionNumber ' + questionNumber);
+    Logic.currentQuestionNumber = questionNumber - 1;
+    return Logic.nextQuestion()
+  }
+
   static nextQuestion () {
     Logic.currentQuestionNumber++;
+    Logic.saveInterviewState(false);
+
     const questionNumber = Logic.currentQuestionNumber;
     if (questionNumber > InterviewQuestions.allQuestions.length){
       return Logic.end();
@@ -129,9 +137,7 @@ class Logic {
   }
 
   static end () {
-
-    const selectedAnswers = InterviewQuestions.getAllSelectedAnswers();
-    Meteor.call('saveTraits', Meteor.users.findOne(), selectedAnswers);
+    Logic.saveInterviewState(true)
 
     return [
       ChatBotUtil.textMessage(t('goodbye') + ' 😉'),
@@ -143,6 +149,14 @@ class Logic {
           }
         }))
     ]
+  }
+
+  static saveInterviewState (hasEndedInterview) {
+    const selectedAnswers = InterviewQuestions.getAllSelectedAnswers();
+    Meteor.call('saveTraits', Meteor.users.findOne(), 
+      selectedAnswers,
+      Logic.currentQuestionNumber,
+      hasEndedInterview);
   }
 
 }
