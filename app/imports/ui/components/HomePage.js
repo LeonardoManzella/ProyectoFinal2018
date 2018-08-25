@@ -20,10 +20,8 @@ export default class HomePage extends Component {
           <div className="container">
             <img src="/img/emprendimientos-logo.png" height="30"/>
             <div className="page-sections">
-              <a href="#expert-system-section">SISTEMA EXPERTO</a>
-              <a href="#team-section">NUESTRO EQUIPO</a>
-              <a href="#clients-section">CLIENTES</a>
-              <a href="#news-section">NOTICIAS</a>
+              <a href="#expert-system-section">¿COMO FUNCIONA?</a>
+              <a href="#team-section">CONOCE A BOTIGO</a>
               <a href="#contact-section">CONTACTO</a>
               <Login loginDropdownOpen={this.state.loginDropdownOpen}/>
             </div>
@@ -34,8 +32,8 @@ export default class HomePage extends Component {
               <Carousel>
                 <div className="table">
                   <div className="welcome-title">
-                    <h1><strong>Consultoría</strong></h1>
-                    <p>Comenzá tu nuevo emprendimiento creativo</p>
+                    <h1><strong>Botigo</strong></h1>
+                    <p>Emprende Contigo</p>
                     <button
                       onClick={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
                       className="transparent-button"
@@ -44,8 +42,30 @@ export default class HomePage extends Component {
                     </button>
                   </div>
                 </div>
-                <img src="/img/team.jpeg" />
-                <img src="/img/creative_ideas.jpg" />
+                <div className="table">
+                  <div className="welcome-title">
+                    <h1><strong>Te ayudadamos a emprender</strong></h1>
+                    <p>Con Inteligencia Artificial</p>
+                    <button
+                      onClick={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
+                      className="transparent-button"
+                    >
+                      Iniciar
+                    </button>
+                  </div>
+                </div>
+                <div className="table">
+                  <div className="welcome-title">
+                    <h1><strong>Asistente 24/7</strong></h1>
+                    <p>Botigo te acompaña como parte del equipo</p>
+                    <button
+                      onClick={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
+                      className="transparent-button"
+                    >
+                      Empezar
+                    </button>
+                  </div>
+                </div>
               </Carousel>
             </div>
             <div id="expert-system-section" className="content-body white expert-system">
@@ -57,9 +77,9 @@ export default class HomePage extends Component {
                 </div>
                 <div className="col-md-6">
                   <div className="welcome-title">
-                    <h2>SISTEMA EXPERTO</h2>
-                    <h4>Nuestro sistema experto te brindará ayuda para que puedas realizar tu propio emprendimiento creativo. Te otorgará información sobre distintos conceptos de negocio y te dará sugerencias basandose en tus características.</h4>
-                    <span><button className="transparent-button">Ver más</button></span>
+                    <h2>BOTIGO, EL ASISTENTE QUE USA INTELIGENCIA ARTIFICIAL</h2>
+                    <h4>Botigo te brindará ayuda para que puedas realizar tu propio emprendimiento. Te otorgará información sobre distintos conceptos de negocio y te dará sugerencias basandose en tus características.</h4>
+                    <span><button className="transparent-button">Botigo siempre contigo</button></span>
                   </div>
                 </div>
               </div>
@@ -70,9 +90,9 @@ export default class HomePage extends Component {
                 </div>
                 <div className="col-md-6">
                   <div className="welcome-title">
-                    <h2>NUESTRO EQUIPO</h2>
-                    <h4>El equipo se compone por consultores con conocimiento en industrias creativas, que junto con el sistema experto permitirán hacer un seguimiento del emprendimiento, además de un equipo de desarrollo.</h4>
-                    <span><button className="transparent-button">Ver más</button></span>
+                    <h2>BOTIGO ES TU AMIGO, un miembro mas del equipo</h2>
+                    <h4>Botigo es un asistente 24/7 para vos.</h4>
+                    <span><button className="transparent-button">Vallas donde vallas Botigo estara contigo</button></span>
                   </div>
                 </div>
                 <div className="col-md-4">
@@ -80,33 +100,12 @@ export default class HomePage extends Component {
                 </div>
               </div>
             </div>
-            <div id="clients-section" className="content-body white clients">
-              <div className="table">
-                <div className="welcome-title">
-                  <h2>NUESTROS CLIENTES</h2>
-                  <div className="row">
-                    <img src="/img/icon_proyecto.svg" height="200" className="landing-clients" />
-                    <img src="/img/icon_proyecto.svg" height="200" className="landing-clients" />
-                    <img src="/img/icon_proyecto.svg" height="200" className="landing-clients" />
-                  </div>
-                  <span><button className="transparent-button">Ver más</button></span>
-                </div>
-              </div>
-            </div>
-            <div id="news-section" className="content-body gray">
-              <div className="table">
-                <div className="welcome-title">
-                  <h2>NOTICIAS</h2>
-                  <span><button className="transparent-button">Ver más</button></span>
-                </div>
-              </div>
-            </div>
             <div id="contact-section" className="content-body white">
               <div className="table">
                 <div className="welcome-title">
-                  <h2>Necesitás ayuda? Contactanos!</h2>
-                  <h4>Estamos para ayudarte. Podes contactarnos por teléfono, mail o a través de nuestras redes sociales.</h4>
-                  <span><button className="transparent-button">Ver más</button></span>
+                  <h2>¿Queres saber como Botigo puede ayudarte? ¡Contactanos!</h2>
+                  <h4>Tu consulta no molesta</h4>
+                  <span><button className="transparent-button"><a href="mailto:botigo.contigo@gmail.com">Envia un mail a botigo.contigo@gmail.com</a></button></span>
                 </div>
               </div>
             </div>
