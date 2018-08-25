@@ -29,22 +29,6 @@ export default class ExpertChatbot extends React.Component {
 
 	getChatContent() {
 
-		if (!this.state.isPendingChatbot) {
-			return (
-				<div className="GetStarted Content content-body">
-					<div className="FullSizeTable">
-						<div className="AlignMiddle">
-							<img src="/img/emprendimientos-logo.png" className='Justin'/>
-								<div className="welcome-title">
-									<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
-									<h3><strong>Haz terminado tu entrevista inicial</strong></h3>
-								</div>	
-						</div>
-					</div>
-				</div>
-			)
-		}
-
 		if (!this.state.hasStartedChat) {
 			return (
 				<div className="GetStarted Content content-body">
@@ -53,14 +37,14 @@ export default class ExpertChatbot extends React.Component {
 							<img src="/img/emprendimientos-logo.png" className='Justin'/>			
 								{this.state.hasBeganInterview ? (
 									<div className="welcome-title">
-									<h1><strong>Hola! Bienvenido de vuelta</strong></h1>
-									<span><button onClick={() => this.showChatBot()}>Quiero continuar mi entrevista</button></span>
+										<h1><strong>Hola! Bienvenido de vuelta</strong></h1>
+										<span><button onClick={() => this.showChatBot()}>Quiero continuar mi entrevista</button></span>
 									</div>
 								) : (
 									<div className="welcome-title">
-									<h1><strong>Entrevista</strong></h1>
-									<p><i>Vamos a tener una entrevista para conocer tus objetivos, los recursos que tenes disponibles y tu identidad, ¡Como sos vos!</i></p>
-									<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
+										<h1><strong>Entrevista</strong></h1>
+										<p><i>Vamos a tener una entrevista para conocer tus objetivos, los recursos que tenes disponibles y tu identidad, ¡Como sos vos!</i></p>
+										<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
 									</div>
 								)}
 						</div>
