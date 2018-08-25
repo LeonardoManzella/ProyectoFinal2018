@@ -6,7 +6,7 @@ import { Boards } from '/lib/schemas/board';
 if (Meteor.isServer) {
 
   Meteor.publish('boards', function boardsPublication() {
-    return Boards.find({});
+    return Boards.find({userId: Meteor.userId()});
   });
 
   Meteor.methods({
@@ -38,9 +38,16 @@ if (Meteor.isServer) {
       console.log("calling insertBoard");
       Boards.insert(data);
     },
-    'boards.update'(boardId, lanes) {
-      console.log("calling updateBoard");
-      Boards.update({_id: boardId}, {lanes});
+    'boards.update'(board, lanes) {
+      if (!board) {
+        Boards.insert({
+          userId: Meteor.userId(),
+          lanes: lanes
+        });
+      } else {
+        console.log("calling updateBoard");
+        Boards.update({_id: board._id}, {$set: {lanes}});
+      }
     }
   });
 

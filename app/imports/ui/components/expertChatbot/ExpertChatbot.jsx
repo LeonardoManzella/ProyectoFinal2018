@@ -37,7 +37,7 @@ export default class ExpertChatbot extends React.Component {
 							<img src="/img/emprendimientos-logo.png" className='Justin'/>
 								<div className="welcome-title">
 									<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
-									<h3><strong>Haz terminado tu entrevista inicial</strong></h3>
+									<h3>Haz terminado tu entrevista inicial</h3>
 								</div>	
 						</div>
 					</div>

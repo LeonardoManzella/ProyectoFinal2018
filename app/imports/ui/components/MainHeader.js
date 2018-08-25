@@ -64,21 +64,19 @@ class MainHeader extends React.Component {
           }
         >
           {this.checkUserStatus('approved') ? this.getTabSelected('Home', '/') : ''}
-          {/* {this.getTabSelected('Tareas', '/tasksBoard')}
-          {this.getTabSelected('Bitácora', '/binnacle')}
-          {this.getTabSelected('Experto', '/expert')} 
-          {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
-            this.getTabSelected('Usuarios', '/usersList') : ''}
-          {this.getTabSelected('Chart', '/chart')} */}
           {this.getTabSelected('ChatBot', '/chatbot')}
           {!this.checkUserStatus('pendingChatbot') ?
             this.getTabSelected('Canvas', '/canvas') : ''}
           {!(this.checkUserStatus('pendingChatbot') || this.checkUserStatus('pendingAreas')) ?
             this.getTabSelected('Planes', '/planList') : ''}
-          {/* {this.getTabSelected('FODA', '/swot')}
+          {this.getTabSelected('FODA', '/swot')}
           {this.getTabSelected('Riesgos', '/risks')}
+          {this.getTabSelected('Chart', '/chart')}
+          {/* {this.getTabSelected('Tareas', '/tasksBoard')} */}
           {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
-            this.getTabSelected('Reminders', '/reminders') : ''}   */}
+            this.getTabSelected('Usuarios', '/usersList') : ''}
+          {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
+            this.getTabSelected('Reminders', '/reminders') : ''}  
         </Menu>
       </div>
     );

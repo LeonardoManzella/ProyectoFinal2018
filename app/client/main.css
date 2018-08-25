@@ -343,7 +343,8 @@ p.hash {
   margin-bottom: 20px;
 }
 
-.Home .Chat .GetStarted .AlignMiddle .welcome-title p {
+.Home .Chat .GetStarted .AlignMiddle .welcome-title p ,
+.Home .Chat .GetStarted .AlignMiddle .welcome-title h3 {
   letter-spacing: 1px;
   color: #848587;
   font-family: 'Crete Round', sans-serif;
@@ -1114,4 +1115,103 @@ li span{
 
 .landing .page-sections {
   margin: 10px 0 10px;
+}
+
+/* BINNACLE */
+
+.binnacle .kRlMFD {
+  background-color: #ff860d21;
+}
+
+.binnacle .kRlMFD .dJewwL {
+  max-height: none;
+}
+
+.binnacle .board-container {
+  background-color: #ff860d21;
+  overflow-y: hidden;
+  padding: 5px 10px 5px;
+  font: 14px/18px 'Helvetica Neue',Arial,Helvetica,sans-serif;
+  color: #393939;
+  height: 100vh;
+}
+
+.binnacle .section-container {
+  background-color: #e3e3e3;
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  position: relative;
+  padding: 10px;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  height: auto;
+  max-height: 90%;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+}
+
+.binnacle .section-container .section-header {
+  z-index: 1000;
+  padding: 0px 5px;
+  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.binnacle .section-container .section-header .section-title {
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  cursor: -webkit-grab;
+  width: 70%;
+}
+
+.binnacle .section-container .section-header .section-completed {
+  width: 30%;
+  text-align: right;
+  padding-right: 10px;
+  font-size: 13px;
+}
+
+.binnacle .section-container .section-body {
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+.binnacle .section-container .section-body .section-item {
+  font-weight: bold;
+  line-height: 18px;
+  font-size: 14px;
+  cursor: -webkit-grab;
+  width: 100%;
+}
+
+.binnacle .section-container .section-body .section-item input {
+  margin-right: 10px;
+}
+
+.binnacle .section-container .section-body .section-item .section-item-title {
+  border-bottom: 1px solid #eee;
+}
+
+.binnacle .section-container .section-body .section-item .description p {
+  font-size: 12px;
+  color: #4d4d4d;
+  margin: 5px 0 0;
+}
+
+.binnacle .actions .icon {
+  float: right;
+}
+
+.binnacle .actions .icon img {
+  margin-right: 5px;
 }

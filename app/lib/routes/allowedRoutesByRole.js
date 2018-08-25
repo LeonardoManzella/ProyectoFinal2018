@@ -1,9 +1,9 @@
 const allowedRoutesByRole = {
-  entrepreneur: ['binnacle', 'tasksBoard', 'expert', 'chart', 'chatbot', 'canvas', 'planList',
+  entrepreneur: ['tasksBoard', 'chart', 'chatbot', 'canvas', 'planList',
     'swot', 'risks', 'calendar'],
-  administrator: ['binnacle', 'tasksBoard', 'expert', 'usersList', 'chart', 'chatbot', 'reminders',
+  administrator: ['tasksBoard', 'usersList', 'chart', 'chatbot', 'reminders',
     'canvas', 'planList', 'swot', 'risks', 'calendar'],
-  adminAdmin: ['binnacle', 'tasksBoard', 'expert', 'usersList', 'chart', 'chatbot', 'reminders',
+  adminAdmin: ['tasksBoard', 'usersList', 'chart', 'chatbot', 'reminders',
     'canvas', 'planList', 'swot', 'risks', 'calendar'] //For demo and emergency maintanance
 };
 

@@ -12,7 +12,6 @@ import NotFound from '../../imports/ui/components/NotFound';
 import Pending from '../../imports/ui/components/login/Pending';
 import Binnacle from '../../imports/ui/components/binnacle/Binnacle'
 import TasksBoard from '../../imports/ui/components/task/TasksBoard'
-import Expert from '../../imports/ui/components/expert/Expert'
 import Chart from '../../imports/ui/components/chart/Chart'
 import RemindersContainer from '../../imports/ui/containers/remindersContainer/RemindersContainer';
 import SuggestionsChatbot from '../../imports/ui/components/suggestionsChatbot/SuggestionsChatbot';
@@ -99,6 +98,8 @@ FlowRouter.route('/', {
     const status =  Meteor.user() ?  Meteor.user().personalInformation.status :  Meteor.user();
     if (isEntrepreneurAndIsntApproved(status)) {
       FlowRouter.go(allowedRoutesByEntrepreneurStatus[status][0]);
+    } else if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur'])) {
+      mount(MainLayout, {content: <Binnacle/>});
     } else { 
       mount(MainLayout, {content: <Activity/>});
     }
@@ -134,20 +135,6 @@ FlowRouter.route('/tasksBoard', {
   name: 'tasksBoard',
   action: function() {
     mount(MainLayout, {content: <TasksBoard/>});
-  }
-})
-
-FlowRouter.route('/binnacle', {
-  name: 'binnacle',
-  action: function() {
-    mount(MainLayout, {content: <Binnacle/>});
-  }
-})
-
-FlowRouter.route('/expert', {
-  name: 'expert',
-  action: function() {
-    mount(MainLayout, {content: <Expert/>});
   }
 })
 
