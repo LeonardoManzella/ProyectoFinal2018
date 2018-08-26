@@ -16,7 +16,7 @@ const UserPersonalInformation = new SimpleSchema({
   },
   status: {
     type: String,
-    allowedValues: ['pending', 'pendingChatbot', 'pendingAreas', 'pendingPlans', 'approved']
+    allowedValues: ['pending', 'pendingChatbot', 'pendingAreas', 'pendingPlans', 'approved', 'pendingPayment']
   },
   currentQuestionNumber: {
     type: Number,

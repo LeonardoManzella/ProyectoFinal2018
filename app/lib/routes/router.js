@@ -23,13 +23,15 @@ import RisksContainer from '../../imports/ui/containers/swotAndRisksContainers/R
 import HomePage from '../../imports/ui/components/HomePage';
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot.jsx'
 import Calendar from '../../imports/ui/components/calendar/Calendar.jsx'
+import PaypalPage from '../../imports/ui/components/paypal/PaypalPage.jsx'
 
 export const DEFAULT_ROUTE = 'home';
-const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'notFound'];
+const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'paypal', 'notFound'];
 const allowedRoutesByEntrepreneurStatus = {
-  pendingChatbot: ['chatbot'],
-  pendingAreas: ['canvas', 'chatbot'],
-  pendingPlans: ['planList', 'canvas', 'chatbot']
+  pendingPayment: ['paypal'],
+  pendingChatbot: ['chatbot', 'paypal'],
+  pendingAreas: ['canvas', 'chatbot', 'paypal'],
+  pendingPlans: ['planList', 'canvas', 'chatbot', 'paypal']
 };
 
 const isEntrepreneurAndIsntApproved = (status) => {
@@ -38,6 +40,7 @@ const isEntrepreneurAndIsntApproved = (status) => {
 }
 
 const verifyNotAllowedRouteByEntrepreneurStatus = (routeName) => {
+  console.log("routeName: " + routeName);
   const user = Meteor.user();
   if (!user) return true;
   const status = user.personalInformation.status;
@@ -66,6 +69,7 @@ const mustBeAllowedToAccessRoute = function(route) {
   if (allowedRoutesByRole[userRole].indexOf(route.route.name) < 0 
     || verifyNotAllowedRouteByEntrepreneurStatus(route.route.name)) {
     FlowRouter.go('notFound');
+    console.log("Not Allowd to access route");
     return;
   }
 };
@@ -134,6 +138,13 @@ FlowRouter.route('/tasksBoard', {
   name: 'tasksBoard',
   action: function() {
     mount(MainLayout, {content: <TasksBoard/>});
+  }
+})
+
+FlowRouter.route('/paypal', {
+  name: 'paypal',
+  action: function() {
+    mount(MainLayout, {content: <PaypalPage/>});
   }
 })
 

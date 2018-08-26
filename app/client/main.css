@@ -1115,3 +1115,17 @@ li span{
 .landing .page-sections {
   margin: 10px 0 10px;
 }
+
+.paypal-page h2 {
+  color: #ff5a5fcc;
+  font-weight: 600;
+}
+
+.paypal-page h3 {
+  color: #ff5a5fcc;
+}
+
+.paypal-button {
+  display: flex;
+  justify-content: center;
+}
