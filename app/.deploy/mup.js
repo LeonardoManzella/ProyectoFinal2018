@@ -12,7 +12,7 @@ module.exports = {
 
   app: {
     // TODO: change app name and path
-    name: 'enfocarte-prueba',
+    name: 'botigo',
     path: '../',
 
     servers: {
@@ -29,9 +29,9 @@ module.exports = {
       ROOT_URL: 'http://178.128.229.73',
       //mongodb://<dbuser>:<dbpassword>@<mongo_instance_url>:<port>/<dbname>
       //MONGO_URL: 'mongodb://mongodb/meteor',
-      MONGO_URL: 'mongodb://178.128.229.73:27058/meteor',
+      MONGO_URL: 'mongodb://178.128.229.73:27059/meteor',
       //MONGO_OPLOG_URL: 'mongodb://mongodb/local',
-      PORT: 3000,
+      PORT: 4000,
     },
 
     docker: {
@@ -39,7 +39,7 @@ module.exports = {
       image: 'abernix/meteord:node-8.4.0-base',
     },
 
-    deployCheckPort: 3000,
+    deployCheckPort: 4000,
     // Show progress bar while uploading bundle to server
     // You might need to disable it on CI servers
     enableUploadProgressBar: true

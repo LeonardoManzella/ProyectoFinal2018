@@ -4,9 +4,9 @@
 #echo 
 
 LOG_PATH="/data/logs/"
-LOG_FILE="mongod-enfocarte.log"
-DB_PATH="/data/db-enfocarte/"
-PORT="27058"
+LOG_FILE="mongod-botigo.log"
+DB_PATH="/data/db-botigo/"
+PORT="27059"
 
 echo ""
 echo "########################################"
