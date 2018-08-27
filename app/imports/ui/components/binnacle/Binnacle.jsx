@@ -3,6 +3,8 @@ import Board from 'react-trello'
 import { Boards } from '../../../../lib/schemas/board';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import { UserTasks } from '../../../../lib/schemas/userTask';
+import { BusinessAreas } from '../../../../lib/schemas/businessArea';
 
 class Binnacle extends React.Component {
 	
@@ -13,7 +15,6 @@ class Binnacle extends React.Component {
 				lanes: props.board ? props.board.lanes : []
 			}
 		};
-    Meteor.call('boards.insertFirstTime');
   }
 
 	componentWillReceiveProps(nextProps) {
@@ -32,9 +33,10 @@ class Binnacle extends React.Component {
 	}
 
 	addSection(boardData) {
+		// laneId que sea la hora de creacion
 		boardData.lanes.push({
 				title: 'Reunión',
-				laneId: 'laneId',
+				laneId: new Date(),
 				label: '2/2',
 				currentPage: 1,
 				cards: [
@@ -46,44 +48,76 @@ class Binnacle extends React.Component {
 		Meteor.call('boards.update', this.props.board, boardData.lanes);
 	}
 
-	renderUserTaskCard() {
+	getBusinessArea(plan) {
+		if (plan.businessArea === 'all') {
+			return 'Plan general';
+		}
+		const businessArea = BusinessAreas.findOne({_id: plan.businessArea});
+		return businessArea ? businessArea.name : '';
+	}
+
+	renderPlanCardTask(task, index) {
 		return (
-			<div className="section-container">
+			<div className="section-body">
+				<div className="section-item" key={index}>
+					<div className="section-item-title">
+						<input type="checkbox" id="scales" name="feature"
+									value="scales" checked={true} />
+						<label htmlFor="scales">{task.taskDescription}</label>
+					</div>
+					<div className="description">
+						<p>{'Responsable: ' + task.responsibleID}</p>
+						<p>{'Supervisor: ' + task.supervisorID}</p>
+					</div>
+				</div>
+			</div>
+		);
+	}
+
+	renderPlanCard(plan, index) {
+		return (
+			<div className="section-container" key={index}>
 				<div className="section-header">
 					<span className="section-title">
-						Plan Administrativo
+						{plan.subtype + ' - ' + this.getBusinessArea(plan)}
 					</span>
 					<span className="section-completed">
 						1/2
 					</span>
 				</div>
-				<div className="section-body">
-					<div className="section-item">
-						<div className="section-item-title">
-							<input type="checkbox" id="scales" name="feature"
-										value="scales" checked />
-							<label for="scales">Tarea1</label>
-						</div>
-						<div className="description">
-							<p>Responsable: Nicole </p>
-							<p>Responsable: Nicole </p>
-						</div>
-					</div>
+				{plan.tasks.map((task, taskIndex) => this.renderPlanCardTask(task, taskIndex))}
+			</div>
+		)
+	}
+
+	renderSwotCard(swot, index) {
+		return (
+			<div className="section-container" key={index}>
+				<div className="section-header">
+					<span className="section-title">
+						Matriz FODA
+					</span>
+					<span className="section-completed">
+						1/2
+					</span>
 				</div>
-				<div className="section-body">
-					<div className="section-item">
-						<input type="checkbox" id="scales" name="feature"
-									value="scales" checked />
-						<label for="scales">Tarea2</label>
-					</div>
+				{swot.tasks.map((task, taskIndex) => this.renderPlanCardTask(task, taskIndex))}
+			</div>
+		)
+	}
+
+	renderContingencyPlanCard(plan, index) {
+		return (
+			<div className="section-container" key={index}>
+				<div className="section-header">
+					<span className="section-title">
+						Plan de Contingencia
+					</span>
+					<span className="section-completed">
+						1/2
+					</span>
 				</div>
-				<div className="section-body">
-					<div className="section-item">
-						<input type="checkbox" id="scales" name="feature"
-									value="scales" checked />
-						<label for="scales">Tarea3</label>
-					</div>
-				</div>
+				{plan.tasks.map((task, taskIndex) => this.renderPlanCardTask(task, taskIndex))}
 			</div>
 		)
 	}
@@ -103,8 +137,9 @@ class Binnacle extends React.Component {
 							</div>
 						</div>
 						<div className="board-container">
-							{this.renderUserTaskCard()}
-							{this.renderUserTaskCard()}
+							{this.props.plans.map((plan, index) => this.renderPlanCard(plan, index))}
+							{this.props.swot.map((swot, index) => this.renderSwotCard(swot, index))}
+							{this.props.contingencyPlan.map((plan, index) => this.renderContingencyPlanCard(plan, index))}
 						</div>
 					</div>
 					<div className="col-md-8"> 
@@ -122,7 +157,8 @@ class Binnacle extends React.Component {
 						<Board 
 							onDataChange={this.onDataChange.bind(this)}
 							data={boardData}
-							draggable={true}
+							draggable
+							laneDraggable={true}
 							editable={true} 
 							/>
 					</div>
@@ -135,8 +171,11 @@ class Binnacle extends React.Component {
 
 export default withTracker(() => {
   Meteor.subscribe('boards');
-
+	Meteor.subscribe('getUserTasks');
   return {
-    board: Boards.findOne({userId: Meteor.userId()})
+		board: Boards.findOne({userId: Meteor.userId()}),
+		plans: UserTasks.find({userId: Meteor.userId(), type: 'plan'}),
+		swot: UserTasks.find({userId: Meteor.userId(), type: 'swot'}),
+		contingencyPlan: UserTasks.find({userId: Meteor.userId(), type: 'contingencyPlan'})
   };
 })(Binnacle);

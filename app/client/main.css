@@ -1129,7 +1129,7 @@ li span{
 
 .binnacle .board-container {
   background-color: #ff860d21;
-  overflow-y: hidden;
+  overflow-y: scroll;
   padding: 5px 10px 5px;
   font: 14px/18px 'Helvetica Neue',Arial,Helvetica,sans-serif;
   color: #393939;
