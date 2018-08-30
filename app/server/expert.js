@@ -42,13 +42,13 @@ if (Meteor.isServer) {
 
         let promise = new Promise((resolve) => {
             (async () => {
-                // TODO obtain string and arrays from user 
                 console.log(`actual_plan_context in Promise: ${actual_plan_context}`);
-                let replace_with_user_goals = Meteor.users.findOne().goals;
+                console.log(`this.userId: ${JSON.stringify(this.userId)}`);
+                let replace_with_user_goals = Meteor.users.findOne(this.userId).goals;
                 console.log(`user Goals: ${JSON.stringify(replace_with_user_goals)}`);
                 let goals = JSON.stringify(replace_with_user_goals).replace(/\"/g,'');
-                let contributions = JSON.stringify(Meteor.users.findOne().contributions).replace(/\"/g,'');
-                let identity_traits = JSON.stringify(Meteor.users.findOne().identity_traits).replace(/\"/g,'');
+                let contributions = JSON.stringify(Meteor.users.findOne(this.userId).contributions).replace(/\"/g,'');
+                let identity_traits = JSON.stringify(Meteor.users.findOne(this.userId).identity_traits).replace(/\"/g,'');
 
                 let duplicated_partial_suggestions = [];
                 let query_string = `suggest(${actual_plan_context}, ${goals}, ${contributions}, ${identity_traits}, Sugerencias_final).`;
