@@ -29,14 +29,14 @@ class Binnacle extends React.Component {
 		
 		console.log("this is boardData lanes: " + boardData.lanes);
 		
-		Meteor.call('boards.update', this.props.board ,boardData.lanes);
+		Meteor.call('boards.update', boardData.lanes);
 	}
 
 	addSection(boardData) {
 		// laneId que sea la hora de creacion
 		boardData.lanes.push({
 				title: 'Reunión',
-				laneId: new Date(),
+				id: new Date().toString(),
 				label: '2/2',
 				currentPage: 1,
 				cards: [
@@ -45,7 +45,7 @@ class Binnacle extends React.Component {
 				]
 			});
 		this.setState({boardData});
-		Meteor.call('boards.update', this.props.board, boardData.lanes);
+		Meteor.call('boards.update', boardData.lanes);
 	}
 
 	markTask(taskIndex, userTaskId) {
@@ -62,8 +62,8 @@ class Binnacle extends React.Component {
 
 	renderPlanCardTask(task, index, planId) {
 		return (
-			<div className="section-body">
-				<div className="section-item" key={index}>
+			<div className="section-body" key={index}>
+				<div className="section-item">
 					<div className="section-item-title">
 						<input type="checkbox" id="scales" name="feature"
 									value={task.completed}
@@ -146,6 +146,7 @@ class Binnacle extends React.Component {
 			return <div />;
 		}
 
+		console.log(boardData);
 		return (
 			<div className="content-body binnacle">
 				<h2>Bitácora</h2>
