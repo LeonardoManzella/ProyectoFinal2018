@@ -1,0 +1,29 @@
+{
+  "appName": "enfocarte",
+  "appLocation": {
+    "local": "./app/"
+  },
+  "meteorSettingsLocation": "./settings/production.json",
+  "meteorSettingsInRepo": false,
+  "prebuildScript": "",
+  "meteorBuildFlags": "--architecture os.linux.x86_64",
+  "env": {
+    "ROOT_URL": "http://178.128.229.73",
+    "PORT": "3000",
+    "MONGO_URL": "mongodb://178.128.229.73:27058/meteor"
+  },
+  "server": {
+    "host": "178.128.229.73",
+    "username": "digital_ocean",
+    "deploymentDir": "~/apps_running",
+    "loadProfile": "",
+    "interpreter": "",
+    "exec_mode": "cluster_mode",
+    "instances": "1",
+    "pem": "~/.ssh/id_rsa",
+    "nvm": {
+      "bin": "~/.nvm/nvm.sh",
+      "use": "stable"
+    }
+  }
+}
