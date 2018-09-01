@@ -88,7 +88,9 @@ class Binnacle extends React.Component {
 						{plan.subtype + ' - ' + this.getBusinessArea(plan)}
 					</span>
 					<span className="section-completed">
-						1/2
+						{plan.tasks.filter(task => task.completed).length}
+						/
+						{plan.tasks.length}
 					</span>
 				</div>
 				{plan.tasks.map((task, taskIndex) =>
@@ -105,7 +107,9 @@ class Binnacle extends React.Component {
 						Matriz FODA
 					</span>
 					<span className="section-completed">
-						1/2
+						{swot.tasks.filter(task => task.completed).length}
+						/
+						{swot.tasks.length}
 					</span>
 				</div>
 				{swot.tasks.map((task, taskIndex) =>
@@ -122,7 +126,9 @@ class Binnacle extends React.Component {
 						Plan de Contingencia
 					</span>
 					<span className="section-completed">
-						1/2
+						{plan.tasks.filter(task => task.completed).length}
+						/
+						{plan.tasks.length}
 					</span>
 				</div>
 				{plan.tasks.map((task, taskIndex) =>
