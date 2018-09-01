@@ -1,6 +1,5 @@
 {
-  "note": "Remember to install 0.9.0 version of pm2-meteor with: npm i -g pm2-meteor. Then use rm -rf node_modules; npm install --production; pm2-meteor generateBundle; Copy with scp to server to apps_running/<app name>/ scp bundle.tar.gz digital_ocean@178.128.229.73:/home/digital_ocean/apps_running/botigo/ . Then in the server cd apps_running/<app name>; tar -xzf bundle.tar.gz; cd bundle/programs/server/; npm install, cd ../../../; pm2 start pm2-env.json",
-  "appName": "botigo",
+  "appName": "botigo-test",
   "appLocation": {
     "local": "./app/"
   },
@@ -10,7 +9,7 @@
   "meteorBuildFlags": "--architecture os.linux.x86_64",
   "env": {
     "ROOT_URL": "http://178.128.229.73",
-    "PORT": "4000",
+    "PORT": "5000",
     "MONGO_URL": "mongodb://178.128.229.73:27059/meteor"
   },
   "server": {

@@ -10,9 +10,10 @@ const CLIENT = {
     production: 'AXJGaFR3AA11NwkIwlF--EfDW-97Si8JEFRl5Hpgnj5ijYp4sllmm7LMNK7Pp7EvfVwQCo_ChEoXTTq9',
 };
 
-const ENV = process.env.NODE_ENV === 'production'
-    ? 'production'
-    : 'sandbox';
+const ENV = 'production'
+// const ENV = process.env.NODE_ENV === 'production'
+//     ? 'production'
+//     : 'sandbox';
 
 export default class PaypalPage extends Component {
 
@@ -45,7 +46,7 @@ export default class PaypalPage extends Component {
                         env={ENV}
                         commit={true}
                         currency={'USD'}
-                        total={10}
+                        total={0.01}
                         onSuccess={onSuccess}
                         onError={onError}
                         onCancel={onCancel}
