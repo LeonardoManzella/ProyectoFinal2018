@@ -47,6 +47,11 @@ const taskSchema = new SimpleSchema({
     type: String,
     label: "status",
     optional:true
+  },
+  completed: {
+    type: Boolean,
+    label: "completed",
+    optional:true
   }
 });
 

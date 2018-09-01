@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 import { Boards } from '/lib/schemas/board';
+import { UserTasks } from '../lib/schemas/userTask';
  
 if (Meteor.isServer) {
 
@@ -48,6 +49,13 @@ if (Meteor.isServer) {
         console.log("calling updateBoard");
         Boards.update({_id: board._id}, {$set: {lanes}});
       }
+    },
+    'boards.markTaskCompleted'(taskIndex, userTaskId) {
+      const userTask = UserTasks.findOne({_id: userTaskId});
+      const newTask = userTask.tasks[taskIndex];
+      newTask.completed = !newTask.completed;
+      userTask.tasks[taskIndex] = newTask;
+      UserTasks.update({_id: userTaskId}, {$set: userTask});
     }
   });
 

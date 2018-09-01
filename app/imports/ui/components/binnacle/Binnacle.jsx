@@ -15,7 +15,7 @@ class Binnacle extends React.Component {
 				lanes: props.board ? props.board.lanes : []
 			}
 		};
-  }
+	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
@@ -48,6 +48,10 @@ class Binnacle extends React.Component {
 		Meteor.call('boards.update', this.props.board, boardData.lanes);
 	}
 
+	markTask(taskIndex, userTaskId) {
+		Meteor.call('boards.markTaskCompleted', taskIndex, userTaskId);
+	}
+
 	getBusinessArea(plan) {
 		if (plan.businessArea === 'all') {
 			return 'Plan general';
@@ -56,14 +60,16 @@ class Binnacle extends React.Component {
 		return businessArea ? businessArea.name : '';
 	}
 
-	renderPlanCardTask(task, index) {
+	renderPlanCardTask(task, index, planId) {
 		return (
 			<div className="section-body">
 				<div className="section-item" key={index}>
 					<div className="section-item-title">
 						<input type="checkbox" id="scales" name="feature"
-									value="scales" checked={true} />
-						<label htmlFor="scales">{task.taskDescription}</label>
+									value={task.completed}
+									checked={task.completed}
+									onChange={() => this.markTask(index, planId)}/>
+						<label>{task.taskDescription}</label>
 					</div>
 					<div className="description">
 						<p>{'Responsable: ' + task.responsibleID}</p>
@@ -85,7 +91,8 @@ class Binnacle extends React.Component {
 						1/2
 					</span>
 				</div>
-				{plan.tasks.map((task, taskIndex) => this.renderPlanCardTask(task, taskIndex))}
+				{plan.tasks.map((task, taskIndex) =>
+					this.renderPlanCardTask(task, taskIndex, plan._id))}
 			</div>
 		)
 	}
@@ -101,7 +108,8 @@ class Binnacle extends React.Component {
 						1/2
 					</span>
 				</div>
-				{swot.tasks.map((task, taskIndex) => this.renderPlanCardTask(task, taskIndex))}
+				{swot.tasks.map((task, taskIndex) =>
+					this.renderPlanCardTask(task, taskIndex, swot._id))}
 			</div>
 		)
 	}
@@ -117,7 +125,8 @@ class Binnacle extends React.Component {
 						1/2
 					</span>
 				</div>
-				{plan.tasks.map((task, taskIndex) => this.renderPlanCardTask(task, taskIndex))}
+				{plan.tasks.map((task, taskIndex) =>
+					this.renderPlanCardTask(task, taskIndex, plan._id))}
 			</div>
 		)
 	}
@@ -125,6 +134,11 @@ class Binnacle extends React.Component {
 	render() {
 
 		let { boardData } = this.state;
+		const { plans, swot, contingencyPlan } = this.props;
+
+		if (this.props.loading) {
+			return <div />;
+		}
 
 		return (
 			<div className="content-body binnacle">
@@ -137,9 +151,9 @@ class Binnacle extends React.Component {
 							</div>
 						</div>
 						<div className="board-container">
-							{this.props.plans.map((plan, index) => this.renderPlanCard(plan, index))}
-							{this.props.swot.map((swot, index) => this.renderSwotCard(swot, index))}
-							{this.props.contingencyPlan.map((plan, index) => this.renderContingencyPlanCard(plan, index))}
+							{plans.map((plan, index) => this.renderPlanCard(plan, index))}
+							{swot.map((swot, index) => this.renderSwotCard(swot, index))}
+							{contingencyPlan.map((plan, index) => this.renderContingencyPlanCard(plan, index))}
 						</div>
 					</div>
 					<div className="col-md-8"> 
@@ -170,12 +184,13 @@ class Binnacle extends React.Component {
 }
 
 export default withTracker(() => {
-  Meteor.subscribe('boards');
-	Meteor.subscribe('getUserTasks');
+  const boardsSubs = Meteor.subscribe('boards');
+	const tasksSubs = Meteor.subscribe('getUserTasks');
   return {
 		board: Boards.findOne({userId: Meteor.userId()}),
-		plans: UserTasks.find({userId: Meteor.userId(), type: 'plan'}),
-		swot: UserTasks.find({userId: Meteor.userId(), type: 'swot'}),
-		contingencyPlan: UserTasks.find({userId: Meteor.userId(), type: 'contingencyPlan'})
+		plans: UserTasks.find({userId: Meteor.userId(), type: 'plan'}).fetch(),
+		swot: UserTasks.find({userId: Meteor.userId(), type: 'swot'}).fetch(),
+		contingencyPlan: UserTasks.find({userId: Meteor.userId(), type: 'contingencyPlan'}).fetch(),
+		loading: !boardsSubs.ready() || !tasksSubs.ready()
   };
 })(Binnacle);
