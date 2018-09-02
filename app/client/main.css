@@ -1127,6 +1127,63 @@ li span{
   max-height: none;
 }
 
+.binnacle .ifVHOW {
+  position: absolute;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  overflow: hidden;
+  border: 1px solid #ff5a5f;
+  border-radius: 50%;
+  padding: 4px;
+  background-color: #ff5a5f;
+  right: 10px;
+  top: 10px;
+}
+
+.binnacle .ifVHOW:before,
+.binnacle .ifVHOW:after {
+  content: '';
+  position: absolute;
+  height: 10px;
+  width: 2px;
+  top: 35%;
+  left: 45%;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.binnacle .hcypSx {
+  background: #ff5a5fcc;
+  vertical-align: baseline;
+  outline: 0;
+  padding: 10px;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0;
+  box-shadow: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.httlId {
+  background: #ff5a5f70;
+  vertical-align: baseline;
+  outline: 0;
+  padding: 10px;
+  border: none;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  border-radius: 0;
+  box-shadow: none;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
 .binnacle .board-container {
   background-color: #ff860d21;
   overflow-y: scroll;

@@ -1,10 +1,17 @@
-import React from 'react'
-import Board from 'react-trello'
+import React from 'react';
+import Board from 'react-trello';
+import moment from 'moment';
 import { Boards } from '../../../../lib/schemas/board';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { UserTasks } from '../../../../lib/schemas/userTask';
 import { BusinessAreas } from '../../../../lib/schemas/businessArea';
+
+let eventBus = undefined;
+
+const setEventBus = (handle) => {
+	eventBus = handle;
+}
 
 class Binnacle extends React.Component {
 	
@@ -26,25 +33,20 @@ class Binnacle extends React.Component {
 	}
 
 	onDataChange(boardData) {
-		
-		console.log("this is boardData lanes: " + boardData.lanes);
-		
 		Meteor.call('boards.update', boardData.lanes);
 	}
 
 	addSection(boardData) {
 		// laneId que sea la hora de creacion
 		boardData.lanes.push({
-				title: 'Reunión',
+				title: 'Reunión ' + moment().format('DD/MM/YYYY'),
 				id: new Date().toString(),
-				label: '2/2',
+				label: '',
 				currentPage: 1,
-				cards: [
-					{id: 'Card1', title: 'Write Blog', description: 'Can AI make memes', label: '30 mins'},
-					{id: 'Card2', title: 'Pay Rent', description: 'Transfer via NEFT', label: '5 mins', metadata: {sha: 'be312a1'}}
-				]
+				cards: []
 			});
 		this.setState({boardData});
+		eventBus.publish({type: 'UPDATE_LANES', lanes: boardData.lanes})
 		Meteor.call('boards.update', boardData.lanes);
 	}
 
@@ -65,9 +67,8 @@ class Binnacle extends React.Component {
 			<div className="section-body" key={index}>
 				<div className="section-item">
 					<div className="section-item-title">
-						<input type="checkbox" id="scales" name="feature"
-									value={task.completed}
-									checked={task.completed}
+						<input type="checkbox"
+									checked={!!task.completed}
 									onChange={() => this.markTask(index, planId)}/>
 						<label>{task.taskDescription}</label>
 					</div>
@@ -146,7 +147,6 @@ class Binnacle extends React.Component {
 			return <div />;
 		}
 
-		console.log(boardData);
 		return (
 			<div className="content-body binnacle">
 				<h2>Bitácora</h2>
@@ -180,7 +180,8 @@ class Binnacle extends React.Component {
 							data={boardData}
 							draggable
 							laneDraggable={true}
-							editable={true} 
+							editable={true}
+							eventBusHandle={setEventBus}
 							/>
 					</div>
 				</div>
