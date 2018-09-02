@@ -5,6 +5,8 @@
     "start": "meteor run"
   },
   "dependencies": {
+    "@sendgrid/client": "^6.3.0",
+    "@sendgrid/mail": "^6.3.1",
     "babel-runtime": "6.26.0",
     "bcrypt": "1.0.3",
     "britecharts": "2.8.6",
