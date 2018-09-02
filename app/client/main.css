@@ -1158,7 +1158,7 @@ li span{
   background: #ff5a5fcc;
   vertical-align: baseline;
   outline: 0;
-  padding: 10px;
+  padding: 4px 16px;
   border: none;
   color: white;
   text-transform: uppercase;
@@ -1169,11 +1169,10 @@ li span{
   margin-left: 10px;
 }
 
-.httlId {
-  background: #ff5a5f70;
+.binnacle .httlId {
   vertical-align: baseline;
   outline: 0;
-  padding: 10px;
+  padding: 4px 16px;
   border: none;
   color: white;
   text-transform: uppercase;
@@ -1271,4 +1270,25 @@ li span{
 
 .binnacle .actions .icon img {
   margin-right: 5px;
+}
+
+/* CHART */
+
+.chart .bordered-cell {
+  border: 1px solid #c1c1c185;
+}
+
+.chart .row.header select {
+  padding: 0px;
+  width: 20%;
+  margin: 0px 20px;
+  height: 20px;
+}
+
+.chart .numeric-input {
+  width: 20%;
+}
+
+.chart svg.recharts-surface {
+  width: 100%;
 }

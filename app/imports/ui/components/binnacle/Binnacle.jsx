@@ -182,6 +182,8 @@ class Binnacle extends React.Component {
 							laneDraggable={true}
 							editable={true}
 							eventBusHandle={setEventBus}
+							// onLaneClick
+							// onCardClick
 							/>
 					</div>
 				</div>
