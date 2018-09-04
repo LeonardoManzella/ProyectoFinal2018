@@ -25,15 +25,22 @@ export default class PaypalPage extends Component {
 
     render() {
         console.log("Environment: " + ENV);
-        const onSuccess = (payment) =>
+        const onSuccess = (payment) => {
+            console.log("=========PAGO REALIZADO==========");
+            console.log(JSON.stringify(payment)); //TODO borrar esta impresion, es peligroso e inseguro
             window.alert('Pago Realizado!. A las 24hs de realizado el pago te avisaremos por email para que puedas empezar con Botigo', payment);
-
-        const onError = (error) =>
-            window.alert('Pago erroneo o fallo la conexion con Paypal. Tranquilo. No se te ha cobrado nada!', error);
-
-        const onCancel = (data) =>
+        }
+        const onError = (error) => {
+            console.error("========ERROR AL PAGAR=========");
+            console.error(JSON.stringify(error)); 
+            console.trace();
+            window.alert('Pago erroneo o fallo la conexion con Paypal. Tranquilo. No se te ha cobrado nada! Por favor envianos un email a botigo.contigo@gmail.com con este Error: ' + JSON.stringify(error), error);
+        }
+        const onCancel = (data) => {
+            console.log("=======PAGO CANCELADO==========");
+            console.log(JSON.stringify(data)); //TODO borrar esta impresion, es peligroso e inseguro
             window.alert('Pago cancelado. Tranquilo. No se te ha cobrado nada!', data);
-
+        }
         return (
             <div id="home" className="content-body paypal-page">
                 <h2 style={{ textAlign: "center" }}>Suscripción Mensual</h2>
