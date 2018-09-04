@@ -11,7 +11,7 @@ class Logic {
   static currentQuestionNumber = 0;
 
   static getStarted () {
-    const userName = Meteor.users.findOne().personalInformation.name;
+    const userName = Meteor.users.findOne(this.userId).personalInformation.name;
     const getStartedQuestion = [
       t('greetings1') + ' ' + userName + '!',
       t('greetings2') + ' ' + userName + '!'
