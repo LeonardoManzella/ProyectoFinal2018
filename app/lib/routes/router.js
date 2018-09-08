@@ -12,7 +12,7 @@ import NotFound from '../../imports/ui/components/NotFound';
 import Pending from '../../imports/ui/components/login/Pending';
 import Binnacle from '../../imports/ui/components/binnacle/Binnacle'
 import TasksBoard from '../../imports/ui/components/task/TasksBoard'
-import NumericProjection from '../../imports/ui/components/chart/NumericProjection'
+import NumericProjectionContainer from '../../imports/ui/containers/numericProjectionContainers/NumericProjectionContainer'
 import RemindersContainer from '../../imports/ui/containers/remindersContainer/RemindersContainer';
 import SuggestionsChatbot from '../../imports/ui/components/suggestionsChatbot/SuggestionsChatbot';
 import PlanContainer from '../../imports/ui/containers/userTasksContainers/PlanContainer';
@@ -155,7 +155,7 @@ FlowRouter.route('/chatbot', {
 FlowRouter.route('/chart', {
   name: 'chart',
   action: function() {
-    mount(MainLayout, {content: <NumericProjection/>});
+    mount(MainLayout, {content: <NumericProjectionContainer/>});
   }
 })
 
