@@ -1,8 +1,58 @@
 import React from 'react';
 import EmptyMessage from '../sharedComponents/EmptyMessage';
 import PropTypes from 'prop-types';
+import { frequencyTime } from '../../../api/helpers/frequency';
 
 class SwotTasks extends React.Component {
+
+  getOption(frequencyType, frequencyTypeOptions, fieldName, index) {
+    if (frequencyType === 'input') {
+      return  (
+        <input
+          className="frequency"
+          name={fieldName}
+          value={this.props.swotTasks[index][fieldName]}
+          onChange={(event) => this.props.handleOnChange(event, index)}
+        />
+      );
+    } else if (frequencyType === 'select') {
+      return (
+        <select
+          name={fieldName}
+          value={this.props.swotTasks[index][fieldName]}
+          onChange={(event) => this.props.handleOnChange(event, index)}
+        >
+          <option value="">-</option>
+          {frequencyTypeOptions.map((frequencyOption, index) => (
+            <option key={index} value={frequencyOption.value}>{frequencyOption.name}</option>
+          ))}
+        </select>
+      );
+    }
+    return '';
+  }
+
+  getFrequencyThirdOption(swotTask, index) {
+    if (swotTask.frequency !== '' && swotTask.frequencyType !== '') {
+      const time = frequencyTime.find(time => time.value === swotTask.frequency);
+      const frequencyType = time ?
+        time.types.find(type => type.value === swotTask.frequencyType) : time;
+      if (frequencyType) {
+        return (
+          <div className="row">
+            <div>
+              {this.getOption(frequencyType.type, frequencyType.options, 'frequencyValue', index)}
+            </div>
+            <div>
+              {this.getOption(frequencyType.secondType, frequencyType.secondOptions, 'frequencySecondValue', index)}
+            </div>
+          </div>
+        )
+      }
+      return '';
+    }
+    return '';
+  }
 
   renderSwotTasksRow(swotTask, swotTaskIndex) {
     const isEditable = true;
@@ -54,13 +104,46 @@ class SwotTasks extends React.Component {
           />
         </td>
         <td>
-          <input
-            placeholder="Ej: Cada 2 días"
-            name='frequency'
-            disabled={!isEditable}
-            onChange={(event) => handleOnChange(event, swotTaskIndex)}
-            value={swotTask.frequency}
-          />
+          <div className="row">
+            <div>
+              <div className="row">
+                <p> Repetir </p>
+                <select
+                  name='frequency'
+                  onChange={(event) => handleOnChange(event, swotTaskIndex)}
+                  value={swotTask.frequency}
+                >
+                  <option value="">-</option>
+                  {
+                    frequencyTime.map((time, index) => (
+                      <option key={index} value={time.value}>{time.name}</option>
+                    ))
+                  }
+                </select>
+              </div>
+            </div>
+            <div>
+              <div className="row">
+                <p> Según: </p>
+                <select
+                  name='frequencyType'
+                  onChange={(event) => handleOnChange(event, swotTaskIndex)}
+                  value={swotTask.frequencyType}
+                >
+                  <option value="">-</option>
+                  {
+                    swotTask.frequency && swotTask.frequency !== "" &&
+                      frequencyTime.find(time => time.value === swotTask.frequency)?
+                      frequencyTime.find(time => time.value === swotTask.frequency)
+                        .types.map((type, index) =>
+                        <option value={type.value} key={index}>{type.name}</option>)
+                      : ''
+                  }
+                </select>
+              </div>
+            </div>
+          </div>
+          {this.getFrequencyThirdOption(swotTask, swotTaskIndex)}
         </td>
         {
           isEditable ?

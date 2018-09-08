@@ -23,9 +23,22 @@ class RisksPage extends React.Component {
     }
   }
 
+  // FIXME
   handleOnChange(event, table, index) {
     const tableElements = this.state[table];
-    tableElements[index][event.target.name] = event.target.value;
+    if (event.target.name === 'frequency') {
+      tableElements[index].frequency = event.target.value;
+      tableElements[index].frequencyType = '';
+      tableElements[index].frequencyValue = '';
+      tableElements[index].frequencySecondValue = '';
+    } 
+    else if (event.target.name === 'frequencyType') {
+      tableElements[index].frequencyType = event.target.value;
+      tableElements[index].frequencyValue = '';
+      tableElements[index].frequencySecondValue = '';
+    } else {
+      tableElements[index][event.target.name] = event.target.value;
+    }
     this.setState({[table]: tableElements});
   }
 

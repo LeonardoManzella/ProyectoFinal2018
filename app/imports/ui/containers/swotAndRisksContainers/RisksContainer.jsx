@@ -19,7 +19,10 @@ const RisksContainer = withTracker(() => {
           responsible: task.responsibleID,
           supervisor: task.supervisorID,
           tool: task.taskDescription,
-          frequency: task.frequency.value
+          frequency: task.frequency.time,
+          frequencyType: task.frequency.type,
+          frequencyValue: task.frequency.value,
+          frequencySecondValue: task.frequency.secondaryValue
         }));
     }
   });
