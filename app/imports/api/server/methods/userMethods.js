@@ -153,7 +153,7 @@ if (Meteor.isServer) {
         
         if (hasEndedInterview && Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
           Meteor.user() && Meteor.user().personalInformation.status === 'pendingChatbot') {
-          Meteor.users.update({_id: user._id}, {$set: {'personalInformation.status': 'pendingAreas'}});
+          Meteor.users.update({_id: user._id}, {$set: {'personalInformation.status': 'pendingPlans'}});
         }
 
         console.log('traits saved');

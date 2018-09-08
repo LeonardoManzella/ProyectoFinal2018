@@ -146,6 +146,8 @@ class Logic {
           if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
             Meteor.user() && Meteor.user().personalInformation.status === 'pendingAreas') {
             FlowRouter.go('canvas');
+          } else {
+            FlowRouter.go('planList');
           }
         }))
     ]
