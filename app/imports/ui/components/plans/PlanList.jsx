@@ -41,8 +41,9 @@ class PlanList extends React.Component {
               onChange={handleSelectChange}
               value={this.selectedBusinessArea}
               defaultValue=''
+              hidden
             >
-              <option value='' disabled hidden>Elegir Área</option>
+              <option value='' disabled hidden>Elegir Área de Negocio</option>
               <option value='all'>Todas</option>
               {
                 businessAreas.map((area, index) =>
