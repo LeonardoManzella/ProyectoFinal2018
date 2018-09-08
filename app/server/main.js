@@ -33,4 +33,36 @@ Meteor.publish("userData", function() {
 });
 
 Meteor.startup(() => {
+  var LEVEL_LOG = "log";
+  var LEVEL_WARN = "warn";
+  var LEVEL_ERROR = "error";
+  
+  //Client Side logging to server
+  if (Meteor.isServer) {
+    Meteor.methods({
+      getUserEmail: function() {
+        if(this.userId) {
+          var userRecord = Meteor.users.findOne(this.userId);
+          return userRecord["emails"][0]["address"];
+        } else {
+          return "";
+        }
+      },
+      clientLog: function(level,message) {
+        this.unblock();
+        var user = Meteor.call("getUserEmail");
+        switch (level) {
+          case LEVEL_LOG:
+            console.log("INFO-CLIENT:",user,":",message);   
+            break;
+          case LEVEL_WARN:
+            console.log("WARN-CLIENT:",user,":",message); 
+            break;
+          case LEVEL_ERROR:
+            console.log("ERROR-CLIENT:",user,":",message);
+            break;
+        }
+      },
+    });
+  }
 });
