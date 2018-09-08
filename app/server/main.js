@@ -13,8 +13,8 @@ import { Accounts } from 'meteor/accounts-base';
 
 Accounts.onCreateUser((options, user) => {
   user.personalInformation = {
-    //status: 'pendingChatbot',
-    status: 'pendingPayment',
+    status: 'pendingChatbot',
+    //status: 'pendingPayment',
     name: options.name,
     surname: options.surname
   };
