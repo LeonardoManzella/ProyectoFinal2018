@@ -20,7 +20,7 @@ export default class HomePage extends Component {
           <div className="container">
             <img src="/img/emprendimientos-logo.png" height="30"/>
             <div className="page-sections">
-              <a href="#expert-system-section">¿COMO FUNCIONA?</a>
+              <a href="#expert-system-section">¿CÓMO FUNCIONA?</a>
               <a href="#team-section">CONOCE A BOTIGO</a>
               <a href="#contact-section">CONTACTO</a>
               <Login loginDropdownOpen={this.state.loginDropdownOpen}/>
@@ -44,7 +44,7 @@ export default class HomePage extends Component {
                 </div>
                 <div className="table">
                   <div className="welcome-title">
-                    <h1><strong>Te ayudadamos a emprender</strong></h1>
+                    <h1><strong>Te ayudamos a emprender</strong></h1>
                     <p>Con Inteligencia Artificial</p>
                     <button
                       onClick={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
@@ -57,7 +57,7 @@ export default class HomePage extends Component {
                 <div className="table">
                   <div className="welcome-title">
                     <h1><strong>Asistente 24/7</strong></h1>
-                    <p>Botigo te acompaña como parte del equipo</p>
+                    <p>Botigo te acompaña como parte del equipo.</p>
                     <button
                       onClick={() => this.setState({loginDropdownOpen: !this.state.loginDropdownOpen})}
                       className="transparent-button"
@@ -78,7 +78,7 @@ export default class HomePage extends Component {
                 <div className="col-md-6">
                   <div className="welcome-title">
                     <h2>BOTIGO, EL ASISTENTE QUE USA INTELIGENCIA ARTIFICIAL</h2>
-                    <h4>Botigo te brindará ayuda para que puedas realizar tu propio emprendimiento. Te otorgará información sobre distintos conceptos de negocio y te dará sugerencias basandose en tus características.</h4>
+                    <h4>Botigo te brindará ayuda para que puedas realizar tu propio emprendimiento. Te otorgará información sobre distintos conceptos de negocio y te dará sugerencias basándose en tu personalidad.</h4>
                     <span><button className="transparent-button">Botigo siempre contigo</button></span>
                   </div>
                 </div>
@@ -90,9 +90,9 @@ export default class HomePage extends Component {
                 </div>
                 <div className="col-md-6">
                   <div className="welcome-title">
-                    <h2>BOTIGO ES TU AMIGO, un miembro mas del equipo</h2>
+                    <h2>BOTIGO ES TU AMIGO, un miembro más del equipo</h2>
                     <h4>Botigo es un asistente 24/7 para vos.</h4>
-                    <span><button className="transparent-button">Vallas donde vallas Botigo estara contigo</button></span>
+                    <span><button className="transparent-button">Vayas donde vayas Botigo estará contigo</button></span>
                   </div>
                 </div>
                 <div className="col-md-4">
@@ -105,7 +105,7 @@ export default class HomePage extends Component {
                 <div className="welcome-title">
                   <h2>¿Queres saber como Botigo puede ayudarte? ¡Contactanos!</h2>
                   <h4>Tu consulta no molesta</h4>
-                  <span><button className="transparent-button"><a href="mailto:botigo.contigo@gmail.com">Envia un mail a botigo.contigo@gmail.com</a></button></span>
+                  <span><button className="transparent-button"><a href="mailto:botigo.contigo@gmail.com">Envía un mail a botigo.contigo@gmail.com</a></button></span>
                 </div>
               </div>
             </div>

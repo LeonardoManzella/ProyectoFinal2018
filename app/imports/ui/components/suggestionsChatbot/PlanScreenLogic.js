@@ -28,9 +28,9 @@ class Logic {
 
     return function(){
       return [
-        ChatBotUtil.textMessage(['Buenas!', 'Hola!'].any()),
+        ChatBotUtil.textMessage(['¡Buenas!', '¡Hola!'].any()),
         ChatBotUtil.textMessage('Voy a darte sugerencias para ayudarte a emprender'),
-        ChatBotUtil.textMessage('Tene en cuenta que puede llevar un rato, ponete comodo antes de comenzar'),
+        ChatBotUtil.textMessage('Tene en cuenta que puede llevar un rato, ponete cómodo antes de comenzar'),
         ChatBotUtil.textMessage(`Bueno, empezemos con tu ${Logic.getPlanTitle()}`,
           ChatBotUtil.makeReplyButton('Dale', Logic.menu)
         )
@@ -45,7 +45,7 @@ class Logic {
       ChatBotUtil.textMessage(`Un ${Logic.getPlanTitle()} te permite...`),
       ...Logic.getPlanDescriptions().map(description => ChatBotUtil.textMessage(description)),
       ChatBotUtil.textMessage(`Por eso se llama ${Logic.getPlanTitle()}.`,
-        ChatBotUtil.makeReplyButton('Ok! Lo tengo', Logic.menu)
+        ChatBotUtil.makeReplyButton('¡Ok! Lo tengo', Logic.menu)
       )
     ]
   }
@@ -56,7 +56,7 @@ class Logic {
             console.warn("--------------");
             console.error(error);
             console.trace();
-            Logic.suggestions = ['Ninguna sugerencia por el momento', 'Vuelve a intentarlo mas tarde'];
+            Logic.suggestions = ['Ninguna sugerencia por el momento', 'Vuelve a intentarlo más tarde'];
           } else {
             console.log(`Plan Suggestions: ${suggestionsArray}`);
           Logic.suggestions = suggestionsArray;
@@ -64,9 +64,9 @@ class Logic {
       });
     
     return [
-      ChatBotUtil.textMessage("¿En que puedo ayudarte?",
-        ChatBotUtil.makeReplyButton(`Que es un ${Logic.getPlanTitle()}?`,() => Logic.plan()),
-        ChatBotUtil.makeReplyButton('Guiame',() =>  Logic.guide()),
+      ChatBotUtil.textMessage("¿En qué puedo ayudarte?",
+        ChatBotUtil.makeReplyButton(`¿Que es un ${Logic.getPlanTitle()}?`,() => Logic.plan()),
+        ChatBotUtil.makeReplyButton('Guíame',() =>  Logic.guide()),
         ChatBotUtil.makeReplyButton('Sugerime Cosas',() =>  Logic.show_suggestions())
       )
     ]
@@ -79,8 +79,8 @@ class Logic {
       Logic.suggestions.map( suggestion => ChatBotUtil.textMessage(Logic.translateSuggestion(suggestion)))
     ).concat(
       [
-        ChatBotUtil.textMessage('Concentrate en esas por ahora'),
-        ChatBotUtil.textMessage('Mas adelante habran mas sugerencias',
+        ChatBotUtil.textMessage('Concéntrate en esas por ahora'),
+        ChatBotUtil.textMessage('Más adelante habrán más sugerencias',
         ChatBotUtil.makeReplyButton('Entendido', Logic.menu)
       )
       ]
@@ -94,8 +94,8 @@ class Logic {
       Logic.getPlanGuide().map( guide_part => ChatBotUtil.textMessage(guide_part))
     ).concat(
       [
-        ChatBotUtil.textMessage('Siguiendo esto vas a estar bien',
-        ChatBotUtil.makeReplyButton('Gracias!', Logic.menu)
+        ChatBotUtil.textMessage('Esto es lo mínimo para empezar',
+        ChatBotUtil.makeReplyButton('¡Gracias!', Logic.menu)
       )
       ]
     );

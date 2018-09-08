@@ -44,7 +44,7 @@ export default class ExpertChatbot extends React.Component {
 									<div className="welcome-title">
 										<h1><strong>Entrevista</strong></h1>
 										<p><i>Vamos a tener una entrevista para conocer tus objetivos, los recursos que tenes disponibles y tu identidad, ¡Como sos vos!</i></p>
-										<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
+										<span><button onClick={() => this.showChatBot()}>¡Comenzar!</button></span>
 									</div>
 								)}
 						</div>

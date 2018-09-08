@@ -27,8 +27,8 @@ export default class SuggestionsChatbot extends React.Component {
 						<div className="AlignMiddle">
 							<div className="welcome-title">
 								<h1><strong>Botigo</strong></h1> 
-								<p><i>Botigo puede guiarte y darte Sugerencias para acompañarte al proceso de emprender</i></p> 
-								<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span> 
+								<p><i>Botigo puede guiarte y darte Sugerencias para acompañarte al emprender</i></p> 
+								<span><button onClick={() => this.showChatBot()}>¡Comenzar!</button></span> 
 							</div>
 						</div>
 					</div>
@@ -39,7 +39,7 @@ export default class SuggestionsChatbot extends React.Component {
 				<div className="Content">
 					<ChatBot
 						onGetStarted={Logic.getStarted(this.props.current_plan_prop)} //Link to Prop so it updates upon parent update 
-						getStartedButton={ChatBotUtil.makeGetStartedButton('Hola!')}
+						getStartedButton={ChatBotUtil.makeGetStartedButton(['¡Buenas!', '¡Hola!', 'Iniciar'].any())}
 					/>
 				</div>
 			)
