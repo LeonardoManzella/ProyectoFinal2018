@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { TAPi18n } from 'meteor/tap:i18n';
 
 class Logic {
-  suggestions = [];
+  static suggestions = [];
   static actual_plan_context = "";
   static getActualPlan = () => actual_plan_context;
 
@@ -60,6 +60,7 @@ class Logic {
           } else {
             console.log(`Plan Suggestions: ${suggestionsArray}`);
           Logic.suggestions = suggestionsArray;
+          Logic.suggestions.reverse();
           }
       });
     
@@ -67,26 +68,67 @@ class Logic {
       ChatBotUtil.textMessage("¿En qué puedo ayudarte?",
         ChatBotUtil.makeReplyButton(`¿Que es un ${Logic.getPlanTitle()}?`,() => Logic.plan()),
         ChatBotUtil.makeReplyButton('Guíame',() =>  Logic.guide()),
-        ChatBotUtil.makeReplyButton('Sugerime Cosas',() =>  Logic.show_suggestions())
+        ChatBotUtil.makeReplyButton('Sugerime Cosas',() =>  Logic.show_first_suggestions())
       )
     ]
   }
 
-  static show_suggestions () {
+  static show_first_suggestions () {
+    let suggestionsToShow = Logic.popSuggestions(Logic.suggestions, 3);
     return [
-      ChatBotUtil.textMessage('Basandome en tus caracteristicas..')
-    ].concat(
-      Logic.suggestions.map( suggestion => ChatBotUtil.textMessage(Logic.translateSuggestion(suggestion)))
-    ).concat(
+        ChatBotUtil.textMessage('Basandome en tus caracteristicas..')
+      ].concat(
+        suggestionsToShow.map( suggestion => ChatBotUtil.textMessage(Logic.translateSuggestion(suggestion)))
+      ).concat(
       [
         ChatBotUtil.textMessage('Concéntrate en esas por ahora'),
-        ChatBotUtil.textMessage('Más adelante habrán más sugerencias',
-        ChatBotUtil.makeReplyButton('Entendido', Logic.menu)
+          ChatBotUtil.makeReplyButton('Entendido', Logic.menu),
+          ChatBotUtil.makeReplyButton('Sugerime más cosas',() =>  Logic.show_more_suggestions())
+        )
+      ]);
+  }
+    
+  static show_more_suggestions () {
+    let suggestionsToShow = Logic.popSuggestions(Logic.suggestions, 3);
+    
+    console.log('suggestionsToShow.length ' + suggestionsToShow.length);
+    console.log('suggestions.length ' + Logic.suggestions.length);
+    
+    if (suggestionsToShow.length == 0) {
+      return [
+         ChatBotUtil.textMessage('Más adelante habrá más sugerencias',
+            ChatBotUtil.makeReplyButton('Entendido', Logic.menu)
+          )
+        ];
+    }
+    
+    let builtSuggestionsToShow = [];
+    for (var i = 0; i < suggestionsToShow.length - 1; i++){
+      builtSuggestionsToShow.push(
+        ChatBotUtil.textMessage(Logic.translateSuggestion(suggestionsToShow[i]))
+      );
+    }
+    builtSuggestionsToShow.push(
+      ChatBotUtil.textMessage(Logic.translateSuggestion(suggestionsToShow[suggestionsToShow.length - 1]),
+        ChatBotUtil.makeReplyButton('Entendido', Logic.menu),
+        ChatBotUtil.makeReplyButton('Sugerime más cosas',() =>  Logic.show_more_suggestions())
       )
-      ]
     );
+    return builtSuggestionsToShow;
   }
 
+  static popSuggestions (_array, amount) {
+    let toReturn = [];
+    for (var i = 0; i< amount; i++){
+        var itemToAdd = _array.pop();
+        if(itemToAdd == undefined) {
+          return toReturn;  
+        }
+        toReturn.push(itemToAdd);
+    }
+    return toReturn;
+  }
+  
   static guide () {
     return [
       ChatBotUtil.textMessage('Dale! Te guio...')
