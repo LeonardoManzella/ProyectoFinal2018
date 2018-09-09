@@ -32,9 +32,16 @@ if (Meteor.isServer) {
 		const msg = {
 			to: emailAddr,
 			from: FROM_EMAIL,
+			replyTo: FROM_EMAIL,
 			subject: subject,
 			text: subject,
-			html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+			html: '<strong>subject</strong>',
+			templateId: templateId,
+			dynamic_template_data: {
+				subject: 'Testing Templates',
+				name: 'Some One',
+				city: 'Denver',
+			},
 		};
 		sendgrid.send(msg);
 		console.log( '========== MAIL SENT ==========' );

@@ -8,8 +8,14 @@ import { validationsHelper } from '../../../api/helpers/validationsHelper';
 
 
 
-Meteor.call('sendgrid.sendEmail', 'd-c1b69f6b24314f52ae5082044027b0dd', 'leonardo.manzella+prueba@gmail.com', "Prueba envio codigo", "Prueba Body", [], (error, data) => {
+Meteor.call('sendgrid.sendEmail', 'd-c1b69f6b24314f52ae5082044027b0dd', 'leonardo.manzella+prueba@gmail.com', "Automatic Maintenance Email", "If you are seeing this emails it means there is an error with the email server, please reply this email to let us now", [], (error, data) => {
   console.log("Called send email");
+  if(error) {
+    console.error("==== ERROR ===");
+    console.error(error);
+    console.error("==== TRACE ===");
+    console.trace();
+  }
 });
 
 const emptyPlanItem = {
