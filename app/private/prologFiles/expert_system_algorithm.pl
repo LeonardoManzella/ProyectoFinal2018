@@ -85,6 +85,7 @@ can_suggest(management_plan, outsource_accounting).
 can_suggest(management_plan, strengthen_leading_experience).
 can_suggest(management_plan, learn_leadership).
 can_suggest(management_plan, self_managed_team).
+can_suggest(management_plan, keep_track_of_operations).
 
 can_suggest(communication_plan, paid_ads).
 can_suggest(communication_plan, local_social_networks).
@@ -103,6 +104,21 @@ can_suggest(communication_plan, use_achievements_branding).
 can_suggest(communication_plan, guerrilla_marketing).
 can_suggest(communication_plan, press_and_magazines).
 can_suggest(communication_plan, client_frequent_places).
+
+can_suggest(legal_plan, do_a_sas).
+can_suggest(legal_plan, paid_iva_90days).
+can_suggest(legal_plan, arrange_passport).
+can_suggest(legal_plan, hire_secretary).
+can_suggest(legal_plan, keep_track_of_operations).
+can_suggest(legal_plan, monitor_paids).
+can_suggest(legal_plan, outsource_accounting).
+can_suggest(legal_plan, external_salary_payments).
+can_suggest(legal_plan, learn_time_paids).
+can_suggest(legal_plan, double_billing_control).
+can_suggest(legal_plan, hire_a_lawyer).
+can_suggest(legal_plan, registrer_the_brand).
+can_suggest(legal_plan, start_selling_followers).
+
 
 valid_objetives_rule(wants_recognition, direct_marketing).
 valid_objetives_rule(wants_recognition, talks_workshops).
