@@ -6,6 +6,12 @@ import { push as Menu } from 'react-burger-menu';
 import SuggestionsChatbot from '../suggestionsChatbot/SuggestionsChatbot';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
 
+
+
+Meteor.call('sendgrid.sendEmail', 'd-c1b69f6b24314f52ae5082044027b0dd', 'leonardo.manzella+prueba@gmail.com', "Prueba envio codigo", "Prueba Body", [], (error, data) => {
+  console.log("Called send email");
+});
+
 const emptyPlanItem = {
   tool: '',
   responsible: '',
