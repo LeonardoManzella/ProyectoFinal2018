@@ -6,9 +6,10 @@ import { push as Menu } from 'react-burger-menu';
 import SuggestionsChatbot from '../suggestionsChatbot/SuggestionsChatbot';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
 
+const TEMPLATE_BASICO = 'd-c1b69f6b24314f52ae5082044027b0dd';
+const TEMPLATE_PLANES = 'd-9b01a2e5ae3b4f8aa351faa4da11a061';
 
-
-Meteor.call('sendgrid.sendEmail', 'd-c1b69f6b24314f52ae5082044027b0dd', 'leonardo.manzella+prueba@gmail.com', "Automatic Maintenance Email", "If you are seeing this emails it means there is an error with the email server, please reply this email to let us now", [], (error, data) => {
+Meteor.call('sendgrid.sendEmail', TEMPLATE_PLANES, 'leonardo.manzella+prueba@gmail.com', "Automatic Maintenance Email", "If you are seeing this emails it means there is an error with the email server, please reply this email to let us now", [], (error, data) => {
   console.log("Called send email");
   if(error) {
     console.error("==== ERROR ===");

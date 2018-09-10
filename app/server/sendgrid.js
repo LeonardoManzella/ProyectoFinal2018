@@ -41,6 +41,44 @@ if (Meteor.isServer) {
 				subject: 'Testing Templates',
 				name: 'Some One',
 				city: 'Denver',
+				plans:{
+					communication_plan:[
+						{
+							"tool":"description",
+							"responsible":"responsable",
+							"supervisor":"supervisor" 
+						},
+						{
+							"tool":"description2",
+							"responsible":"responsable2",
+							"supervisor":"supervisor2" 
+						}
+					],
+					management_plan:[
+						{
+							"tool":"description",
+							"responsible":"responsable",
+							"supervisor":"supervisor" 
+						},
+						{
+							"tool":"description2",
+							"responsible":"responsable2",
+							"supervisor":"supervisor2" 
+						}
+					],
+					commercial_plan:[
+						{
+							"tool":"description",
+							"responsible":"responsable",
+							"supervisor":"supervisor" 
+						},
+						{
+							"tool":"description2",
+							"responsible":"responsable2",
+							"supervisor":"supervisor2" 
+						}
+					]
+				},
 			},
 		};
 		sendgrid.send(msg);
