@@ -161,6 +161,21 @@ if (Meteor.isServer) {
         console.log(exception);
         throw new Meteor.Error('error', exception);
       }
+    },
+    'setHasClickedChatbotButton'(user) {
+      try {
+        const userToUpdate = Meteor.users.findOne({ _id: user._id });
+
+        if (!userToUpdate) {
+          throw new Meteor.Error('user-not-found');
+        }
+
+        Meteor.users.update({_id: user._id}, {$set: {'personalInformation.hasClickedChatbotButton': true}});
+
+      } catch (exception) {
+        console.log(exception);
+        throw new Meteor.Error('error', exception);
+      }
     }
   });
 }

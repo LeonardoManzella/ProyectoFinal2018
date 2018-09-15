@@ -794,7 +794,7 @@ li span{
 /* Position and sizing of burger button */
 .chatbot-menu .bm-burger-button {
   position: fixed;
-  height: 50px;
+  height: 80px;
   bottom: 10px;
   right: 30px;
   background: #ffffff;
@@ -1296,4 +1296,8 @@ li span{
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {  
    opacity: 1;
+}
+
+.chatbot-menu .bm-icon {
+  box-shadow: 2px 1px 18px 3px #f7c045;
 }
