@@ -21,6 +21,11 @@ const UserPersonalInformation = new SimpleSchema({
   currentQuestionNumber: {
     type: Number,
     defaultValue: 0
+  },
+  hasClickedChatbotButton: {
+    type: Boolean,
+    defaultValue: false,
+    optional: true
   }
 });
 

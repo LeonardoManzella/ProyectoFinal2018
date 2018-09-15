@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { push as Menu } from 'react-burger-menu';
 import SuggestionsChatbot from '../suggestionsChatbot/SuggestionsChatbot';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
+import ChatbotButtonPointer from './ChatbotButtonPointer'
 
 const emptyPlanItem = {
   tool: '',
@@ -103,12 +104,17 @@ class PlanPage extends React.Component {
       planTypeList: this.initializePlanTypeList(props, planType)
     }));
     const INITIAL = 0;
+
+    const userHasClickedChatbotButton = Meteor.users.findOne()
+                                        .personalInformation.hasClickedChatbotButton;
+
     this.state = {
       plans,
       selectedBusinessArea: '',
       currentStep: INITIAL,
       currentPlan: planTypes[INITIAL].plan_category,
-      generalError: ''
+      generalError: '',
+      showChatbotButtonPoint: !userHasClickedChatbotButton
     };
   }
 
@@ -241,8 +247,25 @@ class PlanPage extends React.Component {
     });
   }
 
+  hideChatbotButtonPointer() {
+    if(this.state.showChatbotButtonPoint){
+      this.setState({showChatbotButtonPoint: false});
+
+      Meteor.call('setHasClickedChatbotButton', Meteor.users.findOne(),(error) => {
+        if (error) {
+          console.log(error);
+          this.setState({
+            generalError: 'Error del servidor.'
+          });
+          return;
+        }
+      });
+    }
+  }
+
   adjustScreen(event) {
     if (event.isOpen) {
+      this.hideChatbotButtonPointer();
       document.getElementById("page-wrap").setAttribute("class", "page-wrapper");
     } else {
       document.getElementById("page-wrap").removeAttribute("class", "page-wrapper");
@@ -252,7 +275,7 @@ class PlanPage extends React.Component {
   getBurgerIcon() {
     return (
       <div>
-        <img src="/img/chatbot.png" />
+        <img style={{width: "60px", height: "60px"}} src="/img/chatbot.png" />
       </div>
     );
   }
@@ -279,6 +302,10 @@ class PlanPage extends React.Component {
     });
 		return (
       <div>
+        {this.state.showChatbotButtonPoint ? (
+          <ChatbotButtonPointer />) : ''
+        }
+        
         <div className="chatbot-menu">
           <Menu
             onStateChange={this.adjustScreen.bind(this)}
