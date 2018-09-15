@@ -200,4 +200,12 @@ UserTasks.updateReminders = (reminders) => {
   });
 }
 
+UserTasks.obtainScheduledTasks = () => {
+  // TODO use MOngoDB Querys
+  // TODO Apply filter logic
+  // TODO merge arrays
+  // TODO map array to transform tasks format, see format inside sendgrid.js 
+  return "";
+}
+
 UserTasks.attachSchema(userTasksSchema);
