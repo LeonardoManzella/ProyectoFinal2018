@@ -85,7 +85,6 @@ can_suggest(management_plan, outsource_accounting).
 can_suggest(management_plan, strengthen_leading_experience).
 can_suggest(management_plan, learn_leadership).
 can_suggest(management_plan, self_managed_team).
-can_suggest(management_plan, keep_track_of_operations).
 
 can_suggest(communication_plan, paid_ads).
 can_suggest(communication_plan, local_social_networks).
@@ -105,19 +104,28 @@ can_suggest(communication_plan, guerrilla_marketing).
 can_suggest(communication_plan, press_and_magazines).
 can_suggest(communication_plan, client_frequent_places).
 
-can_suggest(legal_plan, do_a_sas).
-can_suggest(legal_plan, paid_iva_90days).
-can_suggest(legal_plan, arrange_passport).
-can_suggest(legal_plan, hire_secretary).
-can_suggest(legal_plan, keep_track_of_operations).
-can_suggest(legal_plan, monitor_paids).
-can_suggest(legal_plan, outsource_accounting).
-can_suggest(legal_plan, external_salary_payments).
-can_suggest(legal_plan, learn_time_paids).
-can_suggest(legal_plan, double_billing_control).
-can_suggest(legal_plan, hire_a_lawyer).
-can_suggest(legal_plan, registrer_the_brand).
-can_suggest(legal_plan, start_selling_followers).
+%Plan legal 
+can_suggest(legal_plan, create_sas).
+can_suggest(legal_plan, iva_90_days_delay).
+can_suggest(legal_plan, travel_documents).
+can_suggest(legal_plan, accounting_balance).
+can_suggest(legal_plan, handle_payments).
+can_suggest(legal_plan, tax_checklist).
+can_suggest(legal_plan, mercadopago).
+can_suggest(legal_plan, public_accountant).
+can_suggest(legal_plan, money_really_took).
+can_suggest(legal_plan, salaries_check).
+can_suggest(legal_plan, cross_check_control).
+can_suggest(legal_plan, ensurance).
+can_suggest(legal_plan, register_brand).
+can_suggest(legal_plan, money_requirements).
+
+can_suggest(marketing_plan, sustitute_products).
+can_suggest(marketing_plan, pro_network).
+can_suggest(marketing_plan, study_competitors).
+can_suggest(marketing_plan, understand_customer).
+can_suggest(marketing_plan, understand_product).
+can_suggest(marketing_plan, aim_premium).
 
 
 valid_objetives_rule(wants_recognition, direct_marketing).
@@ -139,11 +147,13 @@ valid_objetives_rule(wants_brag, talks_workshops).
 valid_objetives_rule(wants_money, find_funding).
 valid_objetives_rule(wants_money, investors_deck_ready).
 valid_objetives_rule(wants_money, target_massive_markets).
+valid_objetives_rule(wants_money, money_requirements).
 valid_objetives_rule(travel, trade_show).
 valid_objetives_rule(travel, international_contacts).
 valid_objetives_rule(travel, update_netbook).
 valid_objetives_rule(travel, everything_online).
 valid_objetives_rule(travel, digital_payments).
+valid_objetives_rule(travel, travel_documents).
 valid_objetives_rule(have_fun, trade_show).
 valid_objetives_rule(physical, aduana_suppliers).
 valid_objetives_rule(physical, samples).
@@ -254,6 +264,7 @@ valid_identity_rule(class_and_style, digital_store).
 valid_identity_rule(class_and_style, communicate_methodology).
 valid_identity_rule(class_and_style, care_about_design).
 valid_identity_rule(class_and_style, meetings).
+valid_identity_rule(class_and_style, aim_premium).
 valid_identity_rule(shy_and_afraid, care_about_design).
 valid_identity_rule(shy_and_afraid, therapy).
 valid_identity_rule(shy_and_afraid, keep_yourself_busy).
@@ -262,6 +273,7 @@ valid_identity_rule(shy_and_afraid, outsource_sales).
 valid_identity_rule(shy_and_afraid, find_partner_for_support).
 valid_identity_rule(shy_and_afraid, relaxing_decorations).
 valid_identity_rule(shy_and_afraid, talk_directly_about_problems).
+valid_identity_rule(shy_and_afraid, register_brand).
 valid_identity_rule(stressfully, therapy).
 valid_identity_rule(stressfully, do_sport).
 valid_identity_rule(stressfully, outsource_communications).
@@ -279,6 +291,7 @@ valid_identity_rule(anxious, update_netbook).
 valid_identity_rule(organized, paid_ads).
 valid_identity_rule(organized, digital_store).
 valid_identity_rule(organized, communicate_methodology).
+valid_identity_rule(organized, aim_premium).
 valid_identity_rule(transgressor, digital_communications).
 valid_identity_rule(transgressor, guerrilla_marketing).
 valid_identity_rule(transgressor, carefull_deadlines).

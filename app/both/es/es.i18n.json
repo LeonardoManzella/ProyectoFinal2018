@@ -432,16 +432,16 @@
     "invest_on_your_business": "Trata de comprar cosas que te sirvan a ahora y a largo plazo, pueden ser objetos fisicos o capacitaciones/workshops pagos", 
     "aduana_suppliers": "Tene cuidado con la Aduana, que pueden retenerte y perderte mercaderia. En lo posible tenes que tener un extra de stock para cubrir estos problemas y que no te pare todo", 
     "known_partner_divide_roles": "Conoce bien a tu socio y dividanse los roles. Planifica alguna actividad recreativa fuera del trabajo para relajarse, conocerse mas y mantener una buena relacion", 
-    "outsource_control": "Para todo lo que vayas a subcontratar tenes que tener en cuenta que necesitas estar constantemene comunicados y participar en sus procesos, sino no van a trabajar bien para vos. Tenes que involucrarte de ves en cuando", 
-    "systematize": "Tenes que definir procedimientos a seguir en cada situación, sistematizar. Esto te permite organizarte para crecer y aprovechar las oportunidades", 
-    "assign_roles": "Asigná roles, dividí las tareas, designá quien se encarga de cada cosa, quienes son los responsables de hacer y quienes de controlar", 
+    "outsource_control": "Para todo lo que vallas a subcontratar tenes que tener en cuenta que necesitas estar constantemene comunicados y participar en sus procesos, sino no van a trabajar bien para vos. Tenes que involucrarte de ves en cuando", 
+    "systematize": "Tenes que definir procedimientos a seguir en cada situacion, Sistematizar. Esto te permite organizarte para crecer y aprovechar las oportunidades", 
+    "assign_roles": "Asigna roles, dividi las tareas, designa quien se encarga de cada cosa, quienes son los responsables de hacer y quienes de controlar", 
     "weekly_meetings": "Es muy importante planificar reuniones un dia a la semana para sentarse a charlar entre los socios sobre como vienen, como estan trabajando. Reserva tiempo para esto", 
     "define_billing_process": "Es importante que definas el proceso de pagos y cobranzas, ¿Como te van a pagar? ¿Por que medios? ¿Cuando revisar que entro el pago? ¿Quien controla?", 
     "therapy": "La terapia puede ayudarte a desestresarte y controlar tus miedos para que no afecten al emprendimiento. Vas a notar que podes enfocarte mejor y conseguir mejores resultados", 
-    "do_sport": "El deporte y la meditación pueden ayudarte a desestresarte y tener mas energia al alejarte de tu emprendimiento por un rato", 
-    "keep_yourself_busy": "Mantenete ocupado dentro y fuera de lo laboral así no te genera ansiedad y te agota la energia", 
+    "do_sport": "El deporte y la meditacion pueden ayudarte a desestresarte y tener mas energia al alejarte de tu emprendimiento por un rato", 
+    "keep_yourself_busy": "Mantenete ocupado dentro y fuera de lo laboral asi no te genera ansiedad y te agota la energia", 
     "talk_partner_objetives": "Sentate con tu socio/a para conocer sus valores y sus objetivos. Es importante que lo/a entiendas. Charla seguido con el/ella, compartan opiniones.", 
-    "carefull_deferred_payment": "Tenes que tener cuidado cuando el cliente te paga diferido a varios meses, porque vos la mercadería tenes que pagarla ahora. Que te deje una seña por adelantado", 
+    "carefull_deferred_payment": "Tenes que tener cuidado cuando el Cliente te paga Diferido a varios meses, porque vos la mercadería tenes que pagarla ahora. Que te deje una seña por adelantado", 
     "cross_control": "Hace controles cruzados con tu socio, uno hace y el otro chequea. Solo aplica control cruzado en tareas criticas e importantes, no en mundanas o van a perder mucho tiempo", 
     "design_processes": "Defini procedimientos y procesos pensando todo el recorrido, paso a paso. Esto te va a dar orden y paz mental", 
     "monitor_employees": "Recorda que al tener empleados uno debe guiarlos y verificar que esten trabajando bien, tene en cuenta estos tiempos", 
@@ -477,15 +477,27 @@
     "guerrilla_marketing": "Busca la manera de hacer marketing no convencional, lo llamado Guerrilla Marketing y Growth Hacking. Pensa algo que rompa con los estandares de la publicidad, poner publicidad donde uno menos se lo espera, por ejemplo en el espejo de un Baño pegar algun sticker con tu Logo y Slogan",
     "press_and_magazines": "Contactate con la prensa, sobretodo con jovenes periodistas que estan mas abiertos a nuevas oportunidades. Tambien llama a revistas donde puedas aportar valor y que te sirva como marketing",
     "client_frequent_places": "Anda a los lugares donde frecuentan tus clientes. Aprovecha estar cerca de ellos",
-    "do_a_sas": "Armate una SAS (Sociedades Anónimas Simplificadas), no te compliques",
-    "paid_iva_90days": "Aprovechá la ley para pagar el IVA a los 90 días",
-    "keep_track_of_operations": "Llevar contabilidad, un balance contable o usar algún software. Anotar cuánto y por qué medio te pagaron los clientes, sino va a ser un lio para organizarte.",
-    "monitor_paids": "Monitorear que realmente te están pagando los clientes lo que deben.",
-    "external_salary_payments": "Tené aceitados los procesos de pagos de sueldo con externos, primero que se lo envie al contador, él controla y cuando te da el OK vos haces la transferencia bancaria. Evitá que te lleve mucho tiempo.",
-    "learn_time_paids": "Tenes que aprenderte bien los tiempos de pago de cada impuesto, vas a ver que son siempre iguales, armarte una guia o checklist para volver a usarla cada mes.",
-    "double_billing_control": "Tenes que tener doble control sobre la facturación y pagos y tiene que ser antes de fin de mes, no podes tener problemas a fin de mes.",
-    "hire_a_lawyer": "Contratar un abogado que se fije qué tipo de sociedad tiene que armar, qué contratos tienen que hacer, qué seguro tiene que sacarse, qué cuidados tiene que tener.",
-    "registrer_the_brand": " Registrá la marca asi te quedas tranquilo que no te copian."
+	"create_sas": "Arma una SAS (sociedad por Acciones simplificada) es la forma mas sencilla de registrar un emprendimiento. Se puede realizar en 24 horas, se puede obtener el CUIT online y puede tramitarse a traves de la plataforma de tramites a distancia TAD",
+	"iva_90_days_delay": "Podes hacer uso de la ley PYME N° 27264 la cual permite pagar IVA 90 dias despues de la facturación. Esto brinda mayor flexibilidad financiera, el cual es uno de los grandes problemas de las pymes",
+	"travel_documents": "Ya que has indicado que quieres viajar, es fundamental que tengas el pasaporte al día, tambien que tengas la visa del pais queres visitar, en caso de ser necesaria. A su vez, sería sensato averiguar si hay algun tipo de restricción para ingresar al pais que se desea visitar",
+	"accounting_balance": "Es muy importante disponer de algun programa contable que permita registrar los ingresos y egresos de dinero. Estos tipos de programas se denominan ERP y sirven tambien para gestionar inventario y otros activos",
+	"handle_payments": "Establecer los medios de pagos que aceptará el negocio y comunicarse con las entidades responsables. En general, se suele probar que funcionen correctamente haciendo alguna pequeña compra de bajo monto ",
+	"mercadopago": "La tarea de contrlar los cobros de las distintas tarjetas de credito y debito es habitualmente una complicada labor, es por ello que muchas empresas estan optando por utilizar mercadopago que funciona como un intermediario entre el banco y los negocios. Los posnets de mercadopago son extremadamente baratos y se pueden instalar en un smartphone comun y corriente",
+	"public_accountant": "Si bien en el presente portal se brindan lineamientos basicos esto no significa que no sea necesaria la asesoria de un contador publico.",
+	"money_really_took": "Hay dos principios economicos los cuales son el principio de devengado y percibido. El hecho de que se hayan facturado 500.000$ no necesariamente significa que tendremos a fin de mes 500.000$ en la caja. Esa es la principal diferencia. El principio de devengado registra las ventas de lo que se debería cobrar, pero para saber cuanto realmente se cobró es necesario tener un balance financiero que diga exactamente cuanta plata entró en el mes y cuanta salió.",
+	"salaries_check": "Hay que acreditar los procesos de pagos de sueldos con externos, por ejemplo, primero podrían enviarse al contador previo a realizar la transferencia. Esto ahorra tiempo y permite que no se produzcan posibles equivocaciones.",
+	"tax_checklist": "Es muy importante no olvidar pagar ningun impuesto, el primer mes podrían realizarse el pago de los mismos con la asesoria de un contador y anotarlos en una checklist para que los siguientes meses ya no sea necesaria dicha asesoria.",
+	"cross_check_control": "Hay que efectuar doble control sobre la facturación y pagos. No debe ser la misma persona la que controle porque la idea es reducir la cantidad de errores que pudo haber omitido la primera persona.",
+	"ensurance": "Contempla la contratación de seguros para los activos mas costosos de perder. Un activo es cualquier cosa que ponga dinero en tu bolsillo. Ejemplo una maquinaria para hacer los productos que uno termina vendiendo.",
+	"register_brand": "Hay que registrar el nombre de la empresa y la idea de los de productos en los correspondientes lugares. Para registro de marcas, patentes, ideas o productos hay que ir al Instituto Nacional de la Propiedad Industrial. Los requisitos pueden visualizarse desde la web: www.argentina.gob.ar/marcapatente",
+	"money_requirements": "Es conveniente conseguir financiamiento para poder apalancarse y obtener mayores divididendos mediante mayores gastos en marketing, producto, personal. El uso eficiente del dinero es fundamental, es por ello, que recomendamos encarecidamente contratar un contador de confianza para obtener asesoria en ese ambito. Las principales fuentes de inversion para emprendedores son inversores privados o Programas de Financiamiento por Bancos o el estado",
+	"sustitute_products": " Es necesario definir y conocer cuales son los potenciales productos sustitutos desde el punto de vista del cliente. ¿Como satisfacen su necesidad o deseo si no es con nuestro producto? ",	
+	"pro_network": "Es fundamental armar una red de contactos profesional, en eventos y cursos uno puede conocer a gente muy importante e influyente que puede apalancar su negocio. Es muy positivo usar LinkedIn para esta necesidad. No limitar la red a contactos locales, sino que es muy fundamental tener contactos en todo el mundo en la industria que estemos atendiendo.",
+	"study_competitors": "Hay que saber quienes son los competidores en el mercado, ya que ellos serán la vara contra la cual los clientes mediran el precio y calidad de sus productos. A su vez, tener conocimiento de que esta haciendo la competencia puede lograr que advierta nuevas tendencias, anticipandose a ellas y tambien puede tomar buenas ideas de lo que estan haciendo sus competidores. ",
+	"selling_strategy": "Es importante ver como los competidores gestionan las ventas, ello puede acotarle el camino para no tener que reinventar un factor no determinante en su industria (como puede ser la gestion de ventas). ",
+	"understand_customer": "Hay que dedicar tiempo a saber quienes son sus clientes y como usted logrará atender la necesidad de ellos. Por ello es necesario, clasificarlos y segmentarlos por comportamiento, ello permite que usted pueda dirigir su producto a cierta audiciencia y que la comunicación sea mas efectiva que una comunicación a publico general, donde nadie se siente realmente identificado con el mensaje que se quiere dar.",
+	"understand_product": "Debe preguntarse,  ¿Como facilitirá o como mejorará la vida de sus clientes el producto que usted esta brindando? ¿ Por qué un cliente compraria su producto y no uno de la competencia? ",
+	"aim_premium": "Usted posee una personalidad la cuál suele estar mas alineada con lo que se denomina publico Premium, que es aquel que no le importa pagar mucho dinero por productos, si de verdad sienten que su producto aporta verdadero valor. Le recomendamos dirigir sus esfuerzos hacia ese nicho de mercado."
   },
   "plan": {
     "management_plan": {
@@ -502,19 +514,26 @@
       "guide_part_1": "Primero, enfocate de que manera vas a llegar a tus clientes para venderles: ¿Donde me encuentran? ¿Como llego a mis clientes? ¿Como los convenzo de comprar?",
       "guide_part_2": "Despues, tenes que trabajar las relaciones en tu segmento del mercado para llegar a mas clientes "
     },
-    "communication_plan": {
-      "title": "Plan de Comunicacion",
-      "description_part_1": "definir que hacer para darte a conocer y dar confianza a los clientes.",
-      "description_part_2": "Se trata de armar un mensaje claro basado en tu identidad usando las herramientas que mejor se adecuen a vos.",
-      "guide_part_1": "Primero, basandote en tu identidad y quien sos arma el mensaje de marca que queres mostrarles a tu cliente. Debe ser autentico, corto y estar relacionado con los intereses de tus clientes. Para crearlo defini los adjetivos, las emociones y los beneficios clave que mejor se asocian con tu marca",
-      "guide_part_2": "Luego, consiste en elegir las herramientas de comunicacion adecuadas para darte a conocer ante tus clientes"
-    },
-    "legal_plan": {
+	 "legal_plan": {
       "title": "Plan Legal",
       "description_part_1": "tiene como objetivo visualizar la posibilidad social y legal que existe, para que el negocio se establezca y opere.",
       "description_part_2": "Te permitirá identificar los factores que deben tenerse en cuenta a la hora de elegir la forma legal más adecuada para el desarrollo de tu actividad empresarial. ",
       "guide_part_1": "Tiene involucrado factores como los límites de la responsabilidad, el compromiso de los bienes previos al inicio de la actividad, la fiscalidad del negocio, la necesidad de financiación externa",
       "guide_part_2": "Es importante que te aprendas los tiempos de pago de cada impuesto, vas a ver qué son siempre iguales, armarte una guia o checklist para volver a usarla cada mes. Ademas tambien tenes que tener un doble control sobre la facturacion y pagos, y tiene que ser antes de fin de mes"
+    },
+	 "marketing_plan": {
+      "title": "Plan de Marketing",
+      "description_part_1": "Indica cómo la empresa pretende alcanzar sus objetivos de mercadeo y que facilita, dirige y coordina los esfuerzos de mercadotecnia.",
+      "description_part_2": "Te permitirá identificar los factores que deben tenerse en cuenta a la hora de establecer estrategias de marketing y difusión.",
+      "guide_part_1": "El plan de marketing se debe elaborar en fases, las cuales indican la descripción de la situacion, analisis de la situacion y fijacion de objetivos. externa e interna de nuestra empresa. ",
+      "guide_part_2": "La descripcion de la situación describe brevemente la realidad economica, financiera y competitiva de la empresa. Estos son los factores internos. Los externos son aquellos que afectan a la empresa pero son externos a esta. Por ejemplo la competencia. Luego se analiza la situación de la empresa realizando una matriz FODA. Y por último teniendo un claro panorama de donde estamos, fijamos los objetivos. Luego es necesario definir las estrategias de marketing, planes de acción y supervisar los mismos una vez se encuentren en ejecución. Para mas información ingresar al siguiente link: https://robertoespinosa.es/2014/03/25/como-elaborar-el-plan-de-marketing/ "
+    },
+    "communication_plan": {
+      "title": "Plan de Comunicacion",
+      "description_part_1": "definir que hacer para darte a conocer y dar confianza a los clientes.",
+      "description_part_2": "Se trata de armar un mensaje claro basado en tu identidad usando las herramientas que mejor se adecuen a vos.",
+      "guide_part_1": "Primero, basandote en tu identidad y quien sos arma el mensaje de marca que queres mostrarles a tu cliente. Debe ser autentico, corto y estar relacionado con los intereses de tus clientes. Para crearlo defini los adjetivos, las emociones y los beneficios clave que mejor se asocian con tu marca",
+      "guide_part_2": "Luego, consiste en elegir las herramientas de comunicacion adecuadas para darte a conocer ante tus cleitnes"
     }
   },
   "interview": {
@@ -634,13 +653,13 @@
      // ----------------------------- CONTRIBUTIONS QUESTIONS
 
      // ----------------------------- IDENTITY QUESTIONS -----------------------------
-    "what_words_1" : "¿Con qué conjunto de palabras te identificás (seleccioná más de un grupo)?",
+    "what_words_1" : "¿Con qué conjunto de palabras te identificás (slecciona más de un grupo)?",
     "hate_numbers" : "Odio los Números/Se me dificulta la parte numérica",
     "extrovert" : "Extrovertido/Tengo energía ",
     "likes_travel" : "Viajar por el mundo",
     "techie" : "Techie/Tecnológico",
     "ambitious" : "Ambicioso/Gritón/Exacerbado/Autoritario/Con Poder",
-    "organized" : "Seriedad/Responsable/Estructurado/Ordenado/Metódico",
+    "organized" : "Seriedad/Responsable/Estructurado/Ordenado/Metódico/Tengo método",
     "trustfull" : "Confío en los demás /Sé delegar en los demás",
     "social" : "Soy sociable/Me gusta hablar con los demás/Tengo empatía",
     "non_social" : "No soy sociable/ No me gusta hablar con los demás/ Soy calentón",  // Tiene aptitudes para ser programador...
