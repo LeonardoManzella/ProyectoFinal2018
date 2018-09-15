@@ -95,7 +95,7 @@ export default class ExpertChatbot extends React.Component {
 	render() {
 		return (
 
-			<div className="Home">
+			<div className="Home">				
 				<div className="Chat Container">
 				
 					{this.getChatContent()}
