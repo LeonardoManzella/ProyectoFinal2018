@@ -32,4 +32,5 @@ Meteor.publish("userData", function() {
 });
 
 Meteor.startup(() => {
+  
 });
