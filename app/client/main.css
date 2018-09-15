@@ -395,6 +395,7 @@ p.hash {
 
 .I-ChatBot ul.Messages {
   bottom: 6em;
+  position: relative;
 }
 
 .I-ChatBot ul.Messages li.Message,
@@ -1300,4 +1301,70 @@ input[type=number]::-webkit-outer-spin-button {
 
 .chatbot-menu .bm-icon {
   box-shadow: 2px 1px 18px 3px #f7c045;
+}
+
+#interview-progress {
+  width: 45vw;
+  height: 1.5 em;
+  border-radius: 35px;
+  margin: 10px 0;
+}
+#interview-progress::-moz-progress-bar {
+  border-radius: 35px;
+}
+#interview-progress::-webkit-progress-bar {
+  background: lightgray;
+  border-radius: 35px;
+}
+#interview-progress::-webkit-progress-value{
+
+  background: #dafcd6; /* Old browsers */
+  background: -moz-linear-gradient(left, #7ad7fc 20%, #2abb20 75%); 
+  background: -webkit-linear-gradient(left, #7ad7fc 20%,#2abb20 75%);
+  background: linear-gradient(to right, #7ad7fc 40%,#2abb20 75%);
+  border-radius: 35px;
+
+}
+
+#interview-progress-bar {
+  margin: 5px;
+  border: 2px solid lightgray;
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#interview-progress-bar .elements-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+}
+
+#interview-progress-bar .elements-container div p{
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white; 
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px grey; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: lightgray; 
 }
