@@ -7,14 +7,6 @@ import { frequencyTime } from '../../../api/helpers/frequency';
 
 class PlanCard extends React.Component {
 
-  getBusinessAreaName(businessAreaId) {
-    if (businessAreaId === 'all') {
-      return 'Todas';
-    }
-    const businessArea = BusinessAreas.findOne({_id: businessAreaId});
-    return businessArea ? businessArea.name : '';
-  }
-
   getOption(frequencyType, frequencyTypeOptions, fieldName, index) {
     if (frequencyType === 'input') {
       return  (
@@ -23,7 +15,6 @@ class PlanCard extends React.Component {
           name={fieldName}
           value={this.props.planItems[index].data[fieldName]}
           onChange={(event) => this.props.handleOnChange(event, index)}
-          disabled={!this.props.isEditable}
         />
       );
     } else if (frequencyType === 'select') {
@@ -32,7 +23,6 @@ class PlanCard extends React.Component {
           name={fieldName}
           value={this.props.planItems[index].data[fieldName]}
           onChange={(event) => this.props.handleOnChange(event, index)}
-          disabled={!this.props.isEditable}
         >
           <option value="">-</option>
           {frequencyTypeOptions.map((frequencyOption, index) => (
@@ -85,21 +75,6 @@ class PlanCard extends React.Component {
       deletePlan, handleOnChange, modifyPlanItemsList } = this.props;
     return (
       <div>
-        <div className="row header">
-          <div className="col-md-4">
-            <h5>{this.getBusinessAreaName(businessArea)}</h5>
-          </div>
-          <div className="col-md-8">
-            <CrudActions
-              isEditable={isEditable}
-              iconsColor='-gray'
-              editAction={changeEditOptionPlan}
-              deleteAction={deletePlan}
-              confirmAction={changeEditOptionPlan}
-              denyAction={changeEditOptionPlan}
-            />
-          </div>
-        </div>
         <div className="row header table-container">
           <table className="table table-striped">
             <thead>
@@ -108,16 +83,11 @@ class PlanCard extends React.Component {
                 <th scope="col">Quién Usa / Hace / Responsable</th>
                 <th scope="col">Quién Controla</th>
                 <th scope="col">Frecuencia / Plazo</th>
-                {
-                  isEditable ?
-                    <th scope="col">
-                      <a className="icon" onClick={() => modifyPlanItemsList(true)}>
-                        <img src='/img/add.svg'/>
-                      </a>
-                    </th>
-                    :
-                    <th />
-                }
+                <th scope="col">
+                  <a className="icon" onClick={() => modifyPlanItemsList(true)}>
+                    <img src='/img/add.svg'/>
+                  </a>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -129,7 +99,6 @@ class PlanCard extends React.Component {
                       value={planItem.data.tool}
                       name='tool'
                       onChange={(event) => handleOnChange(event, index)}
-                      disabled={!isEditable}
                     />
                     <p className='small italic-proyectos text-danger'>
                       {validationsHelper.getErrorMessage(planItem.errors.tool.message)}
@@ -141,7 +110,6 @@ class PlanCard extends React.Component {
                       value={planItem.data.responsible}
                       name='responsible'
                       onChange={(event) => handleOnChange(event, index)}
-                      disabled={!isEditable}
                     />
                     <p className='small italic-proyectos text-danger'>
                       {validationsHelper.getErrorMessage(planItem.errors.responsible.message)}
@@ -153,7 +121,6 @@ class PlanCard extends React.Component {
                       value={planItem.data.supervisor}
                       name='supervisor'
                       onChange={(event) => handleOnChange(event, index)}
-                      disabled={!isEditable}
                     />
                     <p className='small italic-proyectos text-danger'>
                       {validationsHelper.getErrorMessage(planItem.errors.supervisor.message)}
@@ -168,7 +135,6 @@ class PlanCard extends React.Component {
                             placeholder="Ej: Cada 2 días"
                             name='frequency'
                             onChange={(event) => handleOnChange(event, index)}
-                            disabled={!isEditable}
                             value={planItem.data.frequency}
                           >
                             <option value="">-</option>
@@ -190,7 +156,6 @@ class PlanCard extends React.Component {
                             placeholder="Ej: Cada 2 días"
                             name='frequencyType'
                             onChange={(event) => handleOnChange(event, index)}
-                            disabled={!isEditable}
                             value={planItem.data.frequencyType}
                           >
                             <option value="">-</option>

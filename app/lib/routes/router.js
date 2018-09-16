@@ -175,8 +175,8 @@ FlowRouter.route('/canvas', {
 
 FlowRouter.route('/planList', {
   name: 'planList',
-  action: function() {
-    mount(MainLayout, {content: <PlanContainer/>});
+  action: function(params, queryParams) {
+    mount(MainLayout, {content: <PlanContainer planName={queryParams.planName}/>});
   }
 });
 

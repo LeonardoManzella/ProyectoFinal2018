@@ -2,8 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlanCard from './PlanCard';
 import EmptyMessage from '../sharedComponents/EmptyMessage';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 class PlanList extends React.Component {
+
+  constructor(props) {
+    super(props);
+    if (props.planTypeList.length === 0) {
+      props.addPlan();
+    }
+  }
 
   checkEntrepreneurStatus() {
     return (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
@@ -28,13 +36,16 @@ class PlanList extends React.Component {
       <div>
         <div className="row header">
           <div className="col-md-6">
-            <h2>{'Planes ' + title }</h2>
+            <h2>{ title }</h2>
           </div>
           <div className="col-md-6">
             <button onClick={savePlans}>
-              {this.checkEntrepreneurStatus() ? 'Guardar Cambios y Avanzar' : 'Guardar Cambios'}
+              Guardar Cambios
             </button>
-            <button onClick={addPlan}>
+            <button onClick={() => FlowRouter.go('planList')}>
+              Volver
+            </button>
+            {/* <button onClick={addPlan}>
               Agregar Plan
             </button>
             <select
@@ -49,7 +60,7 @@ class PlanList extends React.Component {
                   <option key={index} value={area._id}>{area.name}</option>
                 )
               }
-            </select>
+            </select> */}
           </div>
         </div>
         {
