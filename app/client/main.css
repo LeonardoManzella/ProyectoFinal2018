@@ -395,6 +395,7 @@ p.hash {
 
 .I-ChatBot ul.Messages {
   bottom: 6em;
+  position: relative;
 }
 
 .I-ChatBot ul.Messages li.Message,
@@ -1296,22 +1297,4 @@ li span{
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button {  
    opacity: 1;
-}
-
-/* PLAN */
-
-.plan-card {
-  height: 300px;
-  background-color: #c0cbff;
-  border-radius: 5px;
-  text-align: center;
-  display: table;
-  width: 90%;
-  padding: 10px;
-}
-
-.plan-card h2 {
-  display: table-cell;
-  vertical-align: middle;
-  width: 20px;
 }

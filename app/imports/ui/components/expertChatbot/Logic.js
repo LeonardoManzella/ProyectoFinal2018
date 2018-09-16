@@ -10,7 +10,26 @@ class Logic {
 
   static currentQuestionNumber = 0;
 
+  static progressBar () {
+		return ('<nav id="interview-progress-bar"><div class="elements-container"><div><p>Progreso de tu entrevista </p></div><div><progress id="interview-progress" max="1" value="0"></progress></div><div><p>Recordá que podés seguirla cuando quieras!</p></div></div></nav>');
+	};
+	
+	static addProgressBar () {
+		const progressBar = Logic.progressBar ();
+    const chatbot = $('.I-ChatBot');
+
+    chatbot.prepend(progressBar);
+    Logic.showProgress();
+  }
+  
+  static showProgress () {
+    const progress = Logic.currentQuestionNumber / InterviewQuestions.allQuestions.length;
+    $("#interview-progress").val(progress);
+  }
+
   static getStarted () {
+    Logic.addProgressBar();
+
     const userName = Meteor.users.findOne().personalInformation.name;
     const getStartedQuestion = [
       t('greetings1') + ' ' + userName + '!',
@@ -31,12 +50,15 @@ class Logic {
   }
 
   static continueInterview (questionNumber) {
-    console.log('loaded questionNumber ' + questionNumber);
+    Logic.addProgressBar();
+    
     Logic.currentQuestionNumber = questionNumber - 1;
     return Logic.nextQuestion()
   }
 
   static nextQuestion () {
+    Logic.showProgress();
+    
     Logic.currentQuestionNumber++;
     Logic.saveInterviewState(false);
 
