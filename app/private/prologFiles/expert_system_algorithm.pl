@@ -20,7 +20,6 @@ different(First_trait, Second_trait) :- not(First_trait == Second_trait) .
 
 
 % RULES
-% TODO Test Added Rules using automated testing (needs cucumber)
 % TODO Revisar que las sugerencias de todas las reglas esten almenos en uno de los planes (excepto la de error), asi no olvide agregarlas ahi
 can_suggest(commercial_plan, direct_marketing).
 can_suggest(commercial_plan, logistic_association).
@@ -190,33 +189,7 @@ valid_objetives_rule(allow_sell_workshops, update_netbook).
 valid_objetives_rule(strengthen_your_team, consultant_or_coach).
 valid_objetives_rule(flexibility, update_netbook).
 valid_objetives_rule(flexibility, everything_online).
-% FIXME cambiar  los que estan debajo a Contribuciones
-valid_objetives_rule(alone, outsource_communications).
-valid_objetives_rule(alone, outsource_sales).
-valid_objetives_rule(alone, outsource_control).
-valid_objetives_rule(alone, hire_business_manager).
-valid_objetives_rule(alone, find_partner_for_support).
-valid_objetives_rule(alone, update_netbook).
-valid_objetives_rule(has_partner, known_partner_divide_roles).
-valid_objetives_rule(has_partner, talk_partner_objetives).
-valid_objetives_rule(has_experience_leading, strengthen_leading_experience).
-valid_objetives_rule(doesnt_have_experience_leading, learn_leadership).
-valid_objetives_rule(doesnt_have_experience_leading, monitor_employees).
-valid_objetives_rule(doesnt_have_experience_leading, self_managed_team).
-valid_objetives_rule(doesnt_have_experience_leading, hire_experienced_employees).
-% FIXME cambiar a indentidad
-valid_objetives_rule(non_profit, direct_marketing).
-valid_objetives_rule(non_profit, talks_workshops).
-valid_objetives_rule(non_profit, local_social_networks).
-valid_objetives_rule(non_profit, everything_online).
-valid_objetives_rule(young_client, local_social_networks).
-valid_objetives_rule(young_client, global_social_networks).
-valid_objetives_rule(adult_client, paid_ads).
-valid_objetives_rule(adult_client, digital_store).
-valid_objetives_rule(adult_client, communicate_methodology).
-valid_objetives_rule(old_client, paid_ads).
-valid_objetives_rule(old_client, digital_store).
-valid_objetives_rule(old_client, communicate_methodology).
+
 
 
 valid_contribution_rule(has_savings_or_funding, invest_on_your_business).
@@ -229,6 +202,19 @@ valid_contribution_rule(doesnt_have_account, organize_billing).
 valid_contribution_rule(doesnt_have_account, arrange_bank_loans).
 valid_contribution_rule(doesnt_have_credit_history, arrange_bank_loans).
 valid_contribution_rule(doesnt_have_passport, arrange_passport).
+valid_contribution_rule(alone, outsource_communications).
+valid_contribution_rule(alone, outsource_sales).
+valid_contribution_rule(alone, outsource_control).
+valid_contribution_rule(alone, hire_business_manager).
+valid_contribution_rule(alone, find_partner_for_support).
+valid_contribution_rule(alone, update_netbook).
+valid_contribution_rule(has_partner, known_partner_divide_roles).
+valid_contribution_rule(has_partner, talk_partner_objetives).
+valid_contribution_rule(has_experience_leading, strengthen_leading_experience).
+valid_contribution_rule(doesnt_have_experience_leading, learn_leadership).
+valid_contribution_rule(doesnt_have_experience_leading, monitor_employees).
+valid_contribution_rule(doesnt_have_experience_leading, self_managed_team).
+valid_contribution_rule(doesnt_have_experience_leading, hire_experienced_employees).
 
 valid_identity_rule(disorganized, hire_secretary). 
 valid_identity_rule(disorganized, personal_agenda). 
@@ -297,7 +283,19 @@ valid_identity_rule(transgressor, guerrilla_marketing).
 valid_identity_rule(transgressor, carefull_deadlines).
 valid_identity_rule(hate_numbers, hire_secretary).
 valid_identity_rule(hate_numbers, outsource_accounting).
-% TODO en vez de ponerlas aca, hacer que se adhieran a las Listas para Cada Plan con un Predicado Hecho /1 al final, asi solo aparecen una unica vez en vez de por cada elemento
+valid_identity_rule(non_profit, direct_marketing).
+valid_identity_rule(non_profit, talks_workshops).
+valid_identity_rule(non_profit, local_social_networks).
+valid_identity_rule(non_profit, everything_online).
+valid_identity_rule(young_client, local_social_networks).
+valid_identity_rule(young_client, global_social_networks).
+valid_identity_rule(adult_client, paid_ads).
+valid_identity_rule(adult_client, digital_store).
+valid_identity_rule(adult_client, communicate_methodology).
+valid_identity_rule(old_client, paid_ads).
+valid_identity_rule(old_client, digital_store).
+valid_identity_rule(old_client, communicate_methodology).
+% TODO en vez de ponerlas aca, hacer que se adhieran a las Listas para Cada Plan con un Predicado Hecho /1 al final, asi solo aparecen una unica vez en vez de por cada elemento. Ojo con bypassear control de validar puede sugerirse por cada plan
 /*
 valid_identity_rule(_, explain_how_to_delegate).
 valid_identity_rule(_, monitor_employees).

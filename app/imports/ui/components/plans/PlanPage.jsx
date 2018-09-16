@@ -40,35 +40,19 @@ const planTypes = [
     component: <PlanList/>,
     plan_category: 'commercial_plan'
   }
-  /*
   ,
   {
-    //TODO agregar codigo referencia Prolog en cada tipo
     name: "PLAN LEGAL",
     title: "Legales",
-    component: <PlanList/>
+    component: <PlanList/>,
+    plan_category: 'legal_plan'
   },
   {
-    name: "PLAN CONTABLE",
-    title: "Contables",
-    component: <PlanList/>
-  },
-  {
-    name: "PLAN DE PRODUCCIÓN",
-    title: "de Producción",
-    component: <PlanList/>
-  },
-  {
-    name: "PLAN ECONÓMICO / FINANCIERO",
-    title: "Económicos / Financieros",
-    component: <PlanList/>
-  },
-  {
-    name: "PLAN DE SISTEMAS",
-    title: "de Sistemas",
-    component: <PlanList/>
+    name: "PLAN DE MARKETING",
+    title: "Marketing",
+    component: <PlanList/>,
+    plan_category: 'marketing_plan'
   }
-  */
 ];
 
 class PlanPage extends React.Component {
