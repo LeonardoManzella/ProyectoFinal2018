@@ -201,7 +201,36 @@ UserTasks.updateReminders = (reminders) => {
 }
 
 UserTasks.obtainScheduledTasks = () => {
-  // TODO use MOngoDB Querys
+  // TODO use MongoDB Querys
+  // var fiber_function = Meteor.bindEnvironment( function() {
+  // UserTasks.aggregate([
+  //     { $unwind: "$tasks" }
+  //   ]);
+  // });
+  // let daily_tasks = fiber_function();
+  
+  const callback_fun = function(err, result) {
+      if(err) {
+        console.log("=== ERROR ===");
+        console.log(err);
+      }else{
+        console.log("=== Result ===");
+        console.log(result);
+      }
+  };
+
+  await UserTasks.rawCollection().aggregate([
+    { $unwind: "$tasks" }
+    // ,
+    // { $match: { $and:[
+    //     { 'tasks.frequency.type': { $eq: "dayAmount" }}
+    //     , 
+    //     {userId: "8x7t9Ck8YzZ7nNwYG"}
+    // ]}}
+], callback_fun);
+console.log("daily_tasks obtained:");
+console.log(daily_tasks);
+  
   // TODO Apply filter logic
   // TODO merge arrays
   // TODO map array to transform tasks format, see format inside sendgrid.js 

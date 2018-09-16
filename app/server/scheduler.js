@@ -16,7 +16,7 @@ Meteor.startup(function () {
         const TEMPLATE_BASICO = 'd-c1b69f6b24314f52ae5082044027b0dd';
         const TEMPLATE_PLANES = 'd-9b01a2e5ae3b4f8aa351faa4da11a061';
 
-        // var tasks = UserTasks.obtainScheduledTasks();
+        var tasks = UserTasks.obtainScheduledTasks();
         // console.log("=== Tasks Scheduled ===");
         // console.log(JSON.stringify(tasks));
 
