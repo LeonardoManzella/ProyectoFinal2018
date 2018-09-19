@@ -60,7 +60,10 @@ const userTasksSchema = new SimpleSchema({
     type: String,
     label: "userId"
   },
-  //TODO add user email
+  userEmail: {
+    type: String,
+    label: "userEmail"
+  },
   businessArea: {
     type: String,
     label: "businessArea",
@@ -97,7 +100,7 @@ UserTasks.insertPlanList = (plans) => {
       const userTasks = {};
       UserTasks.remove({type: 'plan', subtype: plan.name, businessArea, userId: Meteor.userId()}) //FIXME need to put email also?
       userTasks.userId = Meteor.userId();
-        //TODO isert user email
+      userTasks.userEmail = Meteor.users.findOne( Meteor.userId() ).emails[0];
       userTasks.type = 'plan';
       userTasks.subtype = plan.name;
       userTasks.businessArea = businessArea;
@@ -231,10 +234,10 @@ UserTasks.obtainScheduledTasks = async () => {
   var daily_tasks = await queryAggregate(queryDailyTasks);
 console.log("daily_tasks obtained:");
 console.log(daily_tasks);
-  // TODO save user email inside each task!
+  // TODO save user email inside each task! Update users going to plans and save each one
   // TODO Apply filter logic
   // TODO merge arrays
-  // TODO map array to transform tasks format, see format inside sendgrid.js 
+  // TODO map array to transform tasks format, see format inside sendgrid.js  or use the aggregate to group by plan
   return daily_tasks;
 }
 
