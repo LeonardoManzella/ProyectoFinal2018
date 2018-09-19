@@ -200,7 +200,7 @@ UserTasks.updateReminders = (reminders) => {
   });
 }
 
-UserTasks.obtainScheduledTasks = () => {
+UserTasks.obtainScheduledTasks = async () => {
   // TODO use MongoDB Querys
   // var fiber_function = Meteor.bindEnvironment( function() {
   // UserTasks.aggregate([
@@ -209,17 +209,31 @@ UserTasks.obtainScheduledTasks = () => {
   // });
   // let daily_tasks = fiber_function();
   
-  const callback_fun = function(err, result) {
-      if(err) {
-        console.log("=== ERROR ===");
-        console.log(err);
-      }else{
-        console.log("=== Result ===");
-        console.log(result);
-      }
-  };
+  // const callback_fun = function(resolve) {
+  //   return function(err, result) {
+  //     if(err) {
+  //       console.log("=== ERROR ===");
+  //       console.log(err);
+  //     }else{
+  //       console.log("=== Result ===");
+  //       console.log(result);
+  //       resolve(resolve);
+  //     }
+  //   }
+  // };
+  // const callback_fun = function(err, result) {
+  //     if(err) {
+  //       console.log("=== ERROR ===");
+  //       console.log(err);
+  //     }else{
+  //       console.log("=== Result ===");
+  //       console.log(result);
+  //       resolve(resolve);
+  //     }
+  // };
 
-  await UserTasks.rawCollection().aggregate([
+  //var fiber_function = Meteor.bindEnvironment( callback_fun );
+  const queryDailyTasks = [
     { $unwind: "$tasks" }
     // ,
     // { $match: { $and:[
@@ -227,14 +241,90 @@ UserTasks.obtainScheduledTasks = () => {
     //     , 
     //     {userId: "8x7t9Ck8YzZ7nNwYG"}
     // ]}}
-], callback_fun);
+  ];
+
+  // let promise = new Promise((resolve) => {
+  //           (async () => { 
+  //               UserTasks.rawCollection().aggregate(query, callback_fun(resolve));
+  //           })().catch((err) => {
+  //               console.error(err); 
+  //               console.trace();
+  //           });
+  //       });
+  //       Promise.await(promise);
+  //       console.log("== PROMISE ==");
+  //       console.log(JSON.stringify(promise));
+  //       promise.then(result =>{
+  //         return result;
+  //       });
+  // function somethingSync(queryToExecute){
+  //     var ret = undefined; //the result-holding variable
+  //     //doing something async here...
+  //     console.log("somethingSync started");
+  //     UserTasks.rawCollection().aggregate(
+  //       queryToExecute,
+  //       function(err, result) {
+  //         console.log("callback");
+  //         if(err) {
+  //           console.log("=== ERROR ===");
+  //           console.log(err);
+  //         }else{
+  //           console.log("=== Result ===");
+  //           console.log(result);
+  //           ret = result;
+  //         }
+  //       }
+  //     );
+
+  //     console.log("after call");
+  //     while(ret === undefined){} //wait for the result until it's available, cause the blocking
+      
+  //     console.log("after while");
+  //     return ret;
+  // }
+  // var result = somethingSync(query);
+
+  function queryAggregate (queryToExecute) {
+    return new Promise(function (resolve) {
+      UserTasks.rawCollection().aggregate(
+        queryToExecute,
+        function(err, result) {
+          console.log("callback");
+          if(err) {
+            console.log("=== ERROR ===");
+            console.log(err);
+          }else{
+            console.log("=== Result ===");
+            console.log(result);
+            resolve(result);
+          }
+        }
+      );
+    })
+  }
+  var daily_tasks = await queryAggregate(queryDailyTasks);
+
+  // var syncFunc = Async.wrap(UserTasks.rawCollection().aggregate);
+  // var result = syncFunc(query, callback_fun);
+  //var result = syncFunc(query, fiber_function);
+  // console.log("=== SYNC RESULT ===");
+  // console.log(result);
+//   var daily_tasks = UserTasks.rawCollection().aggregate([
+//     { $unwind: "$tasks" }
+//     // ,
+//     // { $match: { $and:[
+//     //     { 'tasks.frequency.type': { $eq: "dayAmount" }}
+//     //     , 
+//     //     {userId: "8x7t9Ck8YzZ7nNwYG"}
+//     // ]}}
+// ], callback_fun);
 console.log("daily_tasks obtained:");
 console.log(daily_tasks);
   
   // TODO Apply filter logic
   // TODO merge arrays
   // TODO map array to transform tasks format, see format inside sendgrid.js 
-  return "";
+  return daily_tasks;
 }
 
 UserTasks.attachSchema(userTasksSchema);
