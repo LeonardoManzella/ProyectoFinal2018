@@ -22,8 +22,14 @@ var ReplyButton = function (_Button) {
 
     var _this = _possibleConstructorReturn(this, _Button.call(this, props));
 
-    _this.buttonClassName = 'ReplyButton';
-    return _this;
+    if (props.title && props.title == 'Siguiente pregunta') {
+      _this.buttonClassName = 'ReplyButton next-question-button';
+      return _this;
+    } else {
+      _this.buttonClassName = 'ReplyButton';
+      return _this;
+    }
+
   }
 
   return ReplyButton;
