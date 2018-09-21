@@ -175,6 +175,7 @@
   "login": {
     "signIn": "Iniciar sesión",
     "enter": "Ingresar",
+    "signUp": "Registrar",
     "email": "Email",
     "password": "Contraseña"
   },
