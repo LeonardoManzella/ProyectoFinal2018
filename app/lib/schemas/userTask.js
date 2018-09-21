@@ -2,6 +2,7 @@ import SimpleSchema from  'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 import { Swots } from './swot';
 import { Risks } from './risk';
+import moment from 'moment';
 
 export const UserTasks = new Mongo.Collection('userTasks');
 
@@ -251,7 +252,6 @@ UserTasks.obtainScheduledTasks = async () => {
       if( !tasksDictionary[userEmail] ) 
         tasksDictionary[userEmail] = {}
 
-        // TODO restructure so I can obtain email separado de planes
       if( !tasksDictionary[userEmail][plan] ) 
         tasksDictionary[userEmail][plan] = []
 
@@ -272,8 +272,14 @@ UserTasks.obtainScheduledTasks = async () => {
   // TODO use MongoDB Querys
   
   // TODO Apply filter logic
-  // TODO merge arrays
-  return transformTaskFormat(daily_tasks);
+  // TODO merge arrays}
+  var daily_tasks_filtered = daily_tasks.filter( aTask => {
+    console.log("== Current Day of Year ==");
+    console.log(moment().dayOfYear());
+    //See if current day is a multiple of the defined day to send emails each 'frequency.value' days
+    ( moment().dayOfYear() % 2) == 0
+  });
+  return transformTaskFormat(daily_tasks_filtered);
 }
 
 UserTasks.attachSchema(userTasksSchema);

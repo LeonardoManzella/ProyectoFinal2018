@@ -22,15 +22,21 @@ Meteor.startup(function () {
                 console.log("=== Tasks Scheduled ===");
                 console.log(JSON.stringify(tasks));
 
-                // Meteor.call('sendgrid.sendEmail', TEMPLATE_PLANES, 'leonardo.manzella+prueba@gmail.com', "Automatic Maintenance Email", "If you are seeing this emails it means there is an error with the email server, please reply this email to let us now", (error, data) => {
-                // console.log("Called send email");
-                // if(error) {
-                //     console.error("==== ERROR ===");
-                //     console.error(error);
-                //     console.error("==== TRACE ===");
-                //     console.trace();
-                // }
-                // });
+                Object.entries(tasks).forEach( ([email, plan]) => {
+                    console.log("== Entry ==");
+                    console.log(email);
+                    console.log(plan);
+                    // Meteor.call('sendgrid.sendEmail', TEMPLATE_PLANES, 'leonardo.manzella+prueba@gmail.com', "Automatic Maintenance Email", plan, (error, data) => {
+                    //  Meteor.call('sendgrid.sendEmail', TEMPLATE_PLANES, email, "Automatic Maintenance Email", plan, (error, data) => {
+                    // console.log("Called send email");
+                    // if(error) {
+                    //     console.error("==== ERROR ===");
+                    //     console.error(error);
+                    //     console.error("==== TRACE ===");
+                    //     console.trace();
+                    // }
+                    // });
+                }, this);
             }
         );
 
