@@ -100,7 +100,7 @@ UserTasks.insertPlanList = (plans) => {
       const userTasks = {};
       UserTasks.remove({type: 'plan', subtype: plan.name, businessArea, userId: Meteor.userId()}) //FIXME need to put email also?
       userTasks.userId = Meteor.userId();
-      userTasks.userEmail = Meteor.users.findOne( Meteor.userId() ).emails[0];
+      userTasks.userEmail = Meteor.users.findOne( Meteor.userId() ).emails[0].address;
       userTasks.type = 'plan';
       userTasks.subtype = plan.name;
       userTasks.businessArea = businessArea;
@@ -206,7 +206,6 @@ UserTasks.updateReminders = (reminders) => {
 }
 
 UserTasks.obtainScheduledTasks = async () => {
-  // TODO use MongoDB Querys
   const queryDailyTasks = [
     { $unwind: "$tasks" }
     ,
@@ -231,14 +230,50 @@ UserTasks.obtainScheduledTasks = async () => {
       );
     })
   }
+  transformPlanName = {
+    "PLAN DE ADMINISTRACIÓN": "management_plan",
+    "PLAN DE COMUNICACIÓN": "communication_plan",
+    "PLAN COMERCIAL": "commercial_plan"
+  };
+
+  function transformTaskFormat (taskToTransform) {
+    var tasksDictionary = {};
+
+    taskToTransform.forEach(function(aTask) {
+      console.log("=== aTask ===");
+      console.log(aTask);
+      const userEmail = aTask.userEmail;
+      const plan = transformPlanName[aTask.subtype];
+      const description = aTask.tasks.taskDescription;
+      const responsible = aTask.tasks.responsibleID;
+      const supervisor = aTask.tasks.supervisorID;
+
+      if( !tasksDictionary[userEmail] ) 
+        tasksDictionary[userEmail] = {}
+
+        // TODO restructure so I can obtain email separado de planes
+      if( !tasksDictionary[userEmail][plan] ) 
+        tasksDictionary[userEmail][plan] = []
+
+      tasksDictionary[userEmail][plan].push({
+        "tool": description,
+        "responsible": responsible,
+        "supervisor": supervisor
+      });
+    }, this);
+
+    return tasksDictionary;
+  }
+
   var daily_tasks = await queryAggregate(queryDailyTasks);
-console.log("daily_tasks obtained:");
-console.log(daily_tasks);
-  // TODO save user email inside each task! Update users going to plans and save each one
+  console.log("daily_tasks obtained:");
+  console.log(daily_tasks);
+
+  // TODO use MongoDB Querys
+  
   // TODO Apply filter logic
   // TODO merge arrays
-  // TODO map array to transform tasks format, see format inside sendgrid.js  or use the aggregate to group by plan
-  return daily_tasks;
+  return transformTaskFormat(daily_tasks);
 }
 
 UserTasks.attachSchema(userTasksSchema);
