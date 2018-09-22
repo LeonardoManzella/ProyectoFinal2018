@@ -429,3 +429,7 @@ h1 {
     top: auto;
     text-align: center;
 }
+.next-question-button{
+    background: white!important;
+    color: #4f82db!important;
+}
