@@ -1316,3 +1316,67 @@ input[type=number]::-webkit-outer-spin-button {
   vertical-align: middle;
   width: 20px;
 }
+
+/**** MODAL *******/
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.bm-cross-button.menu-cross-button button{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  text-indent: -9999px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.bm-cross-button.menu-cross-button{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 8px;
+  top: 8px;
+}
+
+.cross {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+}
+
+.bm-cross.bm-cross-left {
+  position: absolute;
+  width: 3px;
+  height: 14px;
+  transform: rotate(45deg);
+}
+
+.bm-cross.bm-cross-right {
+  position: absolute;
+  width: 3px;
+  height: 14px;
+  transform: rotate(-45deg);
+}
+
+.sc-bZQynM.iTzKeC {
+  cursor: pointer;
+}
+
+.card-edition p {
+  margin-left: 20px;
+  margin-top: 10px;
+}
