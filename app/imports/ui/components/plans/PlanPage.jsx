@@ -121,7 +121,7 @@ class PlanPage extends React.Component {
   addPlan() {
     const { plans } = this.state;
     const planName = this.props.planName;
-    const planType = this.state.plans.find(plan => plan.name === planName);
+    const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
     const data = Object.assign({}, emptyPlan);
     data.planArea = this.state.selectedBusinessArea;
     data.planItems = [];
@@ -197,7 +197,7 @@ class PlanPage extends React.Component {
   modifyPlanItemsList(index, addPlanItem, indexPlanItem) {
     const { plans } = this.state;
     const planName = this.props.planName;
-    const planType = this.state.plans.find(plan => plan.name === planName);
+    const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
     if (addPlanItem) {
       const planItem = {
         data: Object.assign({}, emptyPlanItem),
