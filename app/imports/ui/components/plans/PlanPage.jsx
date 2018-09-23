@@ -153,7 +153,7 @@ class PlanPage extends React.Component {
     this.setState({
       plans: plans.map(plan => {
         const newPlan = Object.assign({}, plan);
-        if (plan.name === planName) {
+        if (plan.name === this.getTitle(planName)) {
           newPlan.planTypeList.push(newPlanData);
         }
         return newPlan;
