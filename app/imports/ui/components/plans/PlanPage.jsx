@@ -2,11 +2,8 @@ import React from 'react';
 import StepZilla from 'react-stepzilla';
 import PlanList from './PlanList';
 import PropTypes from 'prop-types';
-import { push as Menu } from 'react-burger-menu';
-import SuggestionsChatbot from '../suggestionsChatbot/SuggestionsChatbot';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import ChatbotButtonPointer from './ChatbotButtonPointer'
 
 const emptyPlanItem = {
   tool: '',
@@ -75,6 +72,19 @@ const planTypes = [
 
 class PlanPage extends React.Component {
 
+  getTitle(title) {
+    switch(title) {
+      case 'management_plan':
+        return 'PLAN DE ADMINISTRACIÓN';
+      case 'communication_plan':
+        return 'PLAN DE COMUNICACIÓN';
+      case 'commercial_plan':
+        return 'PLAN COMERCIAL';
+      default:
+        return 'PLAN DE ADMINISTRACIÓN';
+    }
+  }
+
   initializePlanTypeList(props, planType) {
     if (props.planTypeList) {
       const newPlanTypeList = props.planTypeList
@@ -106,16 +116,12 @@ class PlanPage extends React.Component {
     }));
     const INITIAL = 0;
 
-    const userHasClickedChatbotButton = Meteor.users.findOne()
-                                        .personalInformation.hasClickedChatbotButton;
-
     this.state = {
       plans,
       selectedBusinessArea: 'all',
       currentStep: INITIAL,
       currentPlan: planTypes[INITIAL].plan_category,
-      generalError: '',
-      showChatbotButtonPoint: !userHasClickedChatbotButton
+      generalError: ''
     };
   }
 
@@ -173,7 +179,7 @@ class PlanPage extends React.Component {
   handleOnChange(event, index, indexPlanItem) {
     const { plans } = this.state;
     const planName = this.props.planName;
-    const planType = this.state.plans.find(plan => plan.name === planName);
+    const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
     if (event.target.name === 'frequency') {
       planType.planTypeList[index].data
         .planItems[indexPlanItem].data.frequency = event.target.value;
@@ -257,39 +263,6 @@ class PlanPage extends React.Component {
     });
   }
 
-  hideChatbotButtonPointer() {
-    if(this.state.showChatbotButtonPoint){
-      this.setState({showChatbotButtonPoint: false});
-
-      Meteor.call('setHasClickedChatbotButton', Meteor.users.findOne(),(error) => {
-        if (error) {
-          console.log(error);
-          this.setState({
-            generalError: 'Error del servidor.'
-          });
-          return;
-        }
-      });
-    }
-  }
-
-  adjustScreen(event) {
-    if (event.isOpen) {
-      this.hideChatbotButtonPointer();
-      document.getElementById("page-wrap").setAttribute("class", "page-wrapper");
-    } else {
-      document.getElementById("page-wrap").removeAttribute("class", "page-wrapper");
-    }
-  }
-
-  getBurgerIcon() {
-    return (
-      <div>
-        <img style={{width: "60px", height: "60px"}} src="/img/chatbot.png" />
-      </div>
-    );
-  }
-
 	render() {
     // let steps = Object.assign([], planTypes);
     // steps = steps.map((step, index) => {
@@ -313,7 +286,7 @@ class PlanPage extends React.Component {
     // console.log(this.props.planName);
     if (this.props.planName) {
       const planName = this.props.planName;
-      const planType = this.state.plans.find(plan => plan.name === planName);
+      const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
       return (
         <div>
           <div className="content-body plan">
@@ -335,19 +308,6 @@ class PlanPage extends React.Component {
     }
 		return (
       <div>
-        {this.state.showChatbotButtonPoint ? (
-          <ChatbotButtonPointer />) : ''
-        }
-        
-        <div className="chatbot-menu">
-          <Menu
-            onStateChange={this.adjustScreen.bind(this)}
-            customBurgerIcon={this.getBurgerIcon()}
-            right noOverlay
-          >
-            <SuggestionsChatbot current_plan_prop={this.state.currentPlan}/>
-          </Menu>
-        </div>
         <div className="content-body plan">
           <div className="row header">
             <div className="col-md-6">
@@ -356,21 +316,21 @@ class PlanPage extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-4">
-              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'PLAN DE ADMINISTRACIÓN'})}>
+              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'management_plan'})}>
                 <div className="plan-card">
                   <h2> PLAN DE ADMINISTRACIÓN </h2>
                 </div>
               </a>
             </div>
             <div className="col-md-4">
-              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'PLAN DE COMUNICACIÓN'})}>
+              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'communication_plan'})}>
                 <div className="plan-card">
                   <h2> PLAN DE COMUNICACIÓN </h2>
                 </div>
               </a>
             </div>
             <div className="col-md-4">
-              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'PLAN COMERCIAL'})}>
+              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'commercial_plan'})}>
                 <div className="plan-card">
                   <h2> PLAN COMERCIAL </h2>
                 </div>

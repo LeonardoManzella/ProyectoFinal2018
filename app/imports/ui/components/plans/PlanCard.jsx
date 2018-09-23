@@ -4,8 +4,17 @@ import CrudActions from '../sharedComponents/CrudActions';
 import { BusinessAreas } from '../../../../lib/schemas/businessArea';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
 import { frequencyTime } from '../../../api/helpers/frequency';
+import Reminder from './Reminder';
 
 class PlanCard extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state={
+      modalIsOpen: false,
+      selectedPlanItemIndex: 0
+    }
+  }
 
   getOption(frequencyType, frequencyTypeOptions, fieldName, index) {
     if (frequencyType === 'input') {
@@ -75,6 +84,13 @@ class PlanCard extends React.Component {
       deletePlan, handleOnChange, modifyPlanItemsList } = this.props;
     return (
       <div>
+        <Reminder
+          selectedPlanItemIndex={this.state.selectedPlanItemIndex}
+          planItems={planItems}
+          handleOnChange={(event) => handleOnChange(event, this.state.selectedPlanItemIndex)}
+          modalIsOpen={this.state.modalIsOpen}
+          changeModalState={() => this.setState({modalIsOpen: !this.state.modalIsOpen})}
+        />
         <div className="row header table-container">
           <table className="table table-striped">
             <thead>
@@ -127,65 +143,18 @@ class PlanCard extends React.Component {
                     </p>
                   </td>
                   <td>
-                    <div className="row">
-                      <div>
-                        <div className="row">
-                          <p> Repetir </p>
-                          <select
-                            placeholder="Ej: Cada 2 días"
-                            name='frequency'
-                            onChange={(event) => handleOnChange(event, index)}
-                            value={planItem.data.frequency}
-                          >
-                            <option value="">-</option>
-                            {
-                              frequencyTime.map((time, index) => (
-                                <option key={index} value={time.value}>{time.name}</option>
-                              ))
-                            }
-                          </select>
-                        </div>
-                        <p className='small italic-proyectos text-danger'>
-                          {validationsHelper.getErrorMessage(planItem.errors.frequency.message)}
-                        </p>
-                      </div>
-                      <div>
-                        <div className="row">
-                          <p> Según: </p>
-                          <select
-                            placeholder="Ej: Cada 2 días"
-                            name='frequencyType'
-                            onChange={(event) => handleOnChange(event, index)}
-                            value={planItem.data.frequencyType}
-                          >
-                            <option value="">-</option>
-                            {
-                              planItem.data.frequency && planItem.data.frequency !== "" &&
-                                frequencyTime.find(time => time.value === planItem.data.frequency)?
-                                frequencyTime.find(time => time.value === planItem.data.frequency)
-                                  .types.map((type, index) =>
-                                  <option value={type.value} key={index}>{type.name}</option>)
-                                : ''
-                            }
-                          </select>
-                        </div>
-                        <p className='small italic-proyectos text-danger'>
-                          {validationsHelper.getErrorMessage(planItem.errors.frequencyType.message)}
-                        </p>
-                      </div>
-                    </div>
-                    {this.getFrequencyThirdOption(planItem, index)}
+                    <a onClick={() => this.setState({
+                      modalIsOpen: !this.state.modalIsOpen,
+                      selectedPlanItemIndex: index
+                    })}>
+                      <img src='/img/alarm-clock.svg'/>
+                    </a>
                   </td>
-                  {
-                    isEditable ?
-                      <td>
-                        <a className="icon" onClick={() => modifyPlanItemsList(false, index)}>
-                          <img src='/img/rubbish-bin-gray.svg'/>
-                        </a>
-                      </td>
-                      :
-                      <td />
-                  }
+                  <td>
+                    <a className="icon" onClick={() => modifyPlanItemsList(false, index)}>
+                      <img src='/img/rubbish-bin-gray.svg'/>
+                    </a>
+                  </td>
                 </tr>
               ))}
             </tbody>

@@ -29,72 +29,53 @@ const weekOptions = [
   }
 ];
 
-const monthWeekOptions = [
-  {
-    value: 'first',
-    name: 'Primer'
-  },
-  {
-    value: 'second',
-    name: 'Segundo'
-  },
-  {
-    value: 'third',
-    name: 'Tercer'
-  },
-  {
-    value: 'fourth',
-    name: 'Cuarto'
-  }
-];
-
 const monthOptions = [
   {
-    value: 'january',
+    value: '1',
     name: 'Enero'
   },
   {
-    value: 'february',
+    value: '2',
     name: 'Febrero'
   },
   {
-    value: 'march',
+    value: '3',
     name: 'Marzo'
   },
   {
-    value: 'april',
+    value: '4',
     name: 'Abril'
   },
   {
-    value: 'may',
+    value: '5',
     name: 'Mayo'
   },
   {
-    value: 'june',
+    value: '6',
     name: 'Junio'
   },
   {
-    value: 'july',
+    value: '7',
     name: 'Julio'
   },
   {
-    value: 'august',
+    value: '8',
     name: 'Agosto'
   },
   {
-    value: 'september',
+    value: '9',
     name: 'Septiembre'
   },
   {
-    value: 'october',
+    value: '10',
     name: 'Octubre'
   },
   {
-    value: 'november',
+    value: '11',
     name: 'Noviembre'
   },
   {
-    value: 'december',
+    value: '12',
     name: 'Diciembre'
   }
 ];
@@ -141,14 +122,6 @@ export const frequencyTime = [
         value: 'monthDay',
         name: 'Día de cada mes',
         type: 'input'
-      },
-      {
-        value: 'monthWeekDay',
-        name: 'Día de semana cada mes',
-        type: 'select',
-        options: monthWeekOptions,
-        secondType: 'select',
-        secondOptions: weekOptions
       }
     ]
   },

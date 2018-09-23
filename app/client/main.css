@@ -517,14 +517,19 @@ table img {
 }
 
 td>input,
-td input {
+td input,
+.reminder-modal input {
   border: none;
   width: 90%;
 }
 
-td input.frequency {
+td input.frequency,
+.reminder-modal input.frequency {
   width: 200px;
+  margin-left: 20px;
   margin-right: 20px;
+  border-bottom: 2px solid #a6a5a5;
+  margin-bottom: 20px;
 }
 
 .row.header {
@@ -552,7 +557,8 @@ td input.frequency {
   margin-left: 10px;
 }
 
-.row.header select {
+.row.header select,
+.reminder-modal select {
   float: right;
   background-color: transparent;
   border-radius: 5px;
@@ -560,15 +566,16 @@ td input.frequency {
   border-color: #9f9f9f;
 }
 
-.plan .row.header tbody select {
+.reminder-modal select {
   padding: 0;
   width: 200px;
   margin-bottom: 1rem;
   margin-right: 20px;
   float: none;
+  margin-left: 20px;
 }
 
-.plan .row.header tbody p {
+.reminder-modal p {
   margin-right: 1rem;
 }
 
@@ -1313,8 +1320,9 @@ input[type=number]::-webkit-outer-spin-button {
   border-radius: 5px;
   text-align: center;
   display: table;
-  width: 90%;
+  width: 100%;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
 .plan-card h2 {
@@ -1455,4 +1463,8 @@ input[type=number]::-webkit-outer-spin-button {
 .card-edition p {
   margin-left: 20px;
   margin-top: 10px;
+}
+
+.reminder-modal h4 {
+  margin-bottom: 20px;
 }

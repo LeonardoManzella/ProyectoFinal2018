@@ -1,13 +1,7 @@
 import React from 'react';
-import Board from 'react-trello';
-import moment from 'moment';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
-import { Boards } from '../../../../lib/schemas/board';
-import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { UserTasks } from '../../../../lib/schemas/userTask';
-import { BusinessAreas } from '../../../../lib/schemas/businessArea';
 
 const customStyles = {
   content : {
