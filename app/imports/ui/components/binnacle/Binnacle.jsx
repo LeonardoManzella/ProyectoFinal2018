@@ -1,11 +1,26 @@
 import React from 'react';
 import Board from 'react-trello';
 import moment from 'moment';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import { Boards } from '../../../../lib/schemas/board';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { UserTasks } from '../../../../lib/schemas/userTask';
 import { BusinessAreas } from '../../../../lib/schemas/businessArea';
+import BinnacleLaneEdition from './BinnacleLaneEdition';
+import BinnacleCardEdition from './BinnacleCardEdition';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
 
 let eventBus = undefined;
 
@@ -20,7 +35,12 @@ class Binnacle extends React.Component {
 		this.state = {
 			boardData: {
 				lanes: props.board ? props.board.lanes : []
-			}
+			},
+			laneModalIsOpen: false,
+			cardModalIsOpen: false,
+			selectedLaneId: '',
+			selectedCardLaneId: '',
+			selectedCardId: ''
 		};
 	}
 
@@ -148,43 +168,64 @@ class Binnacle extends React.Component {
 		}
 
 		return (
-			<div className="content-body binnacle">
-				<h2>Bitácora</h2>
-				<div className="row">
-					<div className="col-md-4">
-						<div className="row header">
-							<div className="col-md-6">
-								<h3>Lista de Tareas</h3>
+			<div>
+				<BinnacleLaneEdition
+					modalIsOpen={this.state.laneModalIsOpen}
+					changeModalState={() => this.setState({laneModalIsOpen: !this.state.laneModalIsOpen})}
+					selectedLaneId={this.state.selectedLaneId}
+					boardData={this.state.boardData}
+					eventBus={eventBus}
+				/>
+				<BinnacleCardEdition
+					modalIsOpen={this.state.cardModalIsOpen}
+					changeModalState={() => this.setState({cardModalIsOpen: !this.state.cardModalIsOpen})}
+					selectedCardLaneId={this.state.selectedCardLaneId}
+					selectedCardId={this.state.selectedCardId}
+					boardData={this.state.boardData}
+					eventBus={eventBus}
+				/>
+				<div className="content-body binnacle">
+					<h2>Bitácora</h2>
+					<div className="row">
+						<div className="col-md-4">
+							<div className="row header">
+								<div className="col-md-6">
+									<h3>Lista de Tareas</h3>
+								</div>
+							</div>
+							<div className="board-container">
+								{plans.map((plan, index) => this.renderPlanCard(plan, index))}
+								{swot.map((swot, index) => this.renderSwotCard(swot, index))}
+								{contingencyPlan.map((plan, index) => this.renderContingencyPlanCard(plan, index))}
 							</div>
 						</div>
-						<div className="board-container">
-							{plans.map((plan, index) => this.renderPlanCard(plan, index))}
-							{swot.map((swot, index) => this.renderSwotCard(swot, index))}
-							{contingencyPlan.map((plan, index) => this.renderContingencyPlanCard(plan, index))}
-						</div>
-					</div>
-					<div className="col-md-8"> 
-						<div className="row header">
-							<div className="col-md-6">
-								<h3>Reuniones</h3>
+						<div className="col-md-8"> 
+							<div className="row header">
+								<div className="col-md-6">
+									<h3>Reuniones</h3>
+								</div>
+								<div className="col-md-6 actions">
+									<a className="icon" onClick={() => this.addSection(boardData)}>
+										<img src='/img/add.svg'/>
+										Agregar Reunión
+									</a>
+								</div>
 							</div>
-							<div className="col-md-6 actions">
-								<a className="icon" onClick={() => this.addSection(boardData)}>
-									<img src='/img/add.svg'/>
-									Agregar Reunión
-								</a>
-							</div>
+							<Board 
+								onDataChange={this.onDataChange.bind(this)}
+								data={boardData}
+								draggable
+								laneDraggable={true}
+								editable={true}
+								eventBusHandle={setEventBus}
+								onLaneClick={(laneId) => this.setState({laneModalIsOpen: true, selectedLaneId: laneId})}
+								onCardClick={(cardId, metadata, laneId) => this.setState({
+									cardModalIsOpen: true,
+									selectedCardLaneId: laneId,
+									selectedCardId: cardId}
+								)}
+								/>
 						</div>
-						<Board 
-							onDataChange={this.onDataChange.bind(this)}
-							data={boardData}
-							draggable
-							laneDraggable={true}
-							editable={true}
-							eventBusHandle={setEventBus}
-							// onLaneClick
-							// onCardClick
-							/>
 					</div>
 				</div>
 			</div>

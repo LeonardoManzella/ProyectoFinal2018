@@ -4,7 +4,7 @@ import { BusinessAreas } from '../../../../lib/schemas/businessArea';
 import { publishComposite } from 'meteor/reywood:publish-composite';
 
 Meteor.publish('getPlanUserTasks', function() {
-  return UserTasks.find({userId: this.userId, type: 'plan'});
+  return UserTasks.find({userId: this.userId, type: 'plan', businessArea: 'all'});
 });
 
 publishComposite('getUserTasks', function() {

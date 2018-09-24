@@ -2,9 +2,8 @@ import React from 'react';
 import StepZilla from 'react-stepzilla';
 import PlanList from './PlanList';
 import PropTypes from 'prop-types';
-import { push as Menu } from 'react-burger-menu';
-import SuggestionsChatbot from '../suggestionsChatbot/SuggestionsChatbot';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 
 
@@ -42,38 +41,35 @@ const planTypes = [
     component: <PlanList/>,
     plan_category: 'commercial_plan'
   }
-  /*
   ,
   {
-    //TODO agregar codigo referencia Prolog en cada tipo
     name: "PLAN LEGAL",
     title: "Legales",
-    component: <PlanList/>
+    component: <PlanList/>,
+    plan_category: 'legal_plan'
   },
   {
-    name: "PLAN CONTABLE",
-    title: "Contables",
-    component: <PlanList/>
-  },
-  {
-    name: "PLAN DE PRODUCCIÓN",
-    title: "de Producción",
-    component: <PlanList/>
-  },
-  {
-    name: "PLAN ECONÓMICO / FINANCIERO",
-    title: "Económicos / Financieros",
-    component: <PlanList/>
-  },
-  {
-    name: "PLAN DE SISTEMAS",
-    title: "de Sistemas",
-    component: <PlanList/>
+    name: "PLAN DE MARKETING",
+    title: "Marketing",
+    component: <PlanList/>,
+    plan_category: 'marketing_plan'
   }
-  */
 ];
 
 class PlanPage extends React.Component {
+
+  getTitle(title) {
+    switch(title) {
+      case 'management_plan':
+        return 'PLAN DE ADMINISTRACIÓN';
+      case 'communication_plan':
+        return 'PLAN DE COMUNICACIÓN';
+      case 'commercial_plan':
+        return 'PLAN COMERCIAL';
+      default:
+        return 'PLAN DE ADMINISTRACIÓN';
+    }
+  }
 
   initializePlanTypeList(props, planType) {
     if (props.planTypeList) {
@@ -105,9 +101,10 @@ class PlanPage extends React.Component {
       planTypeList: this.initializePlanTypeList(props, planType)
     }));
     const INITIAL = 0;
+
     this.state = {
       plans,
-      selectedBusinessArea: '',
+      selectedBusinessArea: 'all',
       currentStep: INITIAL,
       currentPlan: planTypes[INITIAL].plan_category,
       generalError: ''
@@ -125,11 +122,8 @@ class PlanPage extends React.Component {
 
   addPlan() {
     const { plans } = this.state;
-    const plansAreas = plans[this.state.currentStep].planTypeList.map(planType => planType.data.planArea);
-    if (plansAreas.includes(this.state.selectedBusinessArea)) {
-      this.setState({generalError: 'Ya existe un plan para esa área.'});
-      return;
-    }
+    const planName = this.props.planName;
+    const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
     const data = Object.assign({}, emptyPlan);
     data.planArea = this.state.selectedBusinessArea;
     data.planItems = [];
@@ -138,12 +132,20 @@ class PlanPage extends React.Component {
       errors: validationsHelper.initializePlanListErrors()
     }
     data.planItems.push(planItem);
-    const newPlan = {
+    const newPlanData = {
       data,
       editable: true
     };
-    plans[this.state.currentStep].planTypeList.push(newPlan);
-    this.setState({plans, generalError: ''});
+    this.setState({
+      plans: plans.map(plan => {
+        const newPlan = Object.assign({}, plan);
+        if (plan.name === this.getTitle(planName)) {
+          newPlan.planTypeList.push(newPlanData);
+        }
+        return newPlan;
+      }),
+      generalError: ''
+    });
   }
 
   changeEditOptionPlan(index) {
@@ -162,31 +164,33 @@ class PlanPage extends React.Component {
   // FIXME
   handleOnChange(event, index, indexPlanItem) {
     const { plans } = this.state;
+    const planName = this.props.planName;
+    const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
     if (event.target.name === 'frequency') {
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems[indexPlanItem].data.frequency = event.target.value;
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems[indexPlanItem].data.frequencyType = '';
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems[indexPlanItem].data.frequencyValue = '';
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems[indexPlanItem].data.frequencySecondValue = '';
     } 
     else if (event.target.name === 'frequencyType') {
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems[indexPlanItem].data.frequencyType = event.target.value;
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems[indexPlanItem].data.frequencyValue = '';
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems[indexPlanItem].data.frequencySecondValue = '';
     }
     else {
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems[indexPlanItem].data[event.target.name] = event.target.value;
     }
-    if (plans[this.state.currentStep].planTypeList[index].data
+    if (planType.planTypeList[index].data
       .planItems[indexPlanItem].errors[event.target.name]) {
-        plans[this.state.currentStep].planTypeList[index].data
+        planType.planTypeList[index].data
           .planItems[indexPlanItem].errors[event.target.name].message = '';
     }
     this.setState({plans, generalError: ''});
@@ -194,15 +198,17 @@ class PlanPage extends React.Component {
 
   modifyPlanItemsList(index, addPlanItem, indexPlanItem) {
     const { plans } = this.state;
+    const planName = this.props.planName;
+    const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
     if (addPlanItem) {
       const planItem = {
         data: Object.assign({}, emptyPlanItem),
         errors: validationsHelper.initializePlanListErrors()
       }
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems.push(planItem);
     } else {
-      plans[this.state.currentStep].planTypeList[index].data
+      planType.planTypeList[index].data
         .planItems.splice(indexPlanItem, 1);
     }
     this.setState({plans, generalError: ''});
@@ -243,55 +249,81 @@ class PlanPage extends React.Component {
     });
   }
 
-  adjustScreen(event) {
-    if (event.isOpen) {
-      document.getElementById("page-wrap").setAttribute("class", "page-wrapper");
-    } else {
-      document.getElementById("page-wrap").removeAttribute("class", "page-wrapper");
-    }
-  }
-
-  getBurgerIcon() {
-    return (
-      <div>
-        <img src="/img/chatbot.png" />
-      </div>
-    );
-  }
-
 	render() {
-    let steps = Object.assign([], planTypes);
-    steps = steps.map((step, index) => {
-      const newStep = Object.assign({}, step);
-      newStep.component = (
-        <PlanList
-          title={step.title}
-          planTypeList={this.state.plans[index].planTypeList}
-          addPlan={this.addPlan.bind(this)}
-          changeEditOptionPlan={this.changeEditOptionPlan.bind(this)}
-          deletePlan={this.deletePlan.bind(this)}
-          handleOnChange={this.handleOnChange.bind(this)}
-          modifyPlanItemsList={this.modifyPlanItemsList.bind(this)}
-          handleSelectChange={(e) => this.setState({'selectedBusinessArea': e.target.value})}
-          savePlans={this.savePlans.bind(this)}
-          businessAreas={this.props.businessAreas}
-        />
+    // let steps = Object.assign([], planTypes);
+    // steps = steps.map((step, index) => {
+    //   const newStep = Object.assign({}, step);
+    //   newStep.component = (
+    //     <PlanList
+    //       title={step.title}
+    //       planTypeList={this.state.plans[index].planTypeList}
+    //       addPlan={this.addPlan.bind(this)}
+    //       changeEditOptionPlan={this.changeEditOptionPlan.bind(this)}
+    //       deletePlan={this.deletePlan.bind(this)}
+    //       handleOnChange={this.handleOnChange.bind(this)}
+    //       modifyPlanItemsList={this.modifyPlanItemsList.bind(this)}
+    //       handleSelectChange={(e) => this.setState({'selectedBusinessArea': e.target.value})}
+    //       savePlans={this.savePlans.bind(this)}
+    //       businessAreas={this.props.businessAreas}
+    //     />
+    //   );
+    //   return newStep;
+    // });
+    // console.log(this.props.planName);
+    if (this.props.planName) {
+      const planName = this.props.planName;
+      const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
+      return (
+        <div>
+          <div className="content-body plan">
+            <PlanList
+              title={planName}
+              planTypeList={planType.planTypeList}
+              addPlan={this.addPlan.bind(this)}
+              changeEditOptionPlan={this.changeEditOptionPlan.bind(this)}
+              deletePlan={this.deletePlan.bind(this)}
+              handleOnChange={this.handleOnChange.bind(this)}
+              modifyPlanItemsList={this.modifyPlanItemsList.bind(this)}
+              handleSelectChange={(e) => this.setState({'selectedBusinessArea': e.target.value})}
+              savePlans={this.savePlans.bind(this)}
+              businessAreas={this.props.businessAreas}
+            />
+          </div>
+        </div>
       );
-      return newStep;
-    });
+    }
 		return (
       <div>
-        <div className="chatbot-menu">
-          <Menu
-            onStateChange={this.adjustScreen.bind(this)}
-            customBurgerIcon={this.getBurgerIcon()}
-            right noOverlay
-          >
-            <SuggestionsChatbot current_plan_prop={this.state.currentPlan}/>
-          </Menu>
-        </div>
         <div className="content-body plan">
-          <p className='italic-proyectos text-danger'> {this.state.generalError} </p>
+          <div className="row header">
+            <div className="col-md-6">
+              <h2>{'Planes'}</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-md-4">
+              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'management_plan'})}>
+                <div className="plan-card">
+                  <h2> PLAN DE ADMINISTRACIÓN </h2>
+                </div>
+              </a>
+            </div>
+            <div className="col-md-4">
+              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'communication_plan'})}>
+                <div className="plan-card">
+                  <h2> PLAN DE COMUNICACIÓN </h2>
+                </div>
+              </a>
+            </div>
+            <div className="col-md-4">
+              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'commercial_plan'})}>
+                <div className="plan-card">
+                  <h2> PLAN COMERCIAL </h2>
+                </div>
+              </a>
+            </div>
+          </div>
+          {/* <p className='italic-proyectos text-danger'> {this.state.generalError} </p>
           <div className='step-progress'>
             <StepZilla
               steps={steps}
@@ -310,7 +342,7 @@ class PlanPage extends React.Component {
                 });
               }}
             />
-          </div>
+          </div> */}
         </div>
       </div>
 		);

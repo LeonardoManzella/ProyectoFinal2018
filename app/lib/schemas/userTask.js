@@ -131,10 +131,12 @@ UserTasks.insertSwotTasks = (swotTasks) => {
       supervisorID: swotTask.supervisor,
       taskDescription: swotTask.tool,
       frequency: {
-        type: 'everyDay',
-        value: swotTask.frequency,
-        time: 'day'
-      }};
+        type: swotTask.frequencyType,
+        value: swotTask.frequencyValue,
+        secondaryValue: swotTask.frequencySecondValue,
+        time: swotTask.frequency
+      }
+    };
     const swotElement = Swots.findOne({userId: Meteor.userId(), description: swotTask.element});
     if (swotElement) {
       if (!swotElement.userTasksId) {
@@ -160,9 +162,10 @@ UserTasks.insertContingencyPlans = (contingencyPlans) => {
       supervisorID: contingencyPlan.supervisor,
       taskDescription: contingencyPlan.tool,
       frequency: {
-        type: 'everyDay',
-        value: contingencyPlan.frequency,
-        time: 'day'
+        type: contingencyPlan.frequencyType,
+        value: contingencyPlan.frequencyValue,
+        secondaryValue: contingencyPlan.frequencySecondValue,
+        time: contingencyPlan.frequency
       }};
     const risk = Risks.findOne({userId: Meteor.userId(), risk: contingencyPlan.element});
     if (risk) {
@@ -187,9 +190,10 @@ UserTasks.updateReminders = (reminders) => {
       responsibleID: reminder.entrepreneur,
       taskDescription: reminder.businessName,
       frequency: {
-        type: 'everyDay',
-        value: reminder.frequency,
-        time: 'day'
+        type: reminder.frequencyType,
+        value: reminder.frequencyValue,
+        secondaryValue: reminder.frequencySecondValue,
+        time: reminder.frequency
       },
       status: reminder.status
     };

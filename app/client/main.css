@@ -395,6 +395,7 @@ p.hash {
 
 .I-ChatBot ul.Messages {
   bottom: 6em;
+  position: relative;
 }
 
 .I-ChatBot ul.Messages li.Message,
@@ -516,14 +517,19 @@ table img {
 }
 
 td>input,
-td input {
+td input,
+.reminder-modal input {
   border: none;
   width: 90%;
 }
 
-td input.frequency {
+td input.frequency,
+.reminder-modal input.frequency {
   width: 200px;
+  margin-left: 20px;
   margin-right: 20px;
+  border-bottom: 2px solid #a6a5a5;
+  margin-bottom: 20px;
 }
 
 .row.header {
@@ -551,7 +557,8 @@ td input.frequency {
   margin-left: 10px;
 }
 
-.row.header select {
+.row.header select,
+.reminder-modal select {
   float: right;
   background-color: transparent;
   border-radius: 5px;
@@ -559,15 +566,16 @@ td input.frequency {
   border-color: #9f9f9f;
 }
 
-.plan .row.header tbody select {
+.reminder-modal select {
   padding: 0;
   width: 200px;
   margin-bottom: 1rem;
   margin-right: 20px;
   float: none;
+  margin-left: 20px;
 }
 
-.plan .row.header tbody p {
+.reminder-modal p {
   margin-right: 1rem;
 }
 
@@ -794,7 +802,6 @@ li span{
 /* Position and sizing of burger button */
 .chatbot-menu .bm-burger-button {
   position: fixed;
-  height: 50px;
   bottom: 10px;
   right: 30px;
   background: #ffffff;
@@ -1088,10 +1095,17 @@ li span{
 .landing .pink-button {
   float: none;
   margin-left: 20px;
+  color: white;
+}
+
+.landing .pink-button:hover {
+  cursor: pointer;
 }
 
 .landing .pink-button.secondary {
-  background: #ff5a5f70;
+  color: #fd5156d1;
+  background-color: white;
+  border: 2px solid #fd5156d1;
 }
 
 .landing .dropdown-menu {
@@ -1291,4 +1305,166 @@ li span{
 
 .chart svg.recharts-surface {
   width: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   opacity: 1;
+}
+
+/* PLAN */
+
+.plan-card {
+  height: 300px;
+  background-color: #c0cbff;
+  border-radius: 5px;
+  text-align: center;
+  display: table;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.plan-card h2 {
+  display: table-cell;
+  vertical-align: middle;
+  width: 20px;
+}
+
+.chatbot-menu .bm-icon {
+  box-shadow: 2px 1px 18px 3px #f7c045;
+}
+
+#interview-progress {
+  width: 45vw;
+  height: 1.5 em;
+  border-radius: 35px;
+  margin: 10px 0;
+}
+#interview-progress::-moz-progress-bar {
+  border-radius: 35px;
+}
+#interview-progress::-webkit-progress-bar {
+  background: lightgray;
+  border-radius: 35px;
+}
+#interview-progress::-webkit-progress-value{
+
+  background: #dafcd6; /* Old browsers */
+  background: -moz-linear-gradient(left, #7ad7fc 20%, #2abb20 75%); 
+  background: -webkit-linear-gradient(left, #7ad7fc 20%,#2abb20 75%);
+  background: linear-gradient(to right, #7ad7fc 40%,#2abb20 75%);
+  border-radius: 35px;
+
+}
+
+#interview-progress-bar {
+  margin: 5px;
+  border: 2px solid lightgray;
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#interview-progress-bar .elements-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+}
+
+#interview-progress-bar .elements-container div p{
+  margin: 10px 0;
+  text-align: center;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white; 
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px grey; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: lightgray; 
+}
+
+/**** MODAL *******/
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.bm-cross-button.menu-cross-button button{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  text-indent: -9999px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}
+
+.bm-cross-button.menu-cross-button{
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  right: 8px;
+  top: 8px;
+}
+
+.cross {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+}
+
+.bm-cross.bm-cross-left {
+  position: absolute;
+  width: 3px;
+  height: 14px;
+  transform: rotate(45deg);
+}
+
+.bm-cross.bm-cross-right {
+  position: absolute;
+  width: 3px;
+  height: 14px;
+  transform: rotate(-45deg);
+}
+
+.sc-bZQynM.iTzKeC {
+  cursor: pointer;
+}
+
+.card-edition p {
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.reminder-modal h4 {
+  margin-bottom: 20px;
 }

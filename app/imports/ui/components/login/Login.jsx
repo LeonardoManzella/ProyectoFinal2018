@@ -27,7 +27,7 @@ class Login extends React.Component {
             onClick={this.register.bind(this)}
             className="pink-button"
           >
-            {TAPi18n.__('login.enter')}
+            {TAPi18n.__('login.signUp')}
           </button>
           <button
             className="pink-button secondary"

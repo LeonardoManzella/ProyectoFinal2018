@@ -4,15 +4,16 @@ import CrudActions from '../sharedComponents/CrudActions';
 import { BusinessAreas } from '../../../../lib/schemas/businessArea';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
 import { frequencyTime } from '../../../api/helpers/frequency';
+import Reminder from './Reminder';
 
 class PlanCard extends React.Component {
 
-  getBusinessAreaName(businessAreaId) {
-    if (businessAreaId === 'all') {
-      return 'Todas';
+  constructor(props) {
+    super(props);
+    this.state={
+      modalIsOpen: false,
+      selectedPlanItemIndex: 0
     }
-    const businessArea = BusinessAreas.findOne({_id: businessAreaId});
-    return businessArea ? businessArea.name : '';
   }
 
   getOption(frequencyType, frequencyTypeOptions, fieldName, index) {
@@ -23,7 +24,6 @@ class PlanCard extends React.Component {
           name={fieldName}
           value={this.props.planItems[index].data[fieldName]}
           onChange={(event) => this.props.handleOnChange(event, index)}
-          disabled={!this.props.isEditable}
         />
       );
     } else if (frequencyType === 'select') {
@@ -32,7 +32,6 @@ class PlanCard extends React.Component {
           name={fieldName}
           value={this.props.planItems[index].data[fieldName]}
           onChange={(event) => this.props.handleOnChange(event, index)}
-          disabled={!this.props.isEditable}
         >
           <option value="">-</option>
           {frequencyTypeOptions.map((frequencyOption, index) => (
@@ -85,21 +84,13 @@ class PlanCard extends React.Component {
       deletePlan, handleOnChange, modifyPlanItemsList } = this.props;
     return (
       <div>
-        <div className="row header">
-          <div className="col-md-4">
-            <h5>{this.getBusinessAreaName(businessArea)}</h5>
-          </div>
-          <div className="col-md-8">
-            <CrudActions
-              isEditable={isEditable}
-              iconsColor='-gray'
-              editAction={changeEditOptionPlan}
-              deleteAction={deletePlan}
-              confirmAction={changeEditOptionPlan}
-              denyAction={changeEditOptionPlan}
-            />
-          </div>
-        </div>
+        <Reminder
+          selectedPlanItemIndex={this.state.selectedPlanItemIndex}
+          planItems={planItems}
+          handleOnChange={(event) => handleOnChange(event, this.state.selectedPlanItemIndex)}
+          modalIsOpen={this.state.modalIsOpen}
+          changeModalState={() => this.setState({modalIsOpen: !this.state.modalIsOpen})}
+        />
         <div className="row header table-container">
           <table className="table table-striped">
             <thead>
@@ -108,16 +99,11 @@ class PlanCard extends React.Component {
                 <th scope="col">Quién Usa / Hace / Responsable</th>
                 <th scope="col">Quién Controla</th>
                 <th scope="col">Frecuencia / Plazo</th>
-                {
-                  isEditable ?
-                    <th scope="col">
-                      <a className="icon" onClick={() => modifyPlanItemsList(true)}>
-                        <img src='/img/add.svg'/>
-                      </a>
-                    </th>
-                    :
-                    <th />
-                }
+                <th scope="col">
+                  <a className="icon" onClick={() => modifyPlanItemsList(true)}>
+                    <img src='/img/add.svg'/>
+                  </a>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -129,7 +115,6 @@ class PlanCard extends React.Component {
                       value={planItem.data.tool}
                       name='tool'
                       onChange={(event) => handleOnChange(event, index)}
-                      disabled={!isEditable}
                     />
                     <p className='small italic-proyectos text-danger'>
                       {validationsHelper.getErrorMessage(planItem.errors.tool.message)}
@@ -141,7 +126,6 @@ class PlanCard extends React.Component {
                       value={planItem.data.responsible}
                       name='responsible'
                       onChange={(event) => handleOnChange(event, index)}
-                      disabled={!isEditable}
                     />
                     <p className='small italic-proyectos text-danger'>
                       {validationsHelper.getErrorMessage(planItem.errors.responsible.message)}
@@ -153,74 +137,24 @@ class PlanCard extends React.Component {
                       value={planItem.data.supervisor}
                       name='supervisor'
                       onChange={(event) => handleOnChange(event, index)}
-                      disabled={!isEditable}
                     />
                     <p className='small italic-proyectos text-danger'>
                       {validationsHelper.getErrorMessage(planItem.errors.supervisor.message)}
                     </p>
                   </td>
                   <td>
-                    <div className="row">
-                      <div>
-                        <div className="row">
-                          <p> Repetir </p>
-                          <select
-                            placeholder="Ej: Cada 2 días"
-                            name='frequency'
-                            onChange={(event) => handleOnChange(event, index)}
-                            disabled={!isEditable}
-                            value={planItem.data.frequency}
-                          >
-                            <option value="">-</option>
-                            {
-                              frequencyTime.map((time, index) => (
-                                <option key={index} value={time.value}>{time.name}</option>
-                              ))
-                            }
-                          </select>
-                        </div>
-                        <p className='small italic-proyectos text-danger'>
-                          {validationsHelper.getErrorMessage(planItem.errors.frequency.message)}
-                        </p>
-                      </div>
-                      <div>
-                        <div className="row">
-                          <p> Según: </p>
-                          <select
-                            placeholder="Ej: Cada 2 días"
-                            name='frequencyType'
-                            onChange={(event) => handleOnChange(event, index)}
-                            disabled={!isEditable}
-                            value={planItem.data.frequencyType}
-                          >
-                            <option value="">-</option>
-                            {
-                              planItem.data.frequency && planItem.data.frequency !== "" &&
-                                frequencyTime.find(time => time.value === planItem.data.frequency)?
-                                frequencyTime.find(time => time.value === planItem.data.frequency)
-                                  .types.map((type, index) =>
-                                  <option value={type.value} key={index}>{type.name}</option>)
-                                : ''
-                            }
-                          </select>
-                        </div>
-                        <p className='small italic-proyectos text-danger'>
-                          {validationsHelper.getErrorMessage(planItem.errors.frequencyType.message)}
-                        </p>
-                      </div>
-                    </div>
-                    {this.getFrequencyThirdOption(planItem, index)}
+                    <a onClick={() => this.setState({
+                      modalIsOpen: !this.state.modalIsOpen,
+                      selectedPlanItemIndex: index
+                    })}>
+                      <img src='/img/alarm-clock.svg'/>
+                    </a>
                   </td>
-                  {
-                    isEditable ?
-                      <td>
-                        <a className="icon" onClick={() => modifyPlanItemsList(false, index)}>
-                          <img src='/img/rubbish-bin-gray.svg'/>
-                        </a>
-                      </td>
-                      :
-                      <td />
-                  }
+                  <td>
+                    <a className="icon" onClick={() => modifyPlanItemsList(false, index)}>
+                      <img src='/img/rubbish-bin-gray.svg'/>
+                    </a>
+                  </td>
                 </tr>
               ))}
             </tbody>

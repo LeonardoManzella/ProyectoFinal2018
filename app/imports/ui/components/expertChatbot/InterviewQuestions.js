@@ -180,7 +180,7 @@ class InterviewQuestions {
           },
 
           {
-            "question" : "has_experience_leading_question",
+            "question" : "has_followers_question",
             "possibleAnswers" : [
               "has_followers",
               "doesnt_have_followers"
@@ -189,6 +189,18 @@ class InterviewQuestions {
             selectedAnswers: [],
             type: 'contribution'
           },
+          /*
+          {
+            "question" : "has_experience_leading_question",
+            "possibleAnswers" : [
+              "has_experience_leading",
+              "doesnt_have_experience_leading"
+            ],
+            multipleSelection: false,
+            selectedAnswers: [],
+            type: 'contribution'
+          },
+          */
 
           {
             "question" : "has_achievements_question",

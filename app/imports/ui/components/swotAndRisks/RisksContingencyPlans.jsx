@@ -2,16 +2,69 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EmptyMessage from '../sharedComponents/EmptyMessage';
 import RisksTable from './RisksTable';
+import { frequencyTime } from '../../../api/helpers/frequency';
 
 const emptyContingencyPlan = {
   element: '',
   tool: '',
   responsible: '',
   supervisor: '',
-  frequency: ''
+  frequency: '',
+  frequencyType: '',
+  frequencyValue: '',
+  frequencySecondValue: ''
 };
 
 class RisksContingencyPlans extends React.Component {
+
+  getOption(frequencyType, frequencyTypeOptions, fieldName, index) {
+    if (frequencyType === 'input') {
+      return  (
+        <input
+          className="frequency"
+          name={fieldName}
+          value={this.props.contingencyPlans[index][fieldName]}
+          onChange={(event) => this.props.handleOnChange(event, 'contingencyPlans', index)}
+        />
+      );
+    } else if (frequencyType === 'select') {
+      return (
+        <select
+          name={fieldName}
+          value={this.props.contingencyPlans[index][fieldName]}
+          onChange={(event) => this.props.handleOnChange(event, 'contingencyPlans', index)}
+        >
+          <option value="">-</option>
+          {frequencyTypeOptions.map((frequencyOption, index) => (
+            <option key={index} value={frequencyOption.value}>{frequencyOption.name}</option>
+          ))}
+        </select>
+      );
+    }
+    return '';
+  }
+
+  getFrequencyThirdOption(contingencyPlan, index) {
+    if (contingencyPlan.frequency !== '' && contingencyPlan.frequencyType !== '') {
+      const time = frequencyTime.find(time => time.value === contingencyPlan.frequency);
+      const frequencyType = time ?
+        time.types.find(type => type.value === contingencyPlan.frequencyType) : time;
+      if (frequencyType) {
+        return (
+          <div className="row">
+            <div>
+              {this.getOption(frequencyType.type, frequencyType.options, 'frequencyValue', index)}
+            </div>
+            <div>
+              {this.getOption(frequencyType.secondType, frequencyType.secondOptions, 'frequencySecondValue', index)}
+            </div>
+          </div>
+        )
+      }
+      return '';
+    }
+    return '';
+  }
 
   renderContingencyPlanRow(contingencyPlan, index) {
     const isEditable = true;
@@ -59,13 +112,46 @@ class RisksContingencyPlans extends React.Component {
           />
         </td>
         <td>
-          <input
-            placeholder="Ej: Cada 2 días"
-            name='frequency'
-            disabled={!isEditable}
-            onChange={(event) => handleOnChange(event, 'contingencyPlans', index)}
-            value={contingencyPlan.frequency}
-          />
+          <div className="row">
+            <div>
+              <div className="row">
+                <p> Repetir </p>
+                <select
+                  name='frequency'
+                  onChange={(event) => handleOnChange(event, 'contingencyPlans', index)}
+                  value={contingencyPlan.frequency}
+                >
+                  <option value="">-</option>
+                  {
+                    frequencyTime.map((time, index) => (
+                      <option key={index} value={time.value}>{time.name}</option>
+                    ))
+                  }
+                </select>
+              </div>
+            </div>
+            <div>
+              <div className="row">
+                <p> Según: </p>
+                <select
+                  name='frequencyType'
+                  onChange={(event) => handleOnChange(event, 'contingencyPlans', index)}
+                  value={contingencyPlan.frequencyType}
+                >
+                  <option value="">-</option>
+                  {
+                    contingencyPlan.frequency && contingencyPlan.frequency !== "" &&
+                      frequencyTime.find(time => time.value === contingencyPlan.frequency)?
+                      frequencyTime.find(time => time.value === contingencyPlan.frequency)
+                        .types.map((type, index) =>
+                        <option value={type.value} key={index}>{type.name}</option>)
+                      : ''
+                  }
+                </select>
+              </div>
+            </div>
+          </div>
+          {this.getFrequencyThirdOption(contingencyPlan, index)}
         </td>
         {
           isEditable ?

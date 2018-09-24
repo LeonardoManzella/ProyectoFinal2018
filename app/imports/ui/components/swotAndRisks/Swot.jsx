@@ -8,7 +8,10 @@ const emptySwotTask = {
   tool: '',
   responsible: '',
   supervisor: '',
-  frequency: ''
+  frequency: '',
+  frequencyType: '',
+  frequencyValue: '',
+  frequencySecondValue: ''
 };
 
 class Swot extends React.Component {
@@ -68,9 +71,22 @@ class Swot extends React.Component {
     this.setState({swotInput: event.target.value});
   }
 
+  // FIXME
   handleOnChange(event, index) {
     const { swotTasks } = this.state;
-    swotTasks[index][event.target.name] = event.target.value;
+    if (event.target.name === 'frequency') {
+      swotTasks[index].frequency = event.target.value;
+      swotTasks[index].frequencyType = '';
+      swotTasks[index].frequencyValue = '';
+      swotTasks[index].frequencySecondValue = '';
+    } 
+    else if (event.target.name === 'frequencyType') {
+      swotTasks[index].frequencyType = event.target.value;
+      swotTasks[index].frequencyValue = '';
+      swotTasks[index].frequencySecondValue = '';
+    } else {
+      swotTasks[index][event.target.name] = event.target.value;
+    }
     this.setState({swotTasks});
   }
 
