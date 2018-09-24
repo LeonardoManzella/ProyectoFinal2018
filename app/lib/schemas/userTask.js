@@ -2,6 +2,7 @@ import SimpleSchema from  'simpl-schema';
 import { Mongo } from 'meteor/mongo';
 import { Swots } from './swot';
 import { Risks } from './risk';
+import moment from 'moment';
 
 export const UserTasks = new Mongo.Collection('userTasks');
 
@@ -60,6 +61,10 @@ const userTasksSchema = new SimpleSchema({
     type: String,
     label: "userId"
   },
+  userEmail: {
+    type: String,
+    label: "userEmail"
+  },
   businessArea: {
     type: String,
     label: "businessArea",
@@ -94,8 +99,9 @@ UserTasks.insertPlanList = (plans) => {
     plan.planTypeList.map(planType => {
       const businessArea = planType.data.planArea ? planType.data.planArea : 'all';
       const userTasks = {};
-      UserTasks.remove({type: 'plan', subtype: plan.name, businessArea, userId: Meteor.userId()})
+      UserTasks.remove({type: 'plan', subtype: plan.name, businessArea, userId: Meteor.userId()}) //FIXME need to put email also?
       userTasks.userId = Meteor.userId();
+      userTasks.userEmail = Meteor.users.findOne( Meteor.userId() ).emails[0].address;
       userTasks.type = 'plan';
       userTasks.subtype = plan.name;
       userTasks.businessArea = businessArea;
@@ -202,6 +208,143 @@ UserTasks.updateReminders = (reminders) => {
         {$set: {tasks: [newReminderTask]}});
     }
   });
+}
+
+UserTasks.obtainScheduledTasks = async () => {
+  const queryDailyTasks = [
+    { $unwind: "$tasks" }
+    ,
+    { $match: { 'tasks.frequency.type': { $eq: "dayAmount" }}}
+  ];
+  const queryWeeklyTasks = [
+    { $unwind: "$tasks" }
+    ,
+    { $match: { 'tasks.frequency.type': { $eq: "weekAmount" }}}
+  ];
+  const queryMonthlyTasks = [
+    { $unwind: "$tasks" }
+    ,
+    { $match: { 'tasks.frequency.type': { $eq: "monthAmount" }}}
+  ];
+  //console.log(`== DAY OF MONTH == ${moment().date()}`)
+  const queryMonthlyDayTasks = [
+    { $unwind: "$tasks" }
+    ,
+    { $match: { $and:[
+        { 'tasks.frequency.type': { $eq: "monthDay" }}
+        ,
+        { 'tasks.frequency.value': { $eq: `${23}` }} //FIXME put moment().date() instead 23
+    ]}}
+  ];
+
+  function queryAggregate (queryToExecute) {
+    return new Promise(function (resolve) {
+      UserTasks.rawCollection().aggregate(
+        queryToExecute,
+        function(err, result) {
+          console.log("callback");
+          if(err) {
+            console.log("=== ERROR ===");
+            console.log(err);
+          }else{
+            //console.log("=== Result ===");
+            //console.log(result);
+            resolve(result);
+          }
+        }
+      );
+    })
+  }
+  transformPlanName = { // To send with SendGrid
+    "PLAN DE ADMINISTRACIÓN": "management_plan",
+    "PLAN DE COMUNICACIÓN": "communication_plan",
+    "PLAN COMERCIAL": "commercial_plan"
+  };
+
+  function transformTaskFormat (taskToTransform) {
+    var tasksDictionary = {};
+
+    taskToTransform.forEach(function(aTask) {
+      console.log("=== aTask ===");
+      console.log(aTask);
+      const userEmail = aTask.userEmail;
+      const plan = transformPlanName[aTask.subtype];
+      const description = aTask.tasks.taskDescription;
+      const responsible = aTask.tasks.responsibleID;
+      const supervisor = aTask.tasks.supervisorID;
+
+      if( !tasksDictionary[userEmail] ) 
+        tasksDictionary[userEmail] = {}
+
+      if( !tasksDictionary[userEmail][plan] ) 
+        tasksDictionary[userEmail][plan] = []
+
+      tasksDictionary[userEmail][plan].push({
+        "tool": description,
+        "responsible": responsible,
+        "supervisor": supervisor
+      });
+    }, this);
+
+    return tasksDictionary;
+  }
+
+  const daily_tasks = await queryAggregate(queryDailyTasks);
+  // console.log("daily_tasks obtained:");
+  // console.log(daily_tasks);
+  let weekly_tasks = await queryAggregate(queryWeeklyTasks);
+  // console.log("weekly_tasks obtained:");
+  // console.log(weekly_tasks)
+  let monthly_tasks = await queryAggregate(queryMonthlyTasks);
+  // console.log("monthly_tasks obtained:");
+  // console.log(monthly_tasks)
+  let monthly_day_tasks = await queryAggregate(queryMonthlyDayTasks);
+  // console.log("monthly_day_tasks obtained:");
+  // console.log(monthly_day_tasks)
+
+  const MONDAY = 1;
+  if (moment().days() !== MONDAY){ 
+    weekly_tasks = [];
+  }
+  if((moment().date() > 7) || (moment().days() !== MONDAY)){
+    monthly_tasks = [];
+    monthly_day_tasks = [];
+  }
+
+  const daily_tasks_filtered = daily_tasks.filter( aTask => {
+    // console.log("== Current Day of Year ==");
+    // console.log(moment().dayOfYear());
+    //See if current day is a multiple of the defined day to send emails each 'frequency.value' days
+    return ( moment().dayOfYear() % aTask.tasks.frequency.value) === 0
+  });
+  // console.log("daily_tasks_filtered:");
+  // console.log(daily_tasks_filtered);
+
+  const weekly_tasks_filtered = weekly_tasks.filter( aTask => {
+    // console.log("== Current Week of Year ==");
+    // console.log(moment().week());
+    //See if current week is a multiple of the defined week to send emails each 'frequency.value' week
+    return ( moment().week() % aTask.tasks.frequency.value) === 0
+  });
+  // console.log("weekly_tasks_filtered:");
+  // console.log(weekly_tasks_filtered);
+  const monthly_tasks_filtered = monthly_tasks.filter( aTask => {
+    // console.log("== Current Month of Year ==");
+    // console.log(moment().month());
+    //See if current month is a multiple of the defined month to send emails each 'frequency.value' month
+    return ( moment().month() % aTask.tasks.frequency.value) === 0
+  });
+  // console.log("monthly_tasks_filtered:");
+  // console.log(monthly_tasks_filtered);
+  const monthly_day_tasks_filtered = [...monthly_day_tasks];
+  // console.log("monthly_day_tasks_filtered:");
+  // console.log(monthly_day_tasks_filtered);
+
+  // TODO merge all arrays
+  const all_tasks_filtered = [...daily_tasks_filtered, ...weekly_tasks_filtered, ...monthly_tasks_filtered, ...monthly_day_tasks_filtered];
+  // console.log("all_tasks_filtered: ");
+  // console.log(all_tasks_filtered);
+  return transformTaskFormat(all_tasks_filtered);
 }
 
 UserTasks.attachSchema(userTasksSchema);

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
+
+
 const emptyPlanItem = {
   tool: '',
   responsible: '',
