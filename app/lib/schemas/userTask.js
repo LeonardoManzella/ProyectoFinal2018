@@ -212,6 +212,26 @@ UserTasks.obtainScheduledTasks = async () => {
     ,
     { $match: { 'tasks.frequency.type': { $eq: "dayAmount" }}}
   ];
+  const queryWeeklyTasks = [
+    { $unwind: "$tasks" }
+    ,
+    { $match: { 'tasks.frequency.type': { $eq: "weekAmount" }}}
+  ];
+  const queryMonthlyTasks = [
+    { $unwind: "$tasks" }
+    ,
+    { $match: { 'tasks.frequency.type': { $eq: "monthAmount" }}}
+  ];
+  //console.log(`== DAY OF MONTH == ${moment().date()}`)
+  const queryMonthlyDayTasks = [
+    { $unwind: "$tasks" }
+    ,
+    { $match: { $and:[
+        { 'tasks.frequency.type': { $eq: "monthDay" }}
+        ,
+        { 'tasks.frequency.value': { $eq: `${moment().date()}` }}
+    ]}}
+  ];
 
   function queryAggregate (queryToExecute) {
     return new Promise(function (resolve) {
@@ -223,15 +243,15 @@ UserTasks.obtainScheduledTasks = async () => {
             console.log("=== ERROR ===");
             console.log(err);
           }else{
-            console.log("=== Result ===");
-            console.log(result);
+            //console.log("=== Result ===");
+            //console.log(result);
             resolve(result);
           }
         }
       );
     })
   }
-  transformPlanName = {
+  transformPlanName = { // To send with SendGrid
     "PLAN DE ADMINISTRACIÓN": "management_plan",
     "PLAN DE COMUNICACIÓN": "communication_plan",
     "PLAN COMERCIAL": "commercial_plan"
@@ -265,21 +285,62 @@ UserTasks.obtainScheduledTasks = async () => {
     return tasksDictionary;
   }
 
-  var daily_tasks = await queryAggregate(queryDailyTasks);
+  const daily_tasks = await queryAggregate(queryDailyTasks);
   console.log("daily_tasks obtained:");
   console.log(daily_tasks);
+  let weekly_tasks = await queryAggregate(queryWeeklyTasks);
+  console.log("weekly_tasks obtained:");
+  console.log(weekly_tasks)
+  let monthly_tasks = await queryAggregate(queryMonthlyTasks);
+  console.log("monthly_tasks obtained:");
+  console.log(monthly_tasks)
+  let monthly_day_tasks = await queryAggregate(queryMonthlyDayTasks);
+  console.log("monthly_day_tasks obtained:");
+  console.log(monthly_day_tasks)
 
-  // TODO use MongoDB Querys
-  
-  // TODO Apply filter logic
-  // TODO merge arrays}
-  var daily_tasks_filtered = daily_tasks.filter( aTask => {
-    console.log("== Current Day of Year ==");
-    console.log(moment().dayOfYear());
+  const MONDAY = 1;
+  //if (moment().days() !== MONDAY){
+  if (moment().days() !== 0){ //0 For testing, FIXME Delete
+    weekly_tasks = [];
+  }
+  if((moment().date() > 7) || (moment().days() !== 0)){ //0 For testing, FIXME Delete
+    monthly_tasks = [];
+    monthly_day_tasks = [];
+  }
+
+  const daily_tasks_filtered = daily_tasks.filter( aTask => {
+    // console.log("== Current Day of Year ==");
+    // console.log(moment().dayOfYear());
     //See if current day is a multiple of the defined day to send emails each 'frequency.value' days
-    ( moment().dayOfYear() % 2) == 0
+    return ( moment().dayOfYear() % aTask.tasks.frequency.value) === 0
   });
-  return transformTaskFormat(daily_tasks_filtered);
+  // console.log("daily_tasks_filtered:");
+  // console.log(daily_tasks_filtered);
+
+  const weekly_tasks_filtered = weekly_tasks.filter( aTask => {
+    // console.log("== Current Week of Year ==");
+    // console.log(moment().week());
+    //See if current week is a multiple of the defined week to send emails each 'frequency.value' week
+    return ( moment().week() % aTask.tasks.frequency.value) === 0
+  });
+  // console.log("weekly_tasks_filtered:");
+  // console.log(weekly_tasks_filtered);
+  const monthly_tasks_filtered = monthly_tasks.filter( aTask => {
+    // console.log("== Current Month of Year ==");
+    // console.log(moment().month());
+    //See if current month is a multiple of the defined month to send emails each 'frequency.value' month
+    //return ( moment().month() % 9) === 0
+    return true
+  });
+  console.log("monthly_tasks_filtered:");
+  console.log(monthly_tasks_filtered);
+  const monthly_day_tasks_filtered = new Array( monthly_day_tasks);
+  console.log("monthly_day_tasks_filtered:");
+  console.log(monthly_day_tasks_filtered);
+
+  // TODO merge all arrays
+  const all_tasks_filtered = [...daily_tasks_filtered, ...weekly_tasks_filtered, ...monthly_tasks_filtered, ...monthly_day_tasks_filtered];
+  return transformTaskFormat(all_tasks_filtered);
 }
 
 UserTasks.attachSchema(userTasksSchema);
