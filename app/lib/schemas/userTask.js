@@ -229,7 +229,7 @@ UserTasks.obtainScheduledTasks = async () => {
     { $match: { $and:[
         { 'tasks.frequency.type': { $eq: "monthDay" }}
         ,
-        { 'tasks.frequency.value': { $eq: `${moment().date()}` }}
+        { 'tasks.frequency.value': { $eq: `${23}` }} //FIXME put moment().date() instead 23
     ]}}
   ];
 
@@ -286,24 +286,23 @@ UserTasks.obtainScheduledTasks = async () => {
   }
 
   const daily_tasks = await queryAggregate(queryDailyTasks);
-  console.log("daily_tasks obtained:");
-  console.log(daily_tasks);
+  // console.log("daily_tasks obtained:");
+  // console.log(daily_tasks);
   let weekly_tasks = await queryAggregate(queryWeeklyTasks);
-  console.log("weekly_tasks obtained:");
-  console.log(weekly_tasks)
+  // console.log("weekly_tasks obtained:");
+  // console.log(weekly_tasks)
   let monthly_tasks = await queryAggregate(queryMonthlyTasks);
-  console.log("monthly_tasks obtained:");
-  console.log(monthly_tasks)
+  // console.log("monthly_tasks obtained:");
+  // console.log(monthly_tasks)
   let monthly_day_tasks = await queryAggregate(queryMonthlyDayTasks);
-  console.log("monthly_day_tasks obtained:");
-  console.log(monthly_day_tasks)
+  // console.log("monthly_day_tasks obtained:");
+  // console.log(monthly_day_tasks)
 
   const MONDAY = 1;
-  //if (moment().days() !== MONDAY){
-  if (moment().days() !== 0){ //0 For testing, FIXME Delete
+  if (moment().days() !== MONDAY){ 
     weekly_tasks = [];
   }
-  if((moment().date() > 7) || (moment().days() !== 0)){ //0 For testing, FIXME Delete
+  if((moment().date() > 7) || (moment().days() !== MONDAY)){
     monthly_tasks = [];
     monthly_day_tasks = [];
   }
@@ -329,17 +328,18 @@ UserTasks.obtainScheduledTasks = async () => {
     // console.log("== Current Month of Year ==");
     // console.log(moment().month());
     //See if current month is a multiple of the defined month to send emails each 'frequency.value' month
-    //return ( moment().month() % 9) === 0
-    return true
+    return ( moment().month() % aTask.tasks.frequency.value) === 0
   });
-  console.log("monthly_tasks_filtered:");
-  console.log(monthly_tasks_filtered);
-  const monthly_day_tasks_filtered = new Array( monthly_day_tasks);
-  console.log("monthly_day_tasks_filtered:");
-  console.log(monthly_day_tasks_filtered);
+  // console.log("monthly_tasks_filtered:");
+  // console.log(monthly_tasks_filtered);
+  const monthly_day_tasks_filtered = [...monthly_day_tasks];
+  // console.log("monthly_day_tasks_filtered:");
+  // console.log(monthly_day_tasks_filtered);
 
   // TODO merge all arrays
   const all_tasks_filtered = [...daily_tasks_filtered, ...weekly_tasks_filtered, ...monthly_tasks_filtered, ...monthly_day_tasks_filtered];
+  // console.log("all_tasks_filtered: ");
+  // console.log(all_tasks_filtered);
   return transformTaskFormat(all_tasks_filtered);
 }
 
