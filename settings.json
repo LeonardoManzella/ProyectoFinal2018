@@ -1,0 +1,11 @@
+{
+  "public": {
+
+  },
+  "private": {
+    "SENGRID_API_KEY": "Replace this with your key",
+    "SENDGRID_FROM_EMAIL": "Put your Email here",
+    "TEMPLATE_BASICO": "d-c1b69f6b24314f52ae5082044027b0dd",
+    "TEMPLATE_PLANES": "d-9b01a2e5ae3b4f8aa351faa4da11a061"
+  }
+}
