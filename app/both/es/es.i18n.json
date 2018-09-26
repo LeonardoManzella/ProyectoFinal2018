@@ -401,8 +401,11 @@
   // TONO: Amigable e Imperativo, mira soy tu amigo, tenes que hacer esto, te lo recomiendo
   "suggestions": {
     "direct_marketing": "Le conviene vender de forma directa, cara a cara en lo posible", 
+    
     "logistic_association": "Puede aliarse con empresas de logística y servicios de envío, físicos y digitales. También los sitios de venta online pueden ser útiles como por ejemplo MercadoLibre, OLX, etc.", 
+    
     "international_contacts": "Pregunte a conocidos o trate de integrarse con comunidades online del exterior y así obtener beneficios para su negocio.", 
+    
     "outsource_sales": "Considere contratar vendedores externos, subcontratar a terceros. Consiga que alguien por fuera de la empresa venda por usted.", 
     
     "start_selling_followers": "Empiece vendiendo a gente que conozca o consiga clientes a través de ellos.", 
@@ -437,7 +440,7 @@
 
     "sell_talks": "Dé charlas pagas personalizadas a pequeños grupos sobre temas puntuales. Incluso que ellos vayan a su emprendimiento y hablen del tema.", 
 
-    "sell_workshops": "Haga capacitaciones pagas/workshops personalizadas de 1 a 3 días. Recomendamos las plataformas de Meetups y EventBrite, tiene que hacer que se complemente con su marca.", 
+    "sell_workshops": "Haga capacitaciones pagas/workshops personalizadas de 1 a 3 días. Usar plataformas como Meetups y EventBrite, lograr que se complemente con su marca.", 
 
     "logistics": "Planifique el proceso de producción, almacenaje y entrega hasta la puerta del cliente. Incluso haga una prueba comprándose a usted mismo.", 
 
@@ -470,39 +473,71 @@
     "weekly_meetings": "Es muy importante planificar reuniones un día a la semana para charlar sobre la situación de la empresa, cómo estan trabajando.", 
 
     "define_billing_process": "Definir proceso de pagos y cobranzas, ¿Cómo le van a pagar? ¿Por qué medios? ¿Cuándo revisar que ingresó el pago? ¿Quién controla?", 
+
+    "therapy": "La terapia puede ayudarle a desestresarse y controlar sus miedos para que no afecten al emprendimiento.", 
+
+    "do_sport": "El deporte y la meditación pueden ayudarle a desestresarse y tener más energía al alejarse de su emprendimiento un rato.", 
+
+    "keep_yourself_busy": "Manténgase ocupado dentro y fuera de lo laboral así no genera ansiedad y no agota su energía.",
+
+    "talk_partner_objetives": "Siéntese con su socio/a para conocer sus valores y sus objetivos. Charle seguido, compartan opiniones.", 
+
+    "carefull_deferred_payment": "Cuidado cuando el cliente le paga diferido, porque usted la mercadería tiene que pagarla ahora. Que le deje una seña por adelantado.", 
     
-    "therapy": "La terapia puede ayudarle a desestresarse y controlar sus miedos para que no afecten al emprendimiento. Va a notar que puede enfocarse mejor y conseguir mejores resultados", 
-    "do_sport": "El deporte y la meditacion pueden ayudarle a desestresarse y tener mas energia al alejarse de su emprendimiento por un rato", 
-    "keep_yourself_busy": "Mantengase ocupado dentro y fuera de lo laboral asi no genera ansiedad y no se agota su energia", 
-    "talk_partner_objetives": "Sientese con su socio/a para conocer sus valores y sus objetivos. Es importante que lo/a entienda. Charle seguido con el/ella, compartan opiniones.", 
-    "carefull_deferred_payment": "Tiene que tener cuidado cuando el Cliente le paga Diferido a varios meses, porque usted la mercadería tiene que pagarla ahora. Que le deje una seña por adelantado", 
-    "cross_control": "Haga controles cruzados con su socio, uno hace y el otro chequea. Solo aplique control cruzados en tareas criticas e importantes o van a perder mucho tiempo", 
-    "design_processes": "Defina procedimientos y procesos pensando todo el recorrido, paso a paso. Esto le va a dar orden y paz mental", 
-    "monitor_employees": "Recuerde que al tener empleados uno debe guiarlos y verificar que esten trabajando bien, tenga en cuenta estos tiempos", 
-    "explain_how_to_delegate": "Debe aprender a delegar, no puede hacer todo usted, no es la idea. Usted debe delegar en aquellos que confie que puedan hacer tareas por usted o capacitarlos para que puedan hacerlas bien", 
-    "consultant_or_coach": "Capacite al equipo o Contrate gente con capacidades que el equipo carece. Si quiere gastar poca dinero, en vez de contratar empleados, contrate temporalmente un consultor o coach", 
-    "hire_experienced_employees": "Contrate empleados con experiencia asi puede incorporar sus conocimientos y evita tener que andar controlandolos", 
-    "organize_billing": "Obtenga una cuenta bancaria a nombre de la empresa para poder trabajar con ella. Asegurase de tener bien todos los papeles para evitar problemas en el futuro", 
-    "arrange_bank_loans": "Tramite en el banco lo necesario para poder obtener prestamos rapidos o sacar dinero a descubierto, para emergencias", 
-    "arrange_passport": "Tramite su pasaporte para poder viajar en caso necesario ante una oportunidad. Tenga los documentos al dia", 
-    "take_time_communicate": "No necesita contestar inmediatamente a todo el mundo, puede tomarse un tiempo para comunicarse y socializar", 
-    "talk_directly_about_problems": "No postergue los problemas, hablelos de forma directa. Trate los problemas y no deje pasar el tiempo", 
-    "relaxing_decorations": "Puede comprar muebles y decoraciones relajantes y que le den energia para su espacio de trabajo", 
-    "digital_payments": "Utilice medios de pagos digitales, va a tener mayor flexibilidad. Use aquellos que son conocidos a nivel internacional asi tendrá menos dolores de cabeza", 
-    "local_payments": "Investigue los medios de pagos que acostumbran usar sus clientes y use los mismos, para hacerles mas facil que paguen", 
-    "update_netbook": "Actualice o compre su Netbook, compre una buena aunque salga cara. Asi tendrá mas flexibilidad, ahorrará tiempo de trabajo y dolores de cabeza. Es una inversion necesaria que usted debería hacer", 
-    "everything_online": "Trate de tener toda la empresa online, en internet, asi siempre tiene todo a mano, sea mas flexible y te evitas muchos problemas. Todo lo que uses que sea digital, usa Google Drive, Google Docs, Google Sheets, etc", 
-    "outsource_accounting": "Si no sabe hacerlo usted, Subcontrate un servicio de adminitracion + contaduria. Concentrese en su negocio no en los impuestos", 
-    "strengthen_leading_experience": "Es muy importante Reforzar la experiencia de Líder que posee, leyendo en internet o con cursos porque no es lo mismo liderar gente en un Emprendimiento, cada persona es crítica siendo pocos", 
-    "learn_leadership": "Va a tener que aprender a Manejar gente, hacer Cursos de Liderazgo, Cursos en Universidades O que sus empleados formen equipos autogestionados", 
-    "self_managed_team": "Puede formar equipos autogestionados asi le es mas facil dirigir, piense en implementar una Holocracia o implementar el trabajo por objetivos en equipo", 
-    "paid_ads": "Te conviene usar publicidad paga para llegar a tus clientes. Pensa que publicidades de otros productos y servicios ellos pueden estar viendo. Ahi te vas a dar cuenta donde tenes que poner publicidad", 
-    "local_social_networks": "Piense en usar las redes sociales que usan sus clientes, debe estar en todas las que usan, asi ven su marca por multiples lados. Piense que utilizan, ¿Whatsapp? ¿Instagram? ¿Telegram? ¿Facebook?", 
-    "digital_store": "Le conviene tener una pagina web que sea una Tienda Digital, asi va a ser mas facil de convencer a los clientes de que le compren y confien en usted", 
-    "physical_communications": "Enfoquese en usar Carteles, Folletos, Catalogos que generen mucho impacto, aproveche para jugar con la creatividad y las formas ya que es algo fisico. Tambien asegurese estar en Google Maps y tenga una pagina web optimizada para celulares", 
-    "digital_communications": "Enfoquese en todo lo que son comunicaciones Digitales y Marketing Digital: Blogs, Email marketing, tener tu pagina optimizada para buscadores y tambien para celulares, redes sociales, videos, Online Webinars, etc..",
-    "ecommerce_association": "Busque cuales sitios de Ecommerce tienen presencia internacional y le resuelven los envios a otros paises, estos son los que tiene que usar cuando quiera expandirse a otros paises. Aunque salga un poco mas caro le conviene expandirse a traves de ellos ya que alla nadie lo conoce, y es alguien nuevo. Usar estos servicios conocidos da confianza al cliente", 
-    "investors_deck_ready": "Debe tener una buena presentacion preparada y actualizada Siempre para mostrar a inversores para que inviertan en usted, porque las oportunidades son pocas y es dificil convencerlos. Mi consejo es que la actualice una vez al mes o cada dos meses", 
+    "cross_control": "Haga controles cruzados con su socio, uno hace, el otro chequea. Sólo aplique control cruzado en tareas críticas o van a perder mucho tiempo.",
+
+    "design_processes": "Defina procedimientos y procesos pensando todo el recorrido, paso a paso. Esto le va a dar orden y paz mental.",
+
+    "monitor_employees": "Recuerde que al tener empleados uno debe guiarlos y verificar que estén trabajando bien.", 
+
+    "explain_how_to_delegate": "Debe aprender a delegar, no puede hacer todo usted. Delege en personas que tenga confianza o capacítelas para realizar ciertas tareas.", 
+
+    "consultant_or_coach": "Capacite al equipo o contrate gente con capacidades que necesite. Si quiere gastar poco dinero, contrate temporalmente un consultor o coach.",
+
+    "hire_experienced_employees": "Contrate empleados con experiencia así puede incorporar sus conocimientos y evita tener que andar controlándolos.",
+
+    "organize_billing": "Obtenga una cuenta bancaria a nombre de la empresa para poder trabajar con ella. Tener bien los papeles para evitar problemas.",
+
+    "arrange_bank_loans": "Tramite en el banco lo necesario para poder obtener préstamos rápidos o sacar dinero a descubierto para emergencias.",
+
+    "arrange_passport": "Tramite su pasaporte para poder viajar ante una oportunidad. Tenga los documentos al día.",
+
+    "take_time_communicate": "No necesita contestar inmediatamente a todo el mundo, puede tomarse un tiempo para comunicarse y socializar.",
+
+    "talk_directly_about_problems": "No postergue los problemas, háblelos de forma directa.", 
+
+    "relaxing_decorations": "Puede comprar muebles y decoraciones relajantes que le den energía para su espacio de trabajo.", 
+
+    "digital_payments": "Utilice medios de pago digitales, va a tener mayor flexibilidad. Usar los que son reconocidos positivamente así tendrá menos dolores de cabeza.", 
+
+    "local_payments": "Investigue los medios de pago que acostumbran usar sus clientes y use los mismos, para facilitar el pago.",
+
+    "update_netbook": "Actualice o compre su Netbook. Asi tendrá mas flexibilidad, ahorrará tiempo de trabajo y dolores de cabeza. Es una inversión necesaria para mejorar.", 
+
+    "everything_online": "Trate de tener todas las cosas digitales, así siempre tiene todo a mano, sea mas flexible y evite problemas. Usar Google Drive, Google Docs, etc.", 
+
+    "outsource_accounting": "Si no sabe hacerlo usted, subcontrate un servicio de adminitracion + contaduría. Concentrese en su negocio, no en los impuestos.",
+
+    "strengthen_leading_experience": "Refuerce la experiencia de líder que posee, leyendo en internet o con cursos porque no es lo mismo liderar gente en un emprendimiento.",
+
+    "learn_leadership": "Aprenda a manejar gente, haga cursos de liderazgo o que sus empleados formen equipos autogestionados.",
+
+    "self_managed_team": "Puede formar equipos autogestionados así es más fácil dirigir, piense en implementar una holocracia o el trabajo por objetivos en equipo.", 
+
+    "paid_ads": "Te conviene usar publicidad paga para llegar a tus clientes. Pensá qué publicidades de otros productos y servicios ellos pueden estar viendo.", 
+
+    "local_social_networks": "Piense en usar las redes sociales que usan sus clientes, debe estar en todas las que usan, así ven su marca por múltiples lados.", 
+
+    "digital_store": "Conviene tener una página web que sea tienda digital, así es más fácil convencer a los clientes de que le compren y confien en usted.",
+
+    "physical_communications": "Enfóquese en usar carteles, folletos que generen impacto, tener creatividad. Asegúrese estar en Google Maps y tener página web optimizada para celulares.", 
+    
+    "digital_communications": "Enfóquese en las comunicaciones digitales y marketing digital: blogs, email marketing, tener tu página optimizada para buscadores y para celulares, etc.",
+
+    "ecommerce_association": "Busque qué sitios de Ecommerce tienen presencia internacional y resuelven los envíos a otros países para conseguir clientes nuevos.", 
+    
+    "investors_deck_ready": "Debe tener una buena presentación preparada y actualizada para mostrar a inversores porque las oportunidades son pocas. Actualicela una vez al mes o cada dos meses.",
+     
     "communication_association": "Haga alianzas comunicacionales, piense quien más puede vender su producto qué le genere valor agregado a el o sus clientes, a quien le serviria vender su producto en conjunto. De esta manera no tiene que hacerlo usted", 
     "outsource_communications": "Puede contratar a Agencias de Marketing y Comunicacion para que hagan toda la comunicacion por usted, hay muchas. Mi consejo es que vaya por una de las mas chicas, que sean como usted, asi entienden sus necesidades y salen mas baratas", 
     "communicate_methodology": "Comunique su metodologia/forma de trabajar para dar confianza a sus posibles clientes para convertirlos en clientes. Creame que hace la diferencia en un mercado donde todos se parecen", 
@@ -511,26 +546,26 @@
     "guerrilla_marketing": "Busca la manera de hacer marketing no convencional, lo llamado Guerrilla Marketing y Growth Hacking. Pensa algo que rompa con los estandares de la publicidad, poner publicidad donde uno menos se lo espera, por ejemplo en el espejo de un Baño pegar algun sticker con tu Logo y Slogan",
     "press_and_magazines": "Contactese con la prensa, sobre todo con jovenes periodistas que estan mas abiertos a nuevas oportunidades. Tambien llame a revistas donde pueda aportar valor y que sirva como marketing",
     "client_frequent_places": "Vaya a los lugares donde frecuentan sus clientes. Aproveche para estar cerca de ellos",
-	"create_sas": "Arma una SAS (sociedad por Acciones simplificada) es la forma mas sencilla de registrar un emprendimiento. Se puede realizar en 24 horas, se puede obtener el CUIT online y puede tramitarse a traves de la plataforma de tramites a distancia TAD",
-	"iva_90_days_delay": "Puede hacer uso de la ley PYME N° 27264 la cual permite pagar IVA 90 dias despues de la facturación. Esto brinda mayor flexibilidad financiera, el cual es uno de los grandes problemas de las pymes",
-	"travel_documents": "Ya que has indicado que quieres viajar, es fundamental que tenga el pasaporte al día, tambien que tenga la visa del pais al cual desea visitar, en caso de ser necesaria. A su vez, sería sensato averiguar si hay algun tipo de restricción para ingresar al pais que se desea visitar",
-	"accounting_balance": "Es muy importante disponer de algun programa contable que permita registrar los ingresos y egresos de dinero. Estos tipos de programas se denominan ERP y sirven tambien para gestionar inventario y otros activos",
-	"handle_payments": "Establecer los medios de pagos que aceptará el negocio y comunicarse con las entidades responsables. En general, se suele probar que funcionen correctamente haciendo alguna pequeña compra de bajo monto ",
-	"mercadopago": "La tarea de contrlar los cob435en en el presente portal se brindan lineamientos basicos esto no significa que no sea necesaria la asesoria de un contador publico.",
-	"money_really_took": "Hay dos principios economicos los cuales son el principio de devengado y percibido. El hecho de que se hayan facturado 500.000$ no necesariamente significa que tendremos a fin de mes 500.000$ en la caja. Esa es la principal diferencia. El principio de devengado registra las ventas de lo que se debería cobrar, pero para saber cuanto realmente se cobró es necesario tener un balance financiero que diga exactamente cuanta plata entró en el mes y cuanta salió.",
-	"salaries_check": "Hay que acreditar los procesos de pagos de sueldos con externos, por ejemplo, primero podrían enviarse al contador previo a realizar la transferencia. Esto ahorra tiempo y permite que no se produzcan posibles equivocaciones.",
-	"tax_checklist": "Es muy importante no olvidar pagar ningun impuesto, el primer mes podrían realizarse el pago de los mismos con la asesoria de un contador y anotarlos en una checklist para que los siguientes meses ya no sea necesaria dicha asesoria.",
-	"cross_check_control": "Hay que efectuar doble control sobre la facturación y pagos. No debe ser la misma persona la que controle porque la idea es reducir la cantidad de errores que pudo haber omitido la primera persona.",
-	"ensurance": "Contempla la contratación de seguros para los activos mas costosos de perder. Un activo es cualquier cosa que ponga dinero en tu bolsillo. Ejemplo una maquinaria para hacer los productos que uno termina vendiendo.",
-	"register_brand": "Hay que registrar el nombre de la empresa y la idea de los de productos en los correspondientes lugares. Para registro de marcas, patentes, ideas o productos hay que ir al Instituto Nacional de la Propiedad Industrial. Los requisitos pueden visualizarse desde la web: www.argentina.gob.ar/marcapatente",
-	"money_requirements": "Es conveniente conseguir financiamiento para poder apalancarse y obtener mayores divididendos mediante mayores gastos en marketing, producto, personal. El uso eficiente del dinero es fundamental, es por ello, que recomendamos encarecidamente contratar un contador de confianza para obtener asesoria en ese ambito. Las principales fuentes de inversion para emprendedores son inversores privados o Programas de Financiamiento por Bancos o el estado",
-	"sustitute_products": " Es necesario definir y conocer cuales son los potenciales productos sustitutos desde el punto de vista del cliente. ¿Como satisfacen su necesidad o deseo si no es con nuestro producto? ",	
-	"pro_network": "Es fundamental armar una red de contactos profesional, en eventos y cursos uno puede conocer a gente muy importante e influyente que puede apalancar su negocio. Es muy positivo usar LinkedIn para esta necesidad. No limitar la red a contactos locales, sino que es muy fundamental tener contactos en todo el mundo en la industria que estemos atendiendo.",
-	"study_competitors": "Hay que saber quienes son los competidores en el mercado, ya que ellos serán la vara contra la cual los clientes mediran el precio y calidad de sus productos. A su vez, tener conocimiento de que esta haciendo la competencia puede lograr que advierta nuevas tendencias, anticipandose a ellas y tambien puede tomar buenas ideas de lo que estan haciendo sus competidores. ",
-	"selling_strategy": "Es importante ver como los competidores gestionan las ventas, ello puede acotarle el camino para no tener que reinventar un factor no determinante en su industria (como puede ser la gestion de ventas). ",
-	"understand_customer": "Hay que dedicar tiempo a saber quienes son sus clientes y como usted logrará atender la necesidad de ellos. Por ello es necesario, clasificarlos y segmentarlos por comportamiento, ello permite que usted pueda dirigir su producto a cierta audiciencia y que la comunicación sea mas efectiva que una comunicación a publico general, donde nadie se siente realmente identificado con el mensaje que se quiere dar.",
-	"understand_product": "Debe preguntarse,  ¿Como facilitirá o como mejorará la vida de sus clientes el producto que usted esta brindando? ¿ Por qué un cliente compraria su producto y no uno de la competencia? ",
-	"aim_premium": "Usted posee una personalidad la cuál suele estar mas alineada con lo que se denomina publico Premium, que es aquel que no le importa pagar mucho dinero por productos, si de verdad sienten que su producto aporta verdadero valor. Le recomendamos dirigir sus esfuerzos hacia ese nicho de mercado."
+    "create_sas": "Arma una SAS (sociedad por Acciones simplificada) es la forma mas sencilla de registrar un emprendimiento. Se puede realizar en 24 horas, se puede obtener el CUIT online y puede tramitarse a traves de la plataforma de tramites a distancia TAD",
+    "iva_90_days_delay": "Puede hacer uso de la ley PYME N° 27264 la cual permite pagar IVA 90 dias despues de la facturación. Esto brinda mayor flexibilidad financiera, el cual es uno de los grandes problemas de las pymes",
+    "travel_documents": "Ya que has indicado que quieres viajar, es fundamental que tenga el pasaporte al día, tambien que tenga la visa del pais al cual desea visitar, en caso de ser necesaria. A su vez, sería sensato averiguar si hay algun tipo de restricción para ingresar al pais que se desea visitar",
+    "accounting_balance": "Es muy importante disponer de algun programa contable que permita registrar los ingresos y egresos de dinero. Estos tipos de programas se denominan ERP y sirven tambien para gestionar inventario y otros activos",
+    "handle_payments": "Establecer los medios de pagos que aceptará el negocio y comunicarse con las entidades responsables. En general, se suele probar que funcionen correctamente haciendo alguna pequeña compra de bajo monto ",
+    "mercadopago": "La tarea de contrlar los cob435en en el presente portal se brindan lineamientos basicos esto no significa que no sea necesaria la asesoria de un contador publico.",
+    "money_really_took": "Hay dos principios economicos los cuales son el principio de devengado y percibido. El hecho de que se hayan facturado 500.000$ no necesariamente significa que tendremos a fin de mes 500.000$ en la caja. Esa es la principal diferencia. El principio de devengado registra las ventas de lo que se debería cobrar, pero para saber cuanto realmente se cobró es necesario tener un balance financiero que diga exactamente cuanta plata entró en el mes y cuanta salió.",
+    "salaries_check": "Hay que acreditar los procesos de pagos de sueldos con externos, por ejemplo, primero podrían enviarse al contador previo a realizar la transferencia. Esto ahorra tiempo y permite que no se produzcan posibles equivocaciones.",
+    "tax_checklist": "Es muy importante no olvidar pagar ningun impuesto, el primer mes podrían realizarse el pago de los mismos con la asesoria de un contador y anotarlos en una checklist para que los siguientes meses ya no sea necesaria dicha asesoria.",
+    "cross_check_control": "Hay que efectuar doble control sobre la facturación y pagos. No debe ser la misma persona la que controle porque la idea es reducir la cantidad de errores que pudo haber omitido la primera persona.",
+    "ensurance": "Contempla la contratación de seguros para los activos mas costosos de perder. Un activo es cualquier cosa que ponga dinero en tu bolsillo. Ejemplo una maquinaria para hacer los productos que uno termina vendiendo.",
+    "register_brand": "Hay que registrar el nombre de la empresa y la idea de los de productos en los correspondientes lugares. Para registro de marcas, patentes, ideas o productos hay que ir al Instituto Nacional de la Propiedad Industrial. Los requisitos pueden visualizarse desde la web: www.argentina.gob.ar/marcapatente",
+    "money_requirements": "Es conveniente conseguir financiamiento para poder apalancarse y obtener mayores divididendos mediante mayores gastos en marketing, producto, personal. El uso eficiente del dinero es fundamental, es por ello, que recomendamos encarecidamente contratar un contador de confianza para obtener asesoria en ese ambito. Las principales fuentes de inversion para emprendedores son inversores privados o Programas de Financiamiento por Bancos o el estado",
+    "sustitute_products": " Es necesario definir y conocer cuales son los potenciales productos sustitutos desde el punto de vista del cliente. ¿Como satisfacen su necesidad o deseo si no es con nuestro producto? ",	
+    "pro_network": "Es fundamental armar una red de contactos profesional, en eventos y cursos uno puede conocer a gente muy importante e influyente que puede apalancar su negocio. Es muy positivo usar LinkedIn para esta necesidad. No limitar la red a contactos locales, sino que es muy fundamental tener contactos en todo el mundo en la industria que estemos atendiendo.",
+    "study_competitors": "Hay que saber quienes son los competidores en el mercado, ya que ellos serán la vara contra la cual los clientes mediran el precio y calidad de sus productos. A su vez, tener conocimiento de que esta haciendo la competencia puede lograr que advierta nuevas tendencias, anticipandose a ellas y tambien puede tomar buenas ideas de lo que estan haciendo sus competidores. ",
+    "selling_strategy": "Es importante ver como los competidores gestionan las ventas, ello puede acotarle el camino para no tener que reinventar un factor no determinante en su industria (como puede ser la gestion de ventas). ",
+    "understand_customer": "Hay que dedicar tiempo a saber quienes son sus clientes y como usted logrará atender la necesidad de ellos. Por ello es necesario, clasificarlos y segmentarlos por comportamiento, ello permite que usted pueda dirigir su producto a cierta audiciencia y que la comunicación sea mas efectiva que una comunicación a publico general, donde nadie se siente realmente identificado con el mensaje que se quiere dar.",
+    "understand_product": "Debe preguntarse,  ¿Como facilitirá o como mejorará la vida de sus clientes el producto que usted esta brindando? ¿ Por qué un cliente compraria su producto y no uno de la competencia? ",
+    "aim_premium": "Usted posee una personalidad la cuál suele estar mas alineada con lo que se denomina publico Premium, que es aquel que no le importa pagar mucho dinero por productos, si de verdad sienten que su producto aporta verdadero valor. Le recomendamos dirigir sus esfuerzos hacia ese nicho de mercado."
   },
   "plan": {
     "management_plan": {
