@@ -402,7 +402,7 @@
   "suggestions": {
     "direct_marketing": "Le conviene vender de forma directa, cara a cara en lo posible", 
     
-    "logistic_association": "Puede aliarse con empresas de logística y servicios de envío, físicos y digitales. También los sitios de venta online pueden ser útiles como por ejemplo MercadoLibre, OLX, etc.", 
+    "logistic_association": "Puede aliarse con empresas de logística y servicios de envío, físicos y digitales. También los sitios de venta online pueden ser útiles como MercadoLibre, OLX, etc.", 
     
     "international_contacts": "Pregunte a conocidos o trate de integrarse con comunidades online del exterior y así obtener beneficios para su negocio.", 
     
@@ -542,33 +542,57 @@
     
     "outsource_communications": "Puede contratar a agencias de marketing y comunicación para que hagan toda la comunicacion por usted.", 
     
-    "communicate_methodology": "Comunique su forma de trabajar para dar confianza a sus posibles clientes para convertirlos en clientes.", 
+    "communicate_methodology": "Comunique su forma de trabajar para dar confianza a personas externas para convertirlos en clientes.", 
 	  
-    "care_about_design": "Es clave que cuide el diseño de toda la comunicacion, que sea coherente el mensaje que quiere dar",
-    "use_achievements_branding": "Aproveche todos los Titulos, Cursos, Premios o Reconocimientos que tenga para armar su Marca sobre ellos, va a hacer una gran diferencia contra la competencia", 
-    "guerrilla_marketing": "Busca la manera de hacer marketing no convencional, lo llamado Guerrilla Marketing y Growth Hacking. Pensa algo que rompa con los estandares de la publicidad, poner publicidad donde uno menos se lo espera, por ejemplo en el espejo de un Baño pegar algun sticker con tu Logo y Slogan",
-    "press_and_magazines": "Contactese con la prensa, sobre todo con jovenes periodistas que estan mas abiertos a nuevas oportunidades. Tambien llame a revistas donde pueda aportar valor y que sirva como marketing",
-    "client_frequent_places": "Vaya a los lugares donde frecuentan sus clientes. Aproveche para estar cerca de ellos",
-    "create_sas": "Arma una SAS (sociedad por Acciones simplificada) es la forma mas sencilla de registrar un emprendimiento. Se puede realizar en 24 horas, se puede obtener el CUIT online y puede tramitarse a traves de la plataforma de tramites a distancia TAD",
-    "iva_90_days_delay": "Puede hacer uso de la ley PYME N° 27264 la cual permite pagar IVA 90 dias despues de la facturación. Esto brinda mayor flexibilidad financiera, el cual es uno de los grandes problemas de las pymes",
-    "travel_documents": "Ya que has indicado que quieres viajar, es fundamental que tenga el pasaporte al día, tambien que tenga la visa del pais al cual desea visitar, en caso de ser necesaria. A su vez, sería sensato averiguar si hay algun tipo de restricción para ingresar al pais que se desea visitar",
-    "accounting_balance": "Es muy importante disponer de algun programa contable que permita registrar los ingresos y egresos de dinero. Estos tipos de programas se denominan ERP y sirven tambien para gestionar inventario y otros activos",
-    "handle_payments": "Establecer los medios de pagos que aceptará el negocio y comunicarse con las entidades responsables. En general, se suele probar que funcionen correctamente haciendo alguna pequeña compra de bajo monto ",
-    "mercadopago": "La tarea de contrlar los cob435en en el presente portal se brindan lineamientos basicos esto no significa que no sea necesaria la asesoria de un contador publico.",
-    "money_really_took": "Hay dos principios economicos los cuales son el principio de devengado y percibido. El hecho de que se hayan facturado 500.000$ no necesariamente significa que tendremos a fin de mes 500.000$ en la caja. Esa es la principal diferencia. El principio de devengado registra las ventas de lo que se debería cobrar, pero para saber cuanto realmente se cobró es necesario tener un balance financiero que diga exactamente cuanta plata entró en el mes y cuanta salió.",
-    "salaries_check": "Hay que acreditar los procesos de pagos de sueldos con externos, por ejemplo, primero podrían enviarse al contador previo a realizar la transferencia. Esto ahorra tiempo y permite que no se produzcan posibles equivocaciones.",
-    "tax_checklist": "Es muy importante no olvidar pagar ningun impuesto, el primer mes podrían realizarse el pago de los mismos con la asesoria de un contador y anotarlos en una checklist para que los siguientes meses ya no sea necesaria dicha asesoria.",
-    "cross_check_control": "Hay que efectuar doble control sobre la facturación y pagos. No debe ser la misma persona la que controle porque la idea es reducir la cantidad de errores que pudo haber omitido la primera persona.",
-    "ensurance": "Contempla la contratación de seguros para los activos mas costosos de perder. Un activo es cualquier cosa que ponga dinero en tu bolsillo. Ejemplo una maquinaria para hacer los productos que uno termina vendiendo.",
-    "register_brand": "Hay que registrar el nombre de la empresa y la idea de los de productos en los correspondientes lugares. Para registro de marcas, patentes, ideas o productos hay que ir al Instituto Nacional de la Propiedad Industrial. Los requisitos pueden visualizarse desde la web: www.argentina.gob.ar/marcapatente",
-    "money_requirements": "Es conveniente conseguir financiamiento para poder apalancarse y obtener mayores divididendos mediante mayores gastos en marketing, producto, personal. El uso eficiente del dinero es fundamental, es por ello, que recomendamos encarecidamente contratar un contador de confianza para obtener asesoria en ese ambito. Las principales fuentes de inversion para emprendedores son inversores privados o Programas de Financiamiento por Bancos o el estado",
-    "sustitute_products": " Es necesario definir y conocer cuales son los potenciales productos sustitutos desde el punto de vista del cliente. ¿Como satisfacen su necesidad o deseo si no es con nuestro producto? ",	
-    "pro_network": "Es fundamental armar una red de contactos profesional, en eventos y cursos uno puede conocer a gente muy importante e influyente que puede apalancar su negocio. Es muy positivo usar LinkedIn para esta necesidad. No limitar la red a contactos locales, sino que es muy fundamental tener contactos en todo el mundo en la industria que estemos atendiendo.",
-    "study_competitors": "Hay que saber quienes son los competidores en el mercado, ya que ellos serán la vara contra la cual los clientes mediran el precio y calidad de sus productos. A su vez, tener conocimiento de que esta haciendo la competencia puede lograr que advierta nuevas tendencias, anticipandose a ellas y tambien puede tomar buenas ideas de lo que estan haciendo sus competidores. ",
-    "selling_strategy": "Es importante ver como los competidores gestionan las ventas, ello puede acotarle el camino para no tener que reinventar un factor no determinante en su industria (como puede ser la gestion de ventas). ",
-    "understand_customer": "Hay que dedicar tiempo a saber quienes son sus clientes y como usted logrará atender la necesidad de ellos. Por ello es necesario, clasificarlos y segmentarlos por comportamiento, ello permite que usted pueda dirigir su producto a cierta audiciencia y que la comunicación sea mas efectiva que una comunicación a publico general, donde nadie se siente realmente identificado con el mensaje que se quiere dar.",
-    "understand_product": "Debe preguntarse,  ¿Como facilitirá o como mejorará la vida de sus clientes el producto que usted esta brindando? ¿ Por qué un cliente compraria su producto y no uno de la competencia? ",
-    "aim_premium": "Usted posee una personalidad la cuál suele estar mas alineada con lo que se denomina publico Premium, que es aquel que no le importa pagar mucho dinero por productos, si de verdad sienten que su producto aporta verdadero valor. Le recomendamos dirigir sus esfuerzos hacia ese nicho de mercado."
+    "care_about_design": "Es clave que cuide el diseño de toda la comunicación, que sea coherente el mensaje que quiere dar.",
+
+    "use_achievements_branding": "Aproveche su situación académica y reconocimientos que tenga para armar su marca sobre ellos, va a hacer una gran diferencia a la competencia.", 
+
+    "guerrilla_marketing": "Busque la manera de hacer marketing no convencional, lo llamado Guerrilla Marketing y Growth Hacking. Algo que rompa con los estándares de publicidad.",
+
+    "press_and_magazines": "Contáctese con la prensa, sobre todo con jóvenes periodístas que están mas abiertos a nuevas oportunidades y a revistas donde pueda aportar valor.",
+
+    "client_frequent_places": "Vaya a los lugares donde frecuentan sus clientes. Aproveche para estar cerca de ellos.",
+
+    "create_sas": "Arme una SAS (Sociedad por Acciones Simplificadas) es la forma más sencilla de registrar un emprendimiento. Se puede realizar en 24 horas.",
+    
+    "iva_90_days_delay": "Puede hacer uso de la ley PYME N° 27264 la cual permite pagar IVA 90 dias despues de la facturación. Esto brinda flexibilidad financiera.",
+
+    "travel_documents": "Tené el pasaporte al día, también la visa del país que deseas visitar, en caso de ser necesaria. Averiguá si hay restricciones para entrar al país que viajás.",
+
+    "accounting_balance": "Tenes que tener un programa contable que registre ingresos y egresos de dinero. Se denominan ERP y sirven también para gestionar inventario y otros activos.",
+
+    "handle_payments": "Establecer los medios de pagos que aceptará el negocio y comunicarse con las entidades responsables.",
+
+    "mercadopago": "La tarea de controlar los cobros en el presente portal, se brindan lineamientos basicos. Esto no significa que no sea necesaria la asesoria de un contador público.",
+
+    "money_really_took": "Hay dos principios económicos que tenes que tener en cuenta: el principio de devengado y percibido.",
+
+    "salaries_check": "Hay que acreditar los procesos de pagos de sueldos con externos. Esto ahorra tiempo y permite que no se produzcan posibles equivocaciones.",
+
+    "tax_checklist": "Es importante no olvidar pagar ningún impuesto, el primer mes conviene contar con la asesoría de un contador, ya los meses siguientes no es necesario.",
+
+    "cross_check_control": "Hay que efectuar doble control sobre la facturación y pagos. No debe ser la misma persona que hizo el proceso la que controle la tarea.",
+
+    "ensurance": "Contempla la contratación de seguros para los activos más costosos de perder. Un activo es cualquier cosa que ponga dinero en tu bolsillo.",
+
+    "register_brand": "Hay que registrar el nombre de la empresa y la idea del producto en el correspondiente lugar. Hay que ir al Instituto Nacional de la Propiedad Industrial.",
+
+    "money_requirements": "Es conveniente conseguir financiamiento para poder apalancarse y obtener mayores divididendos mediante mayores gastos en marketing, producto, personal.",
+
+    "sustitute_products": "Es necesario definir y conocer cuáles son los potenciales productos sustitutos desde el punto de vista del cliente.",	
+
+    "pro_network": "En eventos y cursos uno puede conocer a gente muy importante e influyente que puede apalancar su negocio. Armar una red profesional, conviene usar LinkedIn.",
+
+    "study_competitors": "Saber quiénes son los competidores en el mercado y estudiarlos, ya que ellos serán la vara contra la cual los clientes medirán el precio y calidad de sus productos.",
+
+    "selling_strategy": "Es importante ver cómo los competidores gestionan las ventas, esto puede ayudarlo a no tener que reinventar un factor no determinante en su industria.",
+
+    "understand_customer": "Hay que dedicar tiempo a saber quiénes son sus clientes y cómo usted logrará atender la necesidad de ellos. Tiene que clasificarlos y segmentarlos por comportamiento.",
+
+    "understand_product": "Debe preguntarse, ¿Cómo facilitirá o mejorará la vida del cliente el producto que usted brinda? ¿Por qué un cliente compraría su producto y no el de la competencia?",
+
+    "aim_premium": "Usted posee una personalidad la cuál suele estar alineada con lo que se denomina público premium, que es aquel que no le importa pagar mucho dinero por productos."
   },
   "plan": {
     "management_plan": {
