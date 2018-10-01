@@ -13,8 +13,10 @@ Meteor.startup(function () {
         console.log("Rule setted");
         var fiber_function = Meteor.bindEnvironment( 
             function(){
-                const TEMPLATE_BASICO = 'd-c1b69f6b24314f52ae5082044027b0dd';
-                const TEMPLATE_PLANES = 'd-9b01a2e5ae3b4f8aa351faa4da11a061';
+                const TEMPLATE_BASICO = Meteor.settings.private.TEMPLATE_BASICO;
+                console.log(`TEMPLATE_BASICO: ${TEMPLATE_BASICO}`);
+                const TEMPLATE_PLANES = Meteor.settings.private.TEMPLATE_PLANES;
+                console.log(`TEMPLATE_PLANES: ${TEMPLATE_PLANES}`);
 
                 
                 var tasks = Promise.await(UserTasks.obtainScheduledTasks());
