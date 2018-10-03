@@ -8,8 +8,10 @@
 
 import { Meteor } from 'meteor/meteor';
 
-const FROM_EMAIL = 'leonardo.manzella@gmail.com'; //TODO move to settings json
-const API_KEY = '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' //TODO move to settings json
+const FROM_EMAIL = Meteor.settings.private.SENDGRID_FROM_EMAIL;
+console.log(`SENDGRID_FROM_EMAIL: ${FROM_EMAIL}`);
+const API_KEY = Meteor.settings.private.SENGRID_API_KEY;
+console.log(`SENGRID_API_KEY: ${API_KEY}`);
 
 if (Meteor.isServer) {
 	import sendgrid from '@sendgrid/mail';

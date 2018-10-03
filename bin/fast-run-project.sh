@@ -4,8 +4,7 @@
 #echo 
 
 MYPATH=$(pwd)
-DOMAIN="develop"
-SETTINGS="$MYPATH/config/$DOMAIN/settings.json"
+SETTINGS="$MYPATH/settings.json"
 export FS_PATH="$HOME/bidFiles"
 
 echo ""
