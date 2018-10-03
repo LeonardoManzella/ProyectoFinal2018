@@ -22,6 +22,7 @@ import RisksContainer from '../../imports/ui/containers/swotAndRisksContainers/R
 import HomePage from '../../imports/ui/components/HomePage';
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot.jsx'
 import Calendar from '../../imports/ui/components/calendar/Calendar.jsx'
+import ReviewInterview from '../../imports/ui/components/expertChatbot/ReviewInterview'
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'notFound'];
@@ -151,6 +152,14 @@ FlowRouter.route('/chatbot', {
     mount(MainLayout, {content: <ExpertChatbot/>});
   }
 })
+
+FlowRouter.route('/reviewInterview', {
+  name: 'reviewInterview',
+  action: function() {
+    mount(MainLayout, {content: <ReviewInterview/>});
+  }
+})
+
 
 FlowRouter.route('/chart', {
   name: 'chart',

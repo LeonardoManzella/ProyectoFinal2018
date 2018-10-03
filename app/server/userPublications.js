@@ -20,6 +20,11 @@ Meteor.publish('getUserLoggedIn', function() {
     'personalInformation.surname': 1, 'roles': 1}});
 });
 
+Meteor.publish('getUserInterviewData', function() {
+  return Meteor.users.find({_id: this.userId}, {fields: {'goals': 1,
+    'contributions': 1, 'identity_traits': 1}});
+});
+
 publishComposite('getFullUser', function() {
   return {
     find() {

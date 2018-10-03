@@ -317,10 +317,6 @@ export default class NumericProjection extends React.Component {
 						Calcular Proyección
 					</button>
 				</div>
-				<div className="row header">
-					<label> VAN: - </label>
-					<label> TIR: - </label>
-				</div>
 				{this.renderChart()}
 			</div>
 		)

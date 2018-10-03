@@ -2,6 +2,7 @@ import React from 'react'
 import ChatBot, { ChatBotUtil } from './../../../../lib/interview-chatbot/lib/index'
 import Logic from './Logic.js'
 import { TAPi18n } from 'meteor/tap:i18n';
+import { FlowRouter } from 'meteor/kadira:flow-router';
 
 export default class ExpertChatbot extends React.Component {
 	
@@ -38,6 +39,7 @@ export default class ExpertChatbot extends React.Component {
 								<div className="welcome-title">
 									<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
 									<h3>Haz terminado tu entrevista inicial</h3>
+									<span><button onClick={() => FlowRouter.go('reviewInterview')}>Revisar Entrevista</button></span>
 								</div>	
 						</div>
 					</div>
