@@ -56,7 +56,7 @@ class SwotTasks extends React.Component {
 
   renderSwotTasksRow(swotTask, swotTaskIndex) {
     const isEditable = true;
-    const {handleOnChange, modifySwotTasks} = this.props;
+    const {handleOnChange, modifySwotTasks, selectSwotTask} = this.props;
     return (
       <tr key={swotTaskIndex}>
         <td>
@@ -104,46 +104,9 @@ class SwotTasks extends React.Component {
           />
         </td>
         <td>
-          <div className="row">
-            <div>
-              <div className="row">
-                <p> Repetir </p>
-                <select
-                  name='frequency'
-                  onChange={(event) => handleOnChange(event, swotTaskIndex)}
-                  value={swotTask.frequency}
-                >
-                  <option value="">-</option>
-                  {
-                    frequencyTime.map((time, index) => (
-                      <option key={index} value={time.value}>{time.name}</option>
-                    ))
-                  }
-                </select>
-              </div>
-            </div>
-            <div>
-              <div className="row">
-                <p> Según: </p>
-                <select
-                  name='frequencyType'
-                  onChange={(event) => handleOnChange(event, swotTaskIndex)}
-                  value={swotTask.frequencyType}
-                >
-                  <option value="">-</option>
-                  {
-                    swotTask.frequency && swotTask.frequency !== "" &&
-                      frequencyTime.find(time => time.value === swotTask.frequency)?
-                      frequencyTime.find(time => time.value === swotTask.frequency)
-                        .types.map((type, index) =>
-                        <option value={type.value} key={index}>{type.name}</option>)
-                      : ''
-                  }
-                </select>
-              </div>
-            </div>
-          </div>
-          {this.getFrequencyThirdOption(swotTask, swotTaskIndex)}
+          <a onClick={() => selectSwotTask(swotTaskIndex)}>
+            <img src='/img/alarm-clock.svg'/>
+          </a>
         </td>
         {
           isEditable ?
@@ -206,7 +169,8 @@ SwotTasks.propTypes = {
   swot: PropTypes.object,
   swotTasks: PropTypes.array,
   handleOnChange: PropTypes.func,
-  modifySwotTasks: PropTypes.func
+  modifySwotTasks: PropTypes.func,
+  saveReminder: PropTypes.func
 };
 
 export default SwotTasks;

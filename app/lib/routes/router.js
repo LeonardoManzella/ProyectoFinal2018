@@ -27,9 +27,9 @@ import ReviewInterview from '../../imports/ui/components/expertChatbot/ReviewInt
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'notFound'];
 const allowedRoutesByEntrepreneurStatus = {
-  pendingChatbot: ['chatbot'],
-  pendingAreas: ['canvas', 'chatbot'],
-  pendingPlans: ['planList', 'canvas', 'chatbot']
+  pendingChatbot: ['chatbot', 'reviewInterview'],
+  pendingAreas: ['canvas', 'chatbot', 'reviewInterview'],
+  pendingPlans: ['planList', 'canvas', 'chatbot', 'reviewInterview']
 };
 
 const isEntrepreneurAndIsntApproved = (status) => {

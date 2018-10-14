@@ -85,8 +85,7 @@ class PlanCard extends React.Component {
     return (
       <div>
         <Reminder
-          selectedPlanItemIndex={this.state.selectedPlanItemIndex}
-          planItems={planItems}
+          data = {planItems[this.state.selectedPlanItemIndex].data}
           saveReminder={(data) => saveReminder(data, this.state.selectedPlanItemIndex)}
           modalIsOpen={this.state.modalIsOpen}
           changeModalState={() => this.setState({modalIsOpen: !this.state.modalIsOpen})}

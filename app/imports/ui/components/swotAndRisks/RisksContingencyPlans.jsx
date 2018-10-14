@@ -68,7 +68,7 @@ class RisksContingencyPlans extends React.Component {
 
   renderContingencyPlanRow(contingencyPlan, index) {
     const isEditable = true;
-    const {handleOnChange, removeElementFromTable} = this.props;
+    const {handleOnChange, removeElementFromTable, selectRisk} = this.props;
     return (
       <tr key={index}>
         <td>
@@ -112,46 +112,9 @@ class RisksContingencyPlans extends React.Component {
           />
         </td>
         <td>
-          <div className="row">
-            <div>
-              <div className="row">
-                <p> Repetir </p>
-                <select
-                  name='frequency'
-                  onChange={(event) => handleOnChange(event, 'contingencyPlans', index)}
-                  value={contingencyPlan.frequency}
-                >
-                  <option value="">-</option>
-                  {
-                    frequencyTime.map((time, index) => (
-                      <option key={index} value={time.value}>{time.name}</option>
-                    ))
-                  }
-                </select>
-              </div>
-            </div>
-            <div>
-              <div className="row">
-                <p> Según: </p>
-                <select
-                  name='frequencyType'
-                  onChange={(event) => handleOnChange(event, 'contingencyPlans', index)}
-                  value={contingencyPlan.frequencyType}
-                >
-                  <option value="">-</option>
-                  {
-                    contingencyPlan.frequency && contingencyPlan.frequency !== "" &&
-                      frequencyTime.find(time => time.value === contingencyPlan.frequency)?
-                      frequencyTime.find(time => time.value === contingencyPlan.frequency)
-                        .types.map((type, index) =>
-                        <option value={type.value} key={index}>{type.name}</option>)
-                      : ''
-                  }
-                </select>
-              </div>
-            </div>
-          </div>
-          {this.getFrequencyThirdOption(contingencyPlan, index)}
+          <a onClick={() => selectRisk(index)}>
+            <img src='/img/alarm-clock.svg'/>
+          </a>
         </td>
         {
           isEditable ?
@@ -221,7 +184,8 @@ RisksContingencyPlans.propTypes = {
   contingencyPlans: PropTypes.array,
   handleOnChange: PropTypes.func,
   removeElementFromTable: PropTypes.func,
-  addElementToTable: PropTypes.func
+  addElementToTable: PropTypes.func,
+  selectRisk: PropTypes.func
 };
 
 export default RisksContingencyPlans;

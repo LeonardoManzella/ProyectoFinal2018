@@ -142,6 +142,7 @@ UserTasks.insertSwotTasks = (swotTasks) => {
       if (!swotElement.userTasksId) {
         const userTask = {};
         userTask.userId = Meteor.userId();
+        userTask.userEmail = Meteor.users.findOne( Meteor.userId() ).emails[0].address;
         userTask.type = 'swot';
         userTask.tasks = [newSwotTask];
         const newUserTaskId = UserTasks.insert(userTask);
@@ -172,6 +173,7 @@ UserTasks.insertContingencyPlans = (contingencyPlans) => {
       if (!risk.userTasksId) {
         const userTask = {};
         userTask.userId = Meteor.userId();
+        userTask.userEmail = Meteor.users.findOne( Meteor.userId() ).emails[0].address;
         userTask.type = 'contingencyPlan';
         userTask.tasks = [newContingencyPlanTask];
         const newUserTaskId = UserTasks.insert(userTask);

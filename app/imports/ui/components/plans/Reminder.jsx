@@ -20,7 +20,7 @@ class Reminder extends React.Component {
 
   constructor(props) {
     super(props);
-    const data = props.planItems[props.selectedPlanItemIndex].data;
+    const  { data } = props;
     this.state = {
       frequency: data.frequency || '',
       frequencyType: data.frequencyType || '',
@@ -31,7 +31,7 @@ class Reminder extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    const data = props.planItems[props.selectedPlanItemIndex].data;
+    const  { data } = props;
     this.setState({
       frequency: data.frequency || '',
       frequencyType: data.frequencyType || '',
@@ -41,7 +41,7 @@ class Reminder extends React.Component {
     });
   }
 
-  handleOnChange(event, index, indexPlanItem) {
+  handleOnChange(event) {
     if (event.target.name === 'frequency') {
       this.setState({
         frequency: event.target.value,
@@ -89,7 +89,7 @@ class Reminder extends React.Component {
     return '';
   }
 
-  getFrequencyThirdOption(planItem, selectedPlanItemIndex) {
+  getFrequencyThirdOption() {
     if (this.state.frequency !== '' && this.state.frequencyType !== '') {
       const time = frequencyTime.find(time => time.value === this.state.frequency);
       const frequencyType = time ?
@@ -134,7 +134,7 @@ class Reminder extends React.Component {
   }
 
 	render() {
-    const { selectedPlanItemIndex, planItems, handleOnChange, modalIsOpen, changeModalState } = this.props;
+    const { handleOnChange, modalIsOpen, changeModalState } = this.props;
     return (
       <Modal
         isOpen={modalIsOpen}
@@ -204,7 +204,7 @@ class Reminder extends React.Component {
               </div>
             </div>
           </div>
-          {this.getFrequencyThirdOption(planItems[selectedPlanItemIndex], selectedPlanItemIndex)}
+          {this.getFrequencyThirdOption()}
           <p className='small italic-proyectos text-danger'>
             {this.state.generalError}
           </p>
@@ -220,8 +220,7 @@ class Reminder extends React.Component {
 }
 
 Reminder.propTypes = {
-  selectedPlanItemIndex: PropTypes.number,
-  planItems: PropTypes.array,
+  data: PropTypes.object,
   modalIsOpen: PropTypes.bool,
   changeModalState: PropTypes.func,
   saveReminder: PropTypes.func

@@ -3,6 +3,7 @@ import ChatBot, { ChatBotUtil } from './../../../../lib/interview-chatbot/lib/in
 import Logic from './Logic.js'
 import { TAPi18n } from 'meteor/tap:i18n';
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import InterviewQuestions from './InterviewQuestions';
 
 export default class ExpertChatbot extends React.Component {
 	
@@ -17,6 +18,7 @@ export default class ExpertChatbot extends React.Component {
 		this.state = {
 			hasStartedChat: false,
 			hasBeganInterview: questionNumber > 0,
+			hasFinishedInterview: questionNumber === InterviewQuestions.allQuestions.length + 1,
 			questionNumber,
 			isPendingChatbot
 		};
@@ -28,6 +30,31 @@ export default class ExpertChatbot extends React.Component {
 		});
 	}
 
+	getMessage() {
+		if (this.state.hasFinishedInterview) {
+			return (
+				<div className="welcome-title">
+				<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
+				<span><button onClick={() => FlowRouter.go('reviewInterview')}>Revisar Entrevista</button></span>
+				</div>
+			);
+		} else if (this.state.hasBeganInterview) {
+			return (
+				<div className="welcome-title">
+				<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
+				<span><button onClick={() => this.showChatBot()}>Quiero continuar mi entrevista inicial</button></span>
+				</div>
+			);
+		}
+		return (
+			<div className="welcome-title">
+			<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
+			<p><i>Este será el asesor para definir tus objetivos</i></p>
+			<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
+			</div>
+		);
+	}
+
 	getChatContent() {
 		if (!this.state.hasStartedChat) {
 			return (
@@ -35,21 +62,7 @@ export default class ExpertChatbot extends React.Component {
 					<div className="FullSizeTable">
 						<div className="AlignMiddle">
 							<img src="/img/emprendimientos-logo.png" className='Justin'/>
-							
-								
-								{this.state.hasBeganInterview ? (
-									<div className="welcome-title">
-									<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
-									<span><button onClick={() => this.showChatBot()}>Quiero continuar mi entrevista inicial</button></span>
-									</div>
-								) : (
-									<div className="welcome-title">
-									<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
-									<p><i>Este será el asesor para definir tus objetivos</i></p>
-									<span><button onClick={() => this.showChatBot()}>Comenzar!</button></span>
-									</div>
-								)}
-								
+							{this.getMessage()}
 						</div>
 					</div>
 				</div>

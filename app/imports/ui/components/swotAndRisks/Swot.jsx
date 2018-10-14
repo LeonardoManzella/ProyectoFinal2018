@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SwotElements from './SwotElements';
 import SwotTasks from './SwotTasks';
+import Reminder from '../plans/Reminder';
 
 const emptySwotTask = {
   element: '',
@@ -35,7 +36,9 @@ class Swot extends React.Component {
         opportunities: false,
         threats: false
       },
-      swotInput: ''
+      swotInput: '',
+      modalIsOpen: false,
+      selectedSwotTaskIndex: 0
     };
   }
 
@@ -90,6 +93,15 @@ class Swot extends React.Component {
     this.setState({swotTasks});
   }
 
+  saveReminder(data, index) {
+    const { swotTasks } = this.state;
+    swotTasks[index].frequency = data.frequency;
+    swotTasks[index].frequencyType = data.frequencyType;
+    swotTasks[index].frequencyValue = data.frequencyValue;
+    swotTasks[index].frequencySecondValue = data.frequencySecondValue;
+    this.setState({swotTasks});
+  }
+
   modifySwotTasks(addSwotTask, index) {
     const { swotTasks } = this.state;
     if (addSwotTask) {
@@ -110,6 +122,12 @@ class Swot extends React.Component {
     }
 		return (
 			<div className="content-body">
+        <Reminder
+          data={this.state.swotTasks[this.state.selectedSwotTaskIndex] || {}}
+          saveReminder={(data) => this.saveReminder(data, this.state.selectedSwotTaskIndex)}
+          modalIsOpen={this.state.modalIsOpen}
+          changeModalState={() => this.setState({modalIsOpen: !this.state.modalIsOpen})}
+        />
         <div className="row header">
             <div className="col-md-6">
               <h2>FODA</h2>
@@ -133,6 +151,8 @@ class Swot extends React.Component {
           swotTasks={this.state.swotTasks}
           handleOnChange={this.handleOnChange.bind(this)}
           modifySwotTasks={this.modifySwotTasks.bind(this)}
+          saveReminder={this.saveReminder.bind(this)}
+          selectSwotTask={(index) => this.setState({selectedSwotTaskIndex: index, modalIsOpen: true})}
         />
 			</div>
 		);

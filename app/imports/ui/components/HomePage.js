@@ -80,7 +80,7 @@ export default class HomePage extends Component {
                 </div>
               </div>
             </div>
-            <div id="clients-section" className="content-body white clients">
+            {/* <div id="clients-section" className="content-body white clients">
               <div className="table">
                 <div className="welcome-title">
                   <h2>NUESTROS CLIENTES</h2>
@@ -100,7 +100,7 @@ export default class HomePage extends Component {
                   <span><button className="transparent-button">Ver más</button></span>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div id="contact-section" className="content-body white">
               <div className="table">
                 <div className="welcome-title">

@@ -184,11 +184,11 @@ class PlanPage extends React.Component {
     planType.planTypeList[index].data
       .planItems[indexPlanItem].data.frequency = data.frequency;
     planType.planTypeList[index].data
-      .planItems[indexPlanItem].data.frequency = data.frequencyType;
+      .planItems[indexPlanItem].data.frequencyType = data.frequencyType;
     planType.planTypeList[index].data
-      .planItems[indexPlanItem].data.frequency = data.frequencyValue;
+      .planItems[indexPlanItem].data.frequencyValue = data.frequencyValue;
     planType.planTypeList[index].data
-      .planItems[indexPlanItem].data.frequency = data.frequencySecondValue;
+      .planItems[indexPlanItem].data.frequencySecondValue = data.frequencySecondValue;
     this.setState({plans, generalError: ''});
   }
 
