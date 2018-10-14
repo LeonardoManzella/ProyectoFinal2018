@@ -5,8 +5,6 @@ import PropTypes from 'prop-types';
 import { validationsHelper } from '../../../api/helpers/validationsHelper';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-
-
 const emptyPlanItem = {
   tool: '',
   responsible: '',
@@ -66,6 +64,10 @@ class PlanPage extends React.Component {
         return 'PLAN DE COMUNICACIÓN';
       case 'commercial_plan':
         return 'PLAN COMERCIAL';
+      case 'legal_plan':
+        return 'PLAN LEGAL';
+      case 'marketing_plan':
+        return 'PLAN DE MARKETING';
       default:
         return 'PLAN DE ADMINISTRACIÓN';
     }
@@ -161,38 +163,32 @@ class PlanPage extends React.Component {
     this.setState({plans, generalError: ''});
   }
 
-  // FIXME
   handleOnChange(event, index, indexPlanItem) {
     const { plans } = this.state;
     const planName = this.props.planName;
     const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
-    if (event.target.name === 'frequency') {
-      planType.planTypeList[index].data
-        .planItems[indexPlanItem].data.frequency = event.target.value;
-      planType.planTypeList[index].data
-        .planItems[indexPlanItem].data.frequencyType = '';
-      planType.planTypeList[index].data
-        .planItems[indexPlanItem].data.frequencyValue = '';
-      planType.planTypeList[index].data
-        .planItems[indexPlanItem].data.frequencySecondValue = '';
-    } 
-    else if (event.target.name === 'frequencyType') {
-      planType.planTypeList[index].data
-        .planItems[indexPlanItem].data.frequencyType = event.target.value;
-      planType.planTypeList[index].data
-        .planItems[indexPlanItem].data.frequencyValue = '';
-      planType.planTypeList[index].data
-        .planItems[indexPlanItem].data.frequencySecondValue = '';
-    }
-    else {
-      planType.planTypeList[index].data
-        .planItems[indexPlanItem].data[event.target.name] = event.target.value;
-    }
+    planType.planTypeList[index].data
+      .planItems[indexPlanItem].data[event.target.name] = event.target.value;
     if (planType.planTypeList[index].data
       .planItems[indexPlanItem].errors[event.target.name]) {
         planType.planTypeList[index].data
           .planItems[indexPlanItem].errors[event.target.name].message = '';
     }
+    this.setState({plans, generalError: ''});
+  }
+
+  saveReminder(data, index, indexPlanItem) {
+    const { plans } = this.state;
+    const planName = this.props.planName;
+    const planType = this.state.plans.find(plan => plan.name === this.getTitle(planName));
+    planType.planTypeList[index].data
+      .planItems[indexPlanItem].data.frequency = data.frequency;
+    planType.planTypeList[index].data
+      .planItems[indexPlanItem].data.frequency = data.frequencyType;
+    planType.planTypeList[index].data
+      .planItems[indexPlanItem].data.frequency = data.frequencyValue;
+    planType.planTypeList[index].data
+      .planItems[indexPlanItem].data.frequency = data.frequencySecondValue;
     this.setState({plans, generalError: ''});
   }
 
@@ -233,7 +229,6 @@ class PlanPage extends React.Component {
       });
       return;
     }
-    const previousStatus = Meteor.user().personalInformation.status;
     Meteor.call('insertNewPlanList', this.state.plans, (error) => {
       if (error) {
         console.log(error);
@@ -242,11 +237,22 @@ class PlanPage extends React.Component {
         });
         return;
       }
-      if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
-        previousStatus === 'pendingPlans') {
-        FlowRouter.go('home');
-      }
     });
+  }
+
+  renderContinueButton() {
+    const previousStatus = Meteor.user().personalInformation.status;
+    if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
+      previousStatus === 'pendingPlans') {
+      return <button className='pink-button' onClick={() => {
+        Meteor.call('changePlanPendingStatus', (error) => {
+          if (!error) {
+            FlowRouter.go('home');
+          }
+        });
+      }}>Avanzar</button>
+    }
+    return '';
   }
 
 	render() {
@@ -287,6 +293,7 @@ class PlanPage extends React.Component {
               handleSelectChange={(e) => this.setState({'selectedBusinessArea': e.target.value})}
               savePlans={this.savePlans.bind(this)}
               businessAreas={this.props.businessAreas}
+              saveReminder={this.saveReminder.bind(this)}
             />
           </div>
         </div>
@@ -298,6 +305,9 @@ class PlanPage extends React.Component {
           <div className="row header">
             <div className="col-md-6">
               <h2>{'Planes'}</h2>
+            </div>
+            <div className="col-md-6">
+              { this.renderContinueButton() }
             </div>
           </div>
           <div className="row">
@@ -322,6 +332,24 @@ class PlanPage extends React.Component {
                 </div>
               </a>
             </div>
+          </div>
+          <div className="row">
+            <div className="col-md-2" />
+            <div className="col-md-4">
+              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'legal_plan'})}>
+                <div className="plan-card">
+                  <h2> PLAN LEGAL </h2>
+                </div>
+              </a>
+            </div>
+            <div className="col-md-4">
+              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'marketing_plan'})}>
+                <div className="plan-card">
+                  <h2> PLAN DE MARKETING </h2>
+                </div>
+              </a>
+            </div>
+            <div className="col-md-2" />
           </div>
           {/* <p className='italic-proyectos text-danger'> {this.state.generalError} </p>
           <div className='step-progress'>

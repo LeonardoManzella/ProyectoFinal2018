@@ -81,13 +81,13 @@ class PlanCard extends React.Component {
 
 	render() {
     const { businessArea, planItems, isEditable, changeEditOptionPlan,
-      deletePlan, handleOnChange, modifyPlanItemsList } = this.props;
+      deletePlan, handleOnChange, modifyPlanItemsList, saveReminder } = this.props;
     return (
       <div>
         <Reminder
           selectedPlanItemIndex={this.state.selectedPlanItemIndex}
           planItems={planItems}
-          handleOnChange={(event) => handleOnChange(event, this.state.selectedPlanItemIndex)}
+          saveReminder={(data) => saveReminder(data, this.state.selectedPlanItemIndex)}
           modalIsOpen={this.state.modalIsOpen}
           changeModalState={() => this.setState({modalIsOpen: !this.state.modalIsOpen})}
         />
@@ -173,7 +173,8 @@ PlanCard.propTypes = {
   changeEditOptionPlan:PropTypes.func,
   deletePlan: PropTypes.func,
   handleOnChange: PropTypes.func,
-  modifyPlanItemsList: PropTypes.func
+  modifyPlanItemsList: PropTypes.func,
+  saveReminder: PropTypes.func
 };
 
 export default PlanCard;

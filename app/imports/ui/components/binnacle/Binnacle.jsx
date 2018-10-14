@@ -158,6 +158,11 @@ class Binnacle extends React.Component {
 		)
 	}
 
+	getHeader(e) {
+		console.log(e);
+		return <div>Nicole </div>;
+	}
+
 	render() {
 
 		let { boardData } = this.state;
@@ -218,7 +223,15 @@ class Binnacle extends React.Component {
 								laneDraggable={true}
 								editable={true}
 								eventBusHandle={setEventBus}
-								onLaneClick={(laneId) => this.setState({laneModalIsOpen: true, selectedLaneId: laneId})}
+								customLaneHeader={
+									<button
+										className='pink-button edit-lane'
+										onClick={(e) => this.setState({laneModalIsOpen: true, selectedLaneId: e.target.id})}
+									>
+										Editar Reunión
+									</button>
+								}
+								// onLaneClick={(laneId) => this.setState({laneModalIsOpen: true, selectedLaneId: laneId})}
 								onCardClick={(cardId, metadata, laneId) => this.setState({
 									cardModalIsOpen: true,
 									selectedCardLaneId: laneId,

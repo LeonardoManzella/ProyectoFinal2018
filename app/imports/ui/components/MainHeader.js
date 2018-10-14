@@ -69,9 +69,15 @@ class MainHeader extends React.Component {
             this.getTabSelected('Canvas', '/canvas') : ''}
           {!(this.checkUserStatus('pendingChatbot') || this.checkUserStatus('pendingAreas')) ?
             this.getTabSelected('Planes', '/planList') : ''}
-          {this.getTabSelected('FODA', '/swot')}
-          {this.getTabSelected('Riesgos', '/risks')}
-          {this.getTabSelected('Chart', '/chart')}
+          {!(this.checkUserStatus('pendingChatbot') || this.checkUserStatus('pendingAreas')
+            || this.checkUserStatus('pendingPlans')) ?
+            this.getTabSelected('FODA', '/swot') : ''}
+          {!(this.checkUserStatus('pendingChatbot') || this.checkUserStatus('pendingAreas')
+            || this.checkUserStatus('pendingPlans')) ?
+            this.getTabSelected('Riesgos', '/risks') : ''}
+          {!(this.checkUserStatus('pendingChatbot') || this.checkUserStatus('pendingAreas')
+            || this.checkUserStatus('pendingPlans')) ?
+            this.getTabSelected('Chart', '/chart') : ''}
           {/* {this.getTabSelected('Tareas', '/tasksBoard')} */}
           {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
             this.getTabSelected('Usuarios', '/usersList') : ''}

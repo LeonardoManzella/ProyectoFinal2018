@@ -542,6 +542,7 @@ td input.frequency,
 
 .row.header button,
 .pink-button {
+  cursor: pointer;
   float: right;
   background: #ff5a5fcc;
   vertical-align: baseline;
@@ -1467,4 +1468,15 @@ input[type=number]::-webkit-outer-spin-button {
 
 .reminder-modal h4 {
   margin-bottom: 20px;
+}
+
+.binnacle .pink-button.edit-lane {
+  float: left;
+  margin-left: 0;
+}
+
+.save-reminders .pink-button {
+  float: left;
+  margin-left: 0;
+  margin-right: 10px;
 }

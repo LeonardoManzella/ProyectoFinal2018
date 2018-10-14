@@ -34,6 +34,10 @@ class PlanList extends React.Component {
         return 'Plan de comunicación';
       case 'commercial_plan':
         return 'Plan comercial';
+      case 'legal_plan':
+        return 'Plan legal';
+      case 'marketing_plan':
+        return 'Plan de marketing';
       default:
         return 'Plan de administración';
     }
@@ -84,7 +88,8 @@ class PlanList extends React.Component {
       planTypeList,
       handleSelectChange,
       savePlans,
-      businessAreas
+      businessAreas,
+      saveReminder
     } = this.props;
     const isEditable = true;
     return (
@@ -143,6 +148,7 @@ class PlanList extends React.Component {
                 handleOnChange(event, index, indexPlanItem)}
               modifyPlanItemsList={(addPlanItem, indexPlanItem) =>
                 modifyPlanItemsList(index, addPlanItem, indexPlanItem)}
+              saveReminder={(data, itemIndex) => saveReminder(data, index, itemIndex)}
             />
           )
         }
@@ -163,7 +169,8 @@ PlanList.propTypes = {
   modifyPlanItemsList: PropTypes.func,
   handleSelectChange: PropTypes.func,
   savePlans: PropTypes.func,
-  businessAreas: PropTypes.array
+  businessAreas: PropTypes.array,
+  saveReminder: PropTypes.func
 };
 
 export default PlanList;
