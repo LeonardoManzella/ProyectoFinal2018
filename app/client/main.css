@@ -395,12 +395,6 @@ p.hash {
 
 .I-ChatBot ul.Messages {
   bottom: 6em;
-  position: relative;
-}
-
-.I-ChatBot ul.Messages li.Message,
-.I-ChatBot ul.ActionBar li.Action {
-  margin: 1em;
 }
 
 .chatbot-menu .I-ChatBot ul.Messages {
@@ -1360,12 +1354,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #interview-progress-bar {
-  margin: 5px;
-  border: 2px solid lightgray;
-  border-radius: 35px;
-  display: flex;
+  top: -30px;
+  position: relative;
+  /*display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;*/
 }
 
 #interview-progress-bar .elements-container {
@@ -1373,12 +1366,6 @@ input[type=number]::-webkit-outer-spin-button {
   justify-content: space-around;
   margin: 0;
 }
-
-#interview-progress-bar .elements-container div p{
-  margin: 10px 0;
-  text-align: center;
-}
-
 /* width */
 ::-webkit-scrollbar {
   width: 20px;
