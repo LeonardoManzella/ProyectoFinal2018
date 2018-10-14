@@ -11,7 +11,7 @@ class Logic {
   static currentQuestionNumber = 0;
 
   static progressBar () {
-		return ('<nav id="interview-progress-bar"><div class="elements-container"><div><p>Progreso de tu entrevista </p></div><div><progress id="interview-progress" max="1" value="0"></progress></div><div><p>Recordá que podés seguirla cuando quieras!</p></div></div></nav>');
+		return ('<nav id="interview-progress-bar"><div class="elements-container"><div><progress id="interview-progress" max="1" value="0"></progress></div></div></nav>');
 	};
 	
 	static addProgressBar () {
@@ -30,17 +30,16 @@ class Logic {
   static getStarted () {
     Logic.addProgressBar();
 
-    const userName = Meteor.users.findOne().personalInformation.name;
-    const getStartedQuestion = [
-      t('greetings1') + ' ' + userName + '!',
-      t('greetings2') + ' ' + userName + '!'
-    ].any(); 
+    const userName = Meteor.users.findOne().personalInformation.name; 
 
     Logic.currentQuestionNumber = 0;
 
     return [
+      ChatBotUtil.textMessage(t('greetings1') + ' ' + userName + '!'),
+      ChatBotUtil.textMessage(t('greetings2')),
+      ChatBotUtil.textMessage(t('greetings3')),
       ChatBotUtil.textMessage(
-        getStartedQuestion,
+        t('greetings4'),
         ChatBotUtil.makeReplyButton(
           t('responseGreetings'),
           Logic.nextQuestion

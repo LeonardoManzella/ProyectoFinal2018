@@ -1,4 +1,4 @@
-import { ChatBotUtil } from 'i-chatbot'
+import { ChatBotUtil } from './../../../../lib/interview-chatbot/lib/index'
 import { Meteor } from 'meteor/meteor';
 import { TAPi18n } from 'meteor/tap:i18n';
 
@@ -137,8 +137,8 @@ class Logic {
     ).concat(
       [
         ChatBotUtil.textMessage('Siguiendo esto vas a estar bien',
-        ChatBotUtil.makeReplyButton('Gracias!', Logic.menu)
-      )
+          ChatBotUtil.makeReplyButton('Gracias!', Logic.menu)
+        )
       ]
     );
   }

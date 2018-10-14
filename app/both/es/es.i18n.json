@@ -637,6 +637,8 @@
     "continueInterview" : "Continuar entrevista",
     "greetings1" : "Bienvenido",
     "greetings2" : "Ahora vamos a tener una entrevista para conocerle. Tenga en cuenta que va a llevar un rato largo. Pongase comodo",
+    "greetings3" : "Arriba de todo se muestra el progreso de la entrevista",
+    "greetings4" : "Recordá que podés parar y seguirla cuando quieras!",
     "responseGreetings" : "Gracias! Quiero empezar a modelar mi emprendimiento",
     "youCanSelectMoreOptions" : "Puedes seleccionar más opciones, o continuar a la siguiente pregunta",
     "nextQuestion" : "Siguiente pregunta",
@@ -750,13 +752,13 @@
 
      // ----------------------------- IDENTITY QUESTIONS -----------------------------
     "what_words_1" : "¿Con qué conjunto de palabras se identifica (slecciona más de un grupo)?",
-    "hate_numbers" : "Odio los Números/Se me dificulta la parte numérica",
+    "hate_numbers" : "Odio los Números/ Se me dificulta la parte numérica",
     "extrovert" : "Extrovertido/Tengo energía ",
     "likes_travel" : "Viajar por el mundo",
-    "techie" : "Techie/Tecnológico",
-    "ambitious" : "Ambicioso/Gritón/Exacerbado/Autoritario/Con Poder",
-    "organized" : "Seriedad/Responsable/Estructurado/Ordenado/Metódico/Tengo método",
-    "trustfull" : "Confío en los demás /Sé delegar en los demás",
+    "techie" : "Techie/ Tecnológico",
+    "ambitious" : "Ambicioso/ Gritón/ Exacerbado /Autoritario/ Con Poder",
+    "organized" : "Seriedad/ Responsable/ Estructurado/ Ordenado/ Metódico/ Tengo método",
+    "trustfull" : "Confío en los demás/ Sé delegar en los demás",
     "social" : "Soy sociable/Me gusta hablar con los demás/Tengo empatía",
     "non_social" : "No soy sociable/ No me gusta hablar con los demás/ Soy calentón",  // Tiene aptitudes para ser programador...
     "creative" : "Intuitivo/ Creativo/ Locura/ Lúdico/ Chiflado",
@@ -765,7 +767,7 @@
 
     // Separo en dos la pregunta, porque 24 botones juntos no quedan bien
     "what_words_2" : "Continuemos con su identidad. ¿Qué palabras creé que lo identifican?",
-    "shy_and_afraid" : "Tengo Miedo/ Soy Pesimista/ Timidez/Miedo al ridículo",
+    "shy_and_afraid" : "Tengo Miedo/ Soy Pesimista/ Timidez/ Miedo al ridículo",
     "persistent" : "Perseverancia / Concentración",
     "humorous" : "Buena persona/ Sensible/ Buen Humor / Siempre positivo/ Simpático/ Alegre",
     "passion" : "Calidez/ Pasión",

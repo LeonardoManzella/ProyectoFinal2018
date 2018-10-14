@@ -29,24 +29,6 @@ export default class ExpertChatbot extends React.Component {
 	}
 
 	getChatContent() {
-
-		if (!this.state.isPendingChatbot) {
-			return (
-				<div className="GetStarted Content content-body">
-					<div className="FullSizeTable">
-						<div className="AlignMiddle">
-							<img src="/img/emprendimientos-logo.png" className='Justin'/>
-								<div className="welcome-title">
-									<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
-									<h3>Haz terminado tu entrevista inicial</h3>
-									<span><button onClick={() => FlowRouter.go('reviewInterview')}>Revisar Entrevista</button></span>
-								</div>	
-						</div>
-					</div>
-				</div>
-			)
-		}
-
 		if (!this.state.hasStartedChat) {
 			return (
 				<div className="GetStarted Content content-body">
