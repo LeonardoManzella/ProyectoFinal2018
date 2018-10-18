@@ -449,100 +449,53 @@
     "organize_billing": "Organice la facturación, obtenga una cuenta bancaria a nombre de la empresa para poder trabajar con ella. Tener bien los papeles para evitar problemas.",
 
     "arrange_bank_loans": "Tramite en el banco lo necesario para poder obtener préstamos rápidos o sacar dinero a descubierto para emergencias.",
-
     "arrange_passport": "Tramite su pasaporte para poder viajar ante una oportunidad. Tenga los documentos al día.",
-
     "take_time_communicate": "No necesita contestar inmediatamente a todo el mundo, puede tomarse un tiempo para comunicarse y socializar.",
-
     "talk_directly_about_problems": "No postergue los problemas, háblelos de forma directa.", 
-
     "relaxing_decorations": "Puede comprar muebles y decoraciones relajantes que le den energía para su espacio de trabajo.", 
-
-    "digital_payments": "Utilice medios de pago digitales, va a tener mayor flexibilidad. Usar los que son reconocidos positivamente así tendrá menos dolores de cabeza.", 
-
+    "digital_payments": "Utilice medios de pago digitales, tendrá mayor flexibilidad.", 
     "local_payments": "Investigue los medios de pago que acostumbran usar sus clientes y use los mismos, para facilitar el pago.",
-
-    "update_netbook": "Actualice o compre su Netbook. Asi tendrá mas flexibilidad, ahorrará tiempo de trabajo y dolores de cabeza. Es una inversión necesaria para mejorar.", 
-
-    "everything_online": "Trate de tener todas las cosas digitales, así siempre tiene todo a mano, sea mas flexible y evite problemas. Usar Google Drive, Google Docs, etc.", 
-
-    "outsource_accounting": "Si no sabe hacerlo usted, subcontrate un servicio de adminitracion + contaduría. Concentrese en su negocio, no en los impuestos.",
-
-    "strengthen_leading_experience": "Refuerce la experiencia de líder que posee, leyendo en internet o con cursos porque no es lo mismo liderar gente en un emprendimiento.",
-
-    "learn_leadership": "Aprenda a manejar gente, haga cursos de liderazgo o que sus empleados formen equipos autogestionados.",
-
-    "self_managed_team": "Puede formar equipos autogestionados así es más fácil dirigir, piense en implementar una holocracia o el trabajo por objetivos en equipo.", 
-
-    "paid_ads": "Te conviene usar publicidad paga para llegar a tus clientes. Pensá qué publicidades de otros productos y servicios ellos pueden estar viendo.", 
-
-    "local_social_networks": "Piense en usar las redes sociales que usan sus clientes, debe estar en todas las que usan, así ven su marca por múltiples lados.", 
-
-    "digital_store": "Conviene tener una página web que sea tienda digital, así es más fácil convencer a los clientes de que le compren y confien en usted.",
-
+    "update_netbook": "Actualice o compre su Netbook. Es una inversión necesaria para poder adminsitrar y controlar su negocio.", 
+    "everything_online": "Digitalice sus documentos, sea mas flexible y evite problemas. Use Google Drive, Google Docs, etc.", 
+    "outsource_accounting": "Subcontrate un servicio de adminitracion + contaduría si usted no sabe realizar una tarea. Concentrese en su negocio, no en los impuestos.",
+    "strengthen_leading_experience": "Refuerce la experiencia de líder que posee. Puede leer en internet o con cursos.",
+    "learn_leadership": "Aprenda a liderar gente, haga cursos de liderazgo.",
+    "self_managed_team": "Fomente que se formen equipos autogestionados. Piense en implementar una holocracia o el trabajo por objetivos en equipo.", 
+    "paid_ads": "Le conviene usar publicidad paga para llegar a sus clientes. Piense el segmento de mercado al cual apunta su publicidad.", 
+    "local_social_networks": "Piense en usar las redes sociales que usan sus clientes.", 
+    "digital_store": "Disponga de una página web que sea tienda digital, así es más fácil convencer a los clientes de que le compren y confien en usted.",
     "physical_communications": "Enfóquese en usar carteles, folletos que generen impacto, tener creatividad. Asegúrese estar en Google Maps y tener página web optimizada para celulares.", 
-    
-    "digital_communications": "Enfóquese en las comunicaciones digitales y marketing digital: blogs, email marketing, tener tu página optimizada para buscadores y para celulares, etc.",
-
+    "digital_communications": "Enfóquese en las comunicaciones digitales y marketing digital: blogs, email marketing, tener su página optimizada para buscadores.",
     "ecommerce_association": "Busque qué sitios de Ecommerce tienen presencia internacional y resuelven los envíos a otros países para conseguir clientes nuevos.", 
-    
-    "investors_deck_ready": "Debe tener una buena presentación preparada y actualizada para mostrar a inversores porque las oportunidades son pocas. Actualicela una vez al mes o cada dos meses.",
-      
-    "communication_association": "Haga alianzas comunicacionales, piense quién más puede vender su producto que le genere valor agregado a él o sus clientes.", 
-    
-    "outsource_communications": "Puede contratar a agencias de marketing y comunicación para que hagan toda la comunicacion por usted.", 
-    
+    "investors_deck_ready": "Debe tener una buena presentación preparada y actualizada para mostrar a inversores. Actualicela una vez al mes o cada dos meses.",
+    "communication_association": "Haga alianzas comunicacionales, piense quién más puede vender su producto que le genere valor agregado a sus clientes.", 
+    "outsource_communications": "Contrate agencias de marketing y comunicación para que gestionen la comunicacion por usted.", 
     "communicate_methodology": "Comunique su forma de trabajar para dar confianza a personas externas para convertirlos en clientes.", 
-	  
     "care_about_design": "Es clave que cuide el diseño de toda la comunicación, que sea coherente el mensaje que quiere dar.",
-
-    "use_achievements_branding": "Aproveche su situación académica y reconocimientos que tenga para armar su marca sobre ellos, va a hacer una gran diferencia a la competencia.", 
-
-    "guerrilla_marketing": "Busque la manera de hacer marketing no convencional, lo llamado Guerrilla Marketing y Growth Hacking. Algo que rompa con los estándares de publicidad.",
-
+    "use_achievements_branding": "Aproveche su situación académica y reconocimientos que tenga para armar su marca personal. Esto lo distinguirá por sobre el resto de la competencia.", 
+    "guerrilla_marketing": "Haga marketing no convencional, lo llamado Guerrilla Marketing y Growth Hacking. Algo que rompa con los estándares de publicidad.",
     "press_and_magazines": "Contáctese con la prensa, sobre todo con jóvenes periodístas que están mas abiertos a nuevas oportunidades y a revistas donde pueda aportar valor.",
-
     "client_frequent_places": "Vaya a los lugares donde frecuentan sus clientes. Aproveche para estar cerca de ellos.",
-
     "create_sas": "Arme una SAS (Sociedad por Acciones Simplificadas) es la forma más sencilla de registrar un emprendimiento. Se puede realizar en 24 horas.",
-    
     "iva_90_days_delay": "Puede hacer uso de la ley PYME N° 27264 la cual permite pagar IVA 90 dias despues de la facturación. Esto brinda flexibilidad financiera.",
-
-    "travel_documents": "Tené el pasaporte al día, también la visa del país que deseas visitar, en caso de ser necesaria. Averiguá si hay restricciones para entrar al país que viajás.",
-
-    "accounting_balance": "Tenes que tener un programa contable que registre ingresos y egresos de dinero. Se denominan ERP y sirven también para gestionar inventario y otros activos.",
-
-    "handle_payments": "Establecer los medios de pagos que aceptará el negocio y comunicarse con las entidades responsables.",
-
-    "mercadopago": "La tarea de controlar los cobros en el presente portal, se brindan lineamientos basicos. Esto no significa que no sea necesaria la asesoria de un contador público.",
-
-    "money_really_took": "Hay dos principios económicos que tenes que tener en cuenta: el principio de devengado y percibido.",
-
-    "salaries_check": "Hay que acreditar los procesos de pagos de sueldos con externos. Esto ahorra tiempo y permite que no se produzcan posibles equivocaciones.",
-
-    "tax_checklist": "Es importante no olvidar pagar ningún impuesto, el primer mes conviene contar con la asesoría de un contador, ya los meses siguientes no es necesario.",
-
-    "cross_check_control": "Hay que efectuar doble control sobre la facturación y pagos. No debe ser la misma persona que hizo el proceso la que controle la tarea.",
-
+    "travel_documents": "Tenga el pasaporte al día, también la visa del país que desee visitar, en caso de ser necesaria. Averigue si hay restricciones para entrar al país que desee viajar.",
+    "accounting_balance": "Adquiera un programa contable que registre ingresos y egresos de dinero. Se denominan ERP y sirven también para gestionar inventario y otros activos.",
+	"handle_payments": "Establezca los medios de pagos que aceptará el negocio y comunicarse con las entidades responsables.",
+    "mercadopago": "Se brindan lineamientos basicos en mercado pago para controlar los cobros. Esto no significa que no sea necesaria la asesoria de un contador público.",
+    "money_really_took": "Hay dos principios económicos que debe tener en cuenta: el principio de devengado y percibido.",
+	"salaries_check": "Acredite los procesos de pagos de sueldos con externos. Esto ahorra tiempo y permite que no se produzcan posibles equivocaciones.",
+    "tax_checklist": "Recuerde pagar los impuestos siempre. El primer mes es conveniente contar con la asesoría de un contador, ya los meses siguientes no será necesario.",
+    "cross_check_control": "Efectue un doble control sobre la facturación y pagos. No debe ser la misma persona que hizo el proceso la que controle la tarea.",
     "ensurance": "Contempla la contratación de seguros para los activos más costosos de perder. Un activo es cualquier cosa que ponga dinero en tu bolsillo.",
-
-    "register_brand": "Hay que registrar el nombre de la empresa y la idea del producto en el correspondiente lugar. Hay que ir al Instituto Nacional de la Propiedad Industrial.",
-
-    "money_requirements": "Es conveniente conseguir financiamiento para poder apalancarse y obtener mayores divididendos mediante mayores gastos en marketing, producto, personal.",
-
-    "sustitute_products": "Es necesario definir y conocer cuáles son los potenciales productos sustitutos desde el punto de vista del cliente.",	
-
-    "pro_network": "En eventos y cursos uno puede conocer a gente muy importante e influyente que puede apalancar su negocio. Armar una red profesional, conviene usar LinkedIn.",
-
-    "study_competitors": "Saber quiénes son los competidores en el mercado y estudiarlos, ya que ellos serán la vara contra la cual los clientes medirán el precio y calidad de sus productos.",
-
-    "selling_strategy": "Es importante ver cómo los competidores gestionan las ventas, esto puede ayudarlo a no tener que reinventar un factor no determinante en su industria.",
-
-    "understand_customer": "Hay que dedicar tiempo a saber quiénes son sus clientes y cómo usted logrará atender la necesidad de ellos. Tiene que clasificarlos y segmentarlos por comportamiento.",
-
+    "register_brand": "Registre el nombre de la empresa y la idea del producto en el correspondiente lugar. Hay que ir al Instituto Nacional de la Propiedad Industrial.",
+    "money_requirements": "Consiga financiamiento para poder apalancarse y obtener mayores divididendos mediante mayores gastos en marketing, producto, personal.",
+    "sustitute_products": "Defina y conozca cuáles son los potenciales productos sustitutos desde el punto de vista del cliente.",	
+    "pro_network": "En eventos y cursos uno puede conocer a gente muy importante e influyente que puede apalancar su negocio. Arme una red profesional, para ello conviene usar LinkedIn.",
+    "study_competitors": "Sepa quiénes son los competidores en el mercado y estudiarlos, ya que ellos serán la vara contra la cual los clientes medirán el precio y calidad de sus productos.",
+    "selling_strategy": "Investigue a sus competidores, averigue cómo los competidores gestionan las ventas, esto puede ayudarlo a no tener que reinventar un factor no determinante en su industria.",
+    "understand_customer": "Dedique tiempo a saber quiénes son sus clientes y cómo usted logrará atender la necesidad de ellos. Tiene que clasificarlos y segmentarlos por comportamiento.",
     "understand_product": "Debe preguntarse, ¿Cómo facilitirá o mejorará la vida del cliente el producto que usted brinda? ¿Por qué un cliente compraría su producto y no el de la competencia?",
-
-    "aim_premium": "Usted posee una personalidad la cuál suele estar alineada con lo que se denomina público premium, que es aquel que no le importa pagar mucho dinero por productos."
+    "aim_premium": "Usted posee una personalidad la cuál suele estar alineada con lo que se denomina público premium, apunte sus productos a gente que no le importa pagar mucho dinero por productos."
   },
   "plan": {
     "management_plan": {
