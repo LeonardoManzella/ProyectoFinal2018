@@ -51,18 +51,22 @@ if (Meteor.isServer) {
                 let identity_traits = JSON.stringify(Meteor.users.findOne(this.userId).identity_traits).replace(/\"/g,'');
 
                 let duplicated_partial_suggestions = [];
-                let query_string = `suggest(${actual_plan_context}, ${goals}, ${contributions}, ${identity_traits}, Sugerencias_final).`;
+                let advanced_mixed_suggestions = [];
+                let query_string = `suggest(${actual_plan_context}, ${goals}, ${contributions}, ${identity_traits}, Sugerencias_final, Sugerencias_mixtas_avanzadas).`;
                 console.log(`Query String: ${query_string}`);
                 const query = await engine.createQuery(query_string);
                 try {
                     let result = await query.next();
                     console.log(`Prolog returned: ${JSON.stringify(result.Sugerencias_final)}`);
+                    console.log(`Prolog returned (advanced): ${JSON.stringify(result.Sugerencias_mixtas_avanzadas)}`);
                     duplicated_partial_suggestions = fromRecursionToArray(result.Sugerencias_final);
+                    advanced_mixed_suggestions = fromRecursionToArray(result.Sugerencias_mixtas_avanzadas);
                 } finally {
                     await query.close();
                 }
                 engine.close();
-                let final_ordered_suggestions = sortByFrequency(duplicated_partial_suggestions);
+                let final_ordered_suggestions = advanced_mixed_suggestions;
+                final_ordered_suggestions.concat(sortByFrequency(duplicated_partial_suggestions));
                 console.log(`Ordered Suggestions: ${JSON.stringify(final_ordered_suggestions)}`);
                 resolve(final_ordered_suggestions);
             })().catch((err) => {

@@ -3,7 +3,7 @@
   "appLocation": {
     "local": "./app/"
   },
-  "meteorSettingsLocation": "./settings/production.json",
+  "meteorSettingsLocation": "./setting.json",
   "meteorSettingsInRepo": false,
   "prebuildScript": "",
   "meteorBuildFlags": "--architecture os.linux.x86_64",

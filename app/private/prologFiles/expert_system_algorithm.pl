@@ -1,4 +1,4 @@
-suggest(Actual_plan_context, Goals, Contributions, Identity_traits, Final_Suggestions) :- 	 find_objetives_suggestions(Actual_plan_context, Goals, Goals_suggestions), find_contributions_suggestions(Actual_plan_context, Contributions, Contributions_suggestions), find_identity_suggestions(Actual_plan_context, Identity_traits, Identity_suggestions), find_mixed_suggestions(Actual_plan_context, Goals, Contributions, Identity_traits, Mixed_suggestions), append(Goals_suggestions, Contributions_suggestions, Pre_partial_suggestions), append(Pre_partial_suggestions, Identity_suggestions, Partial_suggestions), append(Partial_suggestions, Mixed_suggestions, Post_Partial_Suggestions), extra_Suggestion(Actual_plan_context, ExtraSuggestion),append(Post_Partial_Suggestions, ExtraSuggestion, Final_Suggestions). 
+suggest(Actual_plan_context, Goals, Contributions, Identity_traits, Final_Suggestions, Mixed_suggestions) :- 	 find_objetives_suggestions(Actual_plan_context, Goals, Goals_suggestions), find_contributions_suggestions(Actual_plan_context, Contributions, Contributions_suggestions), find_identity_suggestions(Actual_plan_context, Identity_traits, Identity_suggestions), append(Goals_suggestions, Contributions_suggestions, Pre_partial_suggestions), append(Pre_partial_suggestions, Identity_suggestions, Partial_suggestions), extra_Suggestion(Actual_plan_context, ExtraSuggestion),append(Partial_suggestions, ExtraSuggestion, Final_Suggestions), find_mixed_suggestions(Actual_plan_context, Goals, Contributions, Identity_traits, Mixed_suggestions). 
  
 extra_Suggestion(Actual_plan_context, ExtraSuggestion):- 
 findall( Suggestion, find_extra_suggest(Actual_plan_context,Suggestion),  ExtraSuggestion).  
@@ -22,11 +22,11 @@ find_identity_suggestions(Actual_plan_context, Identity_traits, Identity_suggest
 
 find_one_identity_suggestion(Actual_plan_context, Identity_traits, Suggestion) :-  can_suggest(Actual_plan_context, Suggestion), member(Caracteristica_identidad,Identity_traits),  valid_identity_rule(Caracteristica_identidad,Suggestion).
 
-find_mixed_suggestions(Actual_plan_context, Goals, Contributions, Identity_traits, Mixed_suggestions) :- append(Goals, Contributions, Pre_mixed_traits_list), append(Pre_mixed_traits_list, Identity_traits, Mixed_traits_list),  findall( Suggestion, find_one_mixed_suggestion(Actual_plan_context, Mixed_traits_list, Suggestion),  Mixed_suggestions). 
+find_mixed_suggestions(Actual_plan_context, Goals, Contributions, Identity_traits, Mixed_suggestions) :- append(Goals, Contributions, Pre_mixed_traits_list), append(Pre_mixed_traits_list, Identity_traits, Mixed_traits_list),  findall( Suggestion, find_one_mixed_suggestion(Actual_plan_context, Mixed_traits_list, Suggestion),  Pre_Mixed_suggestions), findall( Suggestion, find_one_advanced_suggestion(Actual_plan_context, Mixed_traits_list, Suggestion),  Post_Mixed_suggestions), append(Pre_Mixed_suggestions, Post_Mixed_suggestions, Mixed_suggestions). 
 
-find_one_mixed_suggestion(Actual_plan_context, Mixed_traits_list, Suggestion) :-  can_suggest(Actual_plan_context, Suggestion), member(First_trait, Mixed_traits_list), member(Second_trait, Mixed_traits_list),  different(First_trait, Second_trait), regla_valida_combinacion(First_trait,Second_trait, Suggestion).
+find_one_mixed_suggestion(Actual_plan_context, Mixed_traits_list, Suggestion) :-  can_suggest(Actual_plan_context, Suggestion), member(First_trait, Mixed_traits_list), member(Second_trait, Mixed_traits_list), regla_valida_combinacion(First_trait,Second_trait, Suggestion).
 
-different(First_trait, Second_trait) :- not(First_trait == Second_trait) .
+find_one_advanced_suggestion(Actual_plan_context, Mixed_traits_list, Suggestion) :-  can_suggest(Actual_plan_context, Suggestion), member(First_trait, Mixed_traits_list), member(Second_trait, Mixed_traits_list), member(Third_trait, Mixed_traits_list), regla_avanzada_combinacion(First_trait,Second_trait, Third_trait, Suggestion).
 
 
 % RULES
@@ -53,6 +53,7 @@ can_suggest(commercial_plan, carefull_deadlines).
 can_suggest(commercial_plan, sell_talks).
 can_suggest(commercial_plan, sell_workshops).
 can_suggest(commercial_plan, logistics).
+can_suggest(commercial_plan, logistic_partner).
 
 can_suggest(management_plan, find_funding).
 can_suggest(management_plan, save_for_urgency).
@@ -358,6 +359,10 @@ regla_valida_combinacion(non_social, allow_association, hire_business_manager).
 regla_valida_combinacion(has_savings_or_funding, allow_association, hire_business_manager).
 regla_valida_combinacion(has_savings_or_funding, strengthen_your_team, hire_experienced_employees).
 regla_valida_combinacion(travel, doesnt_have_passport, arrange_passport).
+
+
+regla_avanzada_combinacion(global, physical, alone, logistic_partner).
+regla_avanzada_combinacion(global, physical, alone, find_partner_for_support).
 
 
 
