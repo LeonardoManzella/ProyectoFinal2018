@@ -1467,3 +1467,40 @@ input[type=number]::-webkit-outer-spin-button {
   margin-left: 0;
   margin-right: 10px;
 }
+
+.reviewInterviewQuestion {
+  cursor: default;
+  background: rgba(216, 215, 220, 0.8);
+  vertical-align: baseline;
+  outline: 0;
+  padding: 10px;
+  border: none;
+  color: #212121;
+  font-weight: 500;
+  box-shadow: none;
+  border-radius: 15px;
+  margin: 5px 10px 20px 10px;
+}
+
+.reviewInterviewAnswer {
+  cursor: default;
+  background: rgba(48, 116, 255, 0.8);
+  vertical-align: baseline;
+  outline: 0;
+  padding: 10px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  box-shadow: none;
+  border-radius: 15px;
+  margin: 5px 10px 20px 10px;
+}
+
+.reviewInterviewAnswers {
+  padding-left: 40px;
+}
+
+.reviewInterviewAnswers h4{
+  margin-left: 10px;
+  font-size: 14px;
+}
