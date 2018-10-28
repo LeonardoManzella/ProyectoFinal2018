@@ -54,6 +54,7 @@ can_suggest(commercial_plan, sell_talks).
 can_suggest(commercial_plan, sell_workshops).
 can_suggest(commercial_plan, logistics).
 can_suggest(commercial_plan, logistic_partner).
+can_suggest(commercial_plan, travel_strategically).
 
 can_suggest(management_plan, find_funding).
 can_suggest(management_plan, save_for_urgency).
@@ -95,6 +96,8 @@ can_suggest(management_plan, outsource_accounting).
 can_suggest(management_plan, strengthen_leading_experience).
 can_suggest(management_plan, learn_leadership).
 can_suggest(management_plan, self_managed_team).
+can_suggest(management_plan, consultant_100_percent_online_and_notebook_updated).
+can_suggest(management_plan, be_ordered_and_disciplined).
 
 can_suggest(communication_plan, paid_ads).
 can_suggest(communication_plan, local_social_networks).
@@ -113,7 +116,7 @@ can_suggest(communication_plan, use_achievements_branding).
 can_suggest(communication_plan, guerrilla_marketing).
 can_suggest(communication_plan, press_and_magazines).
 can_suggest(communication_plan, client_frequent_places).
-
+can_suggest(communication_plan, drawing_as_clear_as_posible).
 
 
 can_suggest(legal_plan, create_sas).
@@ -130,6 +133,8 @@ can_suggest(legal_plan, cross_check_control).
 can_suggest(legal_plan, ensurance).
 can_suggest(legal_plan, register_brand).
 can_suggest(legal_plan, money_requirements).
+can_suggest(legal_plan, dont_reveal_strategies_on_the_web).
+can_suggest(legal_plan, make_a_work_contract).
 
 can_suggest(marketing_plan, sustitute_products).
 can_suggest(marketing_plan, pro_network).
@@ -137,6 +142,8 @@ can_suggest(marketing_plan, study_competitors).
 can_suggest(marketing_plan, understand_customer).
 can_suggest(marketing_plan, understand_product).
 can_suggest(marketing_plan, aim_premium). 
+can_suggest(marketing_plan, prearmed_dresses_published).
+can_suggest(marketing_plan, understand_customer_and_product).
 
 
 valid_objetives_rule(wants_recognition, direct_marketing).
@@ -361,8 +368,47 @@ regla_valida_combinacion(has_savings_or_funding, strengthen_your_team, hire_expe
 regla_valida_combinacion(travel, doesnt_have_passport, arrange_passport).
 
 
+% CASO 1: diseñadora nomada digital 
+%sugerencia comercial 
+regla_avanzada_combinacion(global, digital, flexibility, travel_strategically).
+%sugerencia administracion 
+regla_avanzada_combinacion(global, digital, flexibility, be_ordered_and_disciplined).
+%sugerencia comunicacional 
+regla_avanzada_combinacion(global, digital, flexibility, communication_association).
+%sugerencia legal 
+regla_avanzada_combinacion(global, digital, flexibility, make_a_work_contract).
+%sugerencia marketing  
+regla_avanzada_combinacion(global, digital, flexibility, understand_customer_and_product).
+
+
+% CASO 2: consultora de diseño y de marcas 
+%sugerencia comercial 
+regla_avanzada_combinacion(local, physical, creative, direct_marketing).
+%sugerencia administracion 
+regla_avanzada_combinacion(local, physical, creative, consultant_100_percent_online_and_notebook_updated).
+%sugerencia comunicacional 
+regla_avanzada_combinacion(local, physical, creative, digital_communications).
+%sugerencia legal 
+regla_avanzada_combinacion(local, physical, creative, dont_reveal_strategies_on_the_web).
+%sugerencia marketing  
+regla_avanzada_combinacion(local, physical, creative, study_competitors).
+
+
+
+
+% CASO 3: pibe que es modista 
+%sugerencia comercial 
 regla_avanzada_combinacion(global, physical, alone, logistic_partner).
+%sugerencia administracion 
 regla_avanzada_combinacion(global, physical, alone, find_partner_for_support).
+%sugerencia comunicacional 
+regla_avanzada_combinacion(global, physical, alone, drawing_as_clear_as_posible).
+%sugerencia legal 
+regla_avanzada_combinacion(global, physical, alone, handle_payments).
+%sugerencia marketing  
+regla_avanzada_combinacion(global, physical, alone, prearmed_dresses_published).
+
+
 % TODO Guido Yari agreguen mas sugerencias aca y los textos en el es.i18n.json
 
 
