@@ -245,7 +245,7 @@ class InterviewQuestions {
             ],
             multipleSelection: true,
             selectedAnswers: [],
-            type: 'identity'
+            type: 'perpetual_identity'
           },
 
           {
@@ -266,7 +266,7 @@ class InterviewQuestions {
             ],
             multipleSelection: true,
             selectedAnswers: [],
-            type: 'identity'
+            type: 'perpetual_identity'
           },
 
           {
@@ -276,7 +276,7 @@ class InterviewQuestions {
             ],
             multipleSelection: true,
             selectedAnswers: [],
-            type: 'perpetual_identity'
+            type: 'identity'
           },
 
           {
