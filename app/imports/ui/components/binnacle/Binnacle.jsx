@@ -89,7 +89,8 @@ class Binnacle extends React.Component {
 					<div className="section-item-title">
 						<input type="checkbox"
 									checked={!!task.completed}
-									onChange={() => this.markTask(index, planId)}/>
+									onChange={() => this.markTask(index, planId)}
+									disabled={Roles.userIsInRole(Meteor.userId(), ['administrator'])}/>
 						<label>{task.taskDescription}</label>
 					</div>
 					<div className="description">
@@ -163,8 +164,51 @@ class Binnacle extends React.Component {
 		return <div>Nicole </div>;
 	}
 
-	render() {
+	getBoard(boardData) {
+		if (!Roles.userIsInRole(Meteor.userId(), ['administrator'])) {
+			return (
+				<Board 
+					onDataChange={this.onDataChange.bind(this)}
+					data={boardData}
+					draggable
+					laneDraggable={true}
+					editable={true}
+					eventBusHandle={setEventBus}
+					customLaneHeader={
+						<button
+							className='pink-button edit-lane'
+							onClick={(e) => this.setState({laneModalIsOpen: true, selectedLaneId: e.target.id})}
+						>
+							Editar Reunión
+						</button>
+					}
+					// onLaneClick={(laneId) => this.setState({laneModalIsOpen: true, selectedLaneId: laneId})}
+					onCardClick={(cardId, metadata, laneId) => {
+						this.setState({
+							cardModalIsOpen: true,
+							selectedCardLaneId: laneId,
+							selectedCardId: cardId}
+						);
+					}}
+				/>
+			);
+		}
+		return (
+			<Board 
+				onDataChange={this.onDataChange.bind(this)}
+				data={boardData}
+				draggable
+				laneDraggable={false}
+				editable={false}
+				eventBusHandle={setEventBus}
+				customLaneHeader={<div />}
+				addCardLink={<div />}
+				hideCardDeleteIcon={true}
+			/>
+		);
+	}
 
+	render() {
 		let { boardData } = this.state;
 		const { plans, swot, contingencyPlan } = this.props;
 
@@ -210,34 +254,16 @@ class Binnacle extends React.Component {
 									<h3>Reuniones</h3>
 								</div>
 								<div className="col-md-6 actions">
-									<a className="icon" onClick={() => this.addSection(boardData)}>
-										<img src='/img/add.svg'/>
-										Agregar Reunión
-									</a>
+									{!Roles.userIsInRole(Meteor.userId(), ['administrator']) ? (
+										<a className="icon" onClick={() => this.addSection(boardData)}>
+											<img src='/img/add.svg'/>
+											Agregar Reunión
+										</a>
+										): <div />
+									}
 								</div>
 							</div>
-							<Board 
-								onDataChange={this.onDataChange.bind(this)}
-								data={boardData}
-								draggable
-								laneDraggable={true}
-								editable={true}
-								eventBusHandle={setEventBus}
-								customLaneHeader={
-									<button
-										className='pink-button edit-lane'
-										onClick={(e) => this.setState({laneModalIsOpen: true, selectedLaneId: e.target.id})}
-									>
-										Editar Reunión
-									</button>
-								}
-								// onLaneClick={(laneId) => this.setState({laneModalIsOpen: true, selectedLaneId: laneId})}
-								onCardClick={(cardId, metadata, laneId) => this.setState({
-									cardModalIsOpen: true,
-									selectedCardLaneId: laneId,
-									selectedCardId: cardId}
-								)}
-								/>
+							{this.getBoard(boardData)}
 						</div>
 					</div>
 				</div>

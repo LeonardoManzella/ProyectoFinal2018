@@ -138,14 +138,17 @@ class Canvas extends React.Component {
             <div className="col-md-6">
               <h2>Áreas de Negocio</h2>
             </div>
-            <div className="col-md-6">
-              <button onClick={this.saveBusinessAreas.bind(this)}>
-                {this.checkEntrepreneurStatus() ? 'Guardar Cambios y Avanzar' : 'Guardar Cambios'}
-              </button>
-              <button onClick={this.addBusinessArea.bind(this)} className="btn pull-right">
-                Agregar Área 
-              </button>
-            </div>
+            { !Roles.userIsInRole(Meteor.userId(), ['administrator']) ? (
+              <div className="col-md-6">
+                <button onClick={this.saveBusinessAreas.bind(this)}>
+                  {this.checkEntrepreneurStatus() ? 'Guardar Cambios y Avanzar' : 'Guardar Cambios'}
+                </button>
+                <button onClick={this.addBusinessArea.bind(this)} className="btn pull-right">
+                  Agregar Área 
+                </button>
+              </div>
+              ) : <div className="col-md-6" />
+            }
         </div>
         {
           this.state.businessAreas.map((businessArea, index) =>

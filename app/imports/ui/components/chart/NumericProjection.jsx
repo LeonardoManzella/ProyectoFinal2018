@@ -143,6 +143,7 @@ export default class NumericProjection extends React.Component {
 								value={this.state[row][index].value}
 								className={rowInputClass}
 								onChange={(e) => this.handleNumericTableInputChange(e, row, index)}
+								disabled={Roles.userIsInRole(Meteor.userId(), ['administrator'])}
 							/>
 							<p className='small italic-proyectos text-danger'>
 								{this.state[row][index].error}
@@ -266,9 +267,12 @@ export default class NumericProjection extends React.Component {
               <h2>Proyección numérica</h2>
             </div>
             <div className="col-md-6">
-              <button onClick={this.saveNumericProjection.bind(this)}>
-                Guardar Cambios
-              </button>
+							{ !Roles.userIsInRole(Meteor.userId(), ['administrator']) ?
+									<button onClick={this.saveNumericProjection.bind(this)}>
+										Guardar Cambios
+									</button>
+									: <div />
+							}
             </div>
         </div>
 				<div className="row header">
@@ -279,6 +283,7 @@ export default class NumericProjection extends React.Component {
 							name='initialCapital'
 							value={this.state.initialCapital}
 							onChange={this.handleNumericInputChange.bind(this)}
+							disabled={Roles.userIsInRole(Meteor.userId(), ['administrator'])}
 						/>
 						<p className='small italic-proyectos text-danger'>{this.state.errors.initialCapital}</p>
 					</div>
@@ -289,6 +294,7 @@ export default class NumericProjection extends React.Component {
 						name='periodicity'
 						value={this.state.periodicity}
 						onChange={(e) => this.setState({periodicity: e.target.value, calculateLinearRegression: false})}
+						disabled={Roles.userIsInRole(Meteor.userId(), ['administrator'])}
 					>
 						<option value="monthly">Mensual</option>
 						<option value="yearly">Anual</option>
@@ -304,6 +310,7 @@ export default class NumericProjection extends React.Component {
 							value={this.state.amount}
 							onChange={this.handleNumericInputChange.bind(this)}
 							onKeyPress={(e) => e.preventDefault()}
+							disabled={Roles.userIsInRole(Meteor.userId(), ['administrator'])}
 						/>
 						<p className='small italic-proyectos text-danger'>{this.state.errors.amount}</p>
 					</div>

@@ -52,7 +52,7 @@ export class EntrepreneurList extends React.Component {
                     <td>{entrepreneur.personalInformation.status === 'approved' ?
                       <button onClick={() => {
                         FlowRouter.go('adminHome', {userId: entrepreneur._id});
-                      }}>VER</button> : ''}</td>
+                      }} className='pink-button' style={{padding: '5px 10px 5px 10px'}}>VER</button> : ''}</td>
                   </tr>
                 ))
               }

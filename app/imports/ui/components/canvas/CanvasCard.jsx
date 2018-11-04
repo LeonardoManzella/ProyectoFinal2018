@@ -23,14 +23,17 @@ class CanvasCard extends React.Component {
               {validationsHelper.getErrorMessage(businessAreaErrors.name.message)}
             </p>
           </h2>
-          <CrudActions
-            isEditable={isEditable}
-            iconsColor=''
-            editAction={changeEditOptionBusinessArea}
-            deleteAction={deleteBusinessArea}
-            confirmAction={changeEditOptionBusinessArea}
-            denyAction={changeEditOptionBusinessArea}
-          />
+          { !Roles.userIsInRole(Meteor.userId(), ['administrator']) ?
+              <CrudActions
+                isEditable={isEditable}
+                iconsColor=''
+                editAction={changeEditOptionBusinessArea}
+                deleteAction={deleteBusinessArea}
+                confirmAction={changeEditOptionBusinessArea}
+                denyAction={changeEditOptionBusinessArea}
+              />
+              : <div />
+          }
         </div>
         <div className="row">
           <div className="col-md-3">
@@ -78,7 +81,7 @@ class CanvasCard extends React.Component {
                 </thead>
                 <tbody>
                   {
-                    businessAreaData.competitors.map((competitor, index) =>
+                    (businessAreaData.competitors || []).map((competitor, index) =>
                       <tr key={index}>
                         <td>
                           <input
