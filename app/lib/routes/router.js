@@ -21,6 +21,7 @@ import SwotContainer from '../../imports/ui/containers/swotAndRisksContainers/Sw
 import RisksContainer from '../../imports/ui/containers/swotAndRisksContainers/RisksContainer';
 import HomePage from '../../imports/ui/components/HomePage';
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot.jsx'
+import PaymentPage from '../../imports/ui/components/payment/PaymentPage.jsx'
 import Calendar from '../../imports/ui/components/calendar/Calendar.jsx'
 import ReviewInterview from '../../imports/ui/components/expertChatbot/ReviewInterview'
 import EntrepreneurList from '../../imports/ui/components/entrepreneurList/EntrepreneurList';
@@ -152,6 +153,13 @@ FlowRouter.route('/chatbot', {
   action: function() {
     mount(MainLayout, {content: <ExpertChatbot/>});
   }
+})
+
+FlowRouter.route('/payment', {
+    name: 'payment',
+    action: function() {
+        mount(MainLayout, {content: <PaymentPage/>});
+    }
 })
 
 FlowRouter.route('/reviewInterview', {
