@@ -111,7 +111,7 @@ class MainHeader extends React.Component {
           {!(this.checkUserStatus('pendingChatbot') || this.checkUserStatus('pendingAreas')
             || this.checkUserStatus('pendingPlans')) ?
             this.getTabSelected('Chart', '/chart') : ''}
-          {this.getTabSelected('Suscripción', '/payment')}
+          {this.getTabSelected('Pago', '/payment')}
         </Menu>
       </div>
     );
