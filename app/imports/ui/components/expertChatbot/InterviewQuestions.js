@@ -40,6 +40,7 @@ class InterviewQuestions {
             "question" : "product_types_interested_on_selling",
             "possibleAnswers" : [
               "musica",
+              "galeria",
               "objetos_de_cultura",
               "muebles",
               "indumentaria",
