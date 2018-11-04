@@ -32,7 +32,6 @@ export class ExpertChatbot extends React.Component {
 		console.log('question number ' + questionNumber);
 		
 		this.setState({
-			hasStartedChat: false,
 			hasBeganInterview: questionNumber > 0,
 			hasFinishedInterview: questionNumber === InterviewQuestions.allQuestions.length + 1,
 			questionNumber,
