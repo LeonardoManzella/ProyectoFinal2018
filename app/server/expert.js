@@ -66,7 +66,7 @@ if (Meteor.isServer) {
                 }
                 engine.close();
                 let final_ordered_suggestions = advanced_mixed_suggestions;
-                final_ordered_suggestions.concat(sortByFrequency(duplicated_partial_suggestions));
+                final_ordered_suggestions = final_ordered_suggestions.concat(sortByFrequency(duplicated_partial_suggestions));
                 console.log(`Ordered Suggestions: ${JSON.stringify(final_ordered_suggestions)}`);
                 resolve(final_ordered_suggestions);
             })().catch((err) => {
