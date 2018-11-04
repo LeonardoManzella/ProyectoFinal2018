@@ -26,7 +26,8 @@ const SwotContainer = withTracker((props) => {
           frequency: task.frequency.time,
           frequencyType: task.frequency.type,
           frequencyValue: task.frequency.value,
-          frequencySecondValue: task.frequency.secondaryValue
+          frequencySecondValue: task.frequency.secondaryValue,
+          userId: props.userId
         }));
     }
   });

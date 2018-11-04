@@ -229,7 +229,7 @@ class PlanPage extends React.Component {
       });
       return;
     }
-    Meteor.call('insertNewPlanList', this.state.plans, (error) => {
+    Meteor.call('insertNewPlanList', this.state.plans, this.props.userId, (error) => {
       if (error) {
         console.log(error);
         this.setState({
@@ -294,6 +294,7 @@ class PlanPage extends React.Component {
               savePlans={this.savePlans.bind(this)}
               businessAreas={this.props.businessAreas}
               saveReminder={this.saveReminder.bind(this)}
+              userId={this.props.userId}
             />
           </div>
         </div>

@@ -113,7 +113,7 @@ class Swot extends React.Component {
   }
 
   saveSwot() {
-    Meteor.call('insertSwot', this.state.swot, this.state.swotTasks);
+    Meteor.call('insertSwot', this.state.swot, this.state.swotTasks, this.props.userId);
   }
 
 	render() {
@@ -163,7 +163,8 @@ class Swot extends React.Component {
 Swot.propTypes = {
   loading: PropTypes.bool,
   swot: PropTypes.object,
-  tasks: PropTypes.array
+  tasks: PropTypes.array,
+  userId: PropTypes.userId
 };
 
 export default Swot;

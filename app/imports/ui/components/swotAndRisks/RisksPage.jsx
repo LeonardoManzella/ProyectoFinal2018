@@ -54,7 +54,7 @@ class RisksPage extends React.Component {
   }
 
   saveRisks() {
-    Meteor.call('insertRisks', this.state.risks, this.state.contingencyPlans);
+    Meteor.call('insertRisks', this.state.risks, this.state.contingencyPlans, this.props.userId);
   }
 
 	render() {
@@ -101,7 +101,8 @@ class RisksPage extends React.Component {
 RisksPage.propTypes = {
   loading: PropTypes.bool,
   risks: PropTypes.array,
-  contingencyPlans: PropTypes.array
+  contingencyPlans: PropTypes.array,
+  userId: PropTypes.string
 };
 
 export default RisksPage;

@@ -94,14 +94,15 @@ const userTasksSchema = new SimpleSchema({
   }
 });
 
-UserTasks.insertPlanList = (plans) => {
+UserTasks.insertPlanList = (plans, userId) => {
   plans.forEach(plan => {
     plan.planTypeList.map(planType => {
       const businessArea = planType.data.planArea ? planType.data.planArea : 'all';
       const userTasks = {};
-      UserTasks.remove({type: 'plan', subtype: plan.name, businessArea, userId: Meteor.userId()}) //FIXME need to put email also?
-      userTasks.userId = Meteor.userId();
-      userTasks.userEmail = Meteor.users.findOne( Meteor.userId() ).emails[0].address;
+      const planUserId = userId ? userId : Meteor.userId();
+      UserTasks.remove({type: 'plan', subtype: plan.name, businessArea, userId: planUserId}) //FIXME need to put email also?
+      userTasks.userId = planUserId;
+      userTasks.userEmail = Meteor.users.findOne({_id: planUserId}).emails[0].address;
       userTasks.type = 'plan';
       userTasks.subtype = plan.name;
       userTasks.businessArea = businessArea;
@@ -122,9 +123,10 @@ UserTasks.insertPlanList = (plans) => {
 };
 
 //Fixme: arreglar codigo repetido
-UserTasks.insertSwotTasks = (swotTasks) => {
-  UserTasks.remove({userId: Meteor.userId(), type: 'swot'});
-  Swots.removeUserTaskIds();
+UserTasks.insertSwotTasks = (swotTasks, userId) => {
+  const swotUserId = userId ? userId : Meteor.userId();
+  UserTasks.remove({userId: swotUserId, type: 'swot'});
+  Swots.removeUserTaskIds(userId);
   swotTasks.forEach(swotTask => {
     const newSwotTask = {
       responsibleID: swotTask.responsible,
@@ -137,12 +139,12 @@ UserTasks.insertSwotTasks = (swotTasks) => {
         time: swotTask.frequency
       }
     };
-    const swotElement = Swots.findOne({userId: Meteor.userId(), description: swotTask.element});
+    const swotElement = Swots.findOne({userId: swotUserId, description: swotTask.element});
     if (swotElement) {
       if (!swotElement.userTasksId) {
         const userTask = {};
-        userTask.userId = Meteor.userId();
-        userTask.userEmail = Meteor.users.findOne( Meteor.userId() ).emails[0].address;
+        userTask.userId = swotUserId;
+        userTask.userEmail = Meteor.users.findOne( swotUserId ).emails[0].address;
         userTask.type = 'swot';
         userTask.tasks = [newSwotTask];
         const newUserTaskId = UserTasks.insert(userTask);
@@ -154,9 +156,10 @@ UserTasks.insertSwotTasks = (swotTasks) => {
   });
 }
 
-UserTasks.insertContingencyPlans = (contingencyPlans) => {
-  UserTasks.remove({userId: Meteor.userId(), type: 'contingencyPlan'});
-  Risks.removeUserTaskIds();
+UserTasks.insertContingencyPlans = (contingencyPlans, userId) => {
+  const planUserId = userId ? userId : Meteor.userId();
+  UserTasks.remove({userId: planUserId, type: 'contingencyPlan'});
+  Risks.removeUserTaskIds(userId);
   contingencyPlans.forEach(contingencyPlan => {
     const newContingencyPlanTask = {
       responsibleID: contingencyPlan.responsible,
@@ -168,12 +171,12 @@ UserTasks.insertContingencyPlans = (contingencyPlans) => {
         secondaryValue: contingencyPlan.frequencySecondValue,
         time: contingencyPlan.frequency
       }};
-    const risk = Risks.findOne({userId: Meteor.userId(), risk: contingencyPlan.element});
+    const risk = Risks.findOne({userId: planUserId, risk: contingencyPlan.element});
     if (risk) {
       if (!risk.userTasksId) {
         const userTask = {};
-        userTask.userId = Meteor.userId();
-        userTask.userEmail = Meteor.users.findOne( Meteor.userId() ).emails[0].address;
+        userTask.userId = planUserId;
+        userTask.userEmail = Meteor.users.findOne({_id: planUserId}).emails[0].address;
         userTask.type = 'contingencyPlan';
         userTask.tasks = [newContingencyPlanTask];
         const newUserTaskId = UserTasks.insert(userTask);

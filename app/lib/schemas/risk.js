@@ -35,11 +35,12 @@ const risksSchema = new SimpleSchema({
   }
 });
 
-Risks.insertRisks = (risks) => {
-  Risks.remove({userId: Meteor.userId()});
+Risks.insertRisks = (risks, userId) => {
+  const riskUserId = userId ? userId : Meteor.userId();
+  Risks.remove({userId: riskUserId});
   risks.forEach(risk => {
     const newRisk = Object.assign({}, risk);
-    newRisk.userId = Meteor.userId();
+    newRisk.userId = riskUserId;
     Risks.insert(newRisk);
   });
 };
@@ -48,8 +49,8 @@ Risks.updateUserTaskId = (_id, userTasksId) => {
   Risks.update({_id}, {$set: {userTasksId}});
 };
 
-Risks.removeUserTaskIds = () => {
-  Risks.update({userId: Meteor.userId()}, {$unset: {userTasksId: ""}}, {multi: true});
+Risks.removeUserTaskIds = (userId) => {
+  Risks.update({userId: userId ? userId : Meteor.userId()}, {$unset: {userTasksId: ""}}, {multi: true});
 };
 
 Risks.attachSchema(risksSchema);

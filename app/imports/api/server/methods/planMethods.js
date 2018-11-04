@@ -3,9 +3,9 @@ import { UserTasks } from '../../../../lib/schemas/userTask';
 
 if (Meteor.isServer) {
   Meteor.methods({
-    'insertNewPlanList'(plans) {
+    'insertNewPlanList'(plans, userId) {
       try {
-        const newPlanId = UserTasks.insertPlanList(plans);
+        const newPlanId = UserTasks.insertPlanList(plans, userId);
         if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur']) &&
           Meteor.user() && Meteor.user().personalInformation.status === 'pendingPlans') {
           Meteor.users.update({_id: Meteor.userId()}, {$set: {'personalInformation.status': 'approved'}});

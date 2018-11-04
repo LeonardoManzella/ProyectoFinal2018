@@ -33,12 +33,12 @@ const swotsSchema = new SimpleSchema({
   }
 });
 
-Swots.insertSwot = (swot) => {
-  Swots.remove({userId: Meteor.userId()});
+Swots.insertSwot = (swot, userId) => {
+  Swots.remove({userId: userId ? userId : Meteor.userId()});
   ['strengths', 'weaknesses', 'opportunities', 'threats'].forEach(swotElement => {
     swot[swotElement].forEach(element => {
       const newSwotElement = {};
-      newSwotElement.userId = Meteor.userId();
+      newSwotElement.userId = userId ? userId : Meteor.userId();
       newSwotElement.type = swotElement;
       newSwotElement.description = element;
       Swots.insert(newSwotElement);
@@ -50,8 +50,8 @@ Swots.updateUserTaskId = (_id, userTasksId) => {
   Swots.update({_id}, {$set: {userTasksId}});
 };
 
-Swots.removeUserTaskIds = () => {
-  Swots.update({userId: Meteor.userId()}, {$unset: {userTasksId: ""}}, {multi: true});
+Swots.removeUserTaskIds = (userId) => {
+  Swots.update({userId: userId ? userId : Meteor.userId()}, {$unset: {userTasksId: ""}}, {multi: true});
 };
 
 Swots.attachSchema(swotsSchema);

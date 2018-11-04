@@ -5,10 +5,10 @@ import { UserTasks } from '../../../../lib/schemas/userTask';
 
 if (Meteor.isServer) {
   Meteor.methods({
-    'insertSwot'(swot, swotTasks) {
+    'insertSwot'(swot, swotTasks, userId) {
       try {
-        const newSwotId = Swots.insertSwot(swot);
-        UserTasks.insertSwotTasks(swotTasks);
+        const newSwotId = Swots.insertSwot(swot, userId);
+        UserTasks.insertSwotTasks(swotTasks, userId);
         return newSwotId;
       } catch (exception) {
         console.log(exception);

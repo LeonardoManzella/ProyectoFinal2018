@@ -89,7 +89,8 @@ class PlanList extends React.Component {
       handleSelectChange,
       savePlans,
       businessAreas,
-      saveReminder
+      saveReminder,
+      userId
     } = this.props;
     const isEditable = true;
     return (
@@ -114,7 +115,10 @@ class PlanList extends React.Component {
             <button onClick={savePlans}>
               Guardar Cambios
             </button>
-            <button onClick={() => FlowRouter.go('planList')}>
+            <button onClick={() => FlowRouter.go(
+              userId ? 'adminPlanList' : 'planList',
+              userId ? {userId} : {}
+            )}>
               Volver
             </button>
             {/* <button onClick={addPlan}>
@@ -170,7 +174,8 @@ PlanList.propTypes = {
   handleSelectChange: PropTypes.func,
   savePlans: PropTypes.func,
   businessAreas: PropTypes.array,
-  saveReminder: PropTypes.func
+  saveReminder: PropTypes.func,
+  userId: PropTypes.string
 };
 
 export default PlanList;

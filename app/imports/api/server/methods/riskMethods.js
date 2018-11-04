@@ -4,10 +4,10 @@ import { UserTasks } from '../../../../lib/schemas/userTask';
 
 if (Meteor.isServer) {
   Meteor.methods({
-    'insertRisks'(risks, contingencyPlans) {
+    'insertRisks'(risks, contingencyPlans, userId) {
       try {
-        Risks.insertRisks(risks);
-        UserTasks.insertContingencyPlans(contingencyPlans);
+        Risks.insertRisks(risks, userId);
+        UserTasks.insertContingencyPlans(contingencyPlans, userId);
       } catch (exception) {
         console.log(exception);
         return exception;

@@ -29,7 +29,8 @@ const RisksContainer = withTracker((props) => {
   return {
     loading,
     risks,
-    contingencyPlans
+    contingencyPlans,
+    userId: props.userId
   };
 })(RisksPage);
 
