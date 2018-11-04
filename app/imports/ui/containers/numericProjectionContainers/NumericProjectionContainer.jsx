@@ -3,10 +3,10 @@ import { withTracker } from 'meteor/react-meteor-data';
 import NumericProjection from '../../components/chart/NumericProjection';
 import { NumericProjections } from '../../../../lib/schemas/numericProjection';
 
-const NumericProjectionContainer = withTracker(() => {
-  const numericProjectionSubs = Meteor.subscribe('getnumericProjection');
+const NumericProjectionContainer = withTracker((props) => {
+  const numericProjectionSubs = Meteor.subscribe('getnumericProjection', props.userId);
   const loading = !numericProjectionSubs.ready();
-  const numericProjection = NumericProjections.findOne({userId: Meteor.userId()});
+  const numericProjection = NumericProjections.findOne({userId: props.userId ? props.userId : Meteor.userId()});
   return {
     loading,
     numericProjection

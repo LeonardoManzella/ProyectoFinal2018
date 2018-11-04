@@ -23,6 +23,7 @@ import HomePage from '../../imports/ui/components/HomePage';
 import ExpertChatbot from '../../imports/ui/components/expertChatbot/ExpertChatbot.jsx'
 import Calendar from '../../imports/ui/components/calendar/Calendar.jsx'
 import ReviewInterview from '../../imports/ui/components/expertChatbot/ReviewInterview'
+import EntrepreneurList from '../../imports/ui/components/entrepreneurList/EntrepreneurList';
 
 export const DEFAULT_ROUTE = 'home';
 const publicRoutes = [DEFAULT_ROUTE, 'landing', 'profile', 'pending', 'notFound'];
@@ -95,14 +96,14 @@ FlowRouter.triggers.enter([mustBeAllowedToAccessRoute], {except: publicRoutes});
 
 FlowRouter.route('/', {
   name: 'home',
-  action: function() {
+  action: function(params) {
     const status =  Meteor.user() ?  Meteor.user().personalInformation.status :  Meteor.user();
     if (isEntrepreneurAndIsntApproved(status)) {
       FlowRouter.go(allowedRoutesByEntrepreneurStatus[status][0]);
     } else if (Roles.userIsInRole(Meteor.userId(), ['entrepreneur'])) {
       mount(MainLayout, {content: <Binnacle/>});
     } else { 
-      mount(MainLayout, {content: <Activity/>});
+      mount(MainLayout, {content: <EntrepreneurList/>});
     }
   }
 });
@@ -234,5 +235,59 @@ FlowRouter.route('/confirmRegistration/:refcode/', {
         mount(NotFound);
       }
     });
+  }
+});
+
+FlowRouter.route('/:userId', {
+  name: 'adminHome',
+  action: function(params) {
+    if (params.userId) {
+      mount(MainLayout, {content: <Binnacle userId={params.userId}/>});
+    } else { 
+      mount(MainLayout, {content: <EntrepreneurList/>});
+    }
+  }
+});
+
+FlowRouter.route('/:userId/chatbot', {
+  name: 'adminChatbot',
+  action: function(params) {
+    mount(MainLayout, {content: <ExpertChatbot userId={params.userId}/>});
+  }
+});
+FlowRouter.route('/:userId/reviewInterview', {
+  name: 'adminReviewInterview',
+  action: function(params) {
+    mount(MainLayout, {content: <ReviewInterview userId={params.userId}/>});
+  }
+})
+FlowRouter.route('/:userId/canvas', {
+  name: 'adminCanvas',
+  action: function(params) {
+    mount(MainLayout, {content: <CanvasContainer userId={params.userId}/>});
+  }
+});
+FlowRouter.route('/:userId/planList', {
+  name: 'adminPlanList',
+  action: function(params, queryParams) {
+    mount(MainLayout, {content: <PlanContainer planName={queryParams.planName} userId={params.userId}/>});
+  }
+});
+FlowRouter.route('/:userId/swot', {
+  name: 'adminSwot',
+  action: function(params) {
+    mount(MainLayout, {content: <SwotContainer userId={params.userId}/> } );
+  }
+});
+FlowRouter.route('/:userId/risks', {
+  name: 'adminRisks',
+  action: function(params) {
+    mount(MainLayout, {content: <RisksContainer userId={params.userId}/>});
+  }
+});
+FlowRouter.route('/:userId/chart', {
+  name: 'adminChart',
+  action: function(params) {
+    mount(MainLayout, {content: <NumericProjectionContainer userId={params.userId}/>});
   }
 });

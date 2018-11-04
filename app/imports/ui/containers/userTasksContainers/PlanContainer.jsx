@@ -27,8 +27,8 @@ const getPlansFromUserTasks = (userTasks) => {
   return planTypeList;
 };
 
-const PlanContainer = withTracker(() => {
-  const planSubs = Meteor.subscribe('getPlanUserTasks');
+const PlanContainer = withTracker((props) => {
+  const planSubs = Meteor.subscribe('getPlanUserTasks', props.userId);
   const areasSubs = Meteor.subscribe('getBusinessAreasNames');
   const loading = !planSubs.ready() || !areasSubs.ready();
   const userTasks = UserTasks.find().fetch();
@@ -37,7 +37,8 @@ const PlanContainer = withTracker(() => {
   return {
     loading,
     planTypeList,
-    businessAreas
+    businessAreas,
+    userId: props.userId
   };
 })(PlanPage);
 

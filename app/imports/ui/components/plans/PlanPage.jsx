@@ -299,6 +299,8 @@ class PlanPage extends React.Component {
         </div>
       );
     }
+    const redirectName = this.props.userId ? 'adminPlanList' : 'planList'; 
+    const params = this.props.userId ? {userId: this.props.userId} : {};
 		return (
       <div>
         <div className="content-body plan">
@@ -312,21 +314,21 @@ class PlanPage extends React.Component {
           </div>
           <div className="row">
             <div className="col-md-4">
-              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'management_plan'})}>
+              <a onClick={() => FlowRouter.go(redirectName, params, {planName: 'management_plan'})}>
                 <div className="plan-card">
                   <h2> PLAN DE ADMINISTRACIÓN </h2>
                 </div>
               </a>
             </div>
             <div className="col-md-4">
-              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'communication_plan'})}>
+              <a onClick={() => FlowRouter.go(redirectName, params, {planName: 'communication_plan'})}>
                 <div className="plan-card">
                   <h2> PLAN DE COMUNICACIÓN </h2>
                 </div>
               </a>
             </div>
             <div className="col-md-4">
-              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'commercial_plan'})}>
+              <a onClick={() => FlowRouter.go(redirectName, params, {planName: 'commercial_plan'})}>
                 <div className="plan-card">
                   <h2> PLAN COMERCIAL </h2>
                 </div>
@@ -336,14 +338,14 @@ class PlanPage extends React.Component {
           <div className="row">
             <div className="col-md-2" />
             <div className="col-md-4">
-              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'legal_plan'})}>
+              <a onClick={() => FlowRouter.go(redirectName, params, {planName: 'legal_plan'})}>
                 <div className="plan-card">
                   <h2> PLAN LEGAL </h2>
                 </div>
               </a>
             </div>
             <div className="col-md-4">
-              <a onClick={() => FlowRouter.go('planList', {}, {planName: 'marketing_plan'})}>
+              <a onClick={() => FlowRouter.go(redirectName, params, {planName: 'marketing_plan'})}>
                 <div className="plan-card">
                   <h2> PLAN DE MARKETING </h2>
                 </div>
@@ -381,7 +383,8 @@ class PlanPage extends React.Component {
 PlanPage.propTypes = {
   loading: PropTypes.bool,
   planTypeList: PropTypes.array,
-  businessAreas: PropTypes.array
+  businessAreas: PropTypes.array,
+  userId: PropTypes.string
 };
 
 PlanPage.defaultProps = {

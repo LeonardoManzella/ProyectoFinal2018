@@ -3,10 +3,10 @@ import { publishComposite } from 'meteor/reywood:publish-composite';
 import { UserTasks } from '../../../../lib/schemas/userTask';
 import { Risks } from '../../../../lib/schemas/risk';
 
-publishComposite('getRisks', function() {
+publishComposite('getRisks', function(userId) {
   return {
     find() {
-      return Risks.find({userId: this.userId});
+      return Risks.find({userId: userId ? userId : this.userId});
     },
     children: [
       {

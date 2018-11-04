@@ -6,6 +6,7 @@ import SharedMethods from '../../api/helpers/sharedMethods';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { slide as Menu } from 'react-burger-menu';
+import allowedRoutesByRole from '../../../lib/routes/allowedRoutesByRole';
 
 class MainHeader extends React.Component {
   constructor(props) {
@@ -54,6 +55,38 @@ class MainHeader extends React.Component {
   }
 
   renderMenuButton() {
+    if (Roles.userIsInRole(Meteor.userId(), ['administrator'])) {
+      if (FlowRouter._current.params.userId) {
+        return (
+          <div className="main-menu">
+            <Menu
+              customBurgerIcon={
+                <a className="navbar-brand" href="">
+                  <img src="/img/emprendimientos-logo.png" height="30"/>
+                </a>
+              }
+            >
+              {this.getTabSelected('Bitacora', '/' + FlowRouter._current.params.userId)}
+              {this.getTabSelected('ChatBot', '/' + FlowRouter._current.params.userId + '/chatbot')}
+              {this.getTabSelected('Canvas', '/' + FlowRouter._current.params.userId + '/canvas')}
+              {this.getTabSelected('Planes', '/' + FlowRouter._current.params.userId + '/planList')}
+              {this.getTabSelected('FODA', '/' + FlowRouter._current.params.userId + '/swot')}
+              {this.getTabSelected('Riesgos', '/' + FlowRouter._current.params.userId + '/risks')}
+              {this.getTabSelected('Chart', '/' + FlowRouter._current.params.userId + '/chart')}
+              {this.getTabSelected('Volver', '/')}
+            </Menu>
+          </div>
+        );
+      } else {
+        return (
+          <div className="main-menu">
+            <a className="navbar-brand" href="">
+              <img src="/img/emprendimientos-logo.png" height="30"/>
+            </a>
+          </div>
+        );
+      }
+    }
     return (
       <div className="main-menu">
         <Menu
@@ -78,11 +111,6 @@ class MainHeader extends React.Component {
           {!(this.checkUserStatus('pendingChatbot') || this.checkUserStatus('pendingAreas')
             || this.checkUserStatus('pendingPlans')) ?
             this.getTabSelected('Chart', '/chart') : ''}
-          {/* {this.getTabSelected('Tareas', '/tasksBoard')} */}
-          {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
-            this.getTabSelected('Usuarios', '/usersList') : ''}
-          {Roles.userIsInRole(Meteor.userId(), ['administrator'])?
-            this.getTabSelected('Reminders', '/reminders') : ''}  
         </Menu>
       </div>
     );

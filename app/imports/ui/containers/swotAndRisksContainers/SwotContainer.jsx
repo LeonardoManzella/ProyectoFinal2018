@@ -4,8 +4,8 @@ import Swot from '../../components/swotAndRisks/Swot';
 import { Swots } from '../../../../lib/schemas/swot';
 import { UserTasks } from '../../../../lib/schemas/userTask';
 
-const SwotContainer = withTracker(() => {
-  const swotSubs = Meteor.subscribe('getSwot');
+const SwotContainer = withTracker((props) => {
+  const swotSubs = Meteor.subscribe('getSwot', props.userId);
   const loading = !swotSubs.ready();
   const userSwot = Swots.find().fetch();
   const swot = {'strengths': [], 'weaknesses': [], 'opportunities': [], 'threats': []};

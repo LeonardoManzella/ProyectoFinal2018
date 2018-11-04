@@ -83,13 +83,22 @@ export class ReviewInterview extends React.Component {
 
 }
 
-export default withTracker(() => {
-  const userSubs = Meteor.subscribe('getUserInterviewData');
+export default withTracker((props) => {
+  const userSubs = Meteor.subscribe('getUserInterviewData', props.userId);
   const loading = !userSubs.ready();
+  let goals = Meteor.user().goals || [];
+  let contributions = Meteor.user().contributions || [];
+  let identity_traits = Meteor.user().identity_traits || [];
+  if (props.userId) {
+    const user = Meteor.users.findOne({_id: props.userId});
+    goals = user ? user.goals : [];
+    contributions = user ? user.contributions : [];
+    identity_traits = user ? user.identity_traits : [];
+  }
   return {
-		goals: Meteor.user().goals,
-		contributions: Meteor.user().contributions,
-		identity_traits: Meteor.user().identity_traits,
+		goals,
+		contributions,
+		identity_traits,
 		loading
   };
 })(ReviewInterview);

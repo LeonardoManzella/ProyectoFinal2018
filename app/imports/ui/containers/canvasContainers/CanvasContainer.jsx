@@ -4,8 +4,8 @@ import { UserTasks } from '../../../../lib/schemas/userTask';
 import Canvas from '../../components/canvas/Canvas';
 import { BusinessAreas } from '../../../../lib/schemas/businessArea';
 
-const CanvasContainer = withTracker(() => {
-  const canvasSubs = Meteor.subscribe('getBusinessAreas');
+const CanvasContainer = withTracker((props) => {
+  const canvasSubs = Meteor.subscribe('getBusinessAreas', props.userId);
   const loading = !canvasSubs.ready();
   const businessAreas = BusinessAreas.find().fetch();
   return {

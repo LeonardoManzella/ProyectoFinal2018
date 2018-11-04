@@ -4,8 +4,8 @@ import { UserTasks } from '../../../../lib/schemas/userTask';
 import { Risks } from '../../../../lib/schemas/risk';
 import RisksPage from '../../components/swotAndRisks/RisksPage';
 
-const RisksContainer = withTracker(() => {
-  const risksSubs = Meteor.subscribe('getRisks');
+const RisksContainer = withTracker((props) => {
+  const risksSubs = Meteor.subscribe('getRisks', props.userId);
   const loading = !risksSubs.ready();
   const risks = Risks.find().fetch();
   const userContingencyPlans = UserTasks.find().fetch();

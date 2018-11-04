@@ -4,14 +4,15 @@ import Logic from './Logic.js'
 import { TAPi18n } from 'meteor/tap:i18n';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import InterviewQuestions from './InterviewQuestions';
+import { withTracker } from 'meteor/react-meteor-data';
 
-export default class ExpertChatbot extends React.Component {
+export class ExpertChatbot extends React.Component {
 	
 	constructor(props) {
 		super(props);
 
-		const isPendingChatbot = Meteor.users.findOne().personalInformation.status == 'pendingChatbot';
-		const questionNumber = Meteor.users.findOne().personalInformation.currentQuestionNumber;
+		const isPendingChatbot = props.user ? props.user.personalInformation.status == 'pendingChatbot' : props.user;
+		const questionNumber = props.user ? props.user.personalInformation.currentQuestionNumber : 1;
 
 		console.log('question number ' + questionNumber);
 
@@ -24,6 +25,21 @@ export default class ExpertChatbot extends React.Component {
 		};
 	}
 
+	componentWillReceiveProps(props) {
+		const isPendingChatbot = props.user ? props.user.personalInformation.status == 'pendingChatbot' : props.user;
+		const questionNumber = props.user ? props.user.personalInformation.currentQuestionNumber : 1;
+
+		console.log('question number ' + questionNumber);
+		
+		this.setState({
+			hasStartedChat: false,
+			hasBeganInterview: questionNumber > 0,
+			hasFinishedInterview: questionNumber === InterviewQuestions.allQuestions.length + 1,
+			questionNumber,
+			isPendingChatbot
+		});
+	}
+
 	showChatBot() {
 		this.setState({
 			hasStartedChat: true
@@ -32,10 +48,12 @@ export default class ExpertChatbot extends React.Component {
 
 	getMessage() {
 		if (this.state.hasFinishedInterview) {
+			const redirectName = this.props.userId ? 'adminReviewInterview' : 'reviewInterview';
+			const params = this.props.userId ? {userId: this.props.userId} : {};
 			return (
 				<div className="welcome-title">
 				<h1><strong>Felicidades por iniciar un emprendimiento</strong></h1>
-				<span><button onClick={() => FlowRouter.go('reviewInterview')}>Revisar Entrevista</button></span>
+				<span><button onClick={() => FlowRouter.go(redirectName, params)}>Revisar Entrevista</button></span>
 				</div>
 			);
 		} else if (this.state.hasBeganInterview) {
@@ -104,3 +122,18 @@ export default class ExpertChatbot extends React.Component {
 	}
 
 }
+
+export default withTracker((props) => {
+	let user = Meteor.user();
+	let loading = false;
+	if (props.userId) {
+		const userSubs = Meteor.subscribe('getUser', props.userId);
+		user = Meteor.users.findOne({_id: props.userId}),
+		loading = !userSubs.ready();
+	}
+  return {
+		user,
+		userId: props.userId,
+		loading
+  };
+})(ExpertChatbot);

@@ -3,10 +3,10 @@ import { publishComposite } from 'meteor/reywood:publish-composite';
 import { Swots } from '../../../../lib/schemas/swot';
 import { UserTasks } from '../../../../lib/schemas/userTask';
 
-publishComposite('getSwot', function() {
+publishComposite('getSwot', function(userId) {
   return {
     find() {
-      return Swots.find({userId: this.userId});
+      return Swots.find({userId: userId ? userId : this.userId});
     },
     children: [
       {

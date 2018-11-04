@@ -6,8 +6,8 @@ import { UserTasks } from '../lib/schemas/userTask';
  
 if (Meteor.isServer) {
 
-  Meteor.publish('boards', function boardsPublication() {
-    return Boards.find({userId: Meteor.userId()});
+  Meteor.publish('boards', function boardsPublication(userId) {
+    return Boards.find({userId: userId ? userId : Meteor.userId()});
   });
 
   Meteor.methods({

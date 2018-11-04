@@ -247,14 +247,15 @@ class Binnacle extends React.Component {
 	}
 }
 
-export default withTracker(() => {
-  const boardsSubs = Meteor.subscribe('boards');
-	const tasksSubs = Meteor.subscribe('getUserTasks');
+export default withTracker((props) => {
+  const boardsSubs = Meteor.subscribe('boards', props.userId);
+	const tasksSubs = Meteor.subscribe('getUserTasks', props.userId);
+	const userId = props.userId ? props.userId : Meteor.userId();
   return {
-		board: Boards.findOne({userId: Meteor.userId()}),
-		plans: UserTasks.find({userId: Meteor.userId(), type: 'plan'}).fetch(),
-		swot: UserTasks.find({userId: Meteor.userId(), type: 'swot'}).fetch(),
-		contingencyPlan: UserTasks.find({userId: Meteor.userId(), type: 'contingencyPlan'}).fetch(),
+		board: Boards.findOne({userId}),
+		plans: UserTasks.find({userId, type: 'plan'}).fetch(),
+		swot: UserTasks.find({userId, type: 'swot'}).fetch(),
+		contingencyPlan: UserTasks.find({userId, type: 'contingencyPlan'}).fetch(),
 		loading: !boardsSubs.ready() || !tasksSubs.ready()
   };
 })(Binnacle);
