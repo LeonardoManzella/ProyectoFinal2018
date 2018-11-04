@@ -580,6 +580,7 @@
     // FIXME por ahora lo dejamos en texto y en el futuro incorporamos lo de rubro ligero/facil o cmplejo/dificil
     "product_types_interested_on_selling" : "¿Le interesa vender alguno de estos tipos de productos?",
     "musica" : "Música",
+    "galeria" : "Galería de arte",
     "objetos_de_cultura" : "Objetos de Cultura",
     "muebles" : "Muebles",
     "indumentaria" : "Indumentaria",
