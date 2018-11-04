@@ -302,8 +302,9 @@ export default class NumericProjection extends React.Component {
 					<label> Cantidad: </label>
 					<div className="numeric-input">
 						<input
+							title="El mínimo debe ser de 3 meses para poder realizar la proyección"
 							type="number"
-							min="1"
+							min="3"
 							max="20"
 							className="dropdown-input"
 							name='amount'
@@ -312,8 +313,8 @@ export default class NumericProjection extends React.Component {
 							onKeyPress={(e) => e.preventDefault()}
 							disabled={Roles.userIsInRole(Meteor.userId(), ['administrator'])}
 						/>
-						<p className='small italic-proyectos text-danger'>{this.state.errors.amount}</p>
 					</div>
+					<p className='small italic-proyectos text-danger'>{this.state.errors.amount}</p>
 				</div>
 				<div className="row header">
           {this.renderTable()}

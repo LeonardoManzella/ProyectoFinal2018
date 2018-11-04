@@ -75,7 +75,10 @@ export class ReviewInterview extends React.Component {
           }
         </div>
         <div className="row" style={{marginTop: '20px'}}>
-          <button className='pink-button' onClick={() => FlowRouter.go('chatbot')}>Volver</button>
+          <button className='pink-button' onClick={() => this.props.userId ?
+            FlowRouter.go('adminChatbot', {userId: this.props.userId}) : FlowRouter.go('chatbot')}>
+            Volver
+          </button>
         </div>
 			</div>
 		);
@@ -99,6 +102,7 @@ export default withTracker((props) => {
 		goals,
 		contributions,
 		identity_traits,
-		loading
+    loading,
+    userId: props.userId
   };
 })(ReviewInterview);

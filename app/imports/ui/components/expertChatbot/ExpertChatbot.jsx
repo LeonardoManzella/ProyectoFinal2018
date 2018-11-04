@@ -11,8 +11,10 @@ export class ExpertChatbot extends React.Component {
 	constructor(props) {
 		super(props);
 
-		const isPendingChatbot = props.user ? props.user.personalInformation.status == 'pendingChatbot' : props.user;
-		const questionNumber = props.user ? props.user.personalInformation.currentQuestionNumber : 1;
+		const isPendingChatbot = props.user && props.user.personalInformation ?
+			props.user.personalInformation.status == 'pendingChatbot' : props.user;
+		const questionNumber = props.user && props.user.personalInformation ?
+			props.user.personalInformation.currentQuestionNumber : 1;
 
 		console.log('question number ' + questionNumber);
 
