@@ -1,6 +1,6 @@
 const allowedRoutesByRole = {
   entrepreneur: ['tasksBoard', 'chart', 'chatbot', 'canvas', 'planList',
-    'swot', 'risks', 'calendar','reviewInterview'],
+    'swot', 'risks', 'calendar','reviewInterview', 'payment'],
   administrator: ['tasksBoard', 'usersList', 'adminChart', 'adminChatbot', 'reminders', 'adminReviewInterview',
     'adminCanvas', 'adminPlanList', 'adminSwot', 'adminRisks', 'calendar','reviewInterview', 'adminHome'],
   adminAdmin: ['tasksBoard', 'usersList', 'chart', 'chatbot', 'reminders',
