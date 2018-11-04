@@ -399,7 +399,7 @@
   // ATOMICAS: pueden ir en cualquier orden y momento sin necesidad de contexto
   // TONO: Amigable e Imperativo, mira soy tu amigo, tenes que hacer esto, te lo recomiendo
   "suggestions": {
-    "direct_marketing": "Le conviene vender de forma directa, cara a cara en lo posible. Hacer marketing directo.", 
+    "direct_marketing": "Le conviene vender de forma directa, cara a cara en lo posible. Mantener una estructura de marketing directo.", 
     "logistic_association": "Puede aliarse con empresas de logística y servicios de envío, físicos y digitales. También los sitios de venta online pueden ser útiles como MercadoLibre, OLX, etc.", 
     "international_contacts": "Pregunte a conocidos o trate de integrarse con comunidades online del exterior y así obtener beneficios para su negocio.", 
     "outsource_sales": "Considere contratar vendedores externos, subcontratar a terceros. Consiga que alguien por fuera de la empresa venda por usted. Externalizar ventas es su foco.", 
@@ -466,7 +466,7 @@
     "local_social_networks": "Piense en usar las redes sociales que usan sus clientes.", 
     "digital_store": "Disponga de una página web que sea tienda digital, así es más fácil convencer a los clientes de que le compren y confien en usted.",
     "physical_communications": "Enfóquese en usar carteles, folletos que generen impacto, tener creatividad. Asegúrese estar en Google Maps y tener página web optimizada para celulares.", 
-    "digital_communications": "Enfóquese en las comunicaciones digitales y marketing digital: blogs, email marketing, tener su página optimizada para buscadores.",
+    "digital_communications": "Enfóquese en las comunicaciones digitales y marketing digital: blogs, email marketing, tener su página optimizada para buscadores. Genere valor digitalmente con su marca.",
     "ecommerce_association": "Busque qué sitios de Ecommerce tienen presencia internacional y resuelven los envíos a otros países para conseguir clientes nuevos.", 
     "investors_deck_ready": "Debe tener una buena presentación preparada y actualizada para mostrar a inversores. Actualicela una vez al mes o cada dos meses.",
     "communication_association": "Haga alianzas comunicacionales, piense quién más puede vender su producto que le genere valor agregado a sus clientes.", 
@@ -497,7 +497,15 @@
     "understand_customer": "Dedique tiempo a saber quiénes son sus clientes y cómo usted logrará atender la necesidad de ellos. Tiene que clasificarlos y segmentarlos por comportamiento.",
     "understand_product": "Debe preguntarse, ¿Cómo facilitirá o mejorará la vida del cliente el producto que usted brinda? ¿Por qué un cliente compraría su producto y no el de la competencia?",
     "aim_premium": "Usted posee una personalidad la cuál suele estar alineada con lo que se denomina público premium, apunte sus productos a gente que no le importa pagar mucho dinero por productos.",
-    "logistic_partner": "Busque un aliado para la logistica de su producto, que sepa como debe transportarse y entregarse sin problema a su segmento, que conozca la industria desde adentro."
+    "logistic_partner": "Busque un aliado para la logistica de su producto, que sepa como debe transportarse y entregarse sin problema a su segmento, que conozca la industria desde adentro.",
+    "prearmed_dresses_published": "Te conviene tener los vestidos prearmados ya publicados así es más fácil llegar al cliente.",
+    "drawing_as_clear_as_posible": "Hacé un diseño claro de los vestidos, transmití tu idea de manera clara para que el diseño en la web sea de calidad.",
+    "consultant_100_percent_online_and_notebook_updated": "Hoy por hoy todo es online, mostrá tu marca de manera creativa por la web. Tené la notebook actualizada, usar los programas de diseño va a ser más fácil de esta manera.",
+    "dont_reveal_strategies_on_the_web": "Tiene que entender que las estrategias que su negocio tiene sun confidenciales, y que los competidores no tienen que saberlas.",
+    "travel_strategically": "Tenes que saber a dónde está la gente que podes generar vinculos laborales importantes y que les puede interesar lo que vendés.",
+    "be_ordered_and_disciplined": "Sos independiente, viajás por el mundo, por ende tenés que ser tu propio contador y vendedor. Ordenate y sé discilplinado.",
+    "make_a_work_contract": "Te conviene hacer un contrato de trabajo, asi vos como diseñador y el cliente están de aucerdo con términos y condiciones.",
+    "understand_customer_and_product":"Si viajas por el mundo, sos tecnológico y flexible, focalizate en entender tanto al cliente como el producto que ofrecés."
   },
   "plan": {
     "management_plan": {
