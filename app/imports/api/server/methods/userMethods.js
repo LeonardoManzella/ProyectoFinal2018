@@ -43,6 +43,19 @@ if (Meteor.isServer) {
           name: user.name,
           surname: user.surname
         });
+        const TEMPLATE_BASICO_REGISTRO_USUARIO = Meteor.settings.private.TEMPLATE_BASICO;
+        const user_email_data = {
+          "name" : user.name,
+        };
+        Meteor.call('sendgrid.sendEmailRegister', TEMPLATE_BASICO_REGISTRO_USUARIO, user.email, user_email_data, (error, data) => {
+          console.log("Send Registration Email");
+          if(error) {
+              console.error("==== ERROR ===");
+              console.error(error);
+              console.error("==== TRACE ===");
+              console.trace();
+          }
+        });
         // newUser(user, newUserId, [], ['projectManager']);
         return newUserId;
       } catch (exception) {
