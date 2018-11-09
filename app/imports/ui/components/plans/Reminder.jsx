@@ -66,6 +66,7 @@ class Reminder extends React.Component {
     if (frequencyType === 'input') {
       return  (
         <input
+          type="number"
           className="frequency"
           name={fieldName}
           value={this.state[fieldName]}

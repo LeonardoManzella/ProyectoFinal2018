@@ -22,8 +22,6 @@ export default class HomePage extends Component {
             <div className="page-sections">
               <a href="#expert-system-section">SISTEMA EXPERTO</a>
               <a href="#team-section">NUESTRO EQUIPO</a>
-              <a href="#clients-section">CLIENTES</a>
-              <a href="#news-section">NOTICIAS</a>
               <a href="#contact-section">CONTACTO</a>
               <Login loginDropdownOpen={this.state.loginDropdownOpen}/>
             </div>
@@ -59,7 +57,6 @@ export default class HomePage extends Component {
                   <div className="welcome-title">
                     <h2>SISTEMA EXPERTO</h2>
                     <h4>Nuestro sistema experto te brindará ayuda para que puedas realizar tu propio emprendimiento creativo. Te otorgará información sobre distintos conceptos de negocio y te dará sugerencias basandose en tus características.</h4>
-                    <span><button className="transparent-button">Ver más</button></span>
                   </div>
                 </div>
               </div>
@@ -72,7 +69,6 @@ export default class HomePage extends Component {
                   <div className="welcome-title">
                     <h2>NUESTRO EQUIPO</h2>
                     <h4>El equipo se compone por consultores con conocimiento en industrias creativas, que junto con el sistema experto permitirán hacer un seguimiento del emprendimiento, además de un equipo de desarrollo.</h4>
-                    <span><button className="transparent-button">Ver más</button></span>
                   </div>
                 </div>
                 <div className="col-md-4">
@@ -105,8 +101,8 @@ export default class HomePage extends Component {
               <div className="table">
                 <div className="welcome-title">
                   <h2>Necesitás ayuda? Contactanos!</h2>
-                  <h4>Estamos para ayudarte. Podes contactarnos por teléfono, mail o a través de nuestras redes sociales.</h4>
-                  <span><button className="transparent-button">Ver más</button></span>
+                  <h4>Estamos para ayudarte. Podes contactarnos por mail.</h4>
+                  <h4><strong>leonardo.manzella+conaiisi@gmail.com</strong></h4>
                 </div>
               </div>
             </div>
