@@ -616,7 +616,7 @@
     "cash_deprived" : "No tengo/No sé cómo conseguirlo",
       
   
-    "has_or_account_question" : "¿¿Posee una cuenta bancaria para usar con el emprendimiento?", //Sleccion Unica
+    "has_or_account_question" : "¿Posee una cuenta bancaria para usar con el emprendimiento?", //Sleccion Unica
     "has_account" : "Sí",
     "doesnt_have_account" : "No",
     
