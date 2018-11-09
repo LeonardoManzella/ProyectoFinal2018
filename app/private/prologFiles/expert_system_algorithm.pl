@@ -36,13 +36,11 @@ can_suggest(commercial_plan, logistic_association).
 can_suggest(commercial_plan, international_contacts).
 can_suggest(commercial_plan, outsource_sales).
 can_suggest(commercial_plan, start_selling_followers).
-can_suggest(commercial_plan, talks_workshops).
 can_suggest(commercial_plan, trade_show).
 can_suggest(commercial_plan, embassy_association).
 can_suggest(commercial_plan, international_association).
 can_suggest(commercial_plan, brand_association).
 can_suggest(commercial_plan, politic_mayor_association).
-can_suggest(commercial_plan, influencers).
 can_suggest(commercial_plan, hire_business_manager).
 can_suggest(commercial_plan, work_near_clients).
 can_suggest(commercial_plan, use_CRM).
@@ -55,6 +53,8 @@ can_suggest(commercial_plan, sell_workshops).
 can_suggest(commercial_plan, logistics).
 can_suggest(commercial_plan, logistic_partner).
 can_suggest(commercial_plan, travel_strategically).
+can_suggest(commercial_plan, mercadopago).
+can_suggest(commercial_plan, sell_to_banks).
 
 can_suggest(management_plan, find_funding).
 can_suggest(management_plan, save_for_urgency).
@@ -125,7 +125,6 @@ can_suggest(legal_plan, travel_documents).
 can_suggest(legal_plan, accounting_balance).
 can_suggest(legal_plan, handle_payments).
 can_suggest(legal_plan, tax_checklist).
-can_suggest(legal_plan, mercadopago).
 can_suggest(legal_plan, public_accountant).
 can_suggest(legal_plan, money_really_took).
 can_suggest(legal_plan, salaries_check).
@@ -406,8 +405,10 @@ regla_avanzada_combinacion(global, physical, alone, drawing_as_clear_as_posible)
 %sugerencia legal 
 regla_avanzada_combinacion(global, physical, alone, handle_payments).
 %sugerencia marketing  
-regla_avanzada_combinacion(global, physical, alone, prearmed_dresses_published).
+regla_avanzada_combinacion(indumentaria, physical, alone, prearmed_dresses_published).
 
+% AGREGAR AGUERRIDO A CUARTO CASO (EL DE LEO)
+regla_avanzada_combinacion(galeria, transgressor, physical, sell_to_banks).
 
 % TODO Guido Yari agreguen mas sugerencias aca y los textos en el es.i18n.json
 
