@@ -50,17 +50,35 @@ class Logic {
     ]
   }
 
+  static PRIORITY_STRING = "···";
+
+  static orderSuggestionsByPriority () {
+    const suggestions = Logic.suggestions;
+
+    const priorityString = Logic.PRIORITY_STRING;
+
+    const prioritySuggestions = suggestions
+        .filter((s) => s.includes(priorityString))
+        .map((s) => s.replace(priorityString, ""));
+    const normalSuggestions = suggestions
+        .filter((s) => !s.includes(priorityString));
+
+    Logic.suggestions = [...normalSuggestions, ...prioritySuggestions];
+  }
+
   static menu () {
     Meteor.call('expert.consult', Logic.getActualPlan(), (error, suggestionsArray) => {
           if (error) {
             console.warn("--------------");
             console.error(error);
             console.trace();
-            Logic.suggestions = ['Ninguna sugerencia por el momento', 'Vuelve a intentarlo mas tarde'];
+            Logic.suggestions = ['Ninguna sugerencia por el momento', 'Vuelve a intentarlo más tarde'];
           } else {
             console.log(`Plan Suggestions: ${suggestionsArray}`);
-          Logic.suggestions = suggestionsArray;
-          Logic.suggestions.reverse();
+            Logic.suggestions = suggestionsArray;
+            Logic.suggestions.reverse();
+            Logic.suggestions = Logic.suggestions.map(Logic.translateSuggestion);
+            Logic.orderSuggestionsByPriority();
           }
       });
     
@@ -78,7 +96,7 @@ class Logic {
     return [
         ChatBotUtil.textMessage('Basandome en tus caracteristicas..')
       ].concat(
-        suggestionsToShow.map( suggestion => ChatBotUtil.textMessage(Logic.translateSuggestion(suggestion)))
+        suggestionsToShow.map( suggestion => ChatBotUtil.textMessage(suggestion))
       ).concat(
       [
         ChatBotUtil.textMessage('Concentrate en esas por ahora',
@@ -105,11 +123,11 @@ class Logic {
     let builtSuggestionsToShow = [];
     for (var i = 0; i < suggestionsToShow.length - 1; i++){
       builtSuggestionsToShow.push(
-        ChatBotUtil.textMessage(Logic.translateSuggestion(suggestionsToShow[i]))
+        ChatBotUtil.textMessage(suggestionsToShow[i])
       );
     }
     builtSuggestionsToShow.push(
-      ChatBotUtil.textMessage(Logic.translateSuggestion(suggestionsToShow[suggestionsToShow.length - 1]),
+      ChatBotUtil.textMessage(suggestionsToShow[suggestionsToShow.length - 1],
         ChatBotUtil.makeReplyButton('Entendido', Logic.menu),
         ChatBotUtil.makeReplyButton('Sugerime más cosas',() =>  Logic.show_more_suggestions())
       )
