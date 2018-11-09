@@ -3,6 +3,10 @@ import { withTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import {ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 
+var Finance = require('financejs');
+
+var finance = new Finance();
+
 const calculateLinearRegression = (realValues) => {
 	/**
 	 * Linear regression in Javascript
@@ -58,6 +62,8 @@ export default class NumericProjection extends React.Component {
 					newCost.error = '';
 					return newCost;
 				}) : [],
+			van: '-',
+			tir: '-',
 			errors: {
 				initialCapital: '',
 				amount: ''
@@ -254,6 +260,59 @@ export default class NumericProjection extends React.Component {
 		});
 	}
 
+	calculateVAN(initialCapital, years, flows, interest) {
+		const capital = -initialCapital;
+		for(let i = 1; i <= years; i++) {
+			capital += flows[i - 1] / Math.pow(1 + interest, i);
+		}
+		return capital;
+	}
+
+	getVAN() {
+		const vanInterest = 0.03;
+		const { initialCapital, amount, incomes } = this.state;
+		if (this.state.calculateLinearRegression && initialCapital !== '' && amount !== '') {
+			return this.calculateVAN(initialCapital, amount, incomes.map(income => income.value), vanInterest);
+		}
+		return this.state.van;
+	}
+
+	getIncome(index) {
+		const { amount, incomes } = this.state;
+		return index < amount.length ? incomes[index].value : undefined; 
+	}
+
+	getTIR() {
+		const { initialCapital, incomes, amount } = this.state;
+		if (this.state.calculateLinearRegression && initialCapital !== '' && amount !== ''
+			&& incomes[0].value !== 0 && incomes[1].value !== 0 && incomes[2].value !== 0 ) {
+			return '%' + finance.IRR(-initialCapital,
+				incomes[0].value,
+				incomes[1].value,
+				incomes[2].value,
+				this.getIncome(3),
+				this.getIncome(4),
+				this.getIncome(5),
+				this.getIncome(6),
+				this.getIncome(7),
+				this.getIncome(8),
+				this.getIncome(9),
+				this.getIncome(10),
+				this.getIncome(11),
+				this.getIncome(12),
+				this.getIncome(13),
+				this.getIncome(14),
+				this.getIncome(15),
+				this.getIncome(16),
+				this.getIncome(17),
+				this.getIncome(18),
+				this.getIncome(19),
+				this.getIncome(20)
+			);
+		}
+		return this.state.tir;
+	}
+
 	render() {
 
 		if (this.props.loading) {
@@ -324,6 +383,12 @@ export default class NumericProjection extends React.Component {
 					<button onClick={() => this.setState({calculateLinearRegression: true})}>
 						Calcular Proyección
 					</button>
+				</div>
+				<div className="row header">
+					<label> VAN: {this.getVAN()}</label>
+				</div>
+				<div className="row header">
+					<label> TIR: {this.getTIR()}</label>
 				</div>
 				{this.renderChart()}
 			</div>
