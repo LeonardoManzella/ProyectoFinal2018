@@ -65,8 +65,12 @@ if (Meteor.isServer) {
                     await query.close();
                 }
                 engine.close();
-                let final_ordered_suggestions = advanced_mixed_suggestions;
-                final_ordered_suggestions = final_ordered_suggestions.concat(sortByFrequency(duplicated_partial_suggestions));
+                const advanced = sortByFrequency(advanced_mixed_suggestions);
+                const normal = sortByFrequency(duplicated_partial_suggestions).filter((s) => !advanced.includes(s));
+
+                const MAX_SUGGESTIONS = 6;
+                const final_ordered_suggestions = [...advanced, ...normal].slice(0, MAX_SUGGESTIONS);
+
                 console.log(`Ordered Suggestions: ${JSON.stringify(final_ordered_suggestions)}`);
                 resolve(final_ordered_suggestions);
             })().catch((err) => {
